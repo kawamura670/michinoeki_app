@@ -314,6 +314,87 @@ body {
 }
 .badge-new { display: inline-block; background: var(--sunset); color: #fff; font-size: 0.68rem; font-weight: 800; border-radius: 8px; padding: 1px 8px; margin-left: 6px; }
 
+/* ===== 日記・写真（プレミアム機能） ===== */
+.diary-section {
+  margin-top: 10px; padding-top: 10px; border-top: 1px dashed var(--border);
+}
+.diary-photos {
+  display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 8px;
+}
+.diary-photo {
+  width: 72px; height: 72px; border-radius: 10px; object-fit: cover;
+  box-shadow: var(--shadow); border: 1.5px solid var(--border);
+}
+.diary-photo-add {
+  width: 72px; height: 72px; border-radius: 10px; border: 2px dashed var(--border-active);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; color: var(--text-sub); font-size: 1.5rem;
+  transition: all 0.15s; background: var(--bg);
+}
+.diary-photo-add:active { background: var(--hover); border-color: var(--primary); color: var(--primary); }
+.diary-text {
+  font-size: 0.88rem; color: var(--text); line-height: 1.6;
+  background: var(--bg); border-radius: var(--radius-sm);
+  padding: 10px 14px; margin-bottom: 6px;
+  white-space: pre-wrap;
+}
+.diary-textarea {
+  width: 100%; min-height: 80px; padding: 10px 14px;
+  border: 1.5px solid var(--border); border-radius: var(--radius-sm);
+  font-size: 0.88rem; font-family: inherit; color: var(--text);
+  background: var(--bg); resize: vertical; line-height: 1.6;
+}
+.diary-textarea:focus { outline: none; border-color: var(--primary); background: #fff; }
+.diary-textarea::placeholder { color: var(--text-light); }
+.diary-actions {
+  display: flex; gap: 8px; margin-top: 6px;
+}
+.diary-btn {
+  padding: 6px 14px; border-radius: 8px; border: none;
+  font-size: 0.78rem; font-weight: 700; cursor: pointer;
+  transition: all 0.15s;
+}
+.diary-btn-save { background: var(--primary); color: #fff; }
+.diary-btn-save:active { transform: scale(0.95); }
+.diary-btn-edit { background: var(--bg); color: var(--text-sub); border: 1px solid var(--border); }
+.diary-btn-edit:active { background: var(--hover); }
+.diary-btn-photo { background: var(--sky); color: #fff; }
+.diary-btn-photo:active { transform: scale(0.95); }
+.diary-date { font-size: 0.72rem; color: var(--text-light); margin-top: 4px; }
+.diary-tag {
+  display: inline-flex; align-items: center; gap: 3px;
+  font-size: 0.62rem; font-weight: 700; color: var(--gold);
+  background: var(--gold-light); border-radius: 6px;
+  padding: 1px 6px; margin-left: 6px;
+}
+
+/* 日記モーダル */
+.diary-modal-content { padding: 4px 0; }
+.diary-modal-station {
+  font-size: 0.92rem; font-weight: 700; color: var(--primary);
+  margin-bottom: 12px; padding: 10px 14px;
+  background: var(--primary-pale); border-radius: var(--radius-sm);
+}
+.diary-modal-photos {
+  display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 14px;
+}
+.diary-modal-photo {
+  width: 90px; height: 90px; border-radius: 12px; object-fit: cover;
+  box-shadow: var(--shadow-md); border: 2px solid var(--border);
+  cursor: pointer; transition: transform 0.15s;
+}
+.diary-modal-photo:active { transform: scale(0.95); }
+.diary-modal-photo-add {
+  width: 90px; height: 90px; border-radius: 12px;
+  border: 2px dashed var(--border-active); display: flex;
+  flex-direction: column; align-items: center; justify-content: center;
+  cursor: pointer; color: var(--text-sub); gap: 4px;
+  background: var(--bg); transition: all 0.15s;
+}
+.diary-modal-photo-add:active { border-color: var(--primary); color: var(--primary); }
+.diary-modal-photo-add-icon { font-size: 1.5rem; }
+.diary-modal-photo-add-text { font-size: 0.68rem; font-weight: 600; }
+
 /* ===== 統計タブ（プレミアム版拡張） ===== */
 .stats-container { padding: 16px; max-width: 600px; margin: 0 auto; }
 
@@ -724,19 +805,73 @@ body {
         <div class="station-list open">
           <div class="station-row visited">
             <input type="checkbox" checked>
-            <div class="station-info"><div class="station-name">源平の里むれ<span class="stamp-mark">済</span></div><div class="station-meta">高松市（第23回 / 2007登録）</div><div class="visited-date">📅 2026-05-20</div></div>
+            <div class="station-info">
+              <div class="station-name">源平の里むれ<span class="stamp-mark">済</span><span class="diary-tag">📝 日記</span></div>
+              <div class="station-meta">高松市（第23回 / 2007登録）</div>
+              <div class="visited-date">📅 2026-05-20</div>
+              <div class="diary-section">
+                <div class="diary-photos">
+                  <img class="diary-photo" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='72'%3E%3Crect width='72' height='72' fill='%23e8f5ee'/%3E%3Ctext x='36' y='40' text-anchor='middle' font-size='28'%3E🍜%3C/text%3E%3C/svg%3E" alt="うどん">
+                  <img class="diary-photo" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='72'%3E%3Crect width='72' height='72' fill='%23e3f0fa'/%3E%3Ctext x='36' y='40' text-anchor='middle' font-size='28'%3E⛵%3C/text%3E%3C/svg%3E" alt="景色">
+                  <img class="diary-photo" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='72'%3E%3Crect width='72' height='72' fill='%23fdf3d7'/%3E%3Ctext x='36' y='40' text-anchor='middle' font-size='28'%3E📮%3C/text%3E%3C/svg%3E" alt="スタンプ">
+                  <div class="diary-photo-add" onclick="alert('写真を追加（デモ）')">＋</div>
+                </div>
+                <div class="diary-text">源平合戦の地に立つ道の駅。讃岐うどんが絶品！海を見ながら食べるうどんは格別でした。お土産に和三盆の干菓子を購入。次回はもう少しゆっくり過ごしたい。</div>
+                <div class="diary-actions">
+                  <button class="diary-btn diary-btn-edit" onclick="openDiaryModal('源平の里むれ')">✏️ 編集</button>
+                  <button class="diary-btn diary-btn-photo" onclick="alert('写真を追加（デモ）')">📷 写真追加</button>
+                </div>
+                <div class="diary-date">最終更新: 2026-05-20 14:32</div>
+              </div>
+            </div>
           </div>
           <div class="station-row visited">
             <input type="checkbox" checked>
-            <div class="station-info"><div class="station-name">滝宮<span class="stamp-mark">済</span></div><div class="station-meta">綾川町（第13回 / 1998登録）</div><div class="visited-date">📅 2026-05-20</div></div>
+            <div class="station-info">
+              <div class="station-name">滝宮<span class="stamp-mark">済</span><span class="diary-tag">📝 日記</span></div>
+              <div class="station-meta">綾川町（第13回 / 1998登録）</div>
+              <div class="visited-date">📅 2026-05-20</div>
+              <div class="diary-section">
+                <div class="diary-photos">
+                  <img class="diary-photo" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='72'%3E%3Crect width='72' height='72' fill='%23e8f5ee'/%3E%3Ctext x='36' y='40' text-anchor='middle' font-size='28'%3E🏛️%3C/text%3E%3C/svg%3E" alt="建物">
+                  <div class="diary-photo-add" onclick="alert('写真を追加（デモ）')">＋</div>
+                </div>
+                <div class="diary-text">菅原道真ゆかりの滝宮天満宮のすぐ近く。地元の新鮮野菜がとても安くて大量購入してしまった！キャンピングカーの冷蔵庫がパンパンに。</div>
+                <div class="diary-actions">
+                  <button class="diary-btn diary-btn-edit" onclick="openDiaryModal('滝宮')">✏️ 編集</button>
+                  <button class="diary-btn diary-btn-photo" onclick="alert('写真を追加（デモ）')">📷 写真追加</button>
+                </div>
+                <div class="diary-date">最終更新: 2026-05-20 16:05</div>
+              </div>
+            </div>
           </div>
           <div class="station-row visited">
             <input type="checkbox" checked>
-            <div class="station-info"><div class="station-name">ことなみ<span class="stamp-mark">済</span></div><div class="station-meta">まんのう町（第11回 / 1996登録）</div><div class="visited-date">📅 2026-05-21</div></div>
+            <div class="station-info">
+              <div class="station-name">ことなみ<span class="stamp-mark">済</span></div>
+              <div class="station-meta">まんのう町（第11回 / 1996登録）</div>
+              <div class="visited-date">📅 2026-05-21</div>
+              <div class="diary-section">
+                <div class="diary-actions">
+                  <button class="diary-btn diary-btn-edit" onclick="openDiaryModal('ことなみ')">📝 日記を書く</button>
+                  <button class="diary-btn diary-btn-photo" onclick="alert('写真を追加（デモ）')">📷 写真追加</button>
+                </div>
+              </div>
+            </div>
           </div>
           <div class="station-row visited">
             <input type="checkbox" checked>
-            <div class="station-info"><div class="station-name">とよはま<span class="stamp-mark">済</span></div><div class="station-meta">観音寺市（第20回 / 2004登録）</div><div class="visited-date">📅 2026-05-21</div></div>
+            <div class="station-info">
+              <div class="station-name">とよはま<span class="stamp-mark">済</span></div>
+              <div class="station-meta">観音寺市（第20回 / 2004登録）</div>
+              <div class="visited-date">📅 2026-05-21</div>
+              <div class="diary-section">
+                <div class="diary-actions">
+                  <button class="diary-btn diary-btn-edit" onclick="openDiaryModal('とよはま')">📝 日記を書く</button>
+                  <button class="diary-btn diary-btn-photo" onclick="alert('写真を追加（デモ）')">📷 写真追加</button>
+                </div>
+              </div>
+            </div>
           </div>
           <div class="station-row">
             <input type="checkbox">
@@ -1058,6 +1193,30 @@ body {
   </button>
 </div>
 
+<!-- ===== 日記編集モーダル ===== -->
+<div id="diary-modal" class="modal-overlay" hidden>
+  <div class="modal">
+    <h2>📝 旅の日記 <span class="premium-tag">👑 MASTER</span></h2>
+    <div class="diary-modal-content">
+      <div class="diary-modal-station" id="diary-modal-station">🍜 香川県 — 源平の里むれ</div>
+      <div class="diary-modal-photos">
+        <img class="diary-modal-photo" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='90'%3E%3Crect width='90' height='90' fill='%23e8f5ee'/%3E%3Ctext x='45' y='52' text-anchor='middle' font-size='36'%3E🍜%3C/text%3E%3C/svg%3E" alt="うどん">
+        <img class="diary-modal-photo" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='90'%3E%3Crect width='90' height='90' fill='%23e3f0fa'/%3E%3Ctext x='45' y='52' text-anchor='middle' font-size='36'%3E⛵%3C/text%3E%3C/svg%3E" alt="景色">
+        <img class="diary-modal-photo" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='90'%3E%3Crect width='90' height='90' fill='%23fdf3d7'/%3E%3Ctext x='45' y='52' text-anchor='middle' font-size='36'%3E📮%3C/text%3E%3C/svg%3E" alt="スタンプ">
+        <div class="diary-modal-photo-add" onclick="alert('カメラまたはライブラリから写真を選択（デモ）')">
+          <div class="diary-modal-photo-add-icon">📷</div>
+          <div class="diary-modal-photo-add-text">写真追加</div>
+        </div>
+      </div>
+      <textarea class="diary-textarea" id="diary-textarea" placeholder="旅の思い出を書きましょう...&#10;&#10;食べたもの、出会った人、感じたこと、&#10;何でも自由に記録できます。">源平合戦の地に立つ道の駅。讃岐うどんが絶品！海を見ながら食べるうどんは格別でした。お土産に和三盆の干菓子を購入。次回はもう少しゆっくり過ごしたい。</textarea>
+    </div>
+    <div class="modal-actions">
+      <button class="modal-cancel" onclick="document.getElementById('diary-modal').hidden=true;">キャンセル</button>
+      <button class="modal-confirm" onclick="document.getElementById('diary-modal').hidden=true;alert('日記を保存しました！（デモ）')">💾 保存</button>
+    </div>
+  </div>
+</div>
+
 <!-- ===== ペイウォールモーダル（デモ用） ===== -->
 <div id="paywall-modal" class="paywall-overlay" hidden>
   <div class="paywall">
@@ -1074,6 +1233,7 @@ body {
       <div class="paywall-feature"><div class="paywall-feature-icon">☁️</div><div class="paywall-feature-text">クラウド同期（端末間）</div></div>
       <div class="paywall-feature"><div class="paywall-feature-icon">🎨</div><div class="paywall-feature-text">テーマカラー変更</div></div>
       <div class="paywall-feature"><div class="paywall-feature-icon">📄</div><div class="paywall-feature-text">CSV / PDF エクスポート</div></div>
+      <div class="paywall-feature"><div class="paywall-feature-icon">📝</div><div class="paywall-feature-text">旅の日記 + 複数写真記録</div></div>
       <div class="paywall-feature"><div class="paywall-feature-icon">🏅</div><div class="paywall-feature-text">限定バッジ</div></div>
     </div>
     <div class="paywall-pricing">
@@ -1109,6 +1269,8 @@ body {
       <tr><td>実績バッジ</td><td class="limit">—</td><td class="premium-col check">✓</td></tr>
       <tr><td>クラウド同期</td><td class="limit">—</td><td class="premium-col check">✓</td></tr>
       <tr><td>テーマカラー</td><td class="limit">—</td><td class="premium-col check">✓</td></tr>
+      <tr><td>旅の日記</td><td class="limit">—</td><td class="premium-col check">✓</td></tr>
+      <tr><td>複数写真記録</td><td class="limit">—</td><td class="premium-col check">✓</td></tr>
       <tr><td>CSV/PDF出力</td><td class="limit">—</td><td class="premium-col check">✓</td></tr>
     </table>
     <div class="modal-actions">
@@ -1136,6 +1298,22 @@ document.getElementById('settings-icon').addEventListener('click', () => {
   document.querySelector('[data-tab="settings"]').classList.add('active');
   document.getElementById('tab-settings').classList.add('active');
 });
+
+// 日記モーダル
+function openDiaryModal(stationName) {
+  const modal = document.getElementById('diary-modal');
+  document.getElementById('diary-modal-station').textContent = '🍜 香川県 — ' + stationName;
+  const textarea = document.getElementById('diary-textarea');
+  const diaryData = {
+    '源平の里むれ': '源平合戦の地に立つ道の駅。讃岐うどんが絶品！海を見ながら食べるうどんは格別でした。お土産に和三盆の干菓子を購入。次回はもう少しゆっくり過ごしたい。',
+    '滝宮': '菅原道真ゆかりの滝宮天満宮のすぐ近く。地元の新鮮野菜がとても安くて大量購入してしまった！キャンピングカーの冷蔵庫がパンパンに。',
+    'ことなみ': '',
+    'とよはま': ''
+  };
+  textarea.value = diaryData[stationName] || '';
+  if (!textarea.value) textarea.placeholder = '旅の思い出を書きましょう...\n\n食べたもの、出会った人、感じたこと、\n何でも自由に記録できます。';
+  modal.hidden = false;
+}
 
 // テーマカラー変更
 function setTheme(el, color) {
