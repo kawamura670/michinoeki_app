@@ -1,0 +1,18 @@
+{
+  "name": "道の駅スタンプ帳",
+  "short_name": "道の駅帳",
+  "description": "全国1,200駅の道の駅を記録・管理するスタンプ帳アプリ",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F2F2F7",
+  "theme_color": "#1B7A4E",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><rect width='512' height='512' rx='80' fill='%231a5c2e'/><text x='256' y='340' font-size='280' text-anchor='middle' fill='white'>🚗</text></svg>",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

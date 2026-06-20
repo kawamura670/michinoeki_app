@@ -1,0 +1,1167 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#1B7A4E">
+<title>道の駅スタンプ帳 — 道の駅マスター（有料版デモ）</title>
+<style>
+:root {
+  --primary: #1B7A4E;
+  --primary-light: #2A9D6A;
+  --primary-dark: #14593A;
+  --primary-pale: #E8F5EE;
+  --green: #5B8C5A;
+  --green-light: #E8F2E7;
+  --green-dark: #3E6B3D;
+  --gold: #E8A735;
+  --gold-light: #FFF6E0;
+  --gold-glow: rgba(232,167,53,0.4);
+  --sky: #4A90B8;
+  --sunset: #D4734A;
+  --bg: #F2F2F7;
+  --card: #FFFFFF;
+  --hover: #F5F5F5;
+  --text: #1C1C1E;
+  --text-sub: #8E8E93;
+  --text-light: #AEAEB2;
+  --border: #E5E5EA;
+  --border-active: #C7C7CC;
+  --shadow: 0 1px 3px rgba(0,0,0,0.06);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+  --shadow-lg: 0 8px 24px rgba(0,0,0,0.12);
+  --radius: 14px;
+  --radius-sm: 10px;
+  --nav-height: 52px;
+  --tab-height: 82px;
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --region-hokkaido: #9B7CB8; --region-hokkaido-light: #F0E8F6;
+  --region-tohoku: #3D7A4A; --region-tohoku-light: #E3F0E5;
+  --region-kanto: #4A9BD9; --region-kanto-light: #E3F0FA;
+  --region-chubu: #D4A017; --region-chubu-light: #FDF3D7;
+  --region-kinki: #CC4433; --region-kinki-light: #FAE5E2;
+  --region-chugoku: #D98DAD; --region-chugoku-light: #FBE9F0;
+  --region-shikoku: #2E5A88; --region-shikoku-light: #E0EAF4;
+  --region-kyushu: #E07040; --region-kyushu-light: #FDEEE7;
+  --premium-gradient: linear-gradient(135deg, #E8A735, #F0C060, #E8A735);
+  --premium-dark: #6D4C00;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+  font-size: 16px; background: var(--bg); color: var(--text);
+  line-height: 1.5; -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+  padding-top: var(--nav-height); padding-bottom: var(--tab-height);
+}
+
+/* ===== ナビバー ===== */
+.nav-bar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+  height: var(--nav-height);
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  border-bottom: 0.5px solid rgba(0,0,0,0.12);
+  display: flex; align-items: center; justify-content: center;
+  padding: 0 16px;
+}
+.nav-title { font-size: 1.1rem; font-weight: 700; color: var(--text); }
+.nav-badge {
+  display: inline-flex; align-items: center; gap: 4px;
+  background: var(--premium-gradient); color: var(--premium-dark);
+  font-size: 0.62rem; font-weight: 800; border-radius: 10px;
+  padding: 2px 8px; margin-left: 8px; vertical-align: middle;
+  box-shadow: 0 1px 4px var(--gold-glow);
+}
+.nav-icon {
+  position: absolute; right: 12px; top: 50%; transform: translateY(-50%);
+  background: none; border: none; cursor: pointer; padding: 8px;
+  color: var(--primary); display: flex; align-items: center; justify-content: center;
+}
+.nav-icon-left {
+  position: absolute; left: 12px; top: 50%; transform: translateY(-50%);
+  background: none; border: none; cursor: pointer; padding: 8px;
+  color: var(--primary); display: flex; align-items: center; justify-content: center;
+}
+
+/* ===== タブバー ===== */
+.bottom-tab-bar {
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 50;
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  border-top: 0.5px solid rgba(0,0,0,0.12);
+  display: flex; align-items: stretch; justify-content: space-around;
+  height: var(--tab-height); padding-bottom: var(--safe-bottom);
+}
+.btab {
+  flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 3px; background: none; border: none; cursor: pointer;
+  color: var(--text-sub); font-size: 0.65rem; font-weight: 500;
+  padding: 6px 0; transition: color 0.15s;
+}
+.btab svg { stroke: var(--text-sub); transition: stroke 0.15s; }
+.btab.active { color: var(--primary); }
+.btab.active svg { stroke: var(--primary); }
+.btab .premium-dot {
+  width: 5px; height: 5px; border-radius: 50%; background: var(--gold);
+  position: absolute; top: 8px; right: calc(50% - 16px);
+}
+
+/* ===== タブコンテンツ ===== */
+.tab-content { display: none; }
+.tab-content.active { display: block; }
+
+/* ===== 共通 ===== */
+.section-header {
+  font-size: 0.92rem; font-weight: 700; color: var(--text);
+  padding: 20px 0 10px; display: flex; align-items: center; gap: 6px;
+}
+.premium-tag {
+  display: inline-flex; align-items: center; gap: 3px;
+  background: var(--premium-gradient); color: var(--premium-dark);
+  font-size: 0.6rem; font-weight: 800; border-radius: 8px;
+  padding: 2px 7px;
+}
+
+/* ===== ホームタブ ===== */
+.home-container { padding: 16px; max-width: 600px; margin: 0 auto; }
+
+/* プレミアムステータスバナー */
+.premium-banner {
+  background: linear-gradient(135deg, #2C1810, #4A3020, #2C1810);
+  border-radius: 16px; padding: 18px 20px; margin-bottom: 16px;
+  display: flex; align-items: center; gap: 14px;
+  box-shadow: 0 4px 16px rgba(44,24,16,0.3);
+  position: relative; overflow: hidden;
+}
+.premium-banner::before {
+  content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+  background: conic-gradient(from 0deg, transparent, rgba(232,167,53,0.1), transparent, rgba(232,167,53,0.05), transparent);
+  animation: shimmer 4s linear infinite;
+}
+@keyframes shimmer { to { transform: rotate(360deg); } }
+.premium-banner-icon { font-size: 2rem; position: relative; z-index: 1; }
+.premium-banner-text { flex: 1; position: relative; z-index: 1; }
+.premium-banner-title { color: var(--gold); font-weight: 800; font-size: 0.92rem; }
+.premium-banner-sub { color: rgba(255,255,255,0.6); font-size: 0.78rem; margin-top: 2px; }
+
+/* ヒーローカード */
+.hero-card {
+  background: var(--card); border-radius: 20px;
+  padding: 28px 20px 24px; text-align: center;
+  box-shadow: var(--shadow-md);
+}
+.hero-label {
+  font-size: 0.82rem; font-weight: 600; color: var(--text-sub);
+  text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 16px;
+}
+.hero-ring-wrap { position: relative; width: 140px; height: 140px; margin: 0 auto 20px; }
+.hero-ring { width: 100%; height: 100%; }
+.hero-pct { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); font-size: 1.8rem; font-weight: 800; color: var(--text); }
+.hero-stats { display: flex; align-items: center; justify-content: center; }
+.hero-stat { flex: 1; display: flex; flex-direction: column; align-items: center; }
+.hero-stat-num { font-size: 1.5rem; font-weight: 800; color: var(--text); }
+.hero-stat-label { font-size: 0.75rem; color: var(--text-sub); margin-top: 2px; }
+.hero-stat-divider { width: 1px; height: 36px; background: var(--border); flex-shrink: 0; }
+
+/* レベルカード */
+.level-card {
+  background: var(--card); border-radius: var(--radius);
+  padding: 16px 20px; margin-top: 12px; box-shadow: var(--shadow);
+}
+.level-current { font-size: 1.1rem; font-weight: 800; }
+.level-next { font-size: 0.82rem; color: var(--text-sub); margin-top: 4px; }
+.level-bar { height: 6px; background: var(--bg); border-radius: 3px; margin-top: 10px; overflow: hidden; }
+.level-bar-fill { height: 100%; background: linear-gradient(90deg, var(--primary), var(--primary-light)); border-radius: 3px; transition: width 0.8s ease; }
+
+/* 最近の訪問 */
+.home-recent { display: flex; flex-wrap: wrap; gap: 8px; }
+.recent-chip {
+  background: var(--card); border-radius: 20px;
+  padding: 8px 14px; font-size: 0.85rem; font-weight: 600;
+  box-shadow: var(--shadow); white-space: nowrap;
+}
+.recent-chip-date { color: var(--text-sub); font-weight: 400; margin-left: 6px; font-size: 0.78rem; }
+.empty-state { text-align: center; color: var(--text-sub); padding: 20px; font-size: 0.92rem; }
+
+/* もうすぐ制覇 */
+.almost-chip {
+  background: linear-gradient(135deg, #FFF8E1, #FFF3CD);
+  border-radius: var(--radius-sm); padding: 10px 16px;
+  font-size: 0.88rem; font-weight: 700; color: #6D4C00; margin-bottom: 6px;
+}
+
+/* クラウド同期ステータス */
+.sync-status {
+  background: var(--card); border-radius: var(--radius);
+  padding: 14px 18px; margin-top: 12px; box-shadow: var(--shadow);
+  display: flex; align-items: center; gap: 12px;
+}
+.sync-icon { font-size: 1.2rem; }
+.sync-text { flex: 1; }
+.sync-label { font-size: 0.85rem; font-weight: 700; }
+.sync-detail { font-size: 0.75rem; color: var(--text-sub); }
+.sync-dot { width: 8px; height: 8px; border-radius: 50%; background: #34C759; flex-shrink: 0; }
+
+/* アクションボタン */
+.home-actions { display: flex; gap: 10px; margin-top: 20px; }
+.home-actions.sub-actions { margin-top: 10px; justify-content: center; flex-wrap: wrap; }
+.action-btn {
+  flex: 1; padding: 16px; border: none; border-radius: var(--radius);
+  font-size: 1rem; font-weight: 700; cursor: pointer;
+  min-height: 54px; transition: all 0.2s; display: flex;
+  align-items: center; justify-content: center; gap: 6px;
+}
+.primary-btn { background: var(--primary); color: #fff; box-shadow: 0 3px 12px rgba(27,122,78,0.3); }
+.primary-btn:active { transform: scale(0.97); }
+.secondary-btn { background: var(--sky); color: #fff; box-shadow: 0 3px 12px rgba(74,144,184,0.3); }
+.secondary-btn:active { transform: scale(0.97); }
+.text-btn {
+  background: none; border: none; color: var(--text-sub);
+  font-size: 0.88rem; font-weight: 600; cursor: pointer; padding: 10px 16px;
+}
+.text-btn:active { color: var(--primary); }
+
+/* ===== 一覧タブ ===== */
+.list-container { max-width: 600px; margin: 0 auto; }
+.search-bar {
+  position: sticky; top: var(--nav-height); z-index: 10;
+  background: var(--bg); padding: 10px 16px;
+  display: flex; align-items: center; gap: 8px;
+}
+.search-bar input {
+  flex: 1; padding: 10px 12px 10px 36px; border: none;
+  border-radius: var(--radius-sm); background: var(--card);
+  font-size: 0.95rem; color: var(--text); min-height: 42px;
+  box-shadow: var(--shadow);
+}
+.search-bar input:focus { outline: 2px solid var(--primary); outline-offset: -2px; }
+.search-icon {
+  position: absolute; left: 28px; top: 50%; transform: translateY(-50%);
+  pointer-events: none; z-index: 1;
+}
+.filter-row { display: flex; gap: 8px; padding: 0 16px 10px; background: var(--bg); }
+.filter-chip {
+  padding: 7px 16px; border-radius: 20px;
+  border: 1.5px solid var(--border); background: var(--card);
+  font-size: 0.85rem; font-weight: 600; color: var(--text-sub);
+  cursor: pointer; transition: all 0.15s;
+}
+.filter-chip.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+
+#pref-list { padding: 0 16px 20px; }
+.pref-card {
+  background: var(--card); border-radius: var(--radius);
+  margin-bottom: 8px; overflow: hidden; box-shadow: var(--shadow); transition: all 0.2s;
+}
+.pref-card.open { box-shadow: var(--shadow-md); }
+.pref-card[data-region="hokkaido"] { border-left: 4px solid var(--region-hokkaido); }
+.pref-card[data-region="tohoku"]   { border-left: 4px solid var(--region-tohoku); }
+.pref-card[data-region="kanto"]    { border-left: 4px solid var(--region-kanto); }
+.pref-card[data-region="chubu"]    { border-left: 4px solid var(--region-chubu); }
+.pref-card[data-region="kinki"]    { border-left: 4px solid var(--region-kinki); }
+.pref-card[data-region="chugoku"]  { border-left: 4px solid var(--region-chugoku); }
+.pref-card[data-region="shikoku"]  { border-left: 4px solid var(--region-shikoku); }
+.pref-card[data-region="kyushu"]   { border-left: 4px solid var(--region-kyushu); }
+.pref-card.pref-complete { border-color: var(--gold) !important; background: linear-gradient(135deg,var(--gold-light),var(--card)) !important; }
+.pref-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 16px; cursor: pointer; user-select: none;
+  transition: background 0.15s; min-height: 50px;
+}
+.pref-header:active { background: var(--hover); }
+.pref-name { font-weight: 700; font-size: 1rem; display: flex; align-items: center; gap: 5px; flex-wrap: wrap; }
+.pref-emoji { font-size: 1.05rem; }
+.pref-progress-text { font-size: 0.8rem; color: var(--text-sub); font-weight: 500; }
+.pref-almost { color: var(--sunset); font-weight: 700; font-size: 0.78rem; }
+.pref-complete-badge { display: inline-block; background: var(--gold); color: #5a4500; font-size: 0.68rem; font-weight: 800; border-radius: 10px; padding: 2px 8px; }
+.pref-bar { height: 4px; background: var(--hover); }
+.pref-bar-fill { height: 100%; background: linear-gradient(90deg,var(--green),#66bb6a); transition: width 0.6s ease; }
+.chevron { font-size: 0.85rem; color: var(--text-light); flex-shrink: 0; transition: transform 0.25s; }
+.pref-card.open .chevron { transform: rotate(90deg); }
+.station-list { display: none; border-top: 1px solid var(--border); }
+.station-list.open { display: block; }
+.station-row {
+  display: flex; align-items: flex-start; gap: 12px;
+  padding: 14px 16px; border-bottom: 0.5px solid var(--border);
+  transition: background 0.15s; position: relative; overflow: hidden;
+}
+.station-row:last-child { border-bottom: none; }
+.station-row.visited { background: var(--green-light); }
+.station-row input[type="checkbox"] {
+  -webkit-appearance: none; appearance: none;
+  width: 26px; height: 26px; border: 2px solid var(--border-active); border-radius: 50%;
+  background: #fff; cursor: pointer; flex-shrink: 0; margin-top: 1px;
+  transition: all 0.2s; position: relative;
+}
+.station-row input[type="checkbox"]:checked {
+  background: var(--primary); border-color: var(--primary);
+}
+.station-row input[type="checkbox"]:checked::after {
+  content: "✓"; color: #fff; font-size: 0.85rem; font-weight: 800;
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+}
+.station-info { flex: 1; }
+.station-name { font-weight: 700; font-size: 0.95rem; }
+.station-meta { font-size: 0.82rem; color: var(--text-sub); margin-top: 2px; }
+.visited-date { font-size: 0.82rem; color: var(--green); margin-top: 3px; font-weight: 600; }
+.stamp-mark {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 28px; height: 28px; border: 2.5px solid var(--primary);
+  border-radius: 50%; color: var(--primary); font-size: 0.72rem;
+  font-weight: 900; opacity: 1; transform: scale(1); pointer-events: none;
+  margin-left: 6px; vertical-align: middle;
+}
+.badge-new { display: inline-block; background: var(--sunset); color: #fff; font-size: 0.68rem; font-weight: 800; border-radius: 8px; padding: 1px 8px; margin-left: 6px; }
+
+/* ===== 統計タブ（プレミアム版拡張） ===== */
+.stats-container { padding: 16px; max-width: 600px; margin: 0 auto; }
+
+/* 統計サマリーカード */
+.stats-summary {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 16px;
+}
+.stats-summary-card {
+  background: var(--card); border-radius: var(--radius);
+  padding: 16px; text-align: center; box-shadow: var(--shadow);
+}
+.stats-summary-num { font-size: 1.8rem; font-weight: 800; color: var(--primary); }
+.stats-summary-label { font-size: 0.78rem; color: var(--text-sub); margin-top: 2px; }
+.stats-summary-card.gold .stats-summary-num { color: var(--gold); }
+.stats-summary-card.sky .stats-summary-num { color: var(--sky); }
+.stats-summary-card.sunset .stats-summary-num { color: var(--sunset); }
+
+/* 月別チャート */
+.chart-card {
+  background: var(--card); border-radius: var(--radius);
+  padding: 20px; box-shadow: var(--shadow); margin-bottom: 16px;
+}
+.chart-title { font-size: 0.92rem; font-weight: 700; margin-bottom: 14px; }
+.bar-chart { display: flex; align-items: flex-end; gap: 6px; height: 140px; padding: 0 4px; }
+.bar-col {
+  flex: 1; display: flex; flex-direction: column; align-items: center; gap: 4px;
+}
+.bar {
+  width: 100%; border-radius: 4px 4px 0 0;
+  background: linear-gradient(180deg, var(--primary-light), var(--primary));
+  transition: height 0.6s ease; min-height: 2px;
+}
+.bar-label { font-size: 0.62rem; color: var(--text-sub); font-weight: 600; }
+.bar-value { font-size: 0.62rem; color: var(--primary); font-weight: 700; }
+
+/* 曜日別ヒートマップ */
+.heatmap-card {
+  background: var(--card); border-radius: var(--radius);
+  padding: 20px; box-shadow: var(--shadow); margin-bottom: 16px;
+}
+.heatmap-grid {
+  display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px;
+  margin-top: 10px;
+}
+.heatmap-cell {
+  aspect-ratio: 1; border-radius: 6px; display: flex; align-items: center;
+  justify-content: center; font-size: 0.7rem; font-weight: 700;
+  transition: all 0.3s;
+}
+.heatmap-label {
+  text-align: center; font-size: 0.68rem; color: var(--text-sub); font-weight: 600;
+}
+
+/* 地方別 */
+.region-stats { display: flex; flex-direction: column; gap: 8px; }
+.region-row {
+  display: flex; align-items: center; gap: 10px;
+  background: var(--card); border-radius: var(--radius-sm);
+  padding: 12px 14px; box-shadow: var(--shadow); position: relative; overflow: hidden;
+}
+.region-row[data-region]::before { content:""; position:absolute; left:0; top:0; bottom:0; width:3px; }
+.region-row[data-region="hokkaido"]::before { background:var(--region-hokkaido); }
+.region-row[data-region="tohoku"]::before   { background:var(--region-tohoku); }
+.region-row[data-region="kanto"]::before    { background:var(--region-kanto); }
+.region-row[data-region="chubu"]::before    { background:var(--region-chubu); }
+.region-row[data-region="kinki"]::before    { background:var(--region-kinki); }
+.region-row[data-region="chugoku"]::before  { background:var(--region-chugoku); }
+.region-row[data-region="shikoku"]::before  { background:var(--region-shikoku); }
+.region-row[data-region="kyushu"]::before   { background:var(--region-kyushu); }
+.region-row[data-region="hokkaido"] .region-bar-fill { background:linear-gradient(90deg,var(--region-hokkaido),#b89fd0); }
+.region-row[data-region="tohoku"]   .region-bar-fill { background:linear-gradient(90deg,var(--region-tohoku),#5a9e68); }
+.region-row[data-region="kanto"]    .region-bar-fill { background:linear-gradient(90deg,var(--region-kanto),#6db8ef); }
+.region-row[data-region="chubu"]    .region-bar-fill { background:linear-gradient(90deg,var(--region-chubu),#e8c04a); }
+.region-row[data-region="kinki"]    .region-bar-fill { background:linear-gradient(90deg,var(--region-kinki),#e06655); }
+.region-row[data-region="chugoku"]  .region-bar-fill { background:linear-gradient(90deg,var(--region-chugoku),#e8adc5); }
+.region-row[data-region="shikoku"]  .region-bar-fill { background:linear-gradient(90deg,var(--region-shikoku),#5080b0); }
+.region-row[data-region="kyushu"]   .region-bar-fill { background:linear-gradient(90deg,var(--region-kyushu),#f09878); }
+.region-row[data-region="hokkaido"] .region-pct { color:var(--region-hokkaido); }
+.region-row[data-region="tohoku"]   .region-pct { color:var(--region-tohoku); }
+.region-row[data-region="kanto"]    .region-pct { color:var(--region-kanto); }
+.region-row[data-region="chubu"]    .region-pct { color:var(--region-chubu); }
+.region-row[data-region="kinki"]    .region-pct { color:var(--region-kinki); }
+.region-row[data-region="chugoku"]  .region-pct { color:var(--region-chugoku); }
+.region-row[data-region="shikoku"]  .region-pct { color:var(--region-shikoku); }
+.region-row[data-region="kyushu"]   .region-pct { color:var(--region-kyushu); }
+.region-name { font-weight: 700; font-size: 0.9rem; width: 72px; flex-shrink: 0; }
+.region-bar-wrap { flex: 1; height: 10px; background: var(--bg); border-radius: 5px; overflow: hidden; }
+.region-bar-fill { height: 100%; border-radius: 5px; transition: width 0.6s ease; }
+.region-pct { font-size: 0.88rem; font-weight: 800; width: 40px; text-align: right; }
+.region-count { font-size: 0.78rem; color: var(--text-sub); width: 56px; text-align: right; }
+
+/* 最近の訪問（統計タブ） */
+.recent-visits { display: flex; flex-direction: column; gap: 6px; }
+.recent-item {
+  display: flex; align-items: center; gap: 12px;
+  background: var(--card); border-radius: var(--radius-sm);
+  padding: 12px 14px; box-shadow: var(--shadow);
+}
+.recent-icon { font-size: 1.3rem; }
+.recent-info { flex: 1; }
+.recent-name { font-weight: 700; font-size: 0.92rem; }
+.recent-detail { font-size: 0.78rem; color: var(--text-sub); }
+.recent-date { font-size: 0.82rem; color: var(--primary); font-weight: 600; white-space: nowrap; }
+.no-data { text-align: center; color: var(--text-sub); padding: 28px; font-size: 0.92rem; }
+
+/* エクスポートボタン */
+.export-actions {
+  display: flex; gap: 10px; margin-top: 16px;
+}
+.export-btn {
+  flex: 1; padding: 14px; border: 1.5px solid var(--border); border-radius: var(--radius);
+  background: var(--card); cursor: pointer; text-align: center;
+  font-weight: 700; font-size: 0.88rem; color: var(--text);
+  box-shadow: var(--shadow); transition: all 0.15s;
+}
+.export-btn:active { background: var(--hover); transform: scale(0.97); }
+.export-btn .export-icon { font-size: 1.4rem; display: block; margin-bottom: 4px; }
+
+/* ===== 実績タブ ===== */
+.badges-container { padding: 16px; max-width: 600px; margin: 0 auto; }
+.badge-list { display: grid; grid-template-columns: repeat(2,1fr); gap: 10px; }
+.badge-card {
+  background: var(--card); border-radius: var(--radius);
+  padding: 18px 14px; text-align: center;
+  box-shadow: var(--shadow); position: relative; overflow: hidden;
+}
+.badge-card.earned {
+  border: 1.5px solid var(--gold);
+  background: linear-gradient(160deg,var(--gold-light),#fff);
+}
+.badge-card.earned::before { content: "✦"; position: absolute; top: 8px; right: 10px; font-size: 0.7rem; color: var(--gold); animation: sparkle 3s ease-in-out infinite; }
+@keyframes sparkle { 0%,100%{opacity:0;transform:scale(0) rotate(0deg)} 50%{opacity:1;transform:scale(1) rotate(180deg)} }
+.badge-card.locked { opacity: 0.35; filter: grayscale(0.7); }
+.badge-emoji { font-size: 2.4rem; margin-bottom: 6px; }
+.badge-title { font-weight: 800; font-size: 0.88rem; margin-bottom: 3px; }
+.badge-desc { font-size: 0.78rem; color: var(--text-sub); line-height: 1.3; }
+.badge-progress { margin-top: 8px; height: 6px; background: var(--bg); border-radius: 3px; overflow: hidden; }
+.badge-progress-fill { height: 100%; background: linear-gradient(90deg,var(--gold),#ffb300); border-radius: 3px; transition: width 0.5s ease; }
+.badge-progress-text { font-size: 0.72rem; color: var(--text-sub); margin-top: 4px; }
+
+/* ===== 設定タブ（プレミアム） ===== */
+.settings-container { padding: 16px; max-width: 600px; margin: 0 auto; }
+.settings-group {
+  background: var(--card); border-radius: var(--radius);
+  overflow: hidden; box-shadow: var(--shadow); margin-bottom: 16px;
+}
+.settings-group-title {
+  font-size: 0.78rem; font-weight: 600; color: var(--text-sub);
+  text-transform: uppercase; letter-spacing: 0.05em;
+  padding: 10px 16px 6px; background: var(--bg);
+}
+.settings-item {
+  display: flex; align-items: center; gap: 12px;
+  padding: 14px 16px; border-bottom: 0.5px solid var(--border);
+  cursor: pointer; transition: background 0.15s;
+}
+.settings-item:last-child { border-bottom: none; }
+.settings-item:active { background: var(--hover); }
+.settings-icon { font-size: 1.2rem; width: 28px; text-align: center; }
+.settings-label { flex: 1; font-size: 0.92rem; font-weight: 600; }
+.settings-value { font-size: 0.85rem; color: var(--text-sub); }
+.settings-chevron { color: var(--text-light); font-size: 0.82rem; }
+
+/* テーマカラーピッカー */
+.theme-picker {
+  display: flex; gap: 10px; padding: 16px; flex-wrap: wrap; justify-content: center;
+}
+.theme-color {
+  width: 40px; height: 40px; border-radius: 50%; cursor: pointer;
+  border: 3px solid transparent; transition: all 0.2s;
+  box-shadow: var(--shadow);
+}
+.theme-color.active { border-color: var(--text); transform: scale(1.15); }
+.theme-color:active { transform: scale(0.9); }
+
+/* プラン情報カード */
+.plan-card {
+  background: linear-gradient(135deg, #1B7A4E, #2A9D6A);
+  border-radius: var(--radius); padding: 20px; color: #fff;
+  box-shadow: var(--shadow-md); margin-bottom: 16px;
+}
+.plan-card-title { font-weight: 800; font-size: 1rem; margin-bottom: 4px; }
+.plan-card-price { font-size: 0.88rem; opacity: 0.85; }
+.plan-card-next { font-size: 0.78rem; opacity: 0.6; margin-top: 8px; }
+
+/* ===== ペイウォールモーダル ===== */
+.paywall-overlay {
+  position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.5); display: flex;
+  align-items: center; justify-content: center;
+  z-index: 300; backdrop-filter: blur(8px);
+}
+.paywall-overlay[hidden] { display: none; }
+.paywall {
+  background: #fff; border-radius: 24px; padding: 0;
+  max-width: 380px; width: 90%; overflow: hidden;
+  box-shadow: var(--shadow-lg); animation: payIn 0.4s cubic-bezier(0.17,0.89,0.32,1.28);
+}
+@keyframes payIn { from{opacity:0;transform:scale(0.85) translateY(20px)} to{opacity:1;transform:scale(1) translateY(0)} }
+.paywall-hero {
+  background: linear-gradient(135deg, #1B7A4E, #2A9D6A, #1B7A4E);
+  padding: 32px 24px; text-align: center; color: #fff; position: relative; overflow: hidden;
+}
+.paywall-hero::after {
+  content: ''; position: absolute; top: -30px; right: -30px;
+  width: 120px; height: 120px; border-radius: 50%;
+  background: rgba(255,255,255,0.1);
+}
+.paywall-crown { font-size: 3rem; margin-bottom: 8px; display: block; }
+.paywall-title { font-size: 1.3rem; font-weight: 800; }
+.paywall-sub { font-size: 0.88rem; opacity: 0.8; margin-top: 6px; }
+.paywall-features { padding: 24px; }
+.paywall-feature {
+  display: flex; align-items: center; gap: 10px;
+  padding: 8px 0; font-size: 0.92rem;
+}
+.paywall-feature-icon { font-size: 1.1rem; width: 28px; text-align: center; }
+.paywall-feature-text { flex: 1; font-weight: 600; }
+.paywall-pricing { padding: 0 24px 20px; display: flex; gap: 10px; }
+.price-option {
+  flex: 1; border: 2px solid var(--border); border-radius: var(--radius);
+  padding: 16px 12px; text-align: center; cursor: pointer; transition: all 0.2s;
+  position: relative;
+}
+.price-option.recommended {
+  border-color: var(--primary); background: var(--primary-pale);
+}
+.price-option.recommended::before {
+  content: 'おすすめ'; position: absolute; top: -10px; left: 50%; transform: translateX(-50%);
+  background: var(--primary); color: #fff; font-size: 0.62rem; font-weight: 800;
+  padding: 2px 10px; border-radius: 10px; white-space: nowrap;
+}
+.price-amount { font-size: 1.4rem; font-weight: 800; color: var(--text); }
+.price-period { font-size: 0.75rem; color: var(--text-sub); margin-top: 2px; }
+.price-discount { font-size: 0.72rem; color: var(--primary); font-weight: 700; margin-top: 4px; }
+.paywall-cta {
+  margin: 0 24px 16px; padding: 16px; border: none; border-radius: var(--radius);
+  background: var(--primary); color: #fff; font-size: 1rem; font-weight: 800;
+  cursor: pointer; width: calc(100% - 48px); transition: all 0.2s;
+}
+.paywall-cta:active { transform: scale(0.97); }
+.paywall-skip {
+  display: block; text-align: center; padding: 12px;
+  color: var(--text-sub); font-size: 0.82rem; cursor: pointer;
+  border: none; background: none; width: 100%;
+}
+
+/* ===== モーダル ===== */
+.modal-overlay {
+  position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.35); display: flex;
+  align-items: flex-end; justify-content: center;
+  z-index: 100; backdrop-filter: blur(4px);
+}
+.modal-overlay[hidden] { display: none; }
+.modal {
+  background: #fff; border-radius: 20px 20px 0 0;
+  padding: 24px 20px calc(20px + var(--safe-bottom));
+  width: 100%; max-width: 500px; max-height: 85vh;
+  overflow-y: auto; box-shadow: 0 -4px 24px rgba(0,0,0,0.12);
+  animation: modalSlideUp 0.35s cubic-bezier(0.32,0.72,0,1);
+}
+@keyframes modalSlideUp { from{transform:translateY(100%)} to{transform:translateY(0)} }
+.modal h2 { margin-bottom: 16px; font-size: 1.15rem; font-weight: 800; }
+.modal-actions { display: flex; gap: 10px; margin-top: 16px; }
+.modal-actions button { flex: 1; padding: 14px; border: none; border-radius: var(--radius); font-size: 0.95rem; font-weight: 700; cursor: pointer; min-height: 48px; }
+.modal-cancel { background: var(--bg); color: var(--text-sub); }
+.modal-confirm { background: var(--primary); color: #fff; }
+
+/* ===== 比較テーブルモーダル ===== */
+.compare-table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 0.85rem; }
+.compare-table th { background: var(--bg); padding: 10px 8px; text-align: left; font-weight: 700; font-size: 0.78rem; color: var(--text-sub); }
+.compare-table th.premium-col { background: var(--gold-light); color: var(--premium-dark); }
+.compare-table td { padding: 10px 8px; border-bottom: 0.5px solid var(--border); }
+.compare-table .check { color: var(--primary); font-weight: 700; }
+.compare-table .limit { color: var(--text-sub); font-size: 0.82rem; }
+.compare-table .premium-col { background: rgba(232,167,53,0.05); }
+
+/* ===== デモバナー ===== */
+.demo-banner {
+  position: fixed; top: var(--nav-height); left: 0; right: 0;
+  background: linear-gradient(90deg, #E8A735, #F0C060);
+  color: var(--premium-dark); text-align: center;
+  padding: 6px 16px; font-size: 0.78rem; font-weight: 700;
+  z-index: 45;
+}
+
+@media (min-width: 600px) {
+  .modal { border-radius: 20px; max-width: 420px; }
+  .modal-overlay { align-items: center; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+</style>
+</head>
+<body>
+
+<div class="demo-banner">DEMO: 有料版「道の駅マスター」のUIプレビューです</div>
+
+<!-- ===== ナビバー ===== -->
+<nav class="nav-bar">
+  <button id="settings-icon" class="nav-icon-left" title="設定">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+  </button>
+  <span class="nav-title">道の駅スタンプ帳<span class="nav-badge">👑 MASTER</span></span>
+  <button class="nav-icon" title="シェア">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+  </button>
+</nav>
+
+<!-- ===== ホームタブ ===== -->
+<div id="tab-home" class="tab-content active">
+  <div class="home-container" style="padding-top: 36px;">
+
+    <!-- プレミアムバナー -->
+    <div class="premium-banner">
+      <div class="premium-banner-icon">👑</div>
+      <div class="premium-banner-text">
+        <div class="premium-banner-title">道の駅マスター</div>
+        <div class="premium-banner-sub">全機能がアンロックされています</div>
+      </div>
+    </div>
+
+    <!-- 達成率カード -->
+    <div class="hero-card">
+      <div class="hero-label">全国達成率</div>
+      <div class="hero-ring-wrap">
+        <svg class="hero-ring" viewBox="0 0 120 120">
+          <circle cx="60" cy="60" r="52" fill="none" stroke="#e8e8e8" stroke-width="10"/>
+          <circle cx="60" cy="60" r="52" fill="none" stroke="#1B7A4E" stroke-width="10" stroke-linecap="round" stroke-dasharray="326.7" stroke-dashoffset="241.8" transform="rotate(-90 60 60)"/>
+        </svg>
+        <div class="hero-pct">26%</div>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat"><span class="hero-stat-num">312</span><span class="hero-stat-label">訪問済み</span></div>
+        <div class="hero-stat-divider"></div>
+        <div class="hero-stat"><span class="hero-stat-num">888</span><span class="hero-stat-label">残り</span></div>
+        <div class="hero-stat-divider"></div>
+        <div class="hero-stat"><span class="hero-stat-num">8</span><span class="hero-stat-label">制覇県</span></div>
+      </div>
+    </div>
+
+    <!-- レベル -->
+    <div class="level-card">
+      <div class="level-current">🔥 ベテラン旅人</div>
+      <div class="level-next">次のレベル「道の駅の達人」まで あと188駅</div>
+      <div class="level-bar"><div class="level-bar-fill" style="width:37%"></div></div>
+    </div>
+
+    <!-- クラウド同期ステータス（プレミアム機能） -->
+    <div class="sync-status">
+      <div class="sync-icon">☁️</div>
+      <div class="sync-text">
+        <div class="sync-label">クラウド同期</div>
+        <div class="sync-detail">最終同期: 2分前 ・ 2台のデバイスで共有中</div>
+      </div>
+      <div class="sync-dot"></div>
+    </div>
+
+    <!-- 最近の訪問 -->
+    <div class="section-header">最近の訪問</div>
+    <div class="home-recent">
+      <div class="recent-chip">🍎 道の駅なみおか <span class="recent-chip-date">2026-06-18</span></div>
+      <div class="recent-chip">🍒 道の駅天童温泉 <span class="recent-chip-date">2026-06-17</span></div>
+      <div class="recent-chip">🌾 道の駅あきた港 <span class="recent-chip-date">2026-06-16</span></div>
+      <div class="recent-chip">⛩️ 道の駅遠野風の丘 <span class="recent-chip-date">2026-06-15</span></div>
+    </div>
+
+    <!-- もうすぐ制覇 -->
+    <div class="section-header">もうすぐ制覇！</div>
+    <div class="almost-chip">🔥 🍜 香川県 あと1駅</div>
+    <div class="almost-chip">🔥 🌺 沖縄県 あと2駅</div>
+
+    <!-- アクションボタン -->
+    <div class="home-actions">
+      <button class="action-btn primary-btn">📷 スタンプを記録<br><span style="font-size:0.72rem;font-weight:500;opacity:0.8">無制限</span></button>
+      <button class="action-btn secondary-btn">🎤 声でチェック<br><span style="font-size:0.72rem;font-weight:500;opacity:0.8">無制限</span></button>
+    </div>
+
+    <div class="home-actions sub-actions">
+      <button class="text-btn">💾 バックアップ（無制限）</button>
+      <button class="text-btn">📂 読み込み</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 一覧タブ ===== -->
+<div id="tab-list" class="tab-content">
+  <div class="list-container" style="padding-top: 36px;">
+    <div class="search-bar">
+      <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="text" placeholder="道の駅名・地名で検索">
+    </div>
+    <div class="filter-row">
+      <button class="filter-chip active">すべて</button>
+      <button class="filter-chip">訪問済み</button>
+      <button class="filter-chip">未訪問</button>
+    </div>
+    <main id="pref-list">
+      <!-- 香川県（もうすぐ制覇） -->
+      <div class="pref-card open" data-region="shikoku">
+        <div class="pref-header">
+          <div class="pref-name"><span class="pref-emoji">🍜</span>香川県<span class="pref-almost">あと1駅！</span> <span class="pref-progress-text">4/5（80%）</span></div>
+          <span class="chevron">▼</span>
+        </div>
+        <div class="pref-bar"><div class="pref-bar-fill" style="width:80%"></div></div>
+        <div class="station-list open">
+          <div class="station-row visited">
+            <input type="checkbox" checked>
+            <div class="station-info"><div class="station-name">源平の里むれ<span class="stamp-mark">済</span></div><div class="station-meta">高松市（第23回 / 2007登録）</div><div class="visited-date">📅 2026-05-20</div></div>
+          </div>
+          <div class="station-row visited">
+            <input type="checkbox" checked>
+            <div class="station-info"><div class="station-name">滝宮<span class="stamp-mark">済</span></div><div class="station-meta">綾川町（第13回 / 1998登録）</div><div class="visited-date">📅 2026-05-20</div></div>
+          </div>
+          <div class="station-row visited">
+            <input type="checkbox" checked>
+            <div class="station-info"><div class="station-name">ことなみ<span class="stamp-mark">済</span></div><div class="station-meta">まんのう町（第11回 / 1996登録）</div><div class="visited-date">📅 2026-05-21</div></div>
+          </div>
+          <div class="station-row visited">
+            <input type="checkbox" checked>
+            <div class="station-info"><div class="station-name">とよはま<span class="stamp-mark">済</span></div><div class="station-meta">観音寺市（第20回 / 2004登録）</div><div class="visited-date">📅 2026-05-21</div></div>
+          </div>
+          <div class="station-row">
+            <input type="checkbox">
+            <div class="station-info"><div class="station-name">小豆島オリーブ公園</div><div class="station-meta">小豆島町（第16回 / 2000登録）</div></div>
+          </div>
+        </div>
+      </div>
+      <!-- 徳島県（制覇済み） -->
+      <div class="pref-card pref-complete" data-region="shikoku">
+        <div class="pref-header">
+          <div class="pref-name"><span class="pref-emoji">🌀</span>徳島県<span class="pref-complete-badge">制覇！</span> <span class="pref-progress-text">13/13（100%）</span></div>
+          <span class="chevron">▶</span>
+        </div>
+        <div class="pref-bar"><div class="pref-bar-fill" style="width:100%"></div></div>
+        <div class="station-list"></div>
+      </div>
+      <!-- 北海道 -->
+      <div class="pref-card" data-region="hokkaido">
+        <div class="pref-header">
+          <div class="pref-name"><span class="pref-emoji">🦌</span>北海道 <span class="pref-progress-text">45/130（35%）</span></div>
+          <span class="chevron">▶</span>
+        </div>
+        <div class="pref-bar"><div class="pref-bar-fill" style="width:35%"></div></div>
+        <div class="station-list"></div>
+      </div>
+      <!-- 青森県 -->
+      <div class="pref-card" data-region="tohoku">
+        <div class="pref-header">
+          <div class="pref-name"><span class="pref-emoji">🍎</span>青森県 <span class="pref-progress-text">22/28（79%）</span></div>
+          <span class="chevron">▶</span>
+        </div>
+        <div class="pref-bar"><div class="pref-bar-fill" style="width:79%"></div></div>
+        <div class="station-list"></div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<!-- ===== 統計タブ（プレミアム版拡張） ===== -->
+<div id="tab-stats" class="tab-content">
+  <div class="stats-container" style="padding-top: 36px;">
+
+    <!-- サマリーカード -->
+    <div class="section-header">統計サマリー <span class="premium-tag">👑 MASTER</span></div>
+    <div class="stats-summary">
+      <div class="stats-summary-card">
+        <div class="stats-summary-num">312</div>
+        <div class="stats-summary-label">訪問済み駅</div>
+      </div>
+      <div class="stats-summary-card gold">
+        <div class="stats-summary-num">8</div>
+        <div class="stats-summary-label">制覇都道府県</div>
+      </div>
+      <div class="stats-summary-card sky">
+        <div class="stats-summary-num">47</div>
+        <div class="stats-summary-label">スタンプ写真</div>
+      </div>
+      <div class="stats-summary-card sunset">
+        <div class="stats-summary-num">156</div>
+        <div class="stats-summary-label">連続訪問日数</div>
+      </div>
+    </div>
+
+    <!-- 月別チャート -->
+    <div class="chart-card">
+      <div class="chart-title">📊 月別訪問数 <span class="premium-tag">👑 MASTER</span></div>
+      <div class="bar-chart">
+        <div class="bar-col"><div class="bar-value">12</div><div class="bar" style="height:24%"></div><div class="bar-label">1月</div></div>
+        <div class="bar-col"><div class="bar-value">8</div><div class="bar" style="height:16%"></div><div class="bar-label">2月</div></div>
+        <div class="bar-col"><div class="bar-value">22</div><div class="bar" style="height:44%"></div><div class="bar-label">3月</div></div>
+        <div class="bar-col"><div class="bar-value">35</div><div class="bar" style="height:70%"></div><div class="bar-label">4月</div></div>
+        <div class="bar-col"><div class="bar-value">50</div><div class="bar" style="height:100%"></div><div class="bar-label">5月</div></div>
+        <div class="bar-col"><div class="bar-value">28</div><div class="bar" style="height:56%"></div><div class="bar-label">6月</div></div>
+      </div>
+    </div>
+
+    <!-- 曜日別ヒートマップ -->
+    <div class="heatmap-card">
+      <div class="chart-title">🗓️ 曜日別訪問傾向 <span class="premium-tag">👑 MASTER</span></div>
+      <div class="heatmap-grid">
+        <div class="heatmap-label">月</div>
+        <div class="heatmap-label">火</div>
+        <div class="heatmap-label">水</div>
+        <div class="heatmap-label">木</div>
+        <div class="heatmap-label">金</div>
+        <div class="heatmap-label">土</div>
+        <div class="heatmap-label">日</div>
+        <div class="heatmap-cell" style="background: rgba(27,122,78,0.1);">3</div>
+        <div class="heatmap-cell" style="background: rgba(27,122,78,0.1);">2</div>
+        <div class="heatmap-cell" style="background: rgba(27,122,78,0.15);">5</div>
+        <div class="heatmap-cell" style="background: rgba(27,122,78,0.2);">8</div>
+        <div class="heatmap-cell" style="background: rgba(27,122,78,0.3);">12</div>
+        <div class="heatmap-cell" style="background: rgba(27,122,78,0.7); color: #fff;">28</div>
+        <div class="heatmap-cell" style="background: rgba(27,122,78,0.9); color: #fff;">35</div>
+      </div>
+    </div>
+
+    <!-- 地方別 -->
+    <div class="section-header">地方別の進捗</div>
+    <div class="region-stats">
+      <div class="region-row" data-region="hokkaido">
+        <div class="region-name">北海道</div>
+        <div class="region-bar-wrap"><div class="region-bar-fill" style="width:35%"></div></div>
+        <div class="region-pct">35%</div>
+        <div class="region-count">45/130</div>
+      </div>
+      <div class="region-row" data-region="tohoku">
+        <div class="region-name">東北</div>
+        <div class="region-bar-wrap"><div class="region-bar-fill" style="width:62%"></div></div>
+        <div class="region-pct">62%</div>
+        <div class="region-count">108/175</div>
+      </div>
+      <div class="region-row" data-region="kanto">
+        <div class="region-name">関東</div>
+        <div class="region-bar-wrap"><div class="region-bar-fill" style="width:45%"></div></div>
+        <div class="region-pct">45%</div>
+        <div class="region-count">40/89</div>
+      </div>
+      <div class="region-row" data-region="chubu">
+        <div class="region-name">中部</div>
+        <div class="region-bar-wrap"><div class="region-bar-fill" style="width:28%"></div></div>
+        <div class="region-pct">28%</div>
+        <div class="region-count">50/178</div>
+      </div>
+      <div class="region-row" data-region="kinki">
+        <div class="region-name">近畿</div>
+        <div class="region-bar-wrap"><div class="region-bar-fill" style="width:15%"></div></div>
+        <div class="region-pct">15%</div>
+        <div class="region-count">18/118</div>
+      </div>
+      <div class="region-row" data-region="chugoku">
+        <div class="region-name">中国</div>
+        <div class="region-bar-wrap"><div class="region-bar-fill" style="width:20%"></div></div>
+        <div class="region-pct">20%</div>
+        <div class="region-count">17/85</div>
+      </div>
+      <div class="region-row" data-region="shikoku">
+        <div class="region-name">四国</div>
+        <div class="region-bar-wrap"><div class="region-bar-fill" style="width:78%"></div></div>
+        <div class="region-pct">78%</div>
+        <div class="region-count">28/36</div>
+      </div>
+      <div class="region-row" data-region="kyushu">
+        <div class="region-name">九州沖縄</div>
+        <div class="region-bar-wrap"><div class="region-bar-fill" style="width:5%"></div></div>
+        <div class="region-pct">5%</div>
+        <div class="region-count">6/135</div>
+      </div>
+    </div>
+
+    <!-- エクスポート機能（プレミアム） -->
+    <div class="section-header">データエクスポート <span class="premium-tag">👑 MASTER</span></div>
+    <div class="export-actions">
+      <button class="export-btn" onclick="alert('CSV形式で312駅の訪問データをダウンロードします')">
+        <span class="export-icon">📄</span>CSV
+      </button>
+      <button class="export-btn" onclick="alert('PDF形式の旅の記録レポートを生成します')">
+        <span class="export-icon">📑</span>PDF
+      </button>
+      <button class="export-btn" onclick="alert('JSON形式でフルバックアップをダウンロードします')">
+        <span class="export-icon">💾</span>JSON
+      </button>
+    </div>
+
+    <!-- 最近の訪問 -->
+    <div class="section-header" style="margin-top:28px">最近の訪問</div>
+    <div class="recent-visits">
+      <div class="recent-item"><div class="recent-icon">🍎</div><div class="recent-info"><div class="recent-name">道の駅なみおか</div><div class="recent-detail">青森県</div></div><div class="recent-date">2026-06-18</div></div>
+      <div class="recent-item"><div class="recent-icon">🍒</div><div class="recent-info"><div class="recent-name">道の駅天童温泉</div><div class="recent-detail">山形県</div></div><div class="recent-date">2026-06-17</div></div>
+      <div class="recent-item"><div class="recent-icon">🌾</div><div class="recent-info"><div class="recent-name">道の駅あきた港</div><div class="recent-detail">秋田県</div></div><div class="recent-date">2026-06-16</div></div>
+      <div class="recent-item"><div class="recent-icon">⛩️</div><div class="recent-info"><div class="recent-name">道の駅遠野風の丘</div><div class="recent-detail">岩手県</div></div><div class="recent-date">2026-06-15</div></div>
+      <div class="recent-item"><div class="recent-icon">🐄</div><div class="recent-info"><div class="recent-name">道の駅上品の郷</div><div class="recent-detail">宮城県</div></div><div class="recent-date">2026-06-14</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 実績タブ ===== -->
+<div id="tab-badges" class="tab-content">
+  <div class="badges-container" style="padding-top: 36px;">
+    <div class="section-header">実績バッジ</div>
+    <div class="badge-list">
+      <div class="badge-card earned"><div class="badge-emoji">🎯</div><div class="badge-title">はじめの一歩</div><div class="badge-desc">最初の道の駅を訪問</div><div class="badge-progress"><div class="badge-progress-fill" style="width:100%"></div></div><div class="badge-progress-text">1 / 1</div></div>
+      <div class="badge-card earned"><div class="badge-emoji">⭐</div><div class="badge-title">10駅達成</div><div class="badge-desc">10駅を訪問</div><div class="badge-progress"><div class="badge-progress-fill" style="width:100%"></div></div><div class="badge-progress-text">10 / 10</div></div>
+      <div class="badge-card earned"><div class="badge-emoji">🌟</div><div class="badge-title">50駅達成</div><div class="badge-desc">50駅を訪問</div><div class="badge-progress"><div class="badge-progress-fill" style="width:100%"></div></div><div class="badge-progress-text">50 / 50</div></div>
+      <div class="badge-card earned"><div class="badge-emoji">💫</div><div class="badge-title">100駅マスター</div><div class="badge-desc">100駅を訪問</div><div class="badge-progress"><div class="badge-progress-fill" style="width:100%"></div></div><div class="badge-progress-text">100 / 100</div></div>
+      <div class="badge-card earned"><div class="badge-emoji">🔥</div><div class="badge-title">200駅制覇</div><div class="badge-desc">200駅を訪問</div><div class="badge-progress"><div class="badge-progress-fill" style="width:100%"></div></div><div class="badge-progress-text">200 / 200</div></div>
+      <div class="badge-card"><div class="badge-emoji">👑</div><div class="badge-title">500駅の達人</div><div class="badge-desc">500駅を訪問</div><div class="badge-progress"><div class="badge-progress-fill" style="width:62%"></div></div><div class="badge-progress-text">312 / 500</div></div>
+      <div class="badge-card locked"><div class="badge-emoji">🏆</div><div class="badge-title">1000駅レジェンド</div><div class="badge-desc">1000駅を訪問</div><div class="badge-progress"><div class="badge-progress-fill" style="width:31%"></div></div><div class="badge-progress-text">312 / 1000</div></div>
+      <div class="badge-card locked"><div class="badge-emoji">🎊</div><div class="badge-title">全駅制覇</div><div class="badge-desc">全ての道の駅を訪問</div><div class="badge-progress"><div class="badge-progress-fill" style="width:26%"></div></div><div class="badge-progress-text">312 / 1200</div></div>
+      <div class="badge-card earned"><div class="badge-emoji">🗾</div><div class="badge-title">県制覇デビュー</div><div class="badge-desc">1つの都道府県を全駅訪問</div><div class="badge-progress"><div class="badge-progress-fill" style="width:100%"></div></div><div class="badge-progress-text">1 / 1</div></div>
+      <div class="badge-card earned"><div class="badge-emoji">🏅</div><div class="badge-title">5県制覇</div><div class="badge-desc">5つの都道府県を全駅訪問</div><div class="badge-progress"><div class="badge-progress-fill" style="width:100%"></div></div><div class="badge-progress-text">5 / 5</div></div>
+      <div class="badge-card earned"><div class="badge-emoji">🎖️</div><div class="badge-title">10県マスター</div><div class="badge-desc">10都道府県を全駅訪問</div><div class="badge-progress"><div class="badge-progress-fill" style="width:80%"></div></div><div class="badge-progress-text">8 / 10</div></div>
+      <div class="badge-card earned"><div class="badge-emoji">📸</div><div class="badge-title">カメラマン</div><div class="badge-desc">スタンプ写真を5枚記録</div><div class="badge-progress"><div class="badge-progress-fill" style="width:100%"></div></div><div class="badge-progress-text">47 / 5</div></div>
+      <!-- プレミアム限定バッジ -->
+      <div class="badge-card earned" style="border-color: var(--sky);">
+        <div class="badge-emoji">🌙</div><div class="badge-title">ナイトライダー<br><span class="premium-tag" style="margin-top:4px">MASTER限定</span></div><div class="badge-desc">22時以降に3駅訪問</div><div class="badge-progress"><div class="badge-progress-fill" style="width:100%; background: linear-gradient(90deg,var(--sky),#6db8ef);"></div></div><div class="badge-progress-text">3 / 3</div>
+      </div>
+      <div class="badge-card" style="border: 1.5px dashed var(--gold);">
+        <div class="badge-emoji">🏔️</div><div class="badge-title">全地方制覇<br><span class="premium-tag" style="margin-top:4px">MASTER限定</span></div><div class="badge-desc">7地方すべてで10駅以上訪問</div><div class="badge-progress"><div class="badge-progress-fill" style="width:71%; background: linear-gradient(90deg,var(--gold),#ffb300);"></div></div><div class="badge-progress-text">5 / 7</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 設定タブ（プレミアム） ===== -->
+<div id="tab-settings" class="tab-content">
+  <div class="settings-container" style="padding-top: 36px;">
+    <div class="section-header">プラン</div>
+    <div class="plan-card">
+      <div class="plan-card-title">👑 道の駅マスター — 年額プラン</div>
+      <div class="plan-card-price">¥2,980/年（月額249円相当・34%OFF）</div>
+      <div class="plan-card-next">次回更新日: 2027年6月20日</div>
+    </div>
+
+    <div class="section-header">テーマカラー <span class="premium-tag">👑 MASTER</span></div>
+    <div class="settings-group">
+      <div style="padding: 16px;">
+        <div class="theme-picker">
+          <div class="theme-color active" style="background: #1B7A4E;" title="フォレスト" onclick="setTheme(this,'#1B7A4E')"></div>
+          <div class="theme-color" style="background: #4A90B8;" title="オーシャン" onclick="setTheme(this,'#4A90B8')"></div>
+          <div class="theme-color" style="background: #9B7CB8;" title="ラベンダー" onclick="setTheme(this,'#9B7CB8')"></div>
+          <div class="theme-color" style="background: #D4734A;" title="サンセット" onclick="setTheme(this,'#D4734A')"></div>
+          <div class="theme-color" style="background: #CC4433;" title="サクラ" onclick="setTheme(this,'#CC4433')"></div>
+          <div class="theme-color" style="background: #2C2C2E;" title="ダーク" onclick="setTheme(this,'#2C2C2E')"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header">アカウント</div>
+    <div class="settings-group">
+      <div class="settings-item">
+        <div class="settings-icon">👤</div>
+        <div class="settings-label">プロフィール</div>
+        <div class="settings-value">川村さん</div>
+        <div class="settings-chevron">›</div>
+      </div>
+      <div class="settings-item">
+        <div class="settings-icon">📧</div>
+        <div class="settings-label">メールアドレス</div>
+        <div class="settings-value">ana06***@icloud.com</div>
+        <div class="settings-chevron">›</div>
+      </div>
+      <div class="settings-item">
+        <div class="settings-icon">☁️</div>
+        <div class="settings-label">クラウド同期</div>
+        <div class="settings-value" style="color: #34C759;">有効</div>
+        <div class="settings-chevron">›</div>
+      </div>
+    </div>
+
+    <div class="section-header">データ管理</div>
+    <div class="settings-group">
+      <div class="settings-item">
+        <div class="settings-icon">💾</div>
+        <div class="settings-label">バックアップ（無制限）</div>
+        <div class="settings-chevron">›</div>
+      </div>
+      <div class="settings-item">
+        <div class="settings-icon">📄</div>
+        <div class="settings-label">CSVエクスポート</div>
+        <div class="settings-value"><span class="premium-tag">👑</span></div>
+        <div class="settings-chevron">›</div>
+      </div>
+      <div class="settings-item">
+        <div class="settings-icon">📑</div>
+        <div class="settings-label">PDFレポート生成</div>
+        <div class="settings-value"><span class="premium-tag">👑</span></div>
+        <div class="settings-chevron">›</div>
+      </div>
+    </div>
+
+    <div class="section-header">情報</div>
+    <div class="settings-group">
+      <div class="settings-item">
+        <div class="settings-icon">📜</div>
+        <div class="settings-label">利用規約</div>
+        <div class="settings-chevron">›</div>
+      </div>
+      <div class="settings-item">
+        <div class="settings-icon">🔒</div>
+        <div class="settings-label">プライバシーポリシー</div>
+        <div class="settings-chevron">›</div>
+      </div>
+      <div class="settings-item">
+        <div class="settings-icon">📋</div>
+        <div class="settings-label">特定商取引法に基づく表記</div>
+        <div class="settings-chevron">›</div>
+      </div>
+      <div class="settings-item">
+        <div class="settings-icon">ℹ️</div>
+        <div class="settings-label">バージョン</div>
+        <div class="settings-value">v2.0.0 Premium</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== タブバー ===== -->
+<div class="bottom-tab-bar">
+  <button class="btab active" data-tab="home">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+    <span>ホーム</span>
+  </button>
+  <button class="btab" data-tab="list">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+    <span>一覧</span>
+  </button>
+  <button class="btab" data-tab="stats">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+    <span>統計</span>
+  </button>
+  <button class="btab" data-tab="badges">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+    <span>実績</span>
+  </button>
+  <button class="btab" data-tab="settings" style="position: relative;">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+    <span>設定</span>
+  </button>
+</div>
+
+<!-- ===== ペイウォールモーダル（デモ用） ===== -->
+<div id="paywall-modal" class="paywall-overlay" hidden>
+  <div class="paywall">
+    <div class="paywall-hero">
+      <span class="paywall-crown">👑</span>
+      <div class="paywall-title">道の駅マスター</div>
+      <div class="paywall-sub">もっと便利に、もっと楽しく</div>
+    </div>
+    <div class="paywall-features">
+      <div class="paywall-feature"><div class="paywall-feature-icon">🚫</div><div class="paywall-feature-text">広告なしの快適体験</div></div>
+      <div class="paywall-feature"><div class="paywall-feature-icon">📷</div><div class="paywall-feature-text">スタンプ写真 無制限</div></div>
+      <div class="paywall-feature"><div class="paywall-feature-icon">🎤</div><div class="paywall-feature-text">音声チェック 無制限</div></div>
+      <div class="paywall-feature"><div class="paywall-feature-icon">📊</div><div class="paywall-feature-text">詳細統計ダッシュボード</div></div>
+      <div class="paywall-feature"><div class="paywall-feature-icon">☁️</div><div class="paywall-feature-text">クラウド同期（端末間）</div></div>
+      <div class="paywall-feature"><div class="paywall-feature-icon">🎨</div><div class="paywall-feature-text">テーマカラー変更</div></div>
+      <div class="paywall-feature"><div class="paywall-feature-icon">📄</div><div class="paywall-feature-text">CSV / PDF エクスポート</div></div>
+      <div class="paywall-feature"><div class="paywall-feature-icon">🏅</div><div class="paywall-feature-text">限定バッジ</div></div>
+    </div>
+    <div class="paywall-pricing">
+      <div class="price-option">
+        <div class="price-amount">¥380</div>
+        <div class="price-period">/月</div>
+      </div>
+      <div class="price-option recommended">
+        <div class="price-amount">¥2,980</div>
+        <div class="price-period">/年</div>
+        <div class="price-discount">34% OFF（月249円）</div>
+      </div>
+    </div>
+    <button class="paywall-cta" onclick="document.getElementById('paywall-modal').hidden=true;">道の駅マスターになる</button>
+    <button class="paywall-skip" onclick="document.getElementById('paywall-modal').hidden=true;">あとで</button>
+  </div>
+</div>
+
+<!-- ===== 無料版との比較モーダル ===== -->
+<div id="compare-modal" class="modal-overlay" hidden>
+  <div class="modal" style="border-radius: 20px; max-height: 90vh;">
+    <h2>無料 vs 道の駅マスター</h2>
+    <table class="compare-table">
+      <tr><th>機能</th><th>無料</th><th class="premium-col">👑 マスター</th></tr>
+      <tr><td>チェックリスト</td><td class="check">✓</td><td class="premium-col check">✓</td></tr>
+      <tr><td>検索・フィルタ</td><td class="check">✓</td><td class="premium-col check">✓</td></tr>
+      <tr><td>新規道の駅通知</td><td class="check">✓</td><td class="premium-col check">✓</td></tr>
+      <tr><td>広告</td><td class="limit">あり</td><td class="premium-col check">なし</td></tr>
+      <tr><td>スタンプ写真</td><td class="limit">月3枚</td><td class="premium-col check">無制限</td></tr>
+      <tr><td>音声チェック</td><td class="limit">1日3回</td><td class="premium-col check">無制限</td></tr>
+      <tr><td>バックアップ</td><td class="limit">月1回</td><td class="premium-col check">無制限</td></tr>
+      <tr><td>詳細統計</td><td class="limit">—</td><td class="premium-col check">✓</td></tr>
+      <tr><td>実績バッジ</td><td class="limit">—</td><td class="premium-col check">✓</td></tr>
+      <tr><td>クラウド同期</td><td class="limit">—</td><td class="premium-col check">✓</td></tr>
+      <tr><td>テーマカラー</td><td class="limit">—</td><td class="premium-col check">✓</td></tr>
+      <tr><td>CSV/PDF出力</td><td class="limit">—</td><td class="premium-col check">✓</td></tr>
+    </table>
+    <div class="modal-actions">
+      <button class="modal-cancel" onclick="document.getElementById('compare-modal').hidden=true;">閉じる</button>
+      <button class="modal-confirm" onclick="document.getElementById('compare-modal').hidden=true;document.getElementById('paywall-modal').hidden=false;">アップグレード</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// タブ切り替え
+document.querySelectorAll('.btab').forEach(t => {
+  t.addEventListener('click', () => {
+    document.querySelectorAll('.btab').forEach(x => x.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(x => x.classList.remove('active'));
+    t.classList.add('active');
+    document.getElementById('tab-' + t.dataset.tab).classList.add('active');
+  });
+});
+
+// 設定アイコン
+document.getElementById('settings-icon').addEventListener('click', () => {
+  document.querySelectorAll('.btab').forEach(x => x.classList.remove('active'));
+  document.querySelectorAll('.tab-content').forEach(x => x.classList.remove('active'));
+  document.querySelector('[data-tab="settings"]').classList.add('active');
+  document.getElementById('tab-settings').classList.add('active');
+});
+
+// テーマカラー変更
+function setTheme(el, color) {
+  document.querySelectorAll('.theme-color').forEach(c => c.classList.remove('active'));
+  el.classList.add('active');
+  document.documentElement.style.setProperty('--primary', color);
+  document.documentElement.style.setProperty('--primary-light', color);
+  document.querySelector('meta[name="theme-color"]').content = color;
+}
+
+// フィルターチップ
+document.querySelectorAll('.filter-chip').forEach(chip => {
+  chip.addEventListener('click', () => {
+    document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+    chip.classList.add('active');
+  });
+});
+
+// ペイウォール表示ボタン（デモ用）
+const demoBanner = document.querySelector('.demo-banner');
+demoBanner.style.cursor = 'pointer';
+demoBanner.addEventListener('click', () => {
+  document.getElementById('paywall-modal').hidden = false;
+});
+demoBanner.title = 'クリックでペイウォール画面を表示';
+</script>
+
+</body>
+</html>
