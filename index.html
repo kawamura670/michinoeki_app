@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>道の駅スタンプ帳</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h1>道の駅スタンプ帳</h1>
+  <div id="overall-summary" class="summary"></div>
+</header>
+
+<div id="new-banner" class="new-banner" hidden></div>
+
+<div class="controls">
+  <input type="text" id="search" placeholder="道の駅名・地名で検索">
+  <select id="filter">
+    <option value="all">すべて表示</option>
+    <option value="visited">訪問済みのみ</option>
+    <option value="unvisited">未訪問のみ</option>
+    <option value="new">新着のみ</option>
+  </select>
+</div>
+
+<div class="fab-row">
+  <button id="open-stamp-btn" class="stamp-fab">📷 スタンプを記録</button>
+  <button id="voice-btn" class="stamp-fab voice-fab">🎤 声でチェック</button>
+</div>
+
+<div id="voice-modal" class="modal-overlay" hidden>
+  <div class="modal voice-modal">
+    <h2>🎤 音声でチェック</h2>
+    <div id="voice-status" class="voice-status">マイクボタンを押して道の駅名を読み上げてください</div>
+    <div id="voice-recognized" class="voice-recognized"></div>
+    <div id="voice-matches" class="voice-matches"></div>
+    <div id="voice-done-msg" class="voice-done-msg" hidden></div>
+    <div class="modal-buttons">
+      <button id="voice-mic" class="voice-mic-btn">🎤 聴き取り開始</button>
+      <button id="voice-close">閉じる</button>
+    </div>
+  </div>
+</div>
+
+<div class="backup-bar">
+  <button id="export-btn">進捗をバックアップ(保存)</button>
+  <button id="import-btn">バックアップを読み込む</button>
+  <input type="file" id="import-file" accept="application/json" hidden>
+</div>
+
+<div id="stamp-modal" class="modal-overlay" hidden>
+  <div class="modal">
+    <h2>スタンプを記録</h2>
+    <input type="file" id="stamp-photo" accept="image/*" capture="environment">
+    <img id="stamp-preview" hidden>
+    <input type="text" id="stamp-search" placeholder="道の駅名で検索して選択">
+    <div id="stamp-results" class="stamp-results"></div>
+    <div id="stamp-selected" class="stamp-selected"></div>
+    <div class="modal-buttons">
+      <button id="stamp-confirm" disabled>この道の駅で記録する</button>
+      <button id="stamp-cancel">閉じる</button>
+    </div>
+  </div>
+</div>
+
+<main id="pref-list"></main>
+
+<script src="data.js"></script>
+<script src="progress.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
