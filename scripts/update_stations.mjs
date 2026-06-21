@@ -66,10 +66,11 @@ async function fetchFromWikipedia() {
     const stations = [];
     // Wikipediaのテーブルから駅名を抽出
     const linkRe = /title="道の駅([^"]+)"/g;
+    const skipRe = /一覧|道の駅$|^の|カテゴリ|テンプレート|地方$/;
     let m;
     while ((m = linkRe.exec(html)) !== null) {
-      const name = m[1].replace(/\s/g, '');
-      if (name && !stations.some(s => s.name === name)) {
+      const name = m[1].replace(/\s/g, '').replace(/^_/, '');
+      if (name && name.length >= 2 && !skipRe.test(name) && !stations.some(s => s.name === name)) {
         stations.push({ name });
       }
     }
