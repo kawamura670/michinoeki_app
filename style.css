@@ -950,8 +950,15 @@ body {
   letter-spacing: 3px; padding: 5px 16px; border-radius: 20px;
   margin-bottom: 16px;
 }
+.stamp-reveal-cancel {
+  display: block; margin: 8px auto 0; padding: 8px 20px;
+  background: none; border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 20px; color: rgba(255,255,255,0.4);
+  font-size: 0.75rem; cursor: pointer;
+}
+.stamp-reveal-cancel:active { background: rgba(255,0,0,0.2); border-color: rgba(255,100,100,0.4); color: #faa; }
 .stamp-reveal-tap {
-  color: rgba(255,255,255,0.35); font-size: 0.75rem; font-weight: 500;
+  color: rgba(255,255,255,0.35); font-size: 0.75rem; font-weight: 500; margin-top: 12px;
 }
 
 /* ===== スタンプストリーク ===== */

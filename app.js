@@ -292,87 +292,154 @@ const RARITY_STYLE = {
 };
 
 function buildStampSVG(station, stampData) {
-  const art = stampData ? stampData.stamp_art : getStampArt(station);
   const rarity = stampData ? stampData.rarity : "common";
   const rs = RARITY_STYLE[rarity];
-  const theme = stampData ? stampData.art_theme : "";
-  const mainSym = stampData ? stampData.main_symbol : "";
   const emoji = PREF_EMOJI[station.pref] || "📍";
+  const mainSym = stampData ? stampData.main_symbol : station.pref + "の風景";
+  const secondSym = stampData ? stampData.secondary_symbol : "";
+  const series = stampData ? stampData.series : "";
+  const pid = `s${station.id}`;
 
-  const patternId = `p${station.id}`;
-  const hashVal = station.id * 2654435761;
-  const hue1 = hashVal % 360;
-  const hue2 = (hashVal * 7) % 360;
-  const decoCount = 8 + (station.id % 8);
+  const h = (station.id * 2654435761 >>> 0) % 360;
+  const bgCol1 = `hsl(${h},25%,96%)`;
+  const bgCol2 = `hsl(${(h+40)%360},20%,92%)`;
 
-  let decoLines = "";
-  for (let i = 0; i < decoCount; i++) {
-    const angle = (360 / decoCount) * i;
-    const r1 = 115 + (station.id * (i+1) * 3) % 10;
-    const r2 = 125 + (station.id * (i+1) * 7) % 8;
-    const x1 = 150 + r1 * Math.cos(angle * Math.PI / 180);
-    const y1 = 150 + r1 * Math.sin(angle * Math.PI / 180);
-    const x2 = 150 + r2 * Math.cos(angle * Math.PI / 180);
-    const y2 = 150 + r2 * Math.sin(angle * Math.PI / 180);
-    decoLines += `<line x1="${x1.toFixed(1)}" y1="${y1.toFixed(1)}" x2="${x2.toFixed(1)}" y2="${y2.toFixed(1)}" stroke="${rs.border}" stroke-width="2" opacity="0.5"/>`;
+  // 風景イラスト用SVGパーツ（手描き風の線画パーツを組み合わせ）
+  const landscapes = [
+    // 山
+    `<path d="M60,190 Q90,130 120,190 Q140,145 170,190 Q185,155 210,190 Q225,140 250,190" fill="none" stroke="${rs.border}" stroke-width="1.8" opacity="0.35" stroke-linecap="round"/>
+     <path d="M80,190 Q105,160 130,190" fill="none" stroke="${rs.border}" stroke-width="1" opacity="0.2" stroke-dasharray="3,2"/>`,
+    // 波
+    `<path d="M55,185 Q75,170 95,185 Q115,170 135,185 Q155,170 175,185 Q195,170 215,185 Q235,170 255,185" fill="none" stroke="${rs.border}" stroke-width="1.8" opacity="0.35" stroke-linecap="round"/>
+     <path d="M65,195 Q85,185 105,195 Q125,185 145,195 Q165,185 185,195 Q205,185 225,195" fill="none" stroke="${rs.border}" stroke-width="1" opacity="0.2"/>`,
+    // 木
+    `<line x1="110" y1="195" x2="110" y2="160" stroke="${rs.border}" stroke-width="2" opacity="0.3" stroke-linecap="round"/>
+     <path d="M95,165 Q110,130 125,165" fill="none" stroke="${rs.border}" stroke-width="1.5" opacity="0.3"/>
+     <path d="M100,175 Q110,145 120,175" fill="none" stroke="${rs.border}" stroke-width="1" opacity="0.2"/>
+     <line x1="200" y1="195" x2="200" y2="170" stroke="${rs.border}" stroke-width="1.5" opacity="0.25"/>
+     <path d="M190,175 Q200,152 210,175" fill="none" stroke="${rs.border}" stroke-width="1.2" opacity="0.25"/>`,
+    // 鳥居
+    `<line x1="130" y1="195" x2="130" y2="155" stroke="${rs.border}" stroke-width="2" opacity="0.3"/>
+     <line x1="180" y1="195" x2="180" y2="155" stroke="${rs.border}" stroke-width="2" opacity="0.3"/>
+     <path d="M120,158 Q155,148 190,158" fill="none" stroke="${rs.border}" stroke-width="2.5" opacity="0.35" stroke-linecap="round"/>
+     <line x1="125" y1="170" x2="185" y2="170" stroke="${rs.border}" stroke-width="1.5" opacity="0.25"/>`,
+    // 灯台
+    `<rect x="147" y="150" width="16" height="40" rx="2" fill="none" stroke="${rs.border}" stroke-width="1.8" opacity="0.3"/>
+     <path d="M140,152 Q155,140 170,152" fill="none" stroke="${rs.border}" stroke-width="1.5" opacity="0.3"/>
+     <circle cx="155" cy="148" r="4" fill="none" stroke="${rs.border}" stroke-width="1.2" opacity="0.35"/>
+     <path d="M100,195 Q130,185 155,190 Q180,185 210,195" fill="none" stroke="${rs.border}" stroke-width="1.2" opacity="0.2"/>`,
+    // 田園
+    `<path d="M70,185 L240,185" stroke="${rs.border}" stroke-width="0.8" opacity="0.2"/>
+     <path d="M80,175 L230,175" stroke="${rs.border}" stroke-width="0.8" opacity="0.15"/>
+     <path d="M90,165 L220,165" stroke="${rs.border}" stroke-width="0.8" opacity="0.12"/>
+     <path d="M100,190 Q120,170 140,190 Q160,168 180,190 Q200,172 220,190" fill="none" stroke="${rs.border}" stroke-width="1.5" opacity="0.25"/>`,
+    // 橋
+    `<path d="M80,180 Q120,155 155,180 Q190,155 230,180" fill="none" stroke="${rs.border}" stroke-width="2" opacity="0.35" stroke-linecap="round"/>
+     <line x1="120" y1="180" x2="120" y2="195" stroke="${rs.border}" stroke-width="1.5" opacity="0.2"/>
+     <line x1="190" y1="180" x2="190" y2="195" stroke="${rs.border}" stroke-width="1.5" opacity="0.2"/>`,
+    // 温泉
+    `<ellipse cx="155" cy="190" rx="40" ry="12" fill="none" stroke="${rs.border}" stroke-width="1.5" opacity="0.3"/>
+     <path d="M135,180 Q138,165 135,155" fill="none" stroke="${rs.border}" stroke-width="1.2" opacity="0.2" stroke-linecap="round"/>
+     <path d="M155,178 Q158,160 155,148" fill="none" stroke="${rs.border}" stroke-width="1.5" opacity="0.25" stroke-linecap="round"/>
+     <path d="M175,180 Q178,165 175,155" fill="none" stroke="${rs.border}" stroke-width="1.2" opacity="0.2" stroke-linecap="round"/>`,
+  ];
+
+  // 駅IDで風景パーツを選択（組み合わせで多様性）
+  const sceneIdx = station.id % landscapes.length;
+  const scene = landscapes[sceneIdx];
+
+  // 外周装飾（ドット＆ダッシュのバリエーション）
+  const dotCount = 24 + (station.id % 12);
+  let dots = "";
+  for (let i = 0; i < dotCount; i++) {
+    const a = (360 / dotCount) * i * Math.PI / 180;
+    const r = 138 + ((station.id * i * 3) % 5);
+    const x = 155 + r * Math.cos(a);
+    const y = 155 + r * Math.sin(a);
+    const sz = 1 + (station.id * i) % 3 * 0.5;
+    dots += `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${sz.toFixed(1)}" fill="${rs.border}" opacity="0.2"/>`;
   }
 
-  const seriesBadge = stampData && stampData.series ?
-    `<rect x="95" y="240" width="110" height="20" rx="10" fill="${rs.bg}" opacity="0.8"/>
-     <text x="150" y="254" text-anchor="middle" fill="#fff" font-size="10" font-weight="700">${
-       {ocean:"🌊 海シリーズ",mountain:"⛰️ 山シリーズ",onsen:"♨️ 温泉シリーズ",castle:"🏯 城シリーズ",sakura:"🌸 花シリーズ",scenic:"🏞️ 絶景シリーズ",dog:"🐕 犬旅シリーズ",rv:"🚐 車中泊シリーズ"}[stampData.series]||""
-     }</text>` : "";
+  const seriesLabel = {ocean:"海",mountain:"山",onsen:"湯",castle:"城",sakura:"花",scenic:"景",dog:"犬",rv:"車"}[series];
+  const seriesBadge = seriesLabel ?
+    `<circle cx="250" cy="60" r="18" fill="${rs.bg}" opacity="0.85"/>
+     <text x="250" y="65" text-anchor="middle" fill="#fff" font-size="14" font-weight="900">${seriesLabel}</text>` : "";
 
-  return `<svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+  return `<svg viewBox="0 0 310 310" xmlns="http://www.w3.org/2000/svg">
     <defs>
-      <radialGradient id="${patternId}g"><stop offset="0%" stop-color="hsl(${hue1},20%,97%)"/><stop offset="100%" stop-color="hsl(${hue2},15%,93%)"/></radialGradient>
-      <filter id="${patternId}f"><feGaussianBlur stdDeviation="1.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+      <radialGradient id="${pid}bg"><stop offset="0%" stop-color="${bgCol1}"/><stop offset="100%" stop-color="${bgCol2}"/></radialGradient>
     </defs>
-    <circle cx="150" cy="150" r="145" fill="url(#${patternId}g)" stroke="${rs.border}" stroke-width="4"/>
-    <circle cx="150" cy="150" r="130" fill="none" stroke="${rs.border}" stroke-width="1.5" stroke-dasharray="4,3" opacity="0.4"/>
-    <circle cx="150" cy="150" r="118" fill="none" stroke="${rs.border}" stroke-width="0.8" opacity="0.25"/>
-    ${decoLines}
-    <text x="150" y="105" text-anchor="middle" font-size="60" filter="url(#${patternId}f)">${art}</text>
-    <text x="150" y="145" text-anchor="middle" font-size="14" fill="${rs.bg}" font-weight="800" opacity="0.5">${emoji} ${station.pref}</text>
-    <text x="150" y="185" text-anchor="middle" font-size="22" fill="${rs.bg}" font-weight="900" font-family="'Yu Mincho','Hiragino Mincho Pro',serif">${station.name}</text>
-    <text x="150" y="210" text-anchor="middle" font-size="9" fill="${rs.bg}" opacity="0.5" font-weight="600">${station.location}</text>
+    <!-- 外円 -->
+    <circle cx="155" cy="155" r="150" fill="url(#${pid}bg)" stroke="${rs.border}" stroke-width="3.5"/>
+    <circle cx="155" cy="155" r="143" fill="none" stroke="${rs.border}" stroke-width="1" opacity="0.15"/>
+    ${dots}
+    <!-- 上部弧: 都道府県名 -->
+    <path id="${pid}arc" d="M65,155 A90,90 0 0,1 245,155" fill="none"/>
+    <text font-size="12" fill="${rs.border}" font-weight="700" opacity="0.5"><textPath href="#${pid}arc" startOffset="50%" text-anchor="middle">${emoji} ${station.pref} ${emoji}</textPath></text>
+    <!-- 風景イラスト -->
+    ${scene}
+    <!-- 駅名（メイン） -->
+    <text x="155" y="230" text-anchor="middle" font-size="${station.name.length>6?18:station.name.length>4?22:26}" fill="${rs.bg}" font-weight="900" font-family="'Yu Mincho','Hiragino Mincho Pro','Yu Gothic',serif">${station.name}</text>
+    <!-- テーマ -->
+    <text x="155" y="252" text-anchor="middle" font-size="8.5" fill="${rs.border}" font-weight="500" opacity="0.5">${mainSym.slice(0,15)}</text>
+    <!-- レアリティ -->
+    <text x="155" y="280" text-anchor="middle" font-size="8" fill="${rs.border}" font-weight="800" letter-spacing="4" opacity="0.4">${rs.label}</text>
+    <!-- シリーズバッジ -->
     ${seriesBadge}
-    <text x="150" y="280" text-anchor="middle" font-size="10" fill="${rs.border}" font-weight="800" letter-spacing="3" opacity="0.6">${rs.label}</text>
   </svg>`;
 }
 
-function showStampReveal(station) {
+function showStampReveal(station, isReview) {
   const sData = getStampData(station.id);
   const rarity = sData ? sData.rarity : "common";
   const rs = RARITY_STYLE[rarity];
 
-  triggerConfetti(rarity==="legendary"?50:rarity==="epic"?35:rarity==="rare"?20:12);
+  if (!isReview) triggerConfetti(rarity==="legendary"?50:rarity==="epic"?35:rarity==="rare"?20:12);
 
   const overlay = document.createElement("div");
   overlay.className = "stamp-reveal-overlay";
+
+  const cancelBtn = isReview ?
+    `<button class="stamp-reveal-cancel" data-id="${station.id}">スタンプを取り消す</button>` : "";
+
   overlay.innerHTML =
     `<div class="stamp-reveal">` +
-      `<div class="stamp-reveal-label" style="color:${rs.border}">${rs.star} GET! ${rs.star}</div>` +
-      `<div class="stamp-reveal-svg" style="filter:drop-shadow(0 0 20px ${rs.glow})">${buildStampSVG(station, sData)}</div>` +
+      `<div class="stamp-reveal-label" style="color:${rs.border}">${isReview?"":rs.star+" "}${isReview?"コレクション":"GET!"}${isReview?"":" "+rs.star}</div>` +
+      `<div class="stamp-reveal-svg" style="filter:drop-shadow(0 8px 30px ${rs.glow})">${buildStampSVG(station, sData)}</div>` +
       `<div class="stamp-reveal-name">${station.pref} ${station.name}</div>` +
       (sData && sData.art_theme ? `<div class="stamp-reveal-theme">${sData.art_theme}</div>` : "") +
       `<div class="stamp-reveal-rarity" style="background:${rs.bg}">${rs.label}</div>` +
+      cancelBtn +
       `<div class="stamp-reveal-tap">タップして閉じる</div>` +
     `</div>`;
   document.body.appendChild(overlay);
   requestAnimationFrame(() => overlay.classList.add("show"));
 
-  overlay.addEventListener("click", () => {
+  const close = () => {
     overlay.classList.remove("show");
     setTimeout(() => { if(overlay.parentNode) overlay.remove(); }, 400);
+  };
+
+  overlay.addEventListener("click", (e) => {
+    if (e.target.closest(".stamp-reveal-cancel")) return;
+    close();
   });
 
-  setTimeout(() => {
-    if(overlay.parentNode) {
-      overlay.classList.remove("show");
-      setTimeout(() => { if(overlay.parentNode) overlay.remove(); }, 400);
-    }
-  }, 8000);
+  const cancelEl = overlay.querySelector(".stamp-reveal-cancel");
+  if (cancelEl) {
+    cancelEl.addEventListener("click", () => {
+      if (confirm(`「${station.name}」のスタンプを取り消しますか？`)) {
+        _completedPrefs.delete(station.pref);
+        setVisited(station.id, false);
+        close();
+        render();
+      }
+    });
+  }
+
+  if (!isReview) {
+    setTimeout(() => { if(overlay.parentNode) close(); }, 8000);
+  }
 }
 
 function triggerConfetti(count) {
@@ -607,7 +674,7 @@ function renderList(s){
 
       stampBtn.addEventListener("click",()=>{
         if(isV){
-          showStampReveal(st);
+          showStampReveal(st, true);
           return;
         }
         const prev=calcStats().visited;
