@@ -101,6 +101,23 @@
   </div>
 </div>
 
+<!-- ===== スタンプ帳タブ ===== -->
+<div id="tab-stamps" class="tab-content">
+  <div class="stampbook">
+    <div class="stampbook-header">
+      <div class="stampbook-title">全国の道の駅</div>
+      <div class="stampbook-count"><span id="stampbook-num">0</span>個 の駅オリジナルスタンプ</div>
+      <div class="stampbook-sub">全国1231駅を巡ってスタンプを集めよう</div>
+    </div>
+    <div class="stampbook-filter">
+      <button class="sb-chip active" data-sbf="all">全て</button>
+      <button class="sb-chip" data-sbf="collected">獲得済み</button>
+      <button class="sb-chip" data-sbf="not">未獲得</button>
+    </div>
+    <div id="stampbook-grid" class="stampbook-grid"></div>
+  </div>
+</div>
+
 <!-- ===== マップタブ ===== -->
 <div id="tab-map" class="tab-content">
   <!-- プレミアムゲート -->
@@ -188,6 +205,10 @@
   <button class="btab active" data-tab="home">
     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
     <span>ホーム</span>
+  </button>
+  <button class="btab" data-tab="stamps">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12l2 2 4-4"/></svg>
+    <span>スタンプ帳</span>
   </button>
   <button class="btab" data-tab="map" style="position:relative">
     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 6v16l7-4 8 4 7-4V2l-7 4-8-4-7 4z"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>

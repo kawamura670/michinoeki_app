@@ -958,6 +958,88 @@ body {
   color: rgba(255,255,255,0.35); font-size: 0.75rem; font-weight: 500; margin-top: 12px;
 }
 
+/* ===== スタンプ帳タブ（全画面） ===== */
+.stampbook {
+  background: linear-gradient(170deg, #F5EDDA, #EDE4D0, #E8DFCC);
+  min-height: calc(100vh - var(--nav-height) - var(--tab-height));
+  padding: 0 0 20px;
+  position: relative;
+}
+.stampbook::before {
+  content: ""; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  background: repeating-linear-gradient(0deg, transparent, transparent 4px, rgba(139,115,85,0.025) 4px, rgba(139,115,85,0.025) 5px);
+  pointer-events: none;
+}
+.stampbook-header {
+  text-align: center; padding: 24px 16px 16px;
+  position: relative; z-index: 1;
+}
+.stampbook-title {
+  font-size: 1.4rem; font-weight: 900; color: #5A4020;
+  font-family: 'Yu Mincho','Hiragino Mincho Pro',serif;
+  letter-spacing: 0.1em;
+}
+.stampbook-count {
+  font-size: 1.1rem; font-weight: 800; color: #8B6914;
+  margin-top: 4px;
+}
+.stampbook-count span { font-size: 1.6rem; color: #C0392B; }
+.stampbook-sub {
+  font-size: 0.78rem; color: #8B7355; margin-top: 6px;
+}
+.stampbook-filter {
+  display: flex; gap: 6px; padding: 0 16px 12px;
+  position: relative; z-index: 1;
+}
+.sb-chip {
+  padding: 6px 14px; border-radius: 20px; border: 1.5px solid #C4B8A0;
+  background: rgba(255,255,255,0.5); color: #8B7355;
+  font-size: 0.78rem; font-weight: 700; cursor: pointer;
+}
+.sb-chip.active { background: #5A4020; color: #F5EDDA; border-color: #5A4020; }
+.stampbook-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 6px; padding: 0 10px;
+  position: relative; z-index: 1;
+}
+.sb-stamp {
+  aspect-ratio: 1; border-radius: 50%;
+  cursor: pointer; transition: transform 0.12s;
+  position: relative;
+}
+.sb-stamp:active { transform: scale(0.9); }
+.sb-stamp svg { width: 100%; height: 100%; display: block; }
+.sb-stamp-empty {
+  aspect-ratio: 1; border-radius: 50%;
+  border: 1.5px dashed #C4B8A0; background: rgba(255,255,255,0.25);
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column; gap: 2px;
+}
+.sb-stamp-empty-name {
+  font-size: 0.45rem; color: #B0A090; font-weight: 600;
+  text-align: center; line-height: 1.2; padding: 0 4px;
+  overflow: hidden; max-height: 2.4em;
+}
+.sb-stamp-label {
+  position: absolute; bottom: -2px; left: 50%; transform: translateX(-50%);
+  font-size: 0.5rem; color: #8B7355; font-weight: 700;
+  white-space: nowrap; max-width: 100%; overflow: hidden;
+  text-overflow: ellipsis; text-align: center;
+  background: rgba(245,237,218,0.8); padding: 0 3px;
+  border-radius: 3px;
+}
+.sb-pref-header {
+  grid-column: 1 / -1; padding: 12px 6px 4px;
+  font-size: 0.85rem; font-weight: 800; color: #5A4020;
+  border-bottom: 1px solid #D4C8B0;
+  display: flex; align-items: center; gap: 6px;
+}
+.sb-pref-progress {
+  font-size: 0.7rem; font-weight: 600; color: #8B7355;
+  margin-left: auto;
+}
+
 /* ===== スタンプコレクション ===== */
 .stamp-collection {
   background: linear-gradient(145deg, #F5EDDA, #EDE4D0, #F0E8D5);

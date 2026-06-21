@@ -569,9 +569,67 @@ let currentFilter="all";
 function render(){
   const s=calcStats();
   renderHero(s); renderLevelCard(s); renderPremiumNudge(s); renderStampCollection(s); renderStampStreak(s); renderHomeRecent(s); renderAlmostComplete(s);
-  renderList(s); renderMap(s); renderStats(s); renderStatsMapTeaser(s); renderBadges(s);
+  renderList(s); renderStampbook(s); renderMap(s); renderStats(s); renderStatsMapTeaser(s); renderBadges(s);
   renderAlmostMapHint();
 }
+
+let _sbFilter = "all";
+function renderStampbook(stats){
+  const grid=document.getElementById("stampbook-grid");
+  const numEl=document.getElementById("stampbook-num");
+  if(!grid) return;
+
+  const visited=stats.visited;
+  if(numEl) numEl.textContent=visited;
+
+  const grouped={};
+  MICHINOEKI_DATA.forEach(st=>{ if(!grouped[st.pref])grouped[st.pref]=[]; grouped[st.pref].push(st); });
+
+  let html="";
+  PREF_ORDER.forEach(pref=>{
+    const stations=grouped[pref];
+    if(!stations) return;
+    const vc=stations.filter(st=>{const i=getVisitInfo(st.id);return i&&i.visited;}).length;
+
+    let stationHtml="";
+    let count=0;
+    stations.forEach(st=>{
+      const info=getVisitInfo(st.id);
+      const isV=!!(info&&info.visited);
+      if(_sbFilter==="collected"&&!isV) return;
+      if(_sbFilter==="not"&&isV) return;
+      count++;
+      if(isV){
+        const sData=getStampData(st.id);
+        stationHtml+=`<div class="sb-stamp" data-id="${st.id}">${buildStampSVG(st,sData)}<div class="sb-stamp-label">${st.name}</div></div>`;
+      } else {
+        stationHtml+=`<div class="sb-stamp-empty"><div class="sb-stamp-empty-name">${st.name}</div></div>`;
+      }
+    });
+    if(count>0){
+      const emoji=PREF_EMOJI[pref]||"";
+      html+=`<div class="sb-pref-header">${emoji} ${pref}<span class="sb-pref-progress">${vc}/${stations.length}</span></div>`;
+      html+=stationHtml;
+    }
+  });
+  grid.innerHTML=html;
+
+  grid.querySelectorAll(".sb-stamp").forEach(el=>{
+    el.addEventListener("click",()=>{
+      const st=MICHINOEKI_DATA.find(s=>s.id===parseInt(el.dataset.id));
+      if(st) showStampReveal(st,true);
+    });
+  });
+}
+
+document.querySelectorAll(".sb-chip").forEach(chip=>{
+  chip.addEventListener("click",()=>{
+    document.querySelectorAll(".sb-chip").forEach(c=>c.classList.remove("active"));
+    chip.classList.add("active");
+    _sbFilter=chip.dataset.sbf;
+    render();
+  });
+});
 
 function renderStampCollection(stats){
   const el=document.getElementById("stamp-collection");
