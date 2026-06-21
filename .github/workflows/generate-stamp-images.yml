@@ -1,14 +1,7 @@
-name: Generate Stamp Images (10x Parallel)
+name: Generate Stamp Images (Local SVG - Fast)
 
 on:
   workflow_dispatch:
-    inputs:
-      batch_size:
-        description: '1ジョブあたりの生成枚数'
-        default: '200'
-      concurrency:
-        description: '1ジョブ内の並列リクエスト数'
-        default: '15'
 
 permissions:
   contents: write
@@ -16,84 +9,24 @@ permissions:
 jobs:
   generate:
     runs-on: ubuntu-latest
-    timeout-minutes: 50
-    strategy:
-      matrix:
-        shard: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-      fail-fast: false
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
 
-      - name: Install dependencies
-        run: |
-          sudo apt-get update -qq
-          sudo apt-get install -y -qq fonts-noto-cjk fonts-noto-cjk-extra
-          fc-cache -fv
-          npm install sharp
+      - name: Install sharp
+        run: npm install sharp
 
-      - name: Generate shard ${{ matrix.shard }}
-        env:
-          BATCH_SIZE: ${{ inputs.batch_size }}
-          CONCURRENCY: ${{ inputs.concurrency }}
-          SHARD: ${{ matrix.shard }}
-          TOTAL_SHARDS: '10'
-        run: node scripts/generate_images_free.mjs
-
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: stamps-shard-${{ matrix.shard }}
-          path: |
-            stamp_images/
-            stamp_gen_progress.json
-          retention-days: 1
-
-  merge:
-    needs: generate
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Download all shards
-        uses: actions/download-artifact@v4
-        with:
-          path: shards/
-
-      - name: Merge results
-        run: |
-          # 画像をマージ
-          mkdir -p stamp_images
-          for dir in shards/stamps-shard-*/stamp_images; do
-            [ -d "$dir" ] && cp -n "$dir"/* stamp_images/ 2>/dev/null || true
-          done
-
-          # 進捗JSONをマージ
-          node -e "
-            const fs = require('fs');
-            const path = require('path');
-            let merged = {};
-            try { merged = JSON.parse(fs.readFileSync('stamp_gen_progress.json','utf-8')); } catch {}
-            for (let i = 0; i < 10; i++) {
-              const f = path.join('shards', 'stamps-shard-' + i, 'stamp_gen_progress.json');
-              try {
-                const d = JSON.parse(fs.readFileSync(f, 'utf-8'));
-                Object.assign(merged, d);
-              } catch {}
-            }
-            fs.writeFileSync('stamp_gen_progress.json', JSON.stringify(merged, null, 2));
-            const done = Object.values(merged).filter(p => p.status === 'done').length;
-            console.log('マージ完了: ' + done + ' 枚');
-          "
+      - name: Generate all stamps (SVG→PNG, no API)
+        run: node scripts/generate_local.mjs
 
       - name: Commit
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add stamp_images/ stamp_gen_progress.json
-          DONE=$(grep -c '"done"' stamp_gen_progress.json 2>/dev/null || echo 0)
-          git commit -m "auto: スタンプ画像生成 (${DONE}/1231枚完了) [10x parallel]" || echo "No changes"
+          COUNT=$(ls stamp_images/stamp_*.png 2>/dev/null | wc -l)
+          git commit -m "auto: 全${COUNT}駅スタンプ画像生成完了 [local SVG]" || echo "No changes"
           git push
