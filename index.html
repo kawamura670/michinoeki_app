@@ -13,9 +13,12 @@
 </head>
 <body>
 
+<!-- ===== 流れる景色背景 ===== -->
+<div class="scenery-bg"></div>
+
 <!-- ===== ナビゲーションバー ===== -->
 <nav class="nav-bar">
-  <span class="nav-title">道の駅スタンプ帳</span>
+  <span class="nav-title">道の駅スタンプ帳<span id="nav-premium-badge" class="nav-premium-badge" hidden>👑 マスター</span></span>
   <button id="share-btn" class="nav-icon" title="シェア">
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
   </button>
@@ -24,6 +27,9 @@
 <!-- ===== ホームタブ ===== -->
 <div id="tab-home" class="tab-content active">
   <div class="home-container">
+
+    <!-- プレミアムバナー -->
+    <div id="premium-status-banner"></div>
 
     <!-- 達成率カード -->
     <div class="hero-card">
@@ -46,6 +52,9 @@
 
     <!-- レベル -->
     <div id="level-card" class="level-card"></div>
+
+    <!-- プレミアム訴求（無料ユーザーのみ） -->
+    <div id="home-premium-nudge"></div>
 
     <!-- 最新訪問 -->
     <div class="section-header">最近の訪問</div>
@@ -84,11 +93,75 @@
   </div>
 </div>
 
+<!-- ===== マップタブ ===== -->
+<div id="tab-map" class="tab-content">
+  <!-- プレミアムゲート -->
+  <div id="map-premium-gate" class="premium-gate">
+    <div class="premium-gate-preview">
+      <div class="map-container">
+        <div class="map-header-card">
+          <div class="map-title">🗾 全国制覇マップ</div>
+          <div class="map-summary"><div class="map-stat-row">
+            <div class="map-stat"><span class="map-stat-num">—</span><span class="map-stat-unit">駅</span></div>
+            <div class="map-stat-divider"></div>
+            <div class="map-stat"><span class="map-stat-num">—</span><span class="map-stat-unit">県制覇</span></div>
+          </div></div>
+        </div>
+        <div class="map-card">
+          <div id="map-preview-container" class="map-svg-container"></div>
+        </div>
+      </div>
+    </div>
+    <div class="premium-gate-overlay">
+      <div class="premium-gate-card">
+        <div class="premium-gate-icon">🔒</div>
+        <div class="premium-gate-title">プレミアム機能</div>
+        <div class="premium-gate-desc">全国制覇マップは<br>有料プランでご利用いただけます</div>
+        <div class="premium-gate-features">
+          <div class="premium-gate-feat">🗾 都道府県別の訪問率を可視化</div>
+          <div class="premium-gate-feat">📊 タップで詳細ステータス表示</div>
+          <div class="premium-gate-feat">🏆 制覇県がゴールドに輝く演出</div>
+        </div>
+        <button id="premium-gate-cta" class="premium-gate-btn">👑 道の駅マスターになる</button>
+        <button id="premium-gate-restore" class="premium-gate-restore">購入済みの方はこちら</button>
+      </div>
+    </div>
+  </div>
+  <!-- マップ本体（プレミアム時表示） -->
+  <div id="map-unlocked" class="map-container" style="display:none">
+    <div class="map-header-card">
+      <div class="map-title">🗾 全国制覇マップ</div>
+      <div id="map-summary" class="map-summary"></div>
+    </div>
+    <div class="map-card">
+      <div id="map-svg-container" class="map-svg-container"></div>
+    </div>
+    <div class="map-legend">
+      <span class="legend-item"><span class="legend-dot" style="background:#E5E7EB"></span>未訪問</span>
+      <span class="legend-item"><span class="legend-dot" style="background:#6CBF8B"></span>訪問中</span>
+      <span class="legend-item"><span class="legend-dot" style="background:#D4A017"></span>制覇</span>
+    </div>
+  </div>
+</div>
+
+<!-- ===== マップ詳細ポップアップ ===== -->
+<div id="map-popup" class="modal-overlay" hidden>
+  <div class="modal">
+    <div id="map-popup-content"></div>
+    <div class="modal-actions">
+      <button id="map-popup-close" class="modal-cancel">閉じる</button>
+    </div>
+  </div>
+</div>
+
 <!-- ===== 統計タブ ===== -->
 <div id="tab-stats" class="tab-content">
   <div class="stats-container">
     <div class="section-header">地方別の進捗</div>
     <div id="region-stats" class="region-stats"></div>
+    <!-- プレミアム訴求（無料ユーザーのみ） -->
+    <div id="stats-premium-nudge"></div>
+
     <div class="section-header" style="margin-top:28px">最近の訪問</div>
     <div id="recent-visits" class="recent-visits"></div>
   </div>
@@ -108,6 +181,11 @@
     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
     <span>ホーム</span>
   </button>
+  <button class="btab" data-tab="map" style="position:relative">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 6v16l7-4 8 4 7-4V2l-7 4-8-4-7 4z"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
+    <span>マップ</span>
+    <span id="map-premium-dot" class="premium-dot"></span>
+  </button>
   <button class="btab" data-tab="list">
     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
     <span>一覧</span>
@@ -121,6 +199,53 @@
     <span>実績</span>
   </button>
 </div>
+
+<!-- ===== ペイウォールモーダル ===== -->
+<div id="paywall-modal" class="paywall-overlay" hidden>
+  <div class="paywall">
+    <div class="paywall-hero">
+      <span class="paywall-crown">👑</span>
+      <div class="paywall-title">道の駅マスター</div>
+      <div class="paywall-sub">もっと便利に、もっと楽しく</div>
+    </div>
+    <div class="paywall-features">
+      <div class="paywall-feature"><div class="paywall-feature-icon">🗾</div><div class="paywall-feature-text">全国制覇マップ</div></div>
+      <div class="paywall-feature"><div class="paywall-feature-icon">🚫</div><div class="paywall-feature-text">広告なしの快適体験</div></div>
+      <div class="paywall-feature"><div class="paywall-feature-icon">📷</div><div class="paywall-feature-text">スタンプ写真 無制限</div></div>
+      <div class="paywall-feature"><div class="paywall-feature-icon">📊</div><div class="paywall-feature-text">詳細統計ダッシュボード</div></div>
+      <div class="paywall-feature"><div class="paywall-feature-icon">☁️</div><div class="paywall-feature-text">クラウド同期（端末間）</div></div>
+      <div class="paywall-feature"><div class="paywall-feature-icon">📝</div><div class="paywall-feature-text">旅の日記 + 複数写真記録</div></div>
+    </div>
+    <div class="paywall-pricing">
+      <div class="price-option" data-plan="monthly">
+        <div class="price-amount">¥380</div>
+        <div class="price-period">/月</div>
+      </div>
+      <div class="price-option selected" data-plan="yearly">
+        <div class="price-amount">¥2,980</div>
+        <div class="price-period">/年</div>
+        <div class="price-discount">34% OFF（月249円）</div>
+      </div>
+    </div>
+    <button id="paywall-cta" class="paywall-cta">道の駅マスターになる</button>
+    <button id="paywall-skip" class="paywall-skip">あとで</button>
+  </div>
+</div>
+
+<!-- ===== 駅詳細モーダル ===== -->
+<div id="station-detail-modal" class="modal-overlay" hidden>
+  <div class="modal station-detail-modal">
+    <div id="station-detail-header" class="station-detail-header"></div>
+    <div id="station-detail-body" class="station-detail-body"></div>
+    <div class="modal-actions">
+      <button id="station-detail-close" class="modal-cancel">閉じる</button>
+      <button id="station-detail-save" class="modal-confirm">保存</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== プレミアムナッジトースト ===== -->
+<div id="premium-toast" class="premium-toast" hidden></div>
 
 <!-- ===== 特産物トースト ===== -->
 
@@ -173,6 +298,7 @@
 
 <script src="data.js"></script>
 <script src="progress.js"></script>
+<script src="map.js"></script>
 <script src="app.js"></script>
 </body>
 </html>

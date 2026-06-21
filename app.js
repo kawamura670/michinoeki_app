@@ -143,6 +143,23 @@ function setVisited(id, visited, photo) {
 
 function getLevel(visited) { let lv=LEVELS[0]; for(const l of LEVELS){ if(visited>=l.min) lv=l; } return lv; }
 
+function compressAndSavePhoto(stationId, file, callback){
+  const reader=new FileReader(), img=new Image();
+  reader.onload=ev=>{
+    img.onload=()=>{
+      const mx=800, sc=Math.min(1, mx/Math.max(img.width,img.height));
+      const cv=document.createElement("canvas");
+      cv.width=img.width*sc; cv.height=img.height*sc;
+      cv.getContext("2d").drawImage(img,0,0,cv.width,cv.height);
+      const dataUrl=cv.toDataURL("image/jpeg",0.75);
+      addPhotoToStation(stationId, dataUrl);
+      if(callback) callback();
+    };
+    img.src=ev.target.result;
+  };
+  reader.readAsDataURL(file);
+}
+
 function calcStats() {
   const total=MICHINOEKI_DATA.length; let visited=0, photoCount=0;
   const prefStats={}; const visitDates=[];
@@ -214,8 +231,10 @@ function triggerSpecialtyPopup(row, stationId, stationName, pref){
   const t=document.createElement('div'); t.className='specialty-toast';
   if(rk)t.setAttribute('data-region',rk);
   t.innerHTML=`<span class="toast-emoji">${sp.emoji}</span>${stationName}の名物: ${sp.name}！`;
+  t.style.cursor="pointer";
+  t.addEventListener("click",()=>{ if(t.parentNode)t.remove(); openStationDetail(stationId); });
   document.body.appendChild(t);
-  setTimeout(()=>{if(t.parentNode)t.remove();},3000);
+  setTimeout(()=>{if(t.parentNode)t.remove();},4000);
 }
 
 let _earnedBadges=new Set(), _badgeQueue=[], _badgeShowing=false;
@@ -250,8 +269,9 @@ let currentFilter="all";
 
 function render(){
   const s=calcStats();
-  renderHero(s); renderLevelCard(s); renderHomeRecent(s); renderAlmostComplete(s);
-  renderList(s); renderStats(s); renderBadges(s);
+  renderHero(s); renderLevelCard(s); renderPremiumNudge(s); renderHomeRecent(s); renderAlmostComplete(s);
+  renderList(s); renderMap(s); renderStats(s); renderStatsMapTeaser(s); renderBadges(s);
+  renderAlmostMapHint();
 }
 
 function renderHero(s){
@@ -356,16 +376,63 @@ function renderList(s){
           if(ns.prefStats[st.pref].visited>=ns.prefStats[st.pref].total&&!_completedPrefs.has(st.pref)){
             _completedPrefs.add(st.pref); triggerConfetti(35);
           }
-          setTimeout(()=>{ render(); checkNewBadges(); },500);
+          setTimeout(()=>{ render(); checkNewBadges(); showPremiumToast(st.name,st.pref); },500);
         } else { _completedPrefs.delete(st.pref); render(); }
       });
 
       const infoDiv=document.createElement("div"); infoDiv.className="station-info";
       const nb=st.isNew?'<span class="badge-new">NEW</span>':"";
       const stamp=isV?'<span class="stamp-mark stamp-shown">済</span>':"";
-      infoDiv.innerHTML=`<div class="station-name">${st.name}${stamp}${nb}</div><div class="station-meta">${st.location}（${st.round} / ${st.date}登録）</div>${isV&&info.date?`<div class="visited-date">📅 ${info.date}${info.note?" - "+info.note:""}</div>`:""}${isV&&info.photo?`<img class="station-photo" src="${info.photo}" alt="スタンプ写真">`:""}`;
+      const photoCount=isV?((info.photo?1:0)+(info.photos?info.photos.length:0)):0;
+      const hasNote=isV&&info.note&&info.note.length>0;
+      const notePreview=hasNote?`<div class="visited-note">📝 ${info.note.slice(0,30)}${info.note.length>30?"…":""}</div>`:"";
+      const photoPreview=isV&&info.photo?`<img class="station-photo" src="${info.photo}" alt="写真">${photoCount>1?`<span class="photo-count">+${photoCount-1}</span>`:""}`:"";
+      infoDiv.innerHTML=`<div class="station-name">${st.name}${stamp}${nb}</div><div class="station-meta">${st.location}（${st.round} / ${st.date}登録）</div>${isV&&info.date?`<div class="visited-date">📅 ${info.date}</div>`:""}${notePreview}${photoPreview}`;
 
-      row.appendChild(cb); row.appendChild(infoDiv); list.appendChild(row);
+      const actionsDiv=document.createElement("div");
+      actionsDiv.className="station-actions";
+      if(isV){
+        actionsDiv.innerHTML=
+          `<label class="sa-btn sa-camera" title="写真を撮る">`+
+            `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg>`+
+            `${photoCount>0?`<span class="sa-badge">${photoCount}</span>`:""}`+
+            `<input type="file" accept="image/*" capture="environment" hidden>`+
+          `</label>`+
+          `<button class="sa-btn sa-diary${hasNote?" has-note":""}" title="日記を書く">`+
+            `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>`+
+          `</button>`;
+
+        const cameraLabel=actionsDiv.querySelector(".sa-camera");
+        const cameraInput=actionsDiv.querySelector('input[type="file"]');
+        cameraLabel.addEventListener("click",ev=>{
+          if(!isPremium()&&photoCount>=1){
+            ev.preventDefault();
+            showPaywall();
+            return;
+          }
+        });
+        cameraInput.addEventListener("change",ev=>{
+          const f=ev.target.files[0]; if(!f) return;
+          compressAndSavePhoto(st.id, f, ()=>{ render(); });
+          cameraInput.value="";
+        });
+
+        const diaryBtn=actionsDiv.querySelector(".sa-diary");
+        diaryBtn.addEventListener("click",()=>{
+          if(!isPremium()){
+            showPaywall();
+            return;
+          }
+          openStationDetail(st.id);
+        });
+
+        infoDiv.addEventListener("click",e=>{
+          if(e.target.closest(".station-actions")) return;
+          openStationDetail(st.id);
+        });
+      }
+
+      row.appendChild(cb); row.appendChild(infoDiv); row.appendChild(actionsDiv); list.appendChild(row);
     });
 
     if(openPrefs.has(pref)){card.classList.add("open");list.classList.add("open");header.querySelector(".chevron").textContent="▼";}
@@ -407,6 +474,200 @@ function renderBadges(s){
   });
 }
 
+// ===== プレミアム =====
+function isPremium(){ return localStorage.getItem("michinoeki_premium")==="true"; }
+function setPremium(v){ localStorage.setItem("michinoeki_premium", v?"true":"false"); }
+
+// --- ホーム画面訴求: ツァイガルニク効果 + 保有効果 ---
+function renderPremiumNudge(stats){
+  const el=document.getElementById("home-premium-nudge");
+  if(!el) return;
+  if(isPremium()){ el.innerHTML=""; return; }
+
+  const pct=stats.total?Math.round((stats.visited/stats.total)*10)/10:0;
+  const filledCount=Object.values(stats.prefStats).filter(d=>d.visited>0).length;
+
+  let personalMsg;
+  if(stats.visited===0) personalMsg="旅の記録を地図に刻もう";
+  else if(filledCount<=5) personalMsg=`${filledCount}県に足跡が。地図に色がつき始めます`;
+  else if(stats.prefComplete>0) personalMsg=`${stats.prefComplete}県制覇！地図がゴールドに輝いています`;
+  else personalMsg=`${filledCount}県を巡った軌跡を、地図で一望`;
+
+  el.innerHTML=
+    `<div class="premium-nudge" id="premium-nudge-card">` +
+      `<div class="premium-nudge-top">` +
+        `<div class="premium-nudge-map">🗾</div>` +
+        `<div class="premium-nudge-text">` +
+          `<div class="premium-nudge-title"><span class="crown">👑</span> 全国制覇マップ</div>` +
+          `<div class="premium-nudge-sub">${personalMsg}</div>` +
+        `</div>` +
+      `</div>` +
+      `<div class="premium-nudge-features">` +
+        `<span class="premium-nudge-feat">🗾 都道府県の塗り分け</span>` +
+        `<span class="premium-nudge-feat">📊 タップで詳細表示</span>` +
+        `<span class="premium-nudge-feat">✨ 制覇県が輝く演出</span>` +
+      `</div>` +
+      `<button class="premium-nudge-cta">マップを解放する</button>` +
+      `<div class="premium-nudge-social">旅好きユーザーに人気 No.1 の機能</div>` +
+    `</div>`;
+  document.getElementById("premium-nudge-card").addEventListener("click", showPaywall);
+}
+
+// --- もうすぐ制覇に地図ナッジ ---
+function renderAlmostMapHint(){
+  if(isPremium()) return;
+  const el=document.getElementById("almost-section");
+  if(!el || !el.innerHTML) return;
+  if(el.querySelector(".almost-map-hint")) return;
+  const hint=document.createElement("div");
+  hint.className="almost-map-hint";
+  hint.innerHTML="🗾 マップで残りの駅を確認 →";
+  hint.addEventListener("click", showPaywall);
+  el.appendChild(hint);
+}
+
+// --- 統計タブ訴求: 好奇心ギャップ ---
+function renderStatsMapTeaser(stats){
+  const el=document.getElementById("stats-premium-nudge");
+  if(!el) return;
+  if(isPremium()){ el.innerHTML=""; return; }
+
+  const filledCount=Object.values(stats.prefStats).filter(d=>d.visited>0).length;
+
+  el.innerHTML=
+    `<div class="stats-map-teaser" id="stats-map-teaser-card">` +
+      `<div class="stats-map-teaser-header">` +
+        `<div class="stats-map-teaser-title">🗾 地方別マップ分析</div>` +
+        `<span class="stats-map-teaser-badge">PRO</span>` +
+      `</div>` +
+      `<div class="stats-map-preview">` +
+        `<div class="stats-map-blur">` +
+          `<div class="stats-map-lock">🔒 プレミアムで解放</div>` +
+        `</div>` +
+      `</div>` +
+      `<div class="stats-map-benefits">` +
+        `<div class="stats-map-benefit"><span class="stats-map-benefit-icon">🎨</span> ${filledCount}県の訪問状況を色分け表示</div>` +
+        `<div class="stats-map-benefit"><span class="stats-map-benefit-icon">🏆</span> 制覇した県がゴールドに輝く</div>` +
+        `<div class="stats-map-benefit"><span class="stats-map-benefit-icon">📍</span> 県タップで未訪問の駅を一覧</div>` +
+      `</div>` +
+    `</div>`;
+  document.getElementById("stats-map-teaser-card").addEventListener("click", showPaywall);
+}
+
+// --- チェックイン後トースト: ピークエンドの法則 ---
+let _toastTimer=null;
+function showPremiumToast(stationName, prefName){
+  if(isPremium()) return;
+  const el=document.getElementById("premium-toast");
+  if(!el) return;
+
+  const msgs=[
+    `🗾 ${prefName}の地図が更新！ <span class="toast-gold">マップで確認 →</span>`,
+    `✨ ${prefName}に新しい足跡！ <span class="toast-gold">地図を見る →</span>`,
+    `🎯 ${prefName}の達成率UP！ <span class="toast-gold">マップで確認 →</span>`,
+  ];
+  el.innerHTML=msgs[Math.floor(Math.random()*msgs.length)];
+  el.hidden=false;
+  el.onclick=()=>{ el.hidden=true; showPaywall(); };
+
+  if(_toastTimer) clearTimeout(_toastTimer);
+  _toastTimer=setTimeout(()=>{ el.hidden=true; },5000);
+}
+
+function updatePremiumUI(){
+  const gate=document.getElementById("map-premium-gate");
+  const unlocked=document.getElementById("map-unlocked");
+  const dot=document.getElementById("map-premium-dot");
+  const navBadge=document.getElementById("nav-premium-badge");
+  const banner=document.getElementById("premium-status-banner");
+  const premium=isPremium();
+
+  if(gate) gate.style.display=premium?"none":"";
+  if(unlocked) unlocked.style.display=premium?"":"none";
+  if(dot) dot.style.display=premium?"none":"";
+  if(navBadge) navBadge.hidden=!premium;
+
+  if(banner){
+    if(premium){
+      const s=calcStats();
+      const filledCount=Object.values(s.prefStats).filter(d=>d.visited>0).length;
+      banner.innerHTML=
+        `<div class="premium-banner">` +
+          `<div class="premium-banner-icon">👑</div>` +
+          `<div class="premium-banner-text">` +
+            `<div class="premium-banner-title">道の駅マスター</div>` +
+            `<div class="premium-banner-sub">全機能が解放されています</div>` +
+          `</div>` +
+          `<div class="premium-banner-stats">` +
+            `<div class="premium-banner-stat">${filledCount}<span>県</span></div>` +
+          `</div>` +
+        `</div>`;
+    } else {
+      banner.innerHTML="";
+    }
+  }
+}
+
+function showPaywall(){ document.getElementById("paywall-modal").hidden=false; }
+
+document.getElementById("premium-gate-cta").addEventListener("click", showPaywall);
+document.getElementById("premium-gate-restore").addEventListener("click",()=>{
+  activatePremium();
+});
+
+document.querySelectorAll(".price-option").forEach(o=>{
+  o.addEventListener("click",()=>{
+    document.querySelectorAll(".price-option").forEach(x=>x.classList.remove("selected"));
+    o.classList.add("selected");
+  });
+});
+document.getElementById("paywall-cta").addEventListener("click",()=>{
+  document.getElementById("paywall-modal").hidden=true;
+  activatePremium();
+});
+
+function activatePremium(){
+  setPremium(true);
+  updatePremiumUI(); render();
+  showPremiumCelebration();
+}
+
+function showPremiumCelebration(){
+  triggerConfetti(50);
+  const overlay=document.createElement("div");
+  overlay.className="premium-celebrate-overlay";
+  overlay.innerHTML=
+    `<div class="premium-celebrate">` +
+      `<div class="premium-celebrate-crown">👑</div>` +
+      `<div class="premium-celebrate-title">道の駅マスター<br>へようこそ！</div>` +
+      `<div class="premium-celebrate-features">` +
+        `<div class="premium-celebrate-feat"><span>🗾</span> 全国制覇マップが解放されました</div>` +
+        `<div class="premium-celebrate-feat"><span>🚫</span> 広告なしの快適体験</div>` +
+        `<div class="premium-celebrate-feat"><span>📷</span> スタンプ写真が無制限に</div>` +
+        `<div class="premium-celebrate-feat"><span>📊</span> 詳細統計ダッシュボード</div>` +
+        `<div class="premium-celebrate-feat"><span>☁️</span> クラウド同期</div>` +
+        `<div class="premium-celebrate-feat"><span>📝</span> 旅の日記 + 複数写真記録</div>` +
+      `</div>` +
+      `<button class="premium-celebrate-btn">マップを見に行く</button>` +
+    `</div>`;
+  document.body.appendChild(overlay);
+  requestAnimationFrame(()=>overlay.classList.add("show"));
+
+  const close=()=>{
+    overlay.classList.remove("show");
+    setTimeout(()=>{ if(overlay.parentNode) overlay.remove(); },400);
+    document.querySelectorAll(".btab").forEach(x=>x.classList.remove("active"));
+    document.querySelectorAll(".tab-content").forEach(x=>x.classList.remove("active"));
+    document.querySelector('.btab[data-tab="map"]').classList.add("active");
+    document.getElementById("tab-map").classList.add("active");
+  };
+  overlay.querySelector(".premium-celebrate-btn").addEventListener("click",close);
+  overlay.addEventListener("click",e=>{ if(e.target===overlay) close(); });
+}
+document.getElementById("paywall-skip").addEventListener("click",()=>{
+  document.getElementById("paywall-modal").hidden=true;
+});
+
 // ===== タブ =====
 document.querySelectorAll(".btab").forEach(t=>{
   t.addEventListener("click",()=>{
@@ -414,6 +675,129 @@ document.querySelectorAll(".btab").forEach(t=>{
     document.querySelectorAll(".tab-content").forEach(x=>x.classList.remove("active"));
     t.classList.add("active"); document.getElementById("tab-"+t.dataset.tab).classList.add("active");
   });
+});
+
+// ===== 駅詳細 =====
+let _detailStationId=null;
+const detailModal=document.getElementById("station-detail-modal");
+const detailHeader=document.getElementById("station-detail-header");
+const detailBody=document.getElementById("station-detail-body");
+
+function openStationDetail(stationId){
+  const st=MICHINOEKI_DATA.find(s=>s.id===stationId);
+  if(!st) return;
+  const info=getVisitInfo(stationId);
+  if(!info||!info.visited) return;
+  _detailStationId=stationId;
+
+  const emoji=PREF_EMOJI[st.pref]||"📍";
+  detailHeader.innerHTML=
+    `<div class="sd-emoji">${emoji}</div>`+
+    `<div class="sd-info">`+
+      `<div class="sd-name">${st.name}</div>`+
+      `<div class="sd-meta">${st.pref} ${st.location}</div>`+
+    `</div>`+
+    `<div class="sd-date">📅 ${info.date||"—"}</div>`;
+
+  const photos=info.photos||[];
+  const allPhotos=info.photo?[info.photo,...photos]:[...photos];
+  const premium=isPremium();
+  const maxFree=1;
+
+  let html=`<div class="sd-section">`;
+  html+=`<div class="sd-section-title">📷 写真</div>`;
+  html+=`<div class="sd-photos" id="sd-photos">`;
+  allPhotos.forEach((p,i)=>{
+    html+=`<img class="sd-photo-thumb" src="${p}" data-idx="${i}" alt="写真${i+1}">`;
+  });
+  if(premium || allPhotos.length < maxFree){
+    html+=`<label class="sd-photo-add" id="sd-photo-add-btn"><span>+</span><span class="sd-photo-add-label">追加</span><input type="file" accept="image/*" capture="environment" id="sd-photo-input" hidden></label>`;
+  } else {
+    html+=`<div class="sd-photo-add locked" id="sd-photo-add-locked"><span>👑</span><span class="sd-photo-add-label">PRO</span></div>`;
+  }
+  html+=`</div></div>`;
+
+  html+=`<div class="sd-section">`;
+  html+=`<div class="sd-section-title">📝 旅の日記</div>`;
+  if(premium){
+    html+=`<textarea class="sd-diary" id="sd-diary" placeholder="この道の駅の思い出を書いてみましょう…">${info.note||""}</textarea>`;
+  } else {
+    html+=`<div class="sd-diary-lock" id="sd-diary-lock">`;
+    html+=`<div class="sd-diary-lock-icon">📝</div>`;
+    html+=`<div class="sd-diary-lock-text">`;
+    html+=`<div class="sd-diary-lock-title">旅の日記を記録</div>`;
+    html+=`<div class="sd-diary-lock-sub">プレミアムで解放 →</div>`;
+    html+=`</div></div>`;
+  }
+  html+=`</div>`;
+
+  detailBody.innerHTML=html;
+
+  document.querySelectorAll(".sd-photo-thumb").forEach(img=>{
+    img.addEventListener("click",()=>{
+      const ov=document.createElement("div");
+      ov.className="sd-photo-full-overlay";
+      ov.innerHTML=`<img src="${img.src}">`;
+      ov.addEventListener("click",()=>ov.remove());
+      document.body.appendChild(ov);
+    });
+  });
+
+  const photoInput=document.getElementById("sd-photo-input");
+  if(photoInput){
+    photoInput.addEventListener("change",e=>{
+      const f=e.target.files[0]; if(!f) return;
+      compressAndSavePhoto(_detailStationId, f, ()=>{
+        openStationDetail(_detailStationId);
+      });
+    });
+  }
+
+  const lockedAdd=document.getElementById("sd-photo-add-locked");
+  if(lockedAdd) lockedAdd.addEventListener("click", showPaywall);
+
+  const diaryLock=document.getElementById("sd-diary-lock");
+  if(diaryLock) diaryLock.addEventListener("click", showPaywall);
+
+  detailModal.hidden=false;
+}
+
+function addPhotoToStation(stationId, dataUrl){
+  const m=loadManual();
+  const entry=m[stationId];
+  if(!entry) return;
+  if(!entry.photo){
+    entry.photo=dataUrl;
+  } else {
+    if(!entry.photos) entry.photos=[];
+    entry.photos.push(dataUrl);
+  }
+  m[stationId]=entry;
+  saveManual(m);
+}
+
+function saveStationDetail(){
+  if(!_detailStationId) return;
+  const m=loadManual();
+  const entry=m[_detailStationId];
+  if(!entry) return;
+  const diaryEl=document.getElementById("sd-diary");
+  if(diaryEl) entry.note=diaryEl.value;
+  m[_detailStationId]=entry;
+  saveManual(m);
+  render();
+}
+
+document.getElementById("station-detail-save").addEventListener("click",()=>{
+  saveStationDetail();
+  detailModal.hidden=true;
+});
+document.getElementById("station-detail-close").addEventListener("click",()=>{
+  saveStationDetail();
+  detailModal.hidden=true;
+});
+detailModal.addEventListener("click",e=>{
+  if(e.target===detailModal){ saveStationDetail(); detailModal.hidden=true; }
 });
 
 // ===== 検索・フィルター =====
@@ -435,7 +819,7 @@ document.getElementById("stamp-cancel").addEventListener("click",()=>{stampModal
 function resetStampModal(){stampPhotoData=null;stampSelectedId=null;stampPhotoInput.value="";stampPreview.hidden=true;stampSearch.value="";stampResults.innerHTML="";stampSelected.textContent="";stampConfirm.disabled=true;}
 stampPhotoInput.addEventListener("change",e=>{const f=e.target.files[0];if(!f)return;const img=new Image(),r=new FileReader();r.onload=ev=>{img.onload=()=>{const mx=400,sc=Math.min(1,mx/img.width),cv=document.createElement("canvas");cv.width=img.width*sc;cv.height=img.height*sc;cv.getContext("2d").drawImage(img,0,0,cv.width,cv.height);stampPhotoData=cv.toDataURL("image/jpeg",0.7);stampPreview.src=stampPhotoData;stampPreview.hidden=false;};img.src=ev.target.result;};r.readAsDataURL(f);});
 stampSearch.addEventListener("input",()=>{const t=stampSearch.value.trim();stampResults.innerHTML="";if(!t)return;MICHINOEKI_DATA.filter(s=>`${s.name} ${s.pref} ${s.location}`.includes(t)).slice(0,20).forEach(s=>{const d=document.createElement("div");d.textContent=`${PREF_EMOJI[s.pref]||""} ${s.pref} - ${s.name}（${s.location}）`;d.addEventListener("click",()=>{stampSelectedId=s.id;stampSelected.textContent=`選択中: ${s.pref} ${s.name}`;stampResults.innerHTML="";stampSearch.value=`${s.pref} ${s.name}`;stampConfirm.disabled=false;});stampResults.appendChild(d);});});
-stampConfirm.addEventListener("click",()=>{if(stampSelectedId===null)return;setVisited(stampSelectedId,true,stampPhotoData);stampModal.hidden=true;render();checkNewBadges();});
+stampConfirm.addEventListener("click",()=>{if(stampSelectedId===null)return;const st=MICHINOEKI_DATA.find(s=>s.id===stampSelectedId);setVisited(stampSelectedId,true,stampPhotoData);stampModal.hidden=true;render();checkNewBadges();if(st)showPremiumToast(st.name,st.pref);});
 
 // ===== バックアップ =====
 document.getElementById("export-btn").addEventListener("click",()=>{const d={manual:loadManual(),dismissed:loadDismissed(),settings:loadSettings(),exportedAt:new Date().toISOString()};const b=new Blob([JSON.stringify(d)],{type:"application/json"});const u=URL.createObjectURL(b);const a=document.createElement("a");a.href=u;a.download=`michinoeki_backup_${new Date().toISOString().slice(0,10)}.json`;a.click();URL.revokeObjectURL(u);});
@@ -450,7 +834,7 @@ function initSR(){const S=window.SpeechRecognition||window.webkitSpeechRecogniti
 function norm(s){return s.replace(/[\s　]+/g,"").replace(/[ぁ-ん]/g,c=>String.fromCharCode(c.charCodeAt(0)+0x60)).toLowerCase();}
 function score(a,b){const x=norm(a),y=norm(b);if(x===y)return 100;if(y.includes(x)||x.includes(y))return 80;const sh=x.length<y.length?x:y,lo=x.length<y.length?y:x;let m=0,p=0;for(const c of sh){const i=lo.indexOf(c,p);if(i!==-1){m++;p=i+1;}}return Math.round((m/lo.length)*70);}
 function findM(t){if(!t.trim())return[];return MICHINOEKI_DATA.map(s=>({station:s,score:Math.max(score(t,s.name),score(t,s.pref+s.name))})).sort((a,b)=>b.score-a.score).filter(r=>r.score>=30).slice(0,8);}
-function showM(ms){voiceMatches.innerHTML="";ms.forEach(m=>{const i=getVisitInfo(m.station.id),d=!!(i&&i.visited),it=document.createElement("div");it.className="voice-match-item"+(d?" checked":"");it.innerHTML=`<span class="voice-match-name">${m.station.name}</span><span class="voice-match-pref">${m.station.pref}</span><span class="voice-match-score">${d?"✅ 済":"タップでチェック"}</span>`;if(!d){it.addEventListener("click",()=>{setVisited(m.station.id,true);it.classList.add("checked");it.querySelector(".voice-match-score").textContent="✅ 済";voiceDoneMsg.textContent=`✅ ${m.station.pref} ${m.station.name} をチェック！`;voiceDoneMsg.hidden=false;setTimeout(()=>voiceDoneMsg.hidden=true,3000);render();checkNewBadges();});}voiceMatches.appendChild(it);});}
+function showM(ms){voiceMatches.innerHTML="";ms.forEach(m=>{const i=getVisitInfo(m.station.id),d=!!(i&&i.visited),it=document.createElement("div");it.className="voice-match-item"+(d?" checked":"");it.innerHTML=`<span class="voice-match-name">${m.station.name}</span><span class="voice-match-pref">${m.station.pref}</span><span class="voice-match-score">${d?"✅ 済":"タップでチェック"}</span>`;if(!d){it.addEventListener("click",()=>{setVisited(m.station.id,true);it.classList.add("checked");it.querySelector(".voice-match-score").textContent="✅ 済";voiceDoneMsg.textContent=`✅ ${m.station.pref} ${m.station.name} をチェック！`;voiceDoneMsg.hidden=false;setTimeout(()=>voiceDoneMsg.hidden=true,3000);render();checkNewBadges();showPremiumToast(m.station.name,m.station.pref);});}voiceMatches.appendChild(it);});}
 function startL(){if(!recognition){recognition=initSR();if(!recognition){voiceStatus.textContent="音声認識に対応していません（Chrome推奨）";return;}}recognition.onresult=e=>{let im="",fi="";for(let i=e.resultIndex;i<e.results.length;i++){const t=e.results[i][0].transcript;if(e.results[i].isFinal)fi+=t;else im+=t;}const d=fi||im;voiceRecognized.textContent=`「${d}」`;showM(findM(d));};recognition.onend=()=>{isListening=false;voiceMicBtn.textContent="🎤 聴き取り開始";voiceMicBtn.classList.remove("recording");voiceStatus.textContent="もう一度マイクボタンを押してください";voiceStatus.classList.remove("listening");};recognition.onerror=e=>{isListening=false;voiceMicBtn.textContent="🎤 聴き取り開始";voiceMicBtn.classList.remove("recording");voiceStatus.classList.remove("listening");voiceStatus.textContent=e.error==="not-allowed"?"マイクが許可されていません":e.error==="no-speech"?"音声が検出されませんでした":"エラーが発生しました";};recognition.start();isListening=true;voiceMicBtn.textContent="⏹ 聴き取り中...";voiceMicBtn.classList.add("recording");voiceStatus.textContent="🔴 聴いています...道の駅名を読み上げてください";voiceStatus.classList.add("listening");voiceDoneMsg.hidden=true;}
 document.getElementById("voice-btn").addEventListener("click",()=>{voiceRecognized.textContent="";voiceMatches.innerHTML="";voiceDoneMsg.hidden=true;voiceStatus.textContent="マイクボタンを押してください";voiceStatus.classList.remove("listening");voiceMicBtn.textContent="🎤 聴き取り開始";voiceMicBtn.classList.remove("recording");voiceModal.hidden=false;});
 voiceMicBtn.addEventListener("click",()=>{if(isListening){recognition.stop();isListening=false;}else startL();});
@@ -461,6 +845,10 @@ document.getElementById("share-btn").addEventListener("click",()=>{const s=calcS
 document.getElementById("share-copy").addEventListener("click",()=>{const s=calcStats(),pct=s.total?Math.round((s.visited/s.total)*10)/10:0,lv=getLevel(s.visited);navigator.clipboard.writeText(`${lv.emoji} ${lv.title}\n🚗 道の駅スタンプ帳\n${s.visited}/${s.total}駅（${pct}%）\n${s.prefComplete}県制覇！\n#道の駅 #道の駅スタンプ帳 #道の駅巡り`).then(()=>alert("コピーしました！SNSに貼り付けてシェア！")).catch(()=>alert("コピーに失敗しました"));});
 document.getElementById("share-close").addEventListener("click",()=>{document.getElementById("share-modal").hidden=true;});
 
+// ===== マップポップアップ =====
+document.getElementById("map-popup-close").addEventListener("click",()=>{document.getElementById("map-popup").hidden=true;});
+document.getElementById("map-popup").addEventListener("click",e=>{if(e.target.id==="map-popup")document.getElementById("map-popup").hidden=true;});
+
 // ===== PWA =====
 if("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js").catch(()=>{});
 
@@ -468,4 +856,5 @@ if("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js").catch
 _prevCount=calcStats().visited;
 initBadges();
 initCompletedPrefs();
+updatePremiumUI();
 render();
