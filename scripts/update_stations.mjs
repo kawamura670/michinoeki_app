@@ -29,55 +29,56 @@ function loadCurrentData() {
   return JSON.parse(jsonStr);
 }
 
-// ===== 道の駅API からデータ取得 =====
-async function fetchFromAPI() {
-  const url = 'https://www.it-social.net/roadside_station/api/stations.json';
-  try {
-    const res = await fetch(url, { headers: { 'User-Agent': 'MichinoekiStampApp/1.0' } });
-    if (!res.ok) throw new Error(`API returned ${res.status}`);
-    return await res.json();
-  } catch (e) {
-    console.warn('API fetch failed:', e.message);
-    return null;
-  }
-}
+// ===== 各地方整備局の道の駅ページからデータ取得 =====
+const REGION_URLS = [
+  'https://www.mlit.go.jp/road/Michi-no-Eki/list.html',
+  'https://www.hkd.mlit.go.jp/ky/kn/dou_kei/slo5pa000001b820.html',
+];
 
-// ===== 国土交通省ページからデータ取得 =====
 async function fetchFromMLIT() {
-  const url = 'https://www.mlit.go.jp/road/Michi-no-Eki/list.html';
+  const ua = { headers: { 'User-Agent': 'MichinoekiStampApp/1.0 (GitHub Actions, weekly check)' } };
+
+  // 国交省の駅数ページから総数を確認
   try {
-    const res = await fetch(url, { headers: { 'User-Agent': 'MichinoekiStampApp/1.0' } });
-    if (!res.ok) throw new Error(`MLIT returned ${res.status}`);
-    const html = await res.text();
-    return parseMLITHtml(html);
+    const res = await fetch('https://www.mlit.go.jp/road/Michi-no-Eki/index.html', ua);
+    if (res.ok) {
+      const html = await res.text();
+      const countMatch = html.match(/(\d{4})\s*駅/);
+      if (countMatch) {
+        const officialCount = parseInt(countMatch[1]);
+        console.log(`国交省公式: ${officialCount}駅`);
+        return { officialCount };
+      }
+    }
   } catch (e) {
-    console.warn('MLIT fetch failed:', e.message);
-    return null;
+    console.warn('MLIT count check failed:', e.message);
   }
+  return null;
 }
 
-function parseMLITHtml(html) {
-  const stations = [];
-  // 国交省のテーブルからデータを抽出
-  // <tr>内の<td>から駅名、都道府県、所在地を取得
-  const rowRe = /<tr[^>]*>([\s\S]*?)<\/tr>/gi;
-  const tdRe = /<td[^>]*>([\s\S]*?)<\/td>/gi;
-  let match;
-  while ((match = rowRe.exec(html)) !== null) {
-    const tds = [];
-    let tdMatch;
-    while ((tdMatch = tdRe.exec(match[1])) !== null) {
-      tds.push(tdMatch[1].replace(/<[^>]+>/g, '').trim());
+// Wikipedia の道の駅一覧からデータ取得（バックアップ）
+async function fetchFromWikipedia() {
+  const url = 'https://ja.wikipedia.org/wiki/%E9%81%93%E3%81%AE%E9%A7%85%E4%B8%80%E8%A6%A7';
+  try {
+    const res = await fetch(url, { headers: { 'User-Agent': 'MichinoekiStampApp/1.0' } });
+    if (!res.ok) throw new Error(`Wikipedia returned ${res.status}`);
+    const html = await res.text();
+    const stations = [];
+    // Wikipediaのテーブルから駅名を抽出
+    const linkRe = /title="道の駅([^"]+)"/g;
+    let m;
+    while ((m = linkRe.exec(html)) !== null) {
+      const name = m[1].replace(/\s/g, '');
+      if (name && !stations.some(s => s.name === name)) {
+        stations.push({ name });
+      }
     }
-    if (tds.length >= 3 && tds[0] && !/都道府県|No/.test(tds[0])) {
-      stations.push({
-        pref: tds[0],
-        name: tds[1],
-        location: tds[2] || ''
-      });
-    }
+    console.log(`Wikipedia: ${stations.length}駅名を取得`);
+    return stations;
+  } catch (e) {
+    console.warn('Wikipedia fetch failed:', e.message);
+    return null;
   }
-  return stations;
 }
 
 // ===== 差分検出 & データ更新 =====
@@ -91,15 +92,17 @@ function updateData(current, fetched) {
     return { data: current, changes };
   }
 
-  // 新規駅の検出
+  const currentNameSet = new Set(current.map(s => s.name));
+
   for (const fs of fetched) {
-    const key = (fs.pref || fs.prefecture) + '_' + (fs.name || fs.station_name);
-    if (!currentNames.has(key)) {
+    const name = fs.name || fs.station_name || '';
+    if (!name) continue;
+    if (!currentNameSet.has(name)) {
       maxId++;
       const newStation = {
         id: maxId,
-        pref: fs.pref || fs.prefecture || '',
-        name: fs.name || fs.station_name || '',
+        pref: fs.pref || fs.prefecture || '未分類',
+        name: name,
         round: '新規',
         date: new Date().toISOString().slice(0, 7).replace('-', '.'),
         location: fs.location || fs.address || '',
@@ -108,8 +111,9 @@ function updateData(current, fetched) {
         status: 'open'
       };
       current.push(newStation);
-      changes.added.push(newStation.name);
-      console.log(`NEW: ${newStation.pref} ${newStation.name}`);
+      currentNameSet.add(name);
+      changes.added.push(name);
+      console.log(`NEW: ${newStation.pref} ${name}`);
     }
   }
 
@@ -136,17 +140,28 @@ async function main() {
   const current = loadCurrentData();
   console.log(`現在の駅数: ${current.length}`);
 
-  // 複数ソースから取得を試みる
-  let fetched = await fetchFromAPI();
-  if (!fetched) {
-    console.log('APIフォールバック: 国交省ページを試行...');
-    fetched = await fetchFromMLIT();
+  // 国交省の公式駅数を確認
+  const mlitData = await fetchFromMLIT();
+  if (mlitData && mlitData.officialCount) {
+    const diff = mlitData.officialCount - current.length;
+    if (diff > 0) {
+      console.log(`\n⚠️  公式: ${mlitData.officialCount}駅 vs 現在: ${current.length}駅 → ${diff}駅の差分あり！`);
+      console.log('Wikipedia から新駅名を取得中...');
+      const wikiStations = await fetchFromWikipedia();
+      if (wikiStations) {
+        const currentNames = new Set(current.map(s => s.name));
+        const newNames = wikiStations.filter(s => !currentNames.has(s.name));
+        if (newNames.length > 0) {
+          console.log(`新規候補: ${newNames.map(s=>s.name).join(', ')}`);
+        }
+      }
+    } else {
+      console.log(`駅数一致: 公式 ${mlitData.officialCount} = 現在 ${current.length}`);
+    }
   }
 
-  if (fetched) {
-    console.log(`取得した駅数: ${fetched.length}`);
-  }
-
+  // Wikipedia名簿との照合
+  const fetched = await fetchFromWikipedia();
   const { data, changes } = updateData(current, fetched);
 
   if (changes.added.length > 0) {
