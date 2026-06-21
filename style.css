@@ -73,11 +73,26 @@ body {
   letter-spacing: 0.01em;
 }
 
-/* ===== 背景 — Apple式のサブトルなグラデーション ===== */
+/* ===== 背景 — 絶景スライドショー ===== */
 .scenery-bg {
   position: fixed; top: 0; left: 0; right: 0; bottom: 0;
   z-index: -1; pointer-events: none;
-  background: linear-gradient(180deg, #F0F0ED 0%, var(--bg) 30%);
+  background: var(--bg);
+  overflow: hidden;
+}
+.scenery-slide {
+  position: absolute; top: -5%; left: -5%; width: 110%; height: 110%;
+  object-fit: cover; opacity: 0;
+  transition: opacity 3s ease-in-out;
+  will-change: opacity, transform;
+}
+.scenery-slide.active {
+  opacity: 0.12;
+  animation: sceneryDrift 22s ease-in-out forwards;
+}
+@keyframes sceneryDrift {
+  0%   { transform: scale(1.0) translate(0, 0); }
+  100% { transform: scale(1.06) translate(-1%, -0.5%); }
 }
 
 /* ===== ナビゲーションバー — iOS 18 グラスモーフィズム ===== */

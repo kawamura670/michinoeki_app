@@ -1326,6 +1326,45 @@ document.getElementById("map-popup").addEventListener("click",e=>{if(e.target.id
 // ===== PWA =====
 if("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js").catch(()=>{});
 
+// ===== 背景スライドショー（スタンプ画像100枚ランダム） =====
+(function(){
+  const container = document.querySelector('.scenery-bg');
+  if (!container) return;
+
+  const ids = [];
+  for (let i = 1; i <= 1231; i++) ids.push(i);
+  for (let i = ids.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [ids[i], ids[j]] = [ids[j], ids[i]]; }
+  const pick = ids.slice(0, 100);
+
+  let loaded = [];
+  let current = null;
+  let qi = 0;
+
+  function preloadNext() {
+    if (qi >= pick.length) return;
+    const img = document.createElement('img');
+    img.className = 'scenery-slide';
+    img.alt = '';
+    img.decoding = 'async';
+    const id = pick[qi++];
+    img.onload = function() { loaded.push(img); container.appendChild(img); };
+    img.onerror = function() { preloadNext(); };
+    img.src = `stamp_images/stamp_${id}.png`;
+  }
+
+  function showNext() {
+    if (loaded.length === 0) return;
+    const next = loaded[Math.floor(Math.random() * loaded.length)];
+    if (current) { current.classList.remove('active'); current.style.transform = ''; }
+    next.classList.add('active');
+    current = next;
+  }
+
+  for (let i = 0; i < 8; i++) preloadNext();
+  setTimeout(() => { showNext(); setInterval(showNext, 12000); }, 1000);
+  const loader = setInterval(() => { if (qi < pick.length) preloadNext(); else clearInterval(loader); }, 500);
+})();
+
 // ===== 初期化 =====
 _prevCount=calcStats().visited;
 initBadges();
