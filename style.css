@@ -359,6 +359,18 @@ body {
 .station-row.visited .stamp-btn.stamped {
   box-shadow: 0 2px 8px rgba(26,107,74,0.15);
 }
+.stamp-btn.stamped.rarity-common { border-color: #2D5A3D; background: #EDF5F0; }
+.stamp-btn.stamped.rarity-rare { border-color: #1B4F72; background: #E8F0F8; box-shadow: 0 2px 10px rgba(27,79,114,0.2); }
+.stamp-btn.stamped.rarity-epic { border-color: #6A3D9A; background: #F0E8F6; box-shadow: 0 2px 12px rgba(106,61,154,0.25); }
+.stamp-btn.stamped.rarity-legendary {
+  border-color: #B8860B; background: linear-gradient(135deg, #FDF5E6, #FFF8DC);
+  box-shadow: 0 2px 14px rgba(184,134,11,0.35);
+  animation: stampPress 0.5s cubic-bezier(0.34,1.56,0.64,1), legendaryGlow 2s ease-in-out infinite;
+}
+@keyframes legendaryGlow {
+  0%,100% { box-shadow: 0 2px 12px rgba(184,134,11,0.3); }
+  50% { box-shadow: 0 4px 20px rgba(184,134,11,0.5); }
+}
 
 .station-info { flex: 1; }
 .station-name { font-weight: 800; font-size: 1.05rem; }

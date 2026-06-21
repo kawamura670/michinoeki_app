@@ -154,12 +154,22 @@ const STAMP_KEYWORDS = [
 ];
 
 function getStampArt(station){
+  if(typeof STAMP_CATALOG!=="undefined" && STAMP_CATALOG[station.id]){
+    return STAMP_CATALOG[station.id].stamp_art;
+  }
   for(const kw of STAMP_KEYWORDS){
     if(kw.words.some(w=>station.name.includes(w)||station.location.includes(w))){
       return kw.art;
     }
   }
   return STAMP_SCENES[station.pref]||"🌿🛤️";
+}
+
+function getStampData(stationId){
+  if(typeof STAMP_CATALOG!=="undefined" && STAMP_CATALOG[stationId]){
+    return STAMP_CATALOG[stationId];
+  }
+  return null;
 }
 
 const REGION_COLORS = {
@@ -495,8 +505,10 @@ function renderList(s){
       const row=document.createElement("div"); row.className="station-row"+(isV?" visited":"");
 
       const stampArt=getStampArt(st);
+      const sData=getStampData(st.id);
+      const rarity=sData?sData.rarity:"common";
       const stampBtn=document.createElement("button");
-      stampBtn.className="stamp-btn"+(isV?" stamped":"");
+      stampBtn.className="stamp-btn"+(isV?" stamped":"")+" rarity-"+rarity;
       stampBtn.setAttribute("aria-label", isV?"スタンプ済み":"スタンプを押す");
       if(isV) stampBtn.setAttribute("data-art", stampArt);
 
