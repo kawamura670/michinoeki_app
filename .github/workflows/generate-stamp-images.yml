@@ -20,7 +20,10 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Generate stamp images (Pollinations.ai - FREE)
+      - name: Install sharp
+        run: npm install sharp
+
+      - name: Generate stamp images
         env:
           BATCH_SIZE: ${{ inputs.batch_size }}
         run: node scripts/generate_images_free.mjs

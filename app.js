@@ -306,8 +306,7 @@ function hasRealStampImage(stationId) {
 }
 
 function buildStampImage(station) {
-  const fs = station.name.length > 6 ? 9 : station.name.length > 4 ? 11 : 13;
-  return `<div class="stamp-img-wrap"><img src="${getStampImageUrl(station.id)}" alt="${station.name}"><div class="stamp-img-name" style="font-size:${fs}px">${station.name}</div></div>`;
+  return `<img src="${getStampImageUrl(station.id)}" alt="${station.name}" style="width:100%;height:100%;border-radius:50%;object-fit:cover;">`;
 }
 
 function buildStampSVG(station, stampData) {
