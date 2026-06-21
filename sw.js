@@ -1,5 +1,5 @@
-const CACHE_NAME = 'michinoeki-v2';
-const ASSETS = ['/', '/index.html', '/style.css', '/app.js', '/data.js', '/progress.js'];
+const CACHE_NAME = 'michinoeki-v5';
+const ASSETS = ['./index.html', './style.css', './app.js', './data.js', './progress.js', './map.js', './icon-192.png', './icon-512.png'];
 
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(CACHE_NAME).then(c => c.addAll(ASSETS)));

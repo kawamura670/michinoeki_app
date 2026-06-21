@@ -1,0 +1,156 @@
+﻿722|三重県|飯高駅|https://www.cbr.mlit.go.jp/michinoeki/mie/mie01.html
+723|三重県|菰野|https://www.cbr.mlit.go.jp/michinoeki/mie/mie02.html
+724|三重県|紀宝町ウミガメ公園|https://www.cbr.mlit.go.jp/michinoeki/mie/mie03.html
+725|三重県|パーク七里御浜|https://www.cbr.mlit.go.jp/michinoeki/mie/mie04.html
+726|三重県|海山|https://www.cbr.mlit.go.jp/michinoeki/mie/mie05.html
+727|三重県|奥伊勢木つつ木館|https://www.cbr.mlit.go.jp/michinoeki/mie/mie06.html
+728|三重県|熊野きのくに|https://www.cbr.mlit.go.jp/michinoeki/mie/mie07.html
+729|三重県|茶倉駅|https://www.cbr.mlit.go.jp/michinoeki/mie/mie08.html
+730|三重県|奥伊勢おおだい|https://www.cbr.mlit.go.jp/michinoeki/mie/mie09.html
+731|三重県|美杉|https://www.cbr.mlit.go.jp/michinoeki/mie/mie10.html
+732|三重県|関宿|https://www.cbr.mlit.go.jp/michinoeki/mie/mie11.html
+733|三重県|伊勢志摩|https://www.cbr.mlit.go.jp/michinoeki/mie/mie12.html
+734|三重県|紀伊長島マンボウ|https://www.cbr.mlit.go.jp/michinoeki/mie/mie13.html
+735|三重県|あやま|https://www.cbr.mlit.go.jp/michinoeki/mie/mie14.html
+736|三重県|いが|https://www.cbr.mlit.go.jp/michinoeki/mie/mie15.html
+737|三重県|津かわげ|https://www.cbr.mlit.go.jp/michinoeki/mie/mie16.html
+738|三重県|熊野・花の窟|https://www.cbr.mlit.go.jp/michinoeki/mie/mie17.html
+739|三重県|熊野・板屋九郎兵衛の里|https://www.cbr.mlit.go.jp/michinoeki/mie/mie18.html
+740|滋賀県|あいの土山|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/shiga/ainotsuchiyama.html
+741|滋賀県|くつき新本陣|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/shiga/kutsukishinhonjin.html
+742|滋賀県|しんあさひ風車村|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/shiga/shinasahi.html
+743|滋賀県|東近江市あいとうマーガレットステーション|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/shiga/margueritestation.html
+744|滋賀県|びわ湖大橋米プラザ|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/shiga/biwakoohishikomeplaza.html
+745|滋賀県|近江母の郷|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/shiga/omihahanosato.html
+746|滋賀県|こんぜの里りっとう|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/shiga/konzenosatorittou.html
+747|滋賀県|湖北みずどりステーション|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/shiga/kohokumizudoristation.html
+748|滋賀県|草津|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/shiga/kusatsu.html
+749|滋賀県|竜王かがみの里|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/shiga/ryuoukagaminosato.html
+750|滋賀県|アグリの郷栗東|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/shiga/agurinosatorittou.html
+751|滋賀県|マキノ追坂峠|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/shiga/makinoossakatouge.html
+752|滋賀県|藤樹の里あどがわ|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/shiga/adogawa.html
+753|滋賀県|伊吹の里|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/shiga/ibukinosato.html
+754|滋賀県|塩津海道あぢかまの里|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/shiga/adikama.html
+755|滋賀県|せせらぎの里こうら|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/shiga/seseraginosato.html
+756|滋賀県|妹子の郷|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/shiga/imokonosato.html
+757|滋賀県|奥永源寺 渓流の里|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/shiga/okueigenji.html
+758|滋賀県|アグリパーク竜王|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/shiga/aguriparkryuou.html
+759|滋賀県|浅井三姉妹の郷|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/shiga/azaisansimai.html
+760|京都府|舟屋の里伊根|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/kyoto/funayanosatoine.html
+761|京都府|シルクのまち　かや|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/kyoto/silknomachikaya.html
+762|京都府|てんきてんき丹後|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/kyoto/tenkitenkitango.html
+763|京都府|和|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/kyoto/nagomi.html
+764|京都府|ガレリアかめおか|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/kyoto/gareriakameoka.html
+765|京都府|丹波マーケス|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/kyoto/tanbamakesu.html
+766|京都府|瑞穂の里・さらびき|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/kyoto/mizuhonosatosarabiki.html
+767|京都府|農匠の郷やくの|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/kyoto/yakuno.html
+768|京都府|舞鶴港とれとれセンター|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/kyoto/toretorecenter.html
+769|京都府|京都新光悦村|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/kyoto/shinkoetsu.html
+770|京都府|丹後王国「食のみやこ」|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/kyoto/tangooukoku.html
+771|京都府|美山ふれあい広場|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/kyoto/miyamafureaihiroba.html
+772|京都府|ウッディー京北|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/kyoto/woodykeihoku.html
+773|京都府|くみはまSANKAIKAN|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/kyoto/kumihamasankaikan.html
+774|京都府|スプリングスひよし|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/kyoto/springshiyoshi.html
+775|京都府|京丹波　味夢の里|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/kyoto/kyotambaajimnosato.html
+776|京都府|海の京都　宮津|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/kyoto/uminokyoutomiyazu.html
+777|京都府|お茶の京都　みなみやましろ村|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/kyoto/ocyanokyotominamiyamashiromura.html
+778|大阪府|ちはやあかさか|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/osaka/chihayaakasaka.html
+779|大阪府|近つ飛鳥の里太子|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/osaka/chikatuasukanosatotaishi.html
+780|大阪府|能勢（くりの郷）|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/osaka/nose.html
+781|大阪府|かなん|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/osaka/kanan.html
+782|大阪府|しらとりの郷・羽曳野|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/osaka/shiratori_habikino.html
+783|大阪府|いずみ山愛の里|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/osaka/izumiyamaai.html
+784|大阪府|とっとパーク小島|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/osaka/tottopark.html
+785|大阪府|愛彩ランド|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/osaka/aisai_land.html
+786|大阪府|みさき|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/osaka/misaki.html
+787|大阪府|奥河内くろまろの郷|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/osaka/kuromaronosato.html
+788|兵庫県|はが|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/hyogo/haga.html
+789|兵庫県|あさご|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/hyogo/asago.html
+790|兵庫県|ちくさ|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/hyogo/chikusa.html
+791|兵庫県|神鍋高原|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/hyogo/kannabe.html
+792|兵庫県|村岡ファームガーデン|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/hyogo/muraokafarmgarden.html
+793|兵庫県|やぶ|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/hyogo/yabu.html
+794|兵庫県|但馬楽座|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/hyogo/tanbarakuza.html
+795|兵庫県|みなみ波賀|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/hyogo/minamihaga.html
+796|兵庫県|しんぐう|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/hyogo/shinguu.html
+797|兵庫県|杉原紙の里・多可|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/hyogo/rutoyonniinanakami.html
+798|兵庫県|あおがき|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/hyogo/aogaki.html
+799|兵庫県|ハチ北|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/hyogo/hachikita.html
+800|兵庫県|あわじ|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/hyogo/awaji.html
+801|兵庫県|みき|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/hyogo/miki.html
+802|兵庫県|うずしお|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/hyogo/uzushio.html
+803|兵庫県|播磨いちのみや|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/hyogo/harimaichinomiya.html
+804|兵庫県|フレッシュあさご|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/hyogo/freshasago.html
+805|兵庫県|宿場町ひらふく|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/hyogo/syukubamatihirafuku.html
+806|兵庫県|あゆの里　矢田川|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/hyogo/ayunosatoyatagawa.html
+807|兵庫県|とうじょう|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/hyogo/toujyou.html
+808|兵庫県|いながわ|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/hyogo/inagawa.html
+809|兵庫県|東浦ターミナルパーク|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/hyogo/higashiuratatarminalpark.html
+810|兵庫県|北はりまエコミュージアム|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/hyogo/kitaharimaecomum.html
+811|兵庫県|あいおい白龍城|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/hyogo/aioipeperonjyou.html
+812|兵庫県|淡河|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/hyogo/ogo.html
+813|兵庫県|丹波おばあちゃんの里|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/hyogo/tanbaobaachan.html
+814|兵庫県|但馬のまほろば|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/hyogo/tajimanomahoroba.html
+815|兵庫県|ようか但馬蔵|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/hyogo/youkatajimanokura.html
+816|兵庫県|みつ|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/hyogo/mitsu.html
+817|兵庫県|あまるべ|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/hyogo/amarube.html
+818|兵庫県|福良|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/hyogo/fukura.html
+819|兵庫県|山田錦発祥のまち・多可|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/hyogo/Yamada-nishik-taka.html
+820|兵庫県|神戸フルーツ・フラワーパーク大沢|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/hyogo/kobefruitflowerparkozo.html
+821|兵庫県|山陰海岸ジオパーク浜坂の郷|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/hyogo/saninkaiganjioparkhamasakanosato.html
+822|兵庫県|銀の馬車道・神河|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/hyogo/ginnobasyamichi.html
+823|兵庫県|よかわ|
+824|奈良県|吉野路　大塔|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/nara/yoshinojiootou.html
+825|奈良県|吉野路　上北山|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/nara/yoshinojikamikitayama.html
+826|奈良県|杉の湯　川上|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/nara/suginoyukawakami.html
+827|奈良県|吉野路　黒滝|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/nara/yoshinojikurotaki.html
+828|奈良県|ふたかみパーク當麻|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/nara/futakamiparktaima.html
+829|奈良県|宇陀路大宇陀|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/nara/udajioouda.html
+830|奈良県|十津川郷|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/nara/totukawagou.html
+831|奈良県|宇陀路室生|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/nara/udajimurou.html
+832|奈良県|針Ｔ・Ｒ・Ｓ|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/nara/hariteatimeresortstation.html
+833|奈良県|大和路へぐり|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/nara/yamatojiheguri.html
+834|奈良県|吉野路　大淀ｉセンター|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/nara/yoshinojioyadoicenter.html
+835|奈良県|伊勢本街道　御杖|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/nara/isehonkaidomitsue.html
+836|奈良県|かつらぎ|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/nara/katsuragi.html
+837|奈良県|レスティ唐古・鍵|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/nara/karakokagi.html
+838|奈良県|飛鳥|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/nara/asuka.html
+839|奈良県|なら歴史芸術文化村|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/nara/NaraPrefectureHistoricalandArtisticCultureComplex.html
+840|奈良県|クロスウェイなかまち|
+841|奈良県|きなりの郷下北山|
+842|和歌山県|しみず|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/wakayama/shimizu.html
+843|和歌山県|San　Pin  中津|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/wakayama/sanpinnakatsu.html
+844|和歌山県|ふるさとセンター大塔|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/wakayama/furusatocenterootou.html
+845|和歌山県|龍神|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/wakayama/ryuujin.html
+846|和歌山県|イノブータンランド・すさみ|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/wakayama/inobuutanlandsusami.html
+847|和歌山県|志原海岸|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/wakayama/shiharakaigan.html
+848|和歌山県|熊野古道中辺路|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/wakayama/kumanokodonakahechi.html
+849|和歌山県|しらまの里|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/wakayama/shiramanosato.html
+850|和歌山県|みなべうめ振興館|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/wakayama/minabeumesihnkoukan.html
+851|和歌山県|紀州備長炭記念公園|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/wakayama/kisyubinchoutankinenkouen.html
+852|和歌山県|瀞峡街道熊野川|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/wakayama/dorokyokaidoukumanogawa.html
+853|和歌山県|紀の川万葉の里|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/wakayama/kinokawamanyounosato.html
+854|和歌山県|奥熊野古道ほんぐう|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/wakayama/okukumanokodouhonguu.html
+855|和歌山県|おくとろ|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/wakayama/okutoro.html
+856|和歌山県|水の郷日高川　龍游|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/wakayama/mizunosatohidakagawaryuyu.html
+857|和歌山県|明恵ふるさと館|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/wakayama/myouehurusatokan.html
+858|和歌山県|根来さくらの里|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/wakayama/negorosakuranosato.html
+859|和歌山県|あらぎの里|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/wakayama/araginosato.html
+860|和歌山県|一枚岩|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/wakayama/ichimaiiwa.html
+861|和歌山県|白崎海洋公園|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/wakayama/shirasaki.html
+862|和歌山県|椿はなの湯|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/wakayama/tsubaki.html
+863|和歌山県|なち|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/wakayama/nachi.html
+864|和歌山県|瀧之拝太郎|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/wakayama/takinohaitaro.html
+865|和歌山県|田辺市龍神ごまさんスカイタワー|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/wakayama/gomasanskytower.html
+866|和歌山県|くしもと橋杭岩|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/wakayama/hasiguiiwa.html
+867|和歌山県|柿の郷くどやま|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/wakayama/kakinosatokudoyama.html
+868|和歌山県|虫喰岩|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/wakayama/musikuiiwa.html
+869|和歌山県|くちくまの|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/wakayama/kuchikumano.html
+870|和歌山県|すさみ|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/wakayama/susami.html
+871|和歌山県|かつらぎ西|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/wakayama/katsuraginishi.html
+872|和歌山県|たいじ|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/wakayama/taiji.html
+873|和歌山県|青洲の里|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/wakayama/seishunosato.html
+874|和歌山県|くしがきの里|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/wakayama/kushigakinosato.html
+875|和歌山県|ねごろ歴史の丘|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/wakayama/negororekishinooka.html
+876|和歌山県|四季の郷公園|https://www-1.kkr.mlit.go.jp/road/michi_no_eki/contents/wakayama/Shikinosatokouen.html
+877|和歌山県|海南サクアス|

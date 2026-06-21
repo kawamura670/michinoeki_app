@@ -45,11 +45,11 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-  font-family: -apple-system, "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
-  font-size: 16px;
+  font-family: -apple-system, "Hiragino Sans", "Yu Gothic UI", "Meiryo", sans-serif;
+  font-size: 17px;
   background: var(--bg);
   color: var(--text);
-  line-height: 1.5;
+  line-height: 1.7;
   -webkit-font-smoothing: antialiased;
   -webkit-tap-highlight-color: transparent;
   padding-top: var(--nav-height);
@@ -72,7 +72,7 @@ body {
   padding: 0 16px;
 }
 .nav-title {
-  font-size: 1.05rem; font-weight: 800; color: rgba(255,255,255,0.95);
+  font-size: 1.1rem; font-weight: 800; color: #fff;
   letter-spacing: 0.03em;
 }
 .nav-icon {
@@ -93,12 +93,12 @@ body {
 }
 .btab {
   flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;
-  gap: 3px; background: none; border: none; cursor: pointer;
-  color: var(--text-sub); font-size: 0.65rem; font-weight: 500;
-  padding: 6px 0; transition: color 0.15s;
+  gap: 4px; background: none; border: none; cursor: pointer;
+  color: var(--text-sub); font-size: 0.72rem; font-weight: 600;
+  padding: 8px 0; transition: color 0.15s;
 }
 .btab svg { stroke: var(--text-sub); transition: stroke 0.15s; }
-.btab.active { color: var(--primary); }
+.btab.active { color: var(--primary); font-weight: 800; }
 .btab.active svg { stroke: var(--primary); }
 
 /* ===== タブコンテンツ ===== */
@@ -333,42 +333,37 @@ body {
 .station-row.visited { background: linear-gradient(135deg, #F0F7F2, #F6FAF7); }
 
 .stamp-btn {
-  width: 44px; height: 44px; border-radius: 50%;
+  width: 56px; height: 56px; border-radius: 50%;
   border: 2.5px dashed var(--border-active); background: #fff;
-  cursor: pointer; flex-shrink: 0; margin-top: 1px;
+  cursor: pointer; flex-shrink: 0;
   transition: all 0.2s; position: relative;
   display: flex; align-items: center; justify-content: center;
   -webkit-tap-highlight-color: transparent;
+  font-size: 0.75rem; color: var(--text-light);
 }
-.stamp-btn::after {
-  content: ""; font-size: 0.7rem; color: var(--text-light);
-  font-weight: 600;
-}
-.stamp-btn:active { transform: scale(0.9); }
+.stamp-btn::before { content: "押す"; font-weight: 700; }
+.stamp-btn:active { transform: scale(0.88); }
 .stamp-btn.stamped {
-  border: 2.5px solid #C0392B; background: #FDF2F0;
+  border: 2.5px solid var(--primary); background: var(--primary-pale);
   border-style: solid;
   animation: stampPress 0.5s cubic-bezier(0.34,1.56,0.64,1);
+  font-size: 1.2rem;
 }
-.stamp-btn.stamped::after {
-  content: "済"; color: #C0392B; font-size: 0.9rem; font-weight: 900;
-  font-family: "Yu Mincho", "Hiragino Mincho Pro", serif;
-}
+.stamp-btn.stamped::before { content: attr(data-art); }
 @keyframes stampPress {
-  0% { transform: scale(1.8) rotate(-15deg); opacity: 0.3; }
-  40% { transform: scale(0.85) rotate(2deg); opacity: 1; }
-  60% { transform: scale(1.1) rotate(-1deg); }
+  0% { transform: scale(1.6) rotate(-12deg); opacity: 0.3; }
+  40% { transform: scale(0.88) rotate(2deg); opacity: 1; }
+  60% { transform: scale(1.08) rotate(-1deg); }
   100% { transform: scale(1) rotate(0deg); }
 }
-
 .station-row.visited .stamp-btn.stamped {
-  box-shadow: 0 0 0 2px rgba(192,57,43,0.15);
+  box-shadow: 0 2px 8px rgba(26,107,74,0.15);
 }
 
 .station-info { flex: 1; }
-.station-name { font-weight: 700; font-size: 0.95rem; }
-.station-meta { font-size: 0.82rem; color: var(--text-sub); margin-top: 2px; }
-.visited-date { font-size: 0.82rem; color: var(--green); margin-top: 3px; font-weight: 600; }
+.station-name { font-weight: 800; font-size: 1.05rem; }
+.station-meta { font-size: 0.85rem; color: var(--text-sub); margin-top: 3px; }
+.visited-date { font-size: 0.85rem; color: var(--primary); margin-top: 4px; font-weight: 700; }
 
 /* 駅アクションボタン */
 .station-actions {

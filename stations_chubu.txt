@@ -1,0 +1,282 @@
+﻿440|新潟県|豊栄|https://www.hokuriku-michinoeki.jp/contents/station/?sta=000001
+441|新潟県|加治川|https://www.hokuriku-michinoeki.jp/contents/station/?sta=000002
+442|新潟県|神林|https://www.hokuriku-michinoeki.jp/contents/station/?sta=000003
+443|新潟県|朝日|https://www.hokuriku-michinoeki.jp/contents/station/?sta=000004
+444|新潟県|新潟ふるさと村|https://www.hokuriku-michinoeki.jp/contents/station/?sta=000005
+445|新潟県|能生|https://www.hokuriku-michinoeki.jp/contents/station/?sta=000006
+446|新潟県|みかわ|https://www.hokuriku-michinoeki.jp/contents/station/?sta=000007
+447|新潟県|関川|https://www.hokuriku-michinoeki.jp/contents/station/?sta=000008
+448|新潟県|ちぢみの里おぢや|https://www.hokuriku-michinoeki.jp/contents/station/?sta=000009
+449|新潟県|阿賀の里|https://www.hokuriku-michinoeki.jp/contents/station/?sta=000010
+450|新潟県|笹川流れ|https://www.hokuriku-michinoeki.jp/contents/station/?sta=000011
+451|新潟県|越後出雲崎　天領の里|https://www.hokuriku-michinoeki.jp/contents/station/?sta=000012
+452|新潟県|胎内|https://www.hokuriku-michinoeki.jp/contents/station/?sta=000013
+453|新潟県|ゆのたに|https://www.hokuriku-michinoeki.jp/contents/station/?sta=000014
+454|新潟県|良寛の里　わしま|https://www.hokuriku-michinoeki.jp/contents/station/?sta=000015
+455|新潟県|まつだいふるさと会館|https://www.hokuriku-michinoeki.jp/contents/station/?sta=000016
+456|新潟県|越後市振の関|https://www.hokuriku-michinoeki.jp/contents/station/?sta=000017
+457|新潟県|クロス１０十日町|https://www.hokuriku-michinoeki.jp/contents/station/?sta=000018
+458|新潟県|漢学の里しただ|https://www.hokuriku-michinoeki.jp/contents/station/?sta=000019
+459|新潟県|風の丘米山|https://www.hokuriku-michinoeki.jp/contents/station/?sta=000020
+460|新潟県|いりひろせ|https://www.hokuriku-michinoeki.jp/contents/station/?sta=000021
+461|新潟県|西山ふるさと公苑|https://www.hokuriku-michinoeki.jp/contents/station/?sta=000022
+462|新潟県|あらい|https://www.hokuriku-michinoeki.jp/contents/station/?sta=000023
+463|新潟県|Ｒ２９０とちお|https://www.hokuriku-michinoeki.jp/contents/station/?sta=000024
+464|新潟県|あいぽーと佐渡|https://www.hokuriku-michinoeki.jp/contents/station/?sta=000025
+465|新潟県|親不知ピアパーク|https://www.hokuriku-michinoeki.jp/contents/station/?sta=000026
+466|新潟県|瀬替えの郷せんだ|https://www.hokuriku-michinoeki.jp/contents/station/?sta=000027
+467|新潟県|雪のふるさと　やすづか|https://www.hokuriku-michinoeki.jp/contents/station/?sta=000028
+468|新潟県|じょんのびの里高柳|https://www.hokuriku-michinoeki.jp/contents/station/?sta=000029
+469|新潟県|花夢里にいつ|https://www.hokuriku-michinoeki.jp/contents/station/?sta=000030
+470|新潟県|国上|https://www.hokuriku-michinoeki.jp/contents/station/?sta=000031
+471|新潟県|越後川口|https://www.hokuriku-michinoeki.jp/contents/station/?sta=000032
+472|新潟県|よしかわ杜氏の郷|https://www.hokuriku-michinoeki.jp/contents/station/?sta=000033
+473|新潟県|うみてらす名立|https://www.hokuriku-michinoeki.jp/contents/station/?sta=000034
+474|新潟県|南魚沼 雪あかり|https://www.hokuriku-michinoeki.jp/contents/station/?sta=000035
+475|新潟県|パティオにいがた|https://www.hokuriku-michinoeki.jp/contents/station/?sta=000036
+476|新潟県|みつまた|https://www.hokuriku-michinoeki.jp/contents/station/?sta=000037
+477|新潟県|燕三条地場産センター|https://www.hokuriku-michinoeki.jp/contents/station/?sta=000038
+478|新潟県|庭園の郷 保内|https://www.hokuriku-michinoeki.jp/contents/station/?sta=000077
+479|新潟県|たがみ|https://www.hokuriku-michinoeki.jp/contents/station/?sta=000081
+480|新潟県|ながおか花火館|https://www.hokuriku-michinoeki.jp/contents/station/?sta=000082
+481|新潟県|あがの|https://www.hokuriku-michinoeki.jp/contents/station/?sta=000084
+482|富山県|細入|https://www.hokuriku-michinoeki.jp/contents/station/?sta=000039
+483|富山県|砺波|https://www.hokuriku-michinoeki.jp/contents/station/?sta=000040
+484|富山県|上平|https://www.hokuriku-michinoeki.jp/contents/station/?sta=000041
+485|富山県|利賀|https://www.hokuriku-michinoeki.jp/contents/station/?sta=000042
+486|富山県|井波|https://www.hokuriku-michinoeki.jp/contents/station/?sta=000043
+487|富山県|福光|https://www.hokuriku-michinoeki.jp/contents/station/?sta=000044
+488|富山県|たいら|https://www.hokuriku-michinoeki.jp/contents/station/?sta=000045
+489|富山県|庄川|https://www.hokuriku-michinoeki.jp/contents/station/?sta=000046
+490|富山県|うなづき|https://www.hokuriku-michinoeki.jp/contents/station/?sta=000047
+491|富山県|まるごと射水|https://www.hokuriku-michinoeki.jp/contents/station/?sta=000048
+492|富山県|ウェーブパークなめりかわ|https://www.hokuriku-michinoeki.jp/contents/station/?sta=000049
+493|富山県|氷見|https://www.hokuriku-michinoeki.jp/contents/station/?sta=000050
+494|富山県|万葉の里　高岡|https://www.hokuriku-michinoeki.jp/contents/station/?sta=000051
+495|富山県|メルヘンおやべ|https://www.hokuriku-michinoeki.jp/contents/station/?sta=000052
+496|富山県|雨晴|https://www.hokuriku-michinoeki.jp/contents/station/?sta=000079
+497|富山県|KOKOくろべ|https://www.hokuriku-michinoeki.jp/contents/station/?sta=000083
+498|石川県|千枚田ポケットパーク|https://www.hokuriku-michinoeki.jp/contents/station/?sta=000053
+499|石川県|高松|https://www.hokuriku-michinoeki.jp/contents/station/?sta=000054
+500|石川県|いおり|https://www.hokuriku-michinoeki.jp/contents/station/?sta=000055
+501|石川県|桜峠|https://www.hokuriku-michinoeki.jp/contents/station/?sta=000056
+502|石川県|しらやまさん|https://www.hokuriku-michinoeki.jp/contents/station/?sta=000057
+503|石川県|なかじまロマン峠|https://www.hokuriku-michinoeki.jp/contents/station/?sta=000058
+504|石川県|赤神|https://www.hokuriku-michinoeki.jp/contents/station/?sta=000059
+505|石川県|とぎ海街道|https://www.hokuriku-michinoeki.jp/contents/station/?sta=000060
+506|石川県|輪島|https://www.hokuriku-michinoeki.jp/contents/station/?sta=000061
+507|石川県|ころ柿の里しか|https://www.hokuriku-michinoeki.jp/contents/station/?sta=000062
+508|石川県|瀬女|https://www.hokuriku-michinoeki.jp/contents/station/?sta=000063
+509|石川県|一向一揆の里|https://www.hokuriku-michinoeki.jp/contents/station/?sta=000064
+510|石川県|のと里山空港|https://www.hokuriku-michinoeki.jp/contents/station/?sta=000065
+511|石川県|倶利伽羅　源平の郷|https://www.hokuriku-michinoeki.jp/contents/station/?sta=000066
+512|石川県|山中温泉　ゆけむり健康村|https://www.hokuriku-michinoeki.jp/contents/station/?sta=000067
+513|石川県|のとじま|https://www.hokuriku-michinoeki.jp/contents/station/?sta=000068
+514|石川県|すず塩田村|https://www.hokuriku-michinoeki.jp/contents/station/?sta=000069
+515|石川県|内灘サンセットパーク|https://www.hokuriku-michinoeki.jp/contents/station/?sta=000070
+516|石川県|能登食祭市場|https://www.hokuriku-michinoeki.jp/contents/station/?sta=000071
+517|石川県|こまつ木場潟|https://www.hokuriku-michinoeki.jp/contents/station/?sta=000072
+518|石川県|狼煙|https://www.hokuriku-michinoeki.jp/contents/station/?sta=000073
+519|石川県|すずなり|https://www.hokuriku-michinoeki.jp/contents/station/?sta=000074
+520|石川県|織姫の里なかのと|https://www.hokuriku-michinoeki.jp/contents/station/?sta=000075
+521|石川県|あなみず|https://www.hokuriku-michinoeki.jp/contents/station/?sta=000076
+522|石川県|のと千里浜|https://www.hokuriku-michinoeki.jp/contents/station/?sta=000078
+523|石川県|めぐみ白山|https://www.hokuriku-michinoeki.jp/contents/station/?sta=000080
+524|福井県|河野|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/fukui/kouno.html
+525|福井県|九頭竜|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/fukui/kuzuryu.html
+526|福井県|パークイン丹生ヶ丘|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/fukui/parkinnyugaoka.html
+527|福井県|名田庄|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/fukui/natasyou.html
+528|福井県|みくに|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/fukui/mikuni.html
+529|福井県|若狭熊川宿|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/fukui/wakasakumakawasyuku.html
+530|福井県|さかい|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/fukui/sakai.html
+531|福井県|シーサイド高浜|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/fukui/seasidetakahama.html
+532|福井県|若狭おばま|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/fukui/wakasaobama.html
+533|福井県|うみんぴあ大飯|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/fukui/uminpiaooi.html
+534|福井県|西山公園|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/fukui/nisiyamakouen.html
+535|福井県|越前|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/fukui/echizen.html
+536|福井県|三方五湖|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/fukui/mikatagoko.html
+537|福井県|一乗谷あさくら水の駅|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/fukui/ichijoudaniasakura.html
+538|福井県|禅の里|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/fukui/zennosato.html
+539|福井県|恐竜渓谷かつやま|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/fukui/kyouryukeikokukatsuyama.html
+540|福井県|越前おおの荒島の郷|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/fukui/echizenonoarashimanosato.html
+541|福井県|南えちぜん山海里|https://www.kkr.mlit.go.jp/road/michi_no_eki/contents/fukui/minamiechizensankairi.html
+542|福井県|越前たけふ|
+543|福井県|蓮如の里あわら|
+544|福井県|若狭美浜はまびより|
+545|山梨県|とみざわ|https://www.ktr.mlit.go.jp/road/chiiki/road_chiiki00000250.html
+546|山梨県|甲斐大和|https://www.ktr.mlit.go.jp/road/chiiki/road_chiiki00000251.html
+547|山梨県|なるさわ|https://www.ktr.mlit.go.jp/road/chiiki/road_chiiki00000252.html
+548|山梨県|みとみ|https://www.ktr.mlit.go.jp/road/chiiki/road_chiiki00000253.html
+549|山梨県|しもべ|https://www.ktr.mlit.go.jp/road/chiiki/road_chiiki00000254.html
+550|山梨県|とよとみ|https://www.ktr.mlit.go.jp/road/chiiki/road_chiiki00000255.html
+551|山梨県|にらさき|https://www.ktr.mlit.go.jp/road/chiiki/road_chiiki00000256.html
+552|山梨県|どうし|https://www.ktr.mlit.go.jp/road/chiiki/road_chiiki00000257.html
+553|山梨県|かつやま|https://www.ktr.mlit.go.jp/road/chiiki/road_chiiki00000258.html
+554|山梨県|花かげの郷まきおか|https://www.ktr.mlit.go.jp/road/chiiki/road_chiiki00000259.html
+555|山梨県|はくしゅう|https://www.ktr.mlit.go.jp/road/chiiki/road_chiiki00000260.html
+556|山梨県|富士吉田|https://www.ktr.mlit.go.jp/road/chiiki/road_chiiki00000261.html
+557|山梨県|南きよさと|https://www.ktr.mlit.go.jp/road/chiiki/road_chiiki00000262.html
+558|山梨県|しらね|https://www.ktr.mlit.go.jp/road/chiiki/road_chiiki00000263.html
+559|山梨県|こぶちさわ|https://www.ktr.mlit.go.jp/road/chiiki/road_chiiki00000264.html
+560|山梨県|みのぶ|https://www.ktr.mlit.go.jp/road/chiiki/road_chiiki00000265.html
+561|山梨県|たばやま|https://www.ktr.mlit.go.jp/road/chiiki/road_chiiki00000266.html
+562|山梨県|富士川|https://www.ktr.mlit.go.jp/road/chiiki/road_chiiki00000267.html
+563|山梨県|こすげ|https://www.ktr.mlit.go.jp/road/chiiki/road_chiiki00000268.html
+564|山梨県|つる|https://www.ktr.mlit.go.jp/road/chiiki/road_chiiki00000269.html
+565|山梨県|なんぶ|http://www.ktr.mlit.go.jp/road/chiiki/road_chiiki00000270.html
+566|山梨県|にしじま和紙の里かみすきパーク|
+567|長野県|信州新町|https://www.ktr.mlit.go.jp/road/chiiki/road_chiiki00000271.html
+568|長野県|長野市大岡特産センター|https://www.ktr.mlit.go.jp/road/chiiki/road_chiiki00000272.html
+569|長野県|信越さかえ|https://www.ktr.mlit.go.jp/road/chiiki/road_chiiki00000273.html
+570|長野県|小坂田公園|https://www.ktr.mlit.go.jp/road/chiiki/road_chiiki00000274.html
+571|長野県|池田|https://www.ktr.mlit.go.jp/road/chiiki/road_chiiki00000275.html
+572|長野県|中条|https://www.ktr.mlit.go.jp/road/chiiki/road_chiiki00000276.html
+573|長野県|みまき|https://www.ktr.mlit.go.jp/road/chiiki/road_chiiki00000277.html
+574|長野県|白馬|https://www.ktr.mlit.go.jp/road/chiiki/road_chiiki00000278.html
+575|長野県|ふるさと豊田|https://www.ktr.mlit.go.jp/road/chiiki/road_chiiki00000279.html
+576|長野県|マルメロの駅ながと|https://www.ktr.mlit.go.jp/road/chiiki/road_chiiki00000280.html
+577|長野県|ほっとぱ～く・浅科|https://www.ktr.mlit.go.jp/road/chiiki/road_chiiki00000281.html
+578|長野県|アルプス安曇野　ほりがねの里|https://www.ktr.mlit.go.jp/road/chiiki/road_chiiki00000282.html
+579|長野県|安曇野松川|https://www.ktr.mlit.go.jp/road/chiiki/road_chiiki00000283.html
+580|長野県|風穴の里|https://www.ktr.mlit.go.jp/road/chiiki/road_chiiki00000284.html
+581|長野県|北信州やまのうち|https://www.ktr.mlit.go.jp/road/chiiki/road_chiiki00000285.html
+582|長野県|上田　道と川の駅|https://www.ktr.mlit.go.jp/road/chiiki/road_chiiki00000286.html
+583|長野県|信州蔦木宿|https://www.ktr.mlit.go.jp/road/chiiki/road_chiiki00000287.html
+584|長野県|しなの|https://www.ktr.mlit.go.jp/road/chiiki/road_chiiki00000288.html
+585|長野県|小谷|https://www.ktr.mlit.go.jp/road/chiiki/road_chiiki00000289.html
+586|長野県|さかきた|https://www.ktr.mlit.go.jp/road/chiiki/road_chiiki00000290.html
+587|長野県|ぽかぽかランド美麻|https://www.ktr.mlit.go.jp/road/chiiki/road_chiiki00000291.html
+588|長野県|オアシスおぶせ|https://www.ktr.mlit.go.jp/road/chiiki/road_chiiki00000292.html
+589|長野県|雷電くるみの里|https://www.ktr.mlit.go.jp/road/chiiki/road_chiiki00000293.html
+590|長野県|花の駅　千曲川|https://www.ktr.mlit.go.jp/road/chiiki/road_chiiki00000294.html
+591|長野県|あおき|https://www.ktr.mlit.go.jp/road/chiiki/road_chiiki00000295.html
+592|長野県|おがわ|https://www.ktr.mlit.go.jp/road/chiiki/road_chiiki00000296.html
+593|長野県|美ヶ原高原|https://www.ktr.mlit.go.jp/road/chiiki/road_chiiki00000297.html
+594|長野県|今井　恵みの里|https://www.ktr.mlit.go.jp/road/chiiki/road_chiiki00000298.html
+595|長野県|FARMUS 木島平|https://www.ktr.mlit.go.jp/road/chiiki/road_chiiki00000299.html
+596|長野県|ヘルシーテラス佐久南|https://www.ktr.mlit.go.jp/road/chiiki/road_chiiki00000300.html
+597|長野県|女神の里たてしな|https://www.ktr.mlit.go.jp/road/chiiki/road_chiiki00000301.html
+598|長野県|いくさかの郷|https://www.ktr.mlit.go.jp/road/chiiki/road_chiiki00000336.html
+599|長野県|野沢温泉|https://www.ktr.mlit.go.jp/road/chiiki/road_chiiki00000340.html
+600|長野県|ビーナスライン蓼科湖|https://www.ktr.mlit.go.jp/road/chiiki/road_chiiki00000352.html
+601|長野県|和田宿ステーション|https://www.ktr.mlit.go.jp/road/chiiki/road_chiiki00000358.html
+602|長野県|日義木曽駒高原|https://www.cbr.mlit.go.jp/michinoeki/nagano/nagano01.html
+603|長野県|大桑|https://www.cbr.mlit.go.jp/michinoeki/nagano/nagano02.html
+604|長野県|奈良井木曽の大橋|https://www.cbr.mlit.go.jp/michinoeki/nagano/nagano03.html
+605|長野県|信州平谷|https://www.cbr.mlit.go.jp/michinoeki/nagano/nagano04.html
+606|長野県|信濃路下條|https://www.cbr.mlit.go.jp/michinoeki/nagano/nagano05.html
+607|長野県|南アルプスむら長谷|https://www.cbr.mlit.go.jp/michinoeki/nagano/nagano06.html
+608|長野県|木曽ならかわ|https://www.cbr.mlit.go.jp/michinoeki/nagano/nagano07.html
+609|長野県|三岳|https://www.cbr.mlit.go.jp/michinoeki/nagano/nagano08.html
+610|長野県|信州新野千石平|https://www.cbr.mlit.go.jp/michinoeki/nagano/nagano09.html
+611|長野県|花の里いいじま|https://www.cbr.mlit.go.jp/michinoeki/nagano/nagano10.html
+612|長野県|遠山郷|https://www.cbr.mlit.go.jp/michinoeki/nagano/nagano11.html
+613|長野県|木曽福島|https://www.cbr.mlit.go.jp/michinoeki/nagano/nagano12.html
+614|長野県|木曽川源流の里　きそむら|https://www.cbr.mlit.go.jp/michinoeki/nagano/nagano13.html
+615|長野県|田切の里|https://www.cbr.mlit.go.jp/michinoeki/nagano/nagano14.html
+616|長野県|南信州とよおかマルシェ|https://www.cbr.mlit.go.jp/michinoeki/nagano/nagano15.html
+617|長野県|大芝高原|https://www.cbr.mlit.go.jp/michinoeki/nagano/nagano16.html
+618|長野県|南信州　うるぎ|https://www.cbr.mlit.go.jp/michinoeki/nagano/nagano17.html
+619|長野県|歌舞伎の里大鹿|https://www.cbr.mlit.go.jp/michinoeki/nagano/nagano18.html
+620|長野県|八千穂高原|
+621|岐阜県|美並|https://www.cbr.mlit.go.jp/michinoeki/gifu/gifu01.html
+622|岐阜県|パスカル清見|https://www.cbr.mlit.go.jp/michinoeki/gifu/gifu02.html
+623|岐阜県|明宝|https://www.cbr.mlit.go.jp/michinoeki/gifu/gifu03.html
+624|岐阜県|花街道付知|https://www.cbr.mlit.go.jp/michinoeki/gifu/gifu04.html
+625|岐阜県|美濃白川|https://www.cbr.mlit.go.jp/michinoeki/gifu/gifu05.html
+626|岐阜県|ラステンほらど|https://www.cbr.mlit.go.jp/michinoeki/gifu/gifu06.html
+627|岐阜県|白山文化の里長滝|https://www.cbr.mlit.go.jp/michinoeki/gifu/gifu07.html
+628|岐阜県|奥飛騨温泉郷上宝|https://www.cbr.mlit.go.jp/michinoeki/gifu/gifu08.html
+629|岐阜県|賤母|https://www.cbr.mlit.go.jp/michinoeki/gifu/gifu09.html
+630|岐阜県|ロック・ガーデン　ひちそう|https://www.cbr.mlit.go.jp/michinoeki/gifu/gifu10.html
+631|岐阜県|星のふる里　ふじはし|https://www.cbr.mlit.go.jp/michinoeki/gifu/gifu11.html
+632|岐阜県|白川郷|https://www.cbr.mlit.go.jp/michinoeki/gifu/gifu12.html
+633|岐阜県|平成|https://www.cbr.mlit.go.jp/michinoeki/gifu/gifu13.html
+634|岐阜県|アルプ飛騨古川|https://www.cbr.mlit.go.jp/michinoeki/gifu/gifu14.html
+635|岐阜県|飛騨金山ぬく森の里温泉|https://www.cbr.mlit.go.jp/michinoeki/gifu/gifu15.html
+636|岐阜県|上矢作ラ・フォーレ福寿の里|https://www.cbr.mlit.go.jp/michinoeki/gifu/gifu16.html
+637|岐阜県|モンデウス飛騨位山|https://www.cbr.mlit.go.jp/michinoeki/gifu/gifu17.html
+638|岐阜県|南飛騨小坂|https://www.cbr.mlit.go.jp/michinoeki/gifu/gifu18.html
+639|岐阜県|夢さんさん谷汲|https://www.cbr.mlit.go.jp/michinoeki/gifu/gifu19.html
+640|岐阜県|土岐美濃焼街道|https://www.cbr.mlit.go.jp/michinoeki/gifu/gifu20.html
+641|岐阜県|富有柿の里いとぬき|https://www.cbr.mlit.go.jp/michinoeki/gifu/gifu21.html
+642|岐阜県|ななもり清見|https://www.cbr.mlit.go.jp/michinoeki/gifu/gifu22.html
+643|岐阜県|きりら坂下|https://www.cbr.mlit.go.jp/michinoeki/gifu/gifu23.html
+644|岐阜県|クレール平田|https://www.cbr.mlit.go.jp/michinoeki/gifu/gifu24.html
+645|岐阜県|馬瀬　美輝の里|https://www.cbr.mlit.go.jp/michinoeki/gifu/gifu25.html
+646|岐阜県|飛騨街道　なぎさ|https://www.cbr.mlit.go.jp/michinoeki/gifu/gifu26.html
+647|岐阜県|ひだ朝日村|https://www.cbr.mlit.go.jp/michinoeki/gifu/gifu27.html
+648|岐阜県|そばの郷　らっせぃみさと|https://www.cbr.mlit.go.jp/michinoeki/gifu/gifu28.html
+649|岐阜県|織部の里・もとす|https://www.cbr.mlit.go.jp/michinoeki/gifu/gifu29.html
+650|岐阜県|飛騨たかね工房|https://www.cbr.mlit.go.jp/michinoeki/gifu/gifu30.html
+651|岐阜県|大日岳|https://www.cbr.mlit.go.jp/michinoeki/gifu/gifu31.html
+652|岐阜県|桜の郷　荘川|https://www.cbr.mlit.go.jp/michinoeki/gifu/gifu32.html
+653|岐阜県|むげ川|https://www.cbr.mlit.go.jp/michinoeki/gifu/gifu33.html
+654|岐阜県|古今伝授の里やまと|https://www.cbr.mlit.go.jp/michinoeki/gifu/gifu34.html
+655|岐阜県|みのかも|https://www.cbr.mlit.go.jp/michinoeki/gifu/gifu35.html
+656|岐阜県|茶の里東白川|https://www.cbr.mlit.go.jp/michinoeki/gifu/gifu36.html
+657|岐阜県|和良|https://www.cbr.mlit.go.jp/michinoeki/gifu/gifu37.html
+658|岐阜県|うすずみ桜の里・ねお|https://www.cbr.mlit.go.jp/michinoeki/gifu/gifu38.html
+659|岐阜県|志野・織部|https://www.cbr.mlit.go.jp/michinoeki/gifu/gifu39.html
+660|岐阜県|加子母|https://www.cbr.mlit.go.jp/michinoeki/gifu/gifu40.html
+661|岐阜県|夜叉ヶ池の里さかうち|https://www.cbr.mlit.go.jp/michinoeki/gifu/gifu41.html
+662|岐阜県|おばあちゃん市・山岡|https://www.cbr.mlit.go.jp/michinoeki/gifu/gifu42.html
+663|岐阜県|月見の里　南濃|https://www.cbr.mlit.go.jp/michinoeki/gifu/gifu44.html
+664|岐阜県|柳津|https://www.cbr.mlit.go.jp/michinoeki/gifu/gifu45.html
+665|岐阜県|五木のやかた・かわうえ|https://www.cbr.mlit.go.jp/michinoeki/gifu/gifu46.html
+666|岐阜県|宙ドーム・神岡|https://www.cbr.mlit.go.jp/michinoeki/gifu/gifu47.html
+667|岐阜県|白尾ふれあいパーク|https://www.cbr.mlit.go.jp/michinoeki/gifu/gifu48.html
+668|岐阜県|美濃にわか茶屋|https://www.cbr.mlit.go.jp/michinoeki/gifu/gifu49.html
+669|岐阜県|飛騨白山|https://www.cbr.mlit.go.jp/michinoeki/gifu/gifu50.html
+670|岐阜県|半布里の郷　とみか|https://www.cbr.mlit.go.jp/michinoeki/gifu/gifu51.html
+671|岐阜県|可児ッテ「ＣＡＮＩＴＴＥ」|https://www.cbr.mlit.go.jp/michinoeki/gifu/gifu52.html
+672|岐阜県|池田温泉|https://www.cbr.mlit.go.jp/michinoeki/gifu/gifu53.html
+673|岐阜県|清流白川　クオーレの里|https://www.cbr.mlit.go.jp/michinoeki/gifu/gifu54.html
+674|岐阜県|清流の里しろとり|https://www.cbr.mlit.go.jp/michinoeki/gifu/gifu55.html
+675|岐阜県|パレットピアおおの|https://www.cbr.mlit.go.jp/michinoeki/gifu/gifu56.html
+676|静岡県|富士|https://www.cbr.mlit.go.jp/michinoeki/shizuoka/shizuoka01.html
+677|静岡県|くんま水車の里|https://www.cbr.mlit.go.jp/michinoeki/shizuoka/shizuoka02.html
+678|静岡県|花の三聖苑伊豆松崎|https://www.cbr.mlit.go.jp/michinoeki/shizuoka/shizuoka03.html
+679|静岡県|宇津ノ谷峠|静岡側 ： https://www.cbr.mlit.go.jp/michinoeki/shizuoka/shizuoka04_1.html 藤枝側 ： https://www.cbr.mlit.go.jp/michinoeki/shizuoka/shizuoka04_2.html
+680|静岡県|いっぷく処横川|https://www.cbr.mlit.go.jp/michinoeki/shizuoka/shizuoka05.html
+681|静岡県|フォーレなかかわね茶茗舘|https://www.cbr.mlit.go.jp/michinoeki/shizuoka/shizuoka06.html
+682|静岡県|天城越え|https://www.cbr.mlit.go.jp/michinoeki/shizuoka/shizuoka07.html
+683|静岡県|奥大井音戯の郷|https://www.cbr.mlit.go.jp/michinoeki/shizuoka/shizuoka08.html
+684|静岡県|朝霧高原|https://www.cbr.mlit.go.jp/michinoeki/shizuoka/shizuoka09.html
+685|静岡県|川根温泉|https://www.cbr.mlit.go.jp/michinoeki/shizuoka/shizuoka10.html
+686|静岡県|富士川楽座|https://www.cbr.mlit.go.jp/michinoeki/shizuoka/shizuoka11.html
+687|静岡県|玉露の里|https://www.cbr.mlit.go.jp/michinoeki/shizuoka/shizuoka12.html
+688|静岡県|天竜相津　花桃の里|https://www.cbr.mlit.go.jp/michinoeki/shizuoka/shizuoka13.html
+689|静岡県|伊東マリンタウン|https://www.cbr.mlit.go.jp/michinoeki/shizuoka/shizuoka14.html
+690|静岡県|開国下田みなと|https://www.cbr.mlit.go.jp/michinoeki/shizuoka/shizuoka15.html
+691|静岡県|掛川|https://www.cbr.mlit.go.jp/michinoeki/shizuoka/shizuoka16.html
+692|静岡県|ふじおやま|https://www.cbr.mlit.go.jp/michinoeki/shizuoka/shizuoka17.html
+693|静岡県|潮見坂|https://www.cbr.mlit.go.jp/michinoeki/shizuoka/shizuoka18.html
+694|静岡県|伊豆のへそ|https://www.cbr.mlit.go.jp/michinoeki/shizuoka/shizuoka19.html
+695|静岡県|下賀茂温泉　湯の花|https://www.cbr.mlit.go.jp/michinoeki/shizuoka/shizuoka20.html
+696|静岡県|すばしり|https://www.cbr.mlit.go.jp/michinoeki/shizuoka/shizuoka21.html
+697|静岡県|風のマルシェ　御前崎|https://www.cbr.mlit.go.jp/michinoeki/shizuoka/shizuoka22.html
+698|静岡県|くるら戸田|https://www.cbr.mlit.go.jp/michinoeki/shizuoka/shizuoka23.html
+699|静岡県|伊豆ゲートウェイ函南|https://www.cbr.mlit.go.jp/michinoeki/shizuoka/shizuoka24.html
+700|静岡県|伊豆月ケ瀬|https://www.cbr.mlit.go.jp/michinoeki/shizuoka/shizuoka25.html
+701|静岡県|そらっと牧之原|
+702|静岡県|ゆとりえせとや|
+703|愛知県|豊根グリーンポート宮嶋|https://www.cbr.mlit.go.jp/michinoeki/aichi/aichi01.html
+704|愛知県|鳳来三河三石|https://www.cbr.mlit.go.jp/michinoeki/aichi/aichi02.html
+705|愛知県|田原めっくんはうす|https://www.cbr.mlit.go.jp/michinoeki/aichi/aichi03.html
+706|愛知県|伊良湖クリスタルポルト|https://www.cbr.mlit.go.jp/michinoeki/aichi/aichi04.html
+707|愛知県|つぐ高原グリーンパーク|https://www.cbr.mlit.go.jp/michinoeki/aichi/aichi05.html
+708|愛知県|どんぐりの里　いなぶ|https://www.cbr.mlit.go.jp/michinoeki/aichi/aichi06.html
+709|愛知県|アグリステーションなぐら|https://www.cbr.mlit.go.jp/michinoeki/aichi/aichi07.html
+710|愛知県|デンパーク安城|https://www.cbr.mlit.go.jp/michinoeki/aichi/aichi08.html
+711|愛知県|つくで手作り村|https://www.cbr.mlit.go.jp/michinoeki/aichi/aichi09.html
+712|愛知県|ふれあいの里HASUパーク|https://www.cbr.mlit.go.jp/michinoeki/aichi/aichi10.html
+713|愛知県|あかばねロコステーション|https://www.cbr.mlit.go.jp/michinoeki/aichi/aichi11.html
+714|愛知県|筆柿の里・幸田|https://www.cbr.mlit.go.jp/michinoeki/aichi/aichi12.html
+715|愛知県|にしお岡ノ山|https://www.cbr.mlit.go.jp/michinoeki/aichi/aichi13.html
+716|愛知県|瀬戸しなの|https://www.cbr.mlit.go.jp/michinoeki/aichi/aichi14.html
+717|愛知県|藤川宿|https://www.cbr.mlit.go.jp/michinoeki/aichi/aichi15.html
+718|愛知県|もっくる新城|https://www.cbr.mlit.go.jp/michinoeki/aichi/aichi16.html
+719|愛知県|とよはし|https://www.cbr.mlit.go.jp/michinoeki/aichi/aichi17.html
+720|愛知県|したら|https://www.cbr.mlit.go.jp/michinoeki/aichi/aichi18.html
+721|愛知県|マチテラス日進|

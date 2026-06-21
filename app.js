@@ -124,6 +124,44 @@ function getStationSpecialty(stationId, pref) {
   return pool[stationId % pool.length];
 }
 
+// ===== ジブリ風スタンプ絵 =====
+const STAMP_SCENES = {
+  "北海道":"🌲🦌","青森県":"🍎🏔️","岩手県":"⛰️🌾","宮城県":"🌊🐄","秋田県":"🌾🏔️",
+  "山形県":"🍒⛰️","福島県":"🍑🌸","茨城県":"🌹🌊","栃木県":"🍓⛰️","群馬県":"♨️🏔️",
+  "埼玉県":"🌸🏯","千葉県":"🌊🥜","東京都":"🗼🌳","神奈川県":"⛵🌊","新潟県":"🌾🏔️",
+  "富山県":"🏔️🌷","石川県":"🌊🎣","福井県":"🦀🌊","山梨県":"🍇🗻","長野県":"🏔️🌲",
+  "岐阜県":"🏯🌲","静岡県":"🗻🍵","愛知県":"🌸🏯","三重県":"🦐🌊","滋賀県":"🛶🌿",
+  "京都府":"⛩️🍁","大阪府":"🏙️🌉","兵庫県":"🐮🌸","奈良県":"🦌🌸","和歌山県":"🍊🌊",
+  "鳥取県":"🏜️🌊","島根県":"⛩️🌿","岡山県":"🍑🌸","広島県":"🍁⛩️","山口県":"🐡🌊",
+  "徳島県":"🌀🌊","香川県":"🍜🫒","愛媛県":"🍊🌸","高知県":"🐋🌊","福岡県":"🍜🌸",
+  "佐賀県":"🏺🌾","長崎県":"⛪🌊","熊本県":"🌋🐻","大分県":"♨️🌲","宮崎県":"🌴🌺",
+  "鹿児島県":"🌋🌺","沖縄県":"🌺🏖️"
+};
+
+const STAMP_KEYWORDS = [
+  {words:["温泉","湯","spa"],art:"♨️🌫️"},
+  {words:["山","峠","高原","岳"],art:"⛰️🌲"},
+  {words:["海","浜","港","潮","岬","灯台"],art:"🌊🐚"},
+  {words:["川","渓","滝","清流","水"],art:"💧🌿"},
+  {words:["湖","池","沼"],art:"🛶🌅"},
+  {words:["花","桜","梅","菜の花","ひまわり","ラベンダー"],art:"🌸🌿"},
+  {words:["森","林","杉","木"],art:"🌲🍃"},
+  {words:["田","里","棚田","農"],art:"🌾🏡"},
+  {words:["雪","氷","スキー"],art:"❄️🏔️"},
+  {words:["島","諸島"],art:"🏝️🌺"},
+  {words:["城","館"],art:"🏯🍁"},
+  {words:["風","空","星","月"],art:"🌙✨"},
+];
+
+function getStampArt(station){
+  for(const kw of STAMP_KEYWORDS){
+    if(kw.words.some(w=>station.name.includes(w)||station.location.includes(w))){
+      return kw.art;
+    }
+  }
+  return STAMP_SCENES[station.pref]||"🌿🛤️";
+}
+
 const REGION_COLORS = {
   "北海道":{key:"hokkaido"},"東北":{key:"tohoku"},"関東":{key:"kanto"},"中部":{key:"chubu"},
   "近畿":{key:"kinki"},"中国":{key:"chugoku"},"四国":{key:"shikoku"},"九州沖縄":{key:"kyushu"}
@@ -456,9 +494,11 @@ function renderList(s){
       const info=getVisitInfo(st.id), isV=!!(info&&info.visited);
       const row=document.createElement("div"); row.className="station-row"+(isV?" visited":"");
 
+      const stampArt=getStampArt(st);
       const stampBtn=document.createElement("button");
       stampBtn.className="stamp-btn"+(isV?" stamped":"");
       stampBtn.setAttribute("aria-label", isV?"スタンプ済み":"スタンプを押す");
+      if(isV) stampBtn.setAttribute("data-art", stampArt);
 
       stampBtn.addEventListener("click",()=>{
         if(isV){
