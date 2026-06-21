@@ -1,0 +1,52 @@
+{
+  "1": {
+    "status": "done",
+    "file": "stamp_1.png",
+    "ts": "2026-06-21T05:15:29.589Z"
+  },
+  "2": {
+    "status": "done",
+    "file": "stamp_2.png",
+    "ts": "2026-06-21T05:16:14.523Z"
+  },
+  "3": {
+    "status": "done",
+    "file": "stamp_3.png",
+    "ts": "2026-06-21T05:16:59.126Z"
+  },
+  "4": {
+    "status": "done",
+    "file": "stamp_4.png",
+    "ts": "2026-06-21T05:17:44.056Z"
+  },
+  "5": {
+    "status": "done",
+    "file": "stamp_5.png",
+    "ts": "2026-06-21T05:18:29.009Z"
+  },
+  "6": {
+    "status": "done",
+    "file": "stamp_6.png",
+    "ts": "2026-06-21T05:19:13.985Z"
+  },
+  "7": {
+    "status": "done",
+    "file": "stamp_7.png",
+    "ts": "2026-06-21T05:19:59.093Z"
+  },
+  "8": {
+    "status": "done",
+    "file": "stamp_8.png",
+    "ts": "2026-06-21T05:20:43.944Z"
+  },
+  "9": {
+    "status": "done",
+    "file": "stamp_9.png",
+    "ts": "2026-06-21T05:21:29.101Z"
+  },
+  "10": {
+    "status": "done",
+    "file": "stamp_10.png",
+    "ts": "2026-06-21T05:22:14.131Z"
+  }
+}
