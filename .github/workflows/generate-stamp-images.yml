@@ -20,8 +20,12 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Install sharp
-        run: npm install sharp
+      - name: Install Japanese fonts and sharp
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq fonts-noto-cjk fonts-noto-cjk-extra
+          fc-cache -fv
+          npm install sharp
 
       - name: Generate stamp images
         env:

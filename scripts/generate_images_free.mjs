@@ -77,8 +77,8 @@ function buildNameOverlay(stationName, prefName, width) {
       <rect x="0" y="${bannerY}" width="${width}" height="${bannerH}" fill="rgba(255,252,245,0.88)"/>
       <rect x="0" y="${bannerY}" width="${width}" height="1.5" fill="rgba(139,115,85,0.2)"/>
     </g>
-    <text x="${width/2}" y="${bannerY + 45}" text-anchor="middle" font-size="${fontSize}" font-weight="900" fill="#3A2010" font-family="'Hiragino Mincho Pro','Yu Mincho','Noto Serif JP',serif">${stationName}</text>
-    <text x="${width/2}" y="${bannerY + 72}" text-anchor="middle" font-size="${prefSize}" font-weight="600" fill="#8B7355" font-family="'Hiragino Sans','Noto Sans JP',sans-serif">${prefName}</text>
+    <text x="${width/2}" y="${bannerY + 45}" text-anchor="middle" font-size="${fontSize}" font-weight="900" fill="#3A2010" font-family="'Noto Serif CJK JP','Noto Serif JP','Yu Mincho',serif">${stationName}</text>
+    <text x="${width/2}" y="${bannerY + 72}" text-anchor="middle" font-size="${prefSize}" font-weight="600" fill="#8B7355" font-family="'Noto Sans CJK JP','Noto Sans JP',sans-serif">${prefName}</text>
   </svg>`);
 }
 
