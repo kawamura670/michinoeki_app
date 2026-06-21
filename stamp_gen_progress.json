@@ -1939,8 +1939,9 @@
     "ts": "2026-06-21T11:40:59.876Z"
   },
   "405": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_405.png",
+    "ts": "2026-06-21T12:26:35.980Z"
   },
   "406": {
     "status": "error",
@@ -1963,8 +1964,9 @@
     "error": "HTTP 429"
   },
   "411": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_411.png",
+    "ts": "2026-06-21T12:26:35.981Z"
   },
   "412": {
     "status": "error",
@@ -1976,8 +1978,9 @@
     "ts": "2026-06-21T11:40:32.064Z"
   },
   "414": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_414.png",
+    "ts": "2026-06-21T12:26:35.980Z"
   },
   "415": {
     "status": "done",
@@ -1985,16 +1988,18 @@
     "ts": "2026-06-21T12:23:38.745Z"
   },
   "416": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_416.png",
+    "ts": "2026-06-21T12:26:35.981Z"
   },
   "417": {
     "status": "error",
     "error": "HTTP 429"
   },
   "418": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_418.png",
+    "ts": "2026-06-21T12:26:35.997Z"
   },
   "419": {
     "status": "error",
@@ -2005,8 +2010,9 @@
     "error": "HTTP 429"
   },
   "421": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_421.png",
+    "ts": "2026-06-21T12:26:36.000Z"
   },
   "422": {
     "status": "error",
@@ -2058,8 +2064,9 @@
     "ts": "2026-06-21T11:41:00.554Z"
   },
   "433": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_433.png",
+    "ts": "2026-06-21T12:26:36.013Z"
   },
   "434": {
     "status": "done",
@@ -2071,24 +2078,28 @@
     "error": "HTTP 429"
   },
   "436": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_436.png",
+    "ts": "2026-06-21T12:26:36.008Z"
   },
   "437": {
     "status": "error",
     "error": "HTTP 429"
   },
   "438": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_438.png",
+    "ts": "2026-06-21T12:26:36.024Z"
   },
   "439": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_439.png",
+    "ts": "2026-06-21T12:26:36.024Z"
   },
   "440": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_440.png",
+    "ts": "2026-06-21T12:26:36.022Z"
   },
   "441": {
     "status": "error",
@@ -2099,40 +2110,48 @@
     "error": "HTTP 429"
   },
   "443": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_443.png",
+    "ts": "2026-06-21T12:26:36.038Z"
   },
   "444": {
     "status": "error",
     "error": "HTTP 429"
   },
   "445": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_445.png",
+    "ts": "2026-06-21T12:26:36.044Z"
   },
   "446": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_446.png",
+    "ts": "2026-06-21T12:26:36.050Z"
   },
   "447": {
-    "status": "error",
-    "error": "The operation was aborted due to timeout"
+    "status": "done",
+    "file": "stamp_447.png",
+    "ts": "2026-06-21T12:26:36.041Z"
   },
   "448": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_448.png",
+    "ts": "2026-06-21T12:26:36.056Z"
   },
   "449": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_449.png",
+    "ts": "2026-06-21T12:26:36.058Z"
   },
   "450": {
-    "status": "error",
-    "error": "The operation was aborted due to timeout"
+    "status": "done",
+    "file": "stamp_450.png",
+    "ts": "2026-06-21T12:26:36.067Z"
   },
   "451": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_451.png",
+    "ts": "2026-06-21T12:26:36.074Z"
   },
   "452": {
     "status": "error",
@@ -2143,12 +2162,14 @@
     "error": "HTTP 429"
   },
   "454": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_454.png",
+    "ts": "2026-06-21T12:26:36.070Z"
   },
   "455": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_455.png",
+    "ts": "2026-06-21T12:26:36.076Z"
   },
   "456": {
     "status": "error",
@@ -2160,2456 +2181,3058 @@
     "ts": "2026-06-21T11:42:30.677Z"
   },
   "458": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_458.png",
+    "ts": "2026-06-21T12:26:36.084Z"
   },
   "459": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_459.png",
+    "ts": "2026-06-21T12:26:36.099Z"
   },
   "460": {
     "status": "error",
     "error": "HTTP 429"
   },
   "461": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_461.png",
+    "ts": "2026-06-21T12:26:36.097Z"
   },
   "462": {
     "status": "error",
     "error": "HTTP 429"
   },
   "463": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_463.png",
+    "ts": "2026-06-21T12:26:36.108Z"
   },
   "464": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_464.png",
+    "ts": "2026-06-21T12:26:36.096Z"
   },
   "465": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_465.png",
+    "ts": "2026-06-21T12:26:36.114Z"
   },
   "466": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_466.png",
+    "ts": "2026-06-21T12:26:36.120Z"
   },
   "467": {
     "status": "error",
     "error": "HTTP 429"
   },
   "468": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_468.png",
+    "ts": "2026-06-21T12:26:36.133Z"
   },
   "469": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_469.png",
+    "ts": "2026-06-21T12:26:36.137Z"
   },
   "470": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_470.png",
+    "ts": "2026-06-21T12:26:36.128Z"
   },
   "471": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_471.png",
+    "ts": "2026-06-21T12:26:36.129Z"
   },
   "472": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_472.png",
+    "ts": "2026-06-21T12:26:36.151Z"
   },
   "473": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_473.png",
+    "ts": "2026-06-21T12:26:36.145Z"
   },
   "474": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_474.png",
+    "ts": "2026-06-21T12:26:36.147Z"
   },
   "475": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_475.png",
+    "ts": "2026-06-21T12:26:36.156Z"
   },
   "476": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_476.png",
+    "ts": "2026-06-21T12:26:36.169Z"
   },
   "477": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_477.png",
+    "ts": "2026-06-21T12:26:36.162Z"
   },
   "478": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_478.png",
+    "ts": "2026-06-21T12:26:36.167Z"
   },
   "479": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_479.png",
+    "ts": "2026-06-21T12:26:36.171Z"
   },
   "480": {
-    "status": "error",
-    "error": "The operation was aborted due to timeout"
+    "status": "done",
+    "file": "stamp_480.png",
+    "ts": "2026-06-21T12:26:36.182Z"
   },
   "481": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_481.png",
+    "ts": "2026-06-21T12:26:36.183Z"
   },
   "482": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_482.png",
+    "ts": "2026-06-21T12:26:36.183Z"
   },
   "483": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_483.png",
+    "ts": "2026-06-21T12:26:36.185Z"
   },
   "484": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_484.png",
+    "ts": "2026-06-21T12:26:36.202Z"
   },
   "485": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_485.png",
+    "ts": "2026-06-21T12:26:36.202Z"
   },
   "486": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_486.png",
+    "ts": "2026-06-21T12:26:36.202Z"
   },
   "487": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_487.png",
+    "ts": "2026-06-21T12:26:36.202Z"
   },
   "488": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_488.png",
+    "ts": "2026-06-21T12:26:36.211Z"
   },
   "489": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_489.png",
+    "ts": "2026-06-21T12:26:36.213Z"
   },
   "490": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_490.png",
+    "ts": "2026-06-21T12:26:36.231Z"
   },
   "491": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_491.png",
+    "ts": "2026-06-21T12:26:36.236Z"
   },
   "492": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_492.png",
+    "ts": "2026-06-21T12:26:36.232Z"
   },
   "493": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_493.png",
+    "ts": "2026-06-21T12:26:36.234Z"
   },
   "494": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_494.png",
+    "ts": "2026-06-21T12:26:36.254Z"
   },
   "495": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_495.png",
+    "ts": "2026-06-21T12:26:36.252Z"
   },
   "496": {
-    "status": "error",
-    "error": "The operation was aborted due to timeout"
+    "status": "done",
+    "file": "stamp_496.png",
+    "ts": "2026-06-21T12:26:36.254Z"
   },
   "497": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_497.png",
+    "ts": "2026-06-21T12:26:36.252Z"
   },
   "498": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_498.png",
+    "ts": "2026-06-21T12:26:36.268Z"
   },
   "499": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_499.png",
+    "ts": "2026-06-21T12:26:36.278Z"
   },
   "500": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_500.png",
+    "ts": "2026-06-21T12:26:36.265Z"
   },
   "501": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_501.png",
+    "ts": "2026-06-21T12:26:36.282Z"
   },
   "502": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_502.png",
+    "ts": "2026-06-21T12:26:36.289Z"
   },
   "503": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_503.png",
+    "ts": "2026-06-21T12:26:36.284Z"
   },
   "504": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_504.png",
+    "ts": "2026-06-21T12:26:36.293Z"
   },
   "505": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_505.png",
+    "ts": "2026-06-21T12:26:36.298Z"
   },
   "506": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_506.png",
+    "ts": "2026-06-21T12:26:36.304Z"
   },
   "507": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_507.png",
+    "ts": "2026-06-21T12:26:36.304Z"
   },
   "508": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_508.png",
+    "ts": "2026-06-21T12:26:36.309Z"
   },
   "509": {
     "status": "error",
     "error": "HTTP 429"
   },
   "510": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_510.png",
+    "ts": "2026-06-21T12:26:36.309Z"
   },
   "511": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_511.png",
+    "ts": "2026-06-21T12:26:36.323Z"
   },
   "512": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_512.png",
+    "ts": "2026-06-21T12:26:36.319Z"
   },
   "513": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_513.png",
+    "ts": "2026-06-21T12:26:36.324Z"
   },
   "514": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_514.png",
+    "ts": "2026-06-21T12:26:36.323Z"
   },
   "515": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_515.png",
+    "ts": "2026-06-21T12:26:36.343Z"
   },
   "516": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_516.png",
+    "ts": "2026-06-21T12:26:36.338Z"
   },
   "517": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_517.png",
+    "ts": "2026-06-21T12:26:36.343Z"
   },
   "518": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_518.png",
+    "ts": "2026-06-21T12:26:36.336Z"
   },
   "519": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_519.png",
+    "ts": "2026-06-21T12:26:36.349Z"
   },
   "520": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_520.png",
+    "ts": "2026-06-21T12:26:36.354Z"
   },
   "521": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_521.png",
+    "ts": "2026-06-21T12:26:36.363Z"
   },
   "522": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_522.png",
+    "ts": "2026-06-21T12:26:36.360Z"
   },
   "523": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_523.png",
+    "ts": "2026-06-21T12:26:36.367Z"
   },
   "524": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_524.png",
+    "ts": "2026-06-21T12:26:36.375Z"
   },
   "525": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_525.png",
+    "ts": "2026-06-21T12:26:36.375Z"
   },
   "526": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_526.png",
+    "ts": "2026-06-21T12:26:36.385Z"
   },
   "527": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_527.png",
+    "ts": "2026-06-21T12:26:36.388Z"
   },
   "528": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_528.png",
+    "ts": "2026-06-21T12:26:36.399Z"
   },
   "529": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_529.png",
+    "ts": "2026-06-21T12:26:36.392Z"
   },
   "530": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_530.png",
+    "ts": "2026-06-21T12:26:36.404Z"
   },
   "531": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_531.png",
+    "ts": "2026-06-21T12:26:36.410Z"
   },
   "532": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_532.png",
+    "ts": "2026-06-21T12:26:36.410Z"
   },
   "533": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_533.png",
+    "ts": "2026-06-21T12:26:36.413Z"
   },
   "534": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_534.png",
+    "ts": "2026-06-21T12:26:36.418Z"
   },
   "535": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_535.png",
+    "ts": "2026-06-21T12:26:36.431Z"
   },
   "536": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_536.png",
+    "ts": "2026-06-21T12:26:36.425Z"
   },
   "537": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_537.png",
+    "ts": "2026-06-21T12:26:36.434Z"
   },
   "538": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_538.png",
+    "ts": "2026-06-21T12:26:36.433Z"
   },
   "539": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_539.png",
+    "ts": "2026-06-21T12:26:36.441Z"
   },
   "540": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_540.png",
+    "ts": "2026-06-21T12:26:36.443Z"
   },
   "541": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_541.png",
+    "ts": "2026-06-21T12:26:36.465Z"
   },
   "542": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_542.png",
+    "ts": "2026-06-21T12:26:36.462Z"
   },
   "543": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_543.png",
+    "ts": "2026-06-21T12:26:36.458Z"
   },
   "544": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_544.png",
+    "ts": "2026-06-21T12:26:36.465Z"
   },
   "545": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_545.png",
+    "ts": "2026-06-21T12:26:36.476Z"
   },
   "546": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_546.png",
+    "ts": "2026-06-21T12:26:36.477Z"
   },
   "547": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_547.png",
+    "ts": "2026-06-21T12:26:36.483Z"
   },
   "548": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_548.png",
+    "ts": "2026-06-21T12:26:36.478Z"
   },
   "549": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_549.png",
+    "ts": "2026-06-21T12:26:36.494Z"
   },
   "550": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_550.png",
+    "ts": "2026-06-21T12:26:36.497Z"
   },
   "551": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_551.png",
+    "ts": "2026-06-21T12:26:36.496Z"
   },
   "552": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_552.png",
+    "ts": "2026-06-21T12:26:36.496Z"
   },
   "553": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_553.png",
+    "ts": "2026-06-21T12:26:36.507Z"
   },
   "554": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_554.png",
+    "ts": "2026-06-21T12:26:36.512Z"
   },
   "555": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_555.png",
+    "ts": "2026-06-21T12:26:36.516Z"
   },
   "556": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_556.png",
+    "ts": "2026-06-21T12:26:36.524Z"
   },
   "557": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_557.png",
+    "ts": "2026-06-21T12:26:36.527Z"
   },
   "558": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_558.png",
+    "ts": "2026-06-21T12:26:36.522Z"
   },
   "559": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_559.png",
+    "ts": "2026-06-21T12:26:36.541Z"
   },
   "560": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_560.png",
+    "ts": "2026-06-21T12:26:36.534Z"
   },
   "561": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_561.png",
+    "ts": "2026-06-21T12:26:36.541Z"
   },
   "562": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_562.png",
+    "ts": "2026-06-21T12:26:36.541Z"
   },
   "563": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_563.png",
+    "ts": "2026-06-21T12:26:36.549Z"
   },
   "564": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_564.png",
+    "ts": "2026-06-21T12:26:36.555Z"
   },
   "565": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_565.png",
+    "ts": "2026-06-21T12:26:36.556Z"
   },
   "566": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_566.png",
+    "ts": "2026-06-21T12:26:36.568Z"
   },
   "567": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_567.png",
+    "ts": "2026-06-21T12:26:36.564Z"
   },
   "568": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_568.png",
+    "ts": "2026-06-21T12:26:36.576Z"
   },
   "569": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_569.png",
+    "ts": "2026-06-21T12:26:36.571Z"
   },
   "570": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_570.png",
+    "ts": "2026-06-21T12:26:36.581Z"
   },
   "571": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_571.png",
+    "ts": "2026-06-21T12:26:36.583Z"
   },
   "572": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_572.png",
+    "ts": "2026-06-21T12:26:36.589Z"
   },
   "573": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_573.png",
+    "ts": "2026-06-21T12:26:36.593Z"
   },
   "574": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_574.png",
+    "ts": "2026-06-21T12:26:36.593Z"
   },
   "575": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_575.png",
+    "ts": "2026-06-21T12:26:36.602Z"
   },
   "576": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_576.png",
+    "ts": "2026-06-21T12:26:36.605Z"
   },
   "577": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_577.png",
+    "ts": "2026-06-21T12:26:36.608Z"
   },
   "578": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_578.png",
+    "ts": "2026-06-21T12:26:36.611Z"
   },
   "579": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_579.png",
+    "ts": "2026-06-21T12:26:36.617Z"
   },
   "580": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_580.png",
+    "ts": "2026-06-21T12:26:36.619Z"
   },
   "581": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_581.png",
+    "ts": "2026-06-21T12:26:36.626Z"
   },
   "582": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_582.png",
+    "ts": "2026-06-21T12:26:36.630Z"
   },
   "583": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_583.png",
+    "ts": "2026-06-21T12:26:36.635Z"
   },
   "584": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_584.png",
+    "ts": "2026-06-21T12:26:36.635Z"
   },
   "585": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_585.png",
+    "ts": "2026-06-21T12:26:36.641Z"
   },
   "586": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_586.png",
+    "ts": "2026-06-21T12:26:36.646Z"
   },
   "587": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_587.png",
+    "ts": "2026-06-21T12:26:36.663Z"
   },
   "588": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_588.png",
+    "ts": "2026-06-21T12:26:36.653Z"
   },
   "589": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_589.png",
+    "ts": "2026-06-21T12:26:36.658Z"
   },
   "590": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_590.png",
+    "ts": "2026-06-21T12:26:36.664Z"
   },
   "591": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_591.png",
+    "ts": "2026-06-21T12:26:36.682Z"
   },
   "592": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_592.png",
+    "ts": "2026-06-21T12:26:36.685Z"
   },
   "593": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_593.png",
+    "ts": "2026-06-21T12:26:36.700Z"
   },
   "594": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_594.png",
+    "ts": "2026-06-21T12:26:36.703Z"
   },
   "595": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_595.png",
+    "ts": "2026-06-21T12:26:36.704Z"
   },
   "596": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_596.png",
+    "ts": "2026-06-21T12:26:36.706Z"
   },
   "597": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_597.png",
+    "ts": "2026-06-21T12:26:36.716Z"
   },
   "598": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_598.png",
+    "ts": "2026-06-21T12:26:36.719Z"
   },
   "599": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_599.png",
+    "ts": "2026-06-21T12:26:36.729Z"
   },
   "600": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_600.png",
+    "ts": "2026-06-21T12:26:36.721Z"
   },
   "601": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_601.png",
+    "ts": "2026-06-21T12:26:36.732Z"
   },
   "602": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_602.png",
+    "ts": "2026-06-21T12:26:36.730Z"
   },
   "603": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_603.png",
+    "ts": "2026-06-21T12:26:36.736Z"
   },
   "604": {
     "status": "error",
     "error": "The operation was aborted due to timeout"
   },
   "605": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_605.png",
+    "ts": "2026-06-21T12:26:36.745Z"
   },
   "606": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_606.png",
+    "ts": "2026-06-21T12:26:36.749Z"
   },
   "607": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_607.png",
+    "ts": "2026-06-21T12:26:36.753Z"
   },
   "608": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_608.png",
+    "ts": "2026-06-21T12:26:36.753Z"
   },
   "609": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_609.png",
+    "ts": "2026-06-21T12:26:36.758Z"
   },
   "610": {
-    "status": "error",
-    "error": "The operation was aborted due to timeout"
+    "status": "done",
+    "file": "stamp_610.png",
+    "ts": "2026-06-21T12:26:36.764Z"
   },
   "611": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_611.png",
+    "ts": "2026-06-21T12:26:36.772Z"
   },
   "612": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_612.png",
+    "ts": "2026-06-21T12:26:36.767Z"
   },
   "613": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_613.png",
+    "ts": "2026-06-21T12:26:36.777Z"
   },
   "614": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_614.png",
+    "ts": "2026-06-21T12:26:36.781Z"
   },
   "615": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_615.png",
+    "ts": "2026-06-21T12:26:36.785Z"
   },
   "616": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_616.png",
+    "ts": "2026-06-21T12:26:36.790Z"
   },
   "617": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_617.png",
+    "ts": "2026-06-21T12:26:36.805Z"
   },
   "618": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_618.png",
+    "ts": "2026-06-21T12:26:36.794Z"
   },
   "619": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_619.png",
+    "ts": "2026-06-21T12:26:36.803Z"
   },
   "620": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_620.png",
+    "ts": "2026-06-21T12:26:36.801Z"
   },
   "621": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_621.png",
+    "ts": "2026-06-21T12:26:36.807Z"
   },
   "622": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_622.png",
+    "ts": "2026-06-21T12:26:36.811Z"
   },
   "623": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_623.png",
+    "ts": "2026-06-21T12:26:36.819Z"
   },
   "624": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_624.png",
+    "ts": "2026-06-21T12:26:36.827Z"
   },
   "625": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_625.png",
+    "ts": "2026-06-21T12:26:36.825Z"
   },
   "626": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_626.png",
+    "ts": "2026-06-21T12:26:36.826Z"
   },
   "627": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_627.png",
+    "ts": "2026-06-21T12:26:36.839Z"
   },
   "628": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_628.png",
+    "ts": "2026-06-21T12:26:36.846Z"
   },
   "629": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_629.png",
+    "ts": "2026-06-21T12:26:36.839Z"
   },
   "630": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_630.png",
+    "ts": "2026-06-21T12:26:36.843Z"
   },
   "631": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_631.png",
+    "ts": "2026-06-21T12:26:36.853Z"
   },
   "632": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_632.png",
+    "ts": "2026-06-21T12:26:36.854Z"
   },
   "633": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_633.png",
+    "ts": "2026-06-21T12:26:36.856Z"
   },
   "634": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_634.png",
+    "ts": "2026-06-21T12:26:36.858Z"
   },
   "635": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_635.png",
+    "ts": "2026-06-21T12:26:36.871Z"
   },
   "636": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_636.png",
+    "ts": "2026-06-21T12:26:36.877Z"
   },
   "637": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_637.png",
+    "ts": "2026-06-21T12:26:36.869Z"
   },
   "638": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_638.png",
+    "ts": "2026-06-21T12:26:36.881Z"
   },
   "639": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_639.png",
+    "ts": "2026-06-21T12:26:36.883Z"
   },
   "640": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_640.png",
+    "ts": "2026-06-21T12:26:36.887Z"
   },
   "641": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_641.png",
+    "ts": "2026-06-21T12:26:36.889Z"
   },
   "642": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_642.png",
+    "ts": "2026-06-21T12:26:36.910Z"
   },
   "643": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_643.png",
+    "ts": "2026-06-21T12:26:36.908Z"
   },
   "644": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_644.png",
+    "ts": "2026-06-21T12:26:36.910Z"
   },
   "645": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_645.png",
+    "ts": "2026-06-21T12:26:36.907Z"
   },
   "646": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_646.png",
+    "ts": "2026-06-21T12:26:36.924Z"
   },
   "647": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_647.png",
+    "ts": "2026-06-21T12:26:36.928Z"
   },
   "648": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_648.png",
+    "ts": "2026-06-21T12:26:36.928Z"
   },
   "649": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_649.png",
+    "ts": "2026-06-21T12:26:36.926Z"
   },
   "650": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_650.png",
+    "ts": "2026-06-21T12:26:36.936Z"
   },
   "651": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_651.png",
+    "ts": "2026-06-21T12:26:36.942Z"
   },
   "652": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_652.png",
+    "ts": "2026-06-21T12:26:36.951Z"
   },
   "653": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_653.png",
+    "ts": "2026-06-21T12:26:36.955Z"
   },
   "654": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_654.png",
+    "ts": "2026-06-21T12:26:36.951Z"
   },
   "655": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_655.png",
+    "ts": "2026-06-21T12:26:36.958Z"
   },
   "656": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_656.png",
+    "ts": "2026-06-21T12:26:36.969Z"
   },
   "657": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_657.png",
+    "ts": "2026-06-21T12:26:36.968Z"
   },
   "658": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_658.png",
+    "ts": "2026-06-21T12:26:36.967Z"
   },
   "659": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_659.png",
+    "ts": "2026-06-21T12:26:36.972Z"
   },
   "660": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_660.png",
+    "ts": "2026-06-21T12:26:36.981Z"
   },
   "661": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_661.png",
+    "ts": "2026-06-21T12:26:36.987Z"
   },
   "662": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_662.png",
+    "ts": "2026-06-21T12:26:36.988Z"
   },
   "663": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_663.png",
+    "ts": "2026-06-21T12:26:36.991Z"
   },
   "664": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_664.png",
+    "ts": "2026-06-21T12:26:36.993Z"
   },
   "665": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_665.png",
+    "ts": "2026-06-21T12:26:37.006Z"
   },
   "666": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_666.png",
+    "ts": "2026-06-21T12:26:37.005Z"
   },
   "667": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_667.png",
+    "ts": "2026-06-21T12:26:37.008Z"
   },
   "668": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_668.png",
+    "ts": "2026-06-21T12:26:37.016Z"
   },
   "669": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_669.png",
+    "ts": "2026-06-21T12:26:37.023Z"
   },
   "670": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_670.png",
+    "ts": "2026-06-21T12:26:37.023Z"
   },
   "671": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_671.png",
+    "ts": "2026-06-21T12:26:37.020Z"
   },
   "672": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_672.png",
+    "ts": "2026-06-21T12:26:37.029Z"
   },
   "673": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_673.png",
+    "ts": "2026-06-21T12:26:37.038Z"
   },
   "674": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_674.png",
+    "ts": "2026-06-21T12:26:37.037Z"
   },
   "675": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_675.png",
+    "ts": "2026-06-21T12:26:37.042Z"
   },
   "676": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_676.png",
+    "ts": "2026-06-21T12:26:37.050Z"
   },
   "677": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_677.png",
+    "ts": "2026-06-21T12:26:37.054Z"
   },
   "678": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_678.png",
+    "ts": "2026-06-21T12:26:37.056Z"
   },
   "679": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_679.png",
+    "ts": "2026-06-21T12:26:37.058Z"
   },
   "680": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_680.png",
+    "ts": "2026-06-21T12:26:37.064Z"
   },
   "681": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_681.png",
+    "ts": "2026-06-21T12:26:37.077Z"
   },
   "682": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_682.png",
+    "ts": "2026-06-21T12:26:37.074Z"
   },
   "683": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_683.png",
+    "ts": "2026-06-21T12:26:37.077Z"
   },
   "684": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_684.png",
+    "ts": "2026-06-21T12:26:37.078Z"
   },
   "685": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_685.png",
+    "ts": "2026-06-21T12:26:37.096Z"
   },
   "686": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_686.png",
+    "ts": "2026-06-21T12:26:37.095Z"
   },
   "687": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_687.png",
+    "ts": "2026-06-21T12:26:37.091Z"
   },
   "688": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_688.png",
+    "ts": "2026-06-21T12:26:37.096Z"
   },
   "689": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_689.png",
+    "ts": "2026-06-21T12:26:37.110Z"
   },
   "690": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_690.png",
+    "ts": "2026-06-21T12:26:37.108Z"
   },
   "691": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_691.png",
+    "ts": "2026-06-21T12:26:37.110Z"
   },
   "692": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_692.png",
+    "ts": "2026-06-21T12:26:37.135Z"
   },
   "693": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_693.png",
+    "ts": "2026-06-21T12:26:37.135Z"
   },
   "694": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_694.png",
+    "ts": "2026-06-21T12:26:37.132Z"
   },
   "695": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_695.png",
+    "ts": "2026-06-21T12:26:37.136Z"
   },
   "696": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_696.png",
+    "ts": "2026-06-21T12:26:37.143Z"
   },
   "697": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_697.png",
+    "ts": "2026-06-21T12:26:37.159Z"
   },
   "698": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_698.png",
+    "ts": "2026-06-21T12:26:37.152Z"
   },
   "699": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_699.png",
+    "ts": "2026-06-21T12:26:37.154Z"
   },
   "700": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_700.png",
+    "ts": "2026-06-21T12:26:37.157Z"
   },
   "701": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_701.png",
+    "ts": "2026-06-21T12:26:37.166Z"
   },
   "702": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_702.png",
+    "ts": "2026-06-21T12:26:37.171Z"
   },
   "703": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_703.png",
+    "ts": "2026-06-21T12:26:37.182Z"
   },
   "704": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_704.png",
+    "ts": "2026-06-21T12:26:37.178Z"
   },
   "705": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_705.png",
+    "ts": "2026-06-21T12:26:37.184Z"
   },
   "706": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_706.png",
+    "ts": "2026-06-21T12:26:37.183Z"
   },
   "707": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_707.png",
+    "ts": "2026-06-21T12:26:37.191Z"
   },
   "708": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_708.png",
+    "ts": "2026-06-21T12:26:37.196Z"
   },
   "709": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_709.png",
+    "ts": "2026-06-21T12:26:37.205Z"
   },
   "710": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_710.png",
+    "ts": "2026-06-21T12:26:37.201Z"
   },
   "711": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_711.png",
+    "ts": "2026-06-21T12:26:37.206Z"
   },
   "712": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_712.png",
+    "ts": "2026-06-21T12:26:37.213Z"
   },
   "713": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_713.png",
+    "ts": "2026-06-21T12:26:37.218Z"
   },
   "714": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_714.png",
+    "ts": "2026-06-21T12:26:37.219Z"
   },
   "715": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_715.png",
+    "ts": "2026-06-21T12:26:37.219Z"
   },
   "716": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_716.png",
+    "ts": "2026-06-21T12:26:37.238Z"
   },
   "717": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_717.png",
+    "ts": "2026-06-21T12:26:37.229Z"
   },
   "718": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_718.png",
+    "ts": "2026-06-21T12:26:37.239Z"
   },
   "719": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_719.png",
+    "ts": "2026-06-21T12:26:37.239Z"
   },
   "720": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_720.png",
+    "ts": "2026-06-21T12:26:37.241Z"
   },
   "721": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_721.png",
+    "ts": "2026-06-21T12:26:37.254Z"
   },
   "722": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_722.png",
+    "ts": "2026-06-21T12:26:37.255Z"
   },
   "723": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_723.png",
+    "ts": "2026-06-21T12:26:37.256Z"
   },
   "724": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_724.png",
+    "ts": "2026-06-21T12:26:37.256Z"
   },
   "725": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_725.png",
+    "ts": "2026-06-21T12:26:37.270Z"
   },
   "726": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_726.png",
+    "ts": "2026-06-21T12:26:37.274Z"
   },
   "727": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_727.png",
+    "ts": "2026-06-21T12:26:37.273Z"
   },
   "728": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_728.png",
+    "ts": "2026-06-21T12:26:37.273Z"
   },
   "729": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_729.png",
+    "ts": "2026-06-21T12:26:37.288Z"
   },
   "730": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_730.png",
+    "ts": "2026-06-21T12:26:37.289Z"
   },
   "731": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_731.png",
+    "ts": "2026-06-21T12:26:37.292Z"
   },
   "732": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_732.png",
+    "ts": "2026-06-21T12:26:37.289Z"
   },
   "733": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_733.png",
+    "ts": "2026-06-21T12:26:37.305Z"
   },
   "734": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_734.png",
+    "ts": "2026-06-21T12:26:37.306Z"
   },
   "735": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_735.png",
+    "ts": "2026-06-21T12:26:37.305Z"
   },
   "736": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_736.png",
+    "ts": "2026-06-21T12:26:37.307Z"
   },
   "737": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_737.png",
+    "ts": "2026-06-21T12:26:37.321Z"
   },
   "738": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_738.png",
+    "ts": "2026-06-21T12:26:37.319Z"
   },
   "739": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_739.png",
+    "ts": "2026-06-21T12:26:37.323Z"
   },
   "740": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_740.png",
+    "ts": "2026-06-21T12:26:37.321Z"
   },
   "741": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_741.png",
+    "ts": "2026-06-21T12:26:37.329Z"
   },
   "742": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_742.png",
+    "ts": "2026-06-21T12:26:37.349Z"
   },
   "743": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_743.png",
+    "ts": "2026-06-21T12:26:37.348Z"
   },
   "744": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_744.png",
+    "ts": "2026-06-21T12:26:37.346Z"
   },
   "745": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_745.png",
+    "ts": "2026-06-21T12:26:37.350Z"
   },
   "746": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_746.png",
+    "ts": "2026-06-21T12:26:37.365Z"
   },
   "747": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_747.png",
+    "ts": "2026-06-21T12:26:37.366Z"
   },
   "748": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_748.png",
+    "ts": "2026-06-21T12:26:37.364Z"
   },
   "749": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_749.png",
+    "ts": "2026-06-21T12:26:37.365Z"
   },
   "750": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_750.png",
+    "ts": "2026-06-21T12:26:37.381Z"
   },
   "751": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_751.png",
+    "ts": "2026-06-21T12:26:37.379Z"
   },
   "752": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_752.png",
+    "ts": "2026-06-21T12:26:37.387Z"
   },
   "753": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_753.png",
+    "ts": "2026-06-21T12:26:37.381Z"
   },
   "754": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_754.png",
+    "ts": "2026-06-21T12:26:37.393Z"
   },
   "755": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_755.png",
+    "ts": "2026-06-21T12:26:37.400Z"
   },
   "756": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_756.png",
+    "ts": "2026-06-21T12:26:37.396Z"
   },
   "757": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_757.png",
+    "ts": "2026-06-21T12:26:37.402Z"
   },
   "758": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_758.png",
+    "ts": "2026-06-21T12:26:37.413Z"
   },
   "759": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_759.png",
+    "ts": "2026-06-21T12:26:37.412Z"
   },
   "760": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_760.png",
+    "ts": "2026-06-21T12:26:37.421Z"
   },
   "761": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_761.png",
+    "ts": "2026-06-21T12:26:37.420Z"
   },
   "762": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_762.png",
+    "ts": "2026-06-21T12:26:37.424Z"
   },
   "763": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_763.png",
+    "ts": "2026-06-21T12:26:37.425Z"
   },
   "764": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_764.png",
+    "ts": "2026-06-21T12:26:37.434Z"
   },
   "765": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_765.png",
+    "ts": "2026-06-21T12:26:37.437Z"
   },
   "766": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_766.png",
+    "ts": "2026-06-21T12:26:37.439Z"
   },
   "767": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_767.png",
+    "ts": "2026-06-21T12:26:37.447Z"
   },
   "768": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_768.png",
+    "ts": "2026-06-21T12:26:37.455Z"
   },
   "769": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_769.png",
+    "ts": "2026-06-21T12:26:37.454Z"
   },
   "770": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_770.png",
+    "ts": "2026-06-21T12:26:37.452Z"
   },
   "771": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_771.png",
+    "ts": "2026-06-21T12:26:37.464Z"
   },
   "772": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_772.png",
+    "ts": "2026-06-21T12:26:37.469Z"
   },
   "773": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_773.png",
+    "ts": "2026-06-21T12:26:37.469Z"
   },
   "774": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_774.png",
+    "ts": "2026-06-21T12:26:37.470Z"
   },
   "775": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_775.png",
+    "ts": "2026-06-21T12:26:37.477Z"
   },
   "776": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_776.png",
+    "ts": "2026-06-21T12:26:37.487Z"
   },
   "777": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_777.png",
+    "ts": "2026-06-21T12:26:37.487Z"
   },
   "778": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_778.png",
+    "ts": "2026-06-21T12:26:37.486Z"
   },
   "779": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_779.png",
+    "ts": "2026-06-21T12:26:37.496Z"
   },
   "780": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_780.png",
+    "ts": "2026-06-21T12:26:37.504Z"
   },
   "781": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_781.png",
+    "ts": "2026-06-21T12:26:37.504Z"
   },
   "782": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_782.png",
+    "ts": "2026-06-21T12:26:37.510Z"
   },
   "783": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_783.png",
+    "ts": "2026-06-21T12:26:37.515Z"
   },
   "784": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_784.png",
+    "ts": "2026-06-21T12:26:37.523Z"
   },
   "785": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_785.png",
+    "ts": "2026-06-21T12:26:37.524Z"
   },
   "786": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_786.png",
+    "ts": "2026-06-21T12:26:37.524Z"
   },
   "787": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_787.png",
+    "ts": "2026-06-21T12:26:37.531Z"
   },
   "788": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_788.png",
+    "ts": "2026-06-21T12:26:37.539Z"
   },
   "789": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_789.png",
+    "ts": "2026-06-21T12:26:37.541Z"
   },
   "790": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_790.png",
+    "ts": "2026-06-21T12:26:37.541Z"
   },
   "791": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_791.png",
+    "ts": "2026-06-21T12:26:37.545Z"
   },
   "792": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_792.png",
+    "ts": "2026-06-21T12:26:37.563Z"
   },
   "793": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_793.png",
+    "ts": "2026-06-21T12:26:37.563Z"
   },
   "794": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_794.png",
+    "ts": "2026-06-21T12:26:37.563Z"
   },
   "795": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_795.png",
+    "ts": "2026-06-21T12:26:37.565Z"
   },
   "796": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_796.png",
+    "ts": "2026-06-21T12:26:37.581Z"
   },
   "797": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_797.png",
+    "ts": "2026-06-21T12:26:37.581Z"
   },
   "798": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_798.png",
+    "ts": "2026-06-21T12:26:37.579Z"
   },
   "799": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_799.png",
+    "ts": "2026-06-21T12:26:37.582Z"
   },
   "800": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_800.png",
+    "ts": "2026-06-21T12:26:37.593Z"
   },
   "801": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_801.png",
+    "ts": "2026-06-21T12:26:37.593Z"
   },
   "802": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_802.png",
+    "ts": "2026-06-21T12:26:37.596Z"
   },
   "803": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_803.png",
+    "ts": "2026-06-21T12:26:37.597Z"
   },
   "804": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_804.png",
+    "ts": "2026-06-21T12:26:37.609Z"
   },
   "805": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_805.png",
+    "ts": "2026-06-21T12:26:37.610Z"
   },
   "806": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_806.png",
+    "ts": "2026-06-21T12:26:37.615Z"
   },
   "807": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_807.png",
+    "ts": "2026-06-21T12:26:37.623Z"
   },
   "808": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_808.png",
+    "ts": "2026-06-21T12:26:37.624Z"
   },
   "809": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_809.png",
+    "ts": "2026-06-21T12:26:37.627Z"
   },
   "810": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_810.png",
+    "ts": "2026-06-21T12:26:37.629Z"
   },
   "811": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_811.png",
+    "ts": "2026-06-21T12:26:37.634Z"
   },
   "812": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_812.png",
+    "ts": "2026-06-21T12:26:37.643Z"
   },
   "813": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_813.png",
+    "ts": "2026-06-21T12:26:37.643Z"
   },
   "814": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_814.png",
+    "ts": "2026-06-21T12:26:37.650Z"
   },
   "815": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_815.png",
+    "ts": "2026-06-21T12:26:37.646Z"
   },
   "816": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_816.png",
+    "ts": "2026-06-21T12:26:37.658Z"
   },
   "817": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_817.png",
+    "ts": "2026-06-21T12:26:37.662Z"
   },
   "818": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_818.png",
+    "ts": "2026-06-21T12:26:37.662Z"
   },
   "819": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_819.png",
+    "ts": "2026-06-21T12:26:37.666Z"
   },
   "820": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_820.png",
+    "ts": "2026-06-21T12:26:37.675Z"
   },
   "821": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_821.png",
+    "ts": "2026-06-21T12:26:37.678Z"
   },
   "822": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_822.png",
+    "ts": "2026-06-21T12:26:37.678Z"
   },
   "823": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_823.png",
+    "ts": "2026-06-21T12:26:37.679Z"
   },
   "824": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_824.png",
+    "ts": "2026-06-21T12:26:37.686Z"
   },
   "825": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_825.png",
+    "ts": "2026-06-21T12:26:37.696Z"
   },
   "826": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_826.png",
+    "ts": "2026-06-21T12:26:37.696Z"
   },
   "827": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_827.png",
+    "ts": "2026-06-21T12:26:37.696Z"
   },
   "828": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_828.png",
+    "ts": "2026-06-21T12:26:37.704Z"
   },
   "829": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_829.png",
+    "ts": "2026-06-21T12:26:37.714Z"
   },
   "830": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_830.png",
+    "ts": "2026-06-21T12:26:37.711Z"
   },
   "831": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_831.png",
+    "ts": "2026-06-21T12:26:37.711Z"
   },
   "832": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_832.png",
+    "ts": "2026-06-21T12:26:37.716Z"
   },
   "833": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_833.png",
+    "ts": "2026-06-21T12:26:37.729Z"
   },
   "834": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_834.png",
+    "ts": "2026-06-21T12:26:37.727Z"
   },
   "835": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_835.png",
+    "ts": "2026-06-21T12:26:37.733Z"
   },
   "836": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_836.png",
+    "ts": "2026-06-21T12:26:37.734Z"
   },
   "837": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_837.png",
+    "ts": "2026-06-21T12:26:37.745Z"
   },
   "838": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_838.png",
+    "ts": "2026-06-21T12:26:37.744Z"
   },
   "839": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_839.png",
+    "ts": "2026-06-21T12:26:37.747Z"
   },
   "840": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_840.png",
+    "ts": "2026-06-21T12:26:37.748Z"
   },
   "841": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_841.png",
+    "ts": "2026-06-21T12:26:37.754Z"
   },
   "842": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_842.png",
+    "ts": "2026-06-21T12:26:37.771Z"
   },
   "843": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_843.png",
+    "ts": "2026-06-21T12:26:37.773Z"
   },
   "844": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_844.png",
+    "ts": "2026-06-21T12:26:37.771Z"
   },
   "845": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_845.png",
+    "ts": "2026-06-21T12:26:37.774Z"
   },
   "846": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_846.png",
+    "ts": "2026-06-21T12:26:37.788Z"
   },
   "847": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_847.png",
+    "ts": "2026-06-21T12:26:37.791Z"
   },
   "848": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_848.png",
+    "ts": "2026-06-21T12:26:37.800Z"
   },
   "849": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_849.png",
+    "ts": "2026-06-21T12:26:37.798Z"
   },
   "850": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_850.png",
+    "ts": "2026-06-21T12:26:37.807Z"
   },
   "851": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_851.png",
+    "ts": "2026-06-21T12:26:37.807Z"
   },
   "852": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_852.png",
+    "ts": "2026-06-21T12:26:37.819Z"
   },
   "853": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_853.png",
+    "ts": "2026-06-21T12:26:37.817Z"
   },
   "854": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_854.png",
+    "ts": "2026-06-21T12:26:37.817Z"
   },
   "855": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_855.png",
+    "ts": "2026-06-21T12:26:37.827Z"
   },
   "856": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_856.png",
+    "ts": "2026-06-21T12:26:37.836Z"
   },
   "857": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_857.png",
+    "ts": "2026-06-21T12:26:37.834Z"
   },
   "858": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_858.png",
+    "ts": "2026-06-21T12:26:37.837Z"
   },
   "859": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_859.png",
+    "ts": "2026-06-21T12:26:37.844Z"
   },
   "860": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_860.png",
+    "ts": "2026-06-21T12:26:37.858Z"
   },
   "861": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_861.png",
+    "ts": "2026-06-21T12:26:37.857Z"
   },
   "862": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_862.png",
+    "ts": "2026-06-21T12:26:37.851Z"
   },
   "863": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_863.png",
+    "ts": "2026-06-21T12:26:37.863Z"
   },
   "864": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_864.png",
+    "ts": "2026-06-21T12:26:37.862Z"
   },
   "865": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_865.png",
+    "ts": "2026-06-21T12:26:37.876Z"
   },
   "866": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_866.png",
+    "ts": "2026-06-21T12:26:37.874Z"
   },
   "867": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_867.png",
+    "ts": "2026-06-21T12:26:37.879Z"
   },
   "868": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_868.png",
+    "ts": "2026-06-21T12:26:37.884Z"
   },
   "869": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_869.png",
+    "ts": "2026-06-21T12:26:37.894Z"
   },
   "870": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_870.png",
+    "ts": "2026-06-21T12:26:37.888Z"
   },
   "871": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_871.png",
+    "ts": "2026-06-21T12:26:37.897Z"
   },
   "872": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_872.png",
+    "ts": "2026-06-21T12:26:37.897Z"
   },
   "873": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_873.png",
+    "ts": "2026-06-21T12:26:37.904Z"
   },
   "874": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_874.png",
+    "ts": "2026-06-21T12:26:37.906Z"
   },
   "875": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_875.png",
+    "ts": "2026-06-21T12:26:37.911Z"
   },
   "876": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_876.png",
+    "ts": "2026-06-21T12:26:37.915Z"
   },
   "877": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_877.png",
+    "ts": "2026-06-21T12:26:37.925Z"
   },
   "878": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_878.png",
+    "ts": "2026-06-21T12:26:37.922Z"
   },
   "879": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_879.png",
+    "ts": "2026-06-21T12:26:37.931Z"
   },
   "880": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_880.png",
+    "ts": "2026-06-21T12:26:37.938Z"
   },
   "881": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_881.png",
+    "ts": "2026-06-21T12:26:37.932Z"
   },
   "882": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_882.png",
+    "ts": "2026-06-21T12:26:37.940Z"
   },
   "883": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_883.png",
+    "ts": "2026-06-21T12:26:37.947Z"
   },
   "884": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_884.png",
+    "ts": "2026-06-21T12:26:37.945Z"
   },
   "885": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_885.png",
+    "ts": "2026-06-21T12:26:37.957Z"
   },
   "886": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_886.png",
+    "ts": "2026-06-21T12:26:37.957Z"
   },
   "887": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_887.png",
+    "ts": "2026-06-21T12:26:37.961Z"
   },
   "888": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_888.png",
+    "ts": "2026-06-21T12:26:37.962Z"
   },
   "889": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_889.png",
+    "ts": "2026-06-21T12:26:37.968Z"
   },
   "890": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_890.png",
+    "ts": "2026-06-21T12:26:37.971Z"
   },
   "891": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_891.png",
+    "ts": "2026-06-21T12:26:37.973Z"
   },
   "892": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_892.png",
+    "ts": "2026-06-21T12:26:37.991Z"
   },
   "893": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_893.png",
+    "ts": "2026-06-21T12:26:37.989Z"
   },
   "894": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_894.png",
+    "ts": "2026-06-21T12:26:37.990Z"
   },
   "895": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_895.png",
+    "ts": "2026-06-21T12:26:37.997Z"
   },
   "896": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_896.png",
+    "ts": "2026-06-21T12:26:38.003Z"
   },
   "897": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_897.png",
+    "ts": "2026-06-21T12:26:38.007Z"
   },
   "898": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_898.png",
+    "ts": "2026-06-21T12:26:38.007Z"
   },
   "899": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_899.png",
+    "ts": "2026-06-21T12:26:38.014Z"
   },
   "900": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_900.png",
+    "ts": "2026-06-21T12:26:38.021Z"
   },
   "901": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_901.png",
+    "ts": "2026-06-21T12:26:38.022Z"
   },
   "902": {
     "status": "error",
     "error": "HTTP 429"
   },
   "903": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_903.png",
+    "ts": "2026-06-21T12:26:38.030Z"
   },
   "904": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_904.png",
+    "ts": "2026-06-21T12:26:38.040Z"
   },
   "905": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_905.png",
+    "ts": "2026-06-21T12:26:38.034Z"
   },
   "906": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_906.png",
+    "ts": "2026-06-21T12:26:38.042Z"
   },
   "907": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_907.png",
+    "ts": "2026-06-21T12:26:38.046Z"
   },
   "908": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_908.png",
+    "ts": "2026-06-21T12:26:38.044Z"
   },
   "909": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_909.png",
+    "ts": "2026-06-21T12:26:38.056Z"
   },
   "910": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_910.png",
+    "ts": "2026-06-21T12:26:38.065Z"
   },
   "911": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_911.png",
+    "ts": "2026-06-21T12:26:38.072Z"
   },
   "912": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_912.png",
+    "ts": "2026-06-21T12:26:38.072Z"
   },
   "913": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_913.png",
+    "ts": "2026-06-21T12:26:38.076Z"
   },
   "914": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_914.png",
+    "ts": "2026-06-21T12:26:38.078Z"
   },
   "915": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_915.png",
+    "ts": "2026-06-21T12:26:38.088Z"
   },
   "916": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_916.png",
+    "ts": "2026-06-21T12:26:38.099Z"
   },
   "917": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_917.png",
+    "ts": "2026-06-21T12:26:38.094Z"
   },
   "918": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_918.png",
+    "ts": "2026-06-21T12:26:38.100Z"
   },
   "919": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_919.png",
+    "ts": "2026-06-21T12:26:38.104Z"
   },
   "920": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_920.png",
+    "ts": "2026-06-21T12:26:38.113Z"
   },
   "921": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_921.png",
+    "ts": "2026-06-21T12:26:38.113Z"
   },
   "922": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_922.png",
+    "ts": "2026-06-21T12:26:38.120Z"
   },
   "923": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_923.png",
+    "ts": "2026-06-21T12:26:38.123Z"
   },
   "924": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_924.png",
+    "ts": "2026-06-21T12:26:38.128Z"
   },
   "925": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_925.png",
+    "ts": "2026-06-21T12:26:38.131Z"
   },
   "926": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_926.png",
+    "ts": "2026-06-21T12:26:38.139Z"
   },
   "927": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_927.png",
+    "ts": "2026-06-21T12:26:38.141Z"
   },
   "928": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_928.png",
+    "ts": "2026-06-21T12:26:38.139Z"
   },
   "929": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_929.png",
+    "ts": "2026-06-21T12:26:38.147Z"
   },
   "930": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_930.png",
+    "ts": "2026-06-21T12:26:38.152Z"
   },
   "931": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_931.png",
+    "ts": "2026-06-21T12:26:38.155Z"
   },
   "932": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_932.png",
+    "ts": "2026-06-21T12:26:38.154Z"
   },
   "933": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_933.png",
+    "ts": "2026-06-21T12:26:38.166Z"
   },
   "934": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_934.png",
+    "ts": "2026-06-21T12:26:38.169Z"
   },
   "935": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_935.png",
+    "ts": "2026-06-21T12:26:38.166Z"
   },
   "936": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_936.png",
+    "ts": "2026-06-21T12:26:38.176Z"
   },
   "937": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_937.png",
+    "ts": "2026-06-21T12:26:38.178Z"
   },
   "938": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_938.png",
+    "ts": "2026-06-21T12:26:38.184Z"
   },
   "939": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_939.png",
+    "ts": "2026-06-21T12:26:38.183Z"
   },
   "940": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_940.png",
+    "ts": "2026-06-21T12:26:38.193Z"
   },
   "941": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_941.png",
+    "ts": "2026-06-21T12:26:38.193Z"
   },
   "942": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_942.png",
+    "ts": "2026-06-21T12:26:38.193Z"
   },
   "943": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_943.png",
+    "ts": "2026-06-21T12:26:38.209Z"
   },
   "944": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_944.png",
+    "ts": "2026-06-21T12:26:38.214Z"
   },
   "945": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_945.png",
+    "ts": "2026-06-21T12:26:38.222Z"
   },
   "946": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_946.png",
+    "ts": "2026-06-21T12:26:38.216Z"
   },
   "947": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_947.png",
+    "ts": "2026-06-21T12:26:38.225Z"
   },
   "948": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_948.png",
+    "ts": "2026-06-21T12:26:38.223Z"
   },
   "949": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_949.png",
+    "ts": "2026-06-21T12:26:38.235Z"
   },
   "950": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_950.png",
+    "ts": "2026-06-21T12:26:38.239Z"
   },
   "951": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_951.png",
+    "ts": "2026-06-21T12:26:38.238Z"
   },
   "952": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_952.png",
+    "ts": "2026-06-21T12:26:38.243Z"
   },
   "953": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_953.png",
+    "ts": "2026-06-21T12:26:38.246Z"
   },
   "954": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_954.png",
+    "ts": "2026-06-21T12:26:38.253Z"
   },
   "955": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_955.png",
+    "ts": "2026-06-21T12:26:38.261Z"
   },
   "956": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_956.png",
+    "ts": "2026-06-21T12:26:38.261Z"
   },
   "957": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_957.png",
+    "ts": "2026-06-21T12:26:38.260Z"
   },
   "958": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_958.png",
+    "ts": "2026-06-21T12:26:38.271Z"
   },
   "959": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_959.png",
+    "ts": "2026-06-21T12:26:38.274Z"
   },
   "960": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_960.png",
+    "ts": "2026-06-21T12:26:38.275Z"
   },
   "961": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_961.png",
+    "ts": "2026-06-21T12:26:38.277Z"
   },
   "962": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_962.png",
+    "ts": "2026-06-21T12:26:38.284Z"
   },
   "963": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_963.png",
+    "ts": "2026-06-21T12:26:38.289Z"
   },
   "964": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_964.png",
+    "ts": "2026-06-21T12:26:38.291Z"
   },
   "965": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_965.png",
+    "ts": "2026-06-21T12:26:38.292Z"
   },
   "966": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_966.png",
+    "ts": "2026-06-21T12:26:38.301Z"
   },
   "967": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_967.png",
+    "ts": "2026-06-21T12:26:38.308Z"
   },
   "968": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_968.png",
+    "ts": "2026-06-21T12:26:38.308Z"
   },
   "969": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_969.png",
+    "ts": "2026-06-21T12:26:38.310Z"
   },
   "970": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_970.png",
+    "ts": "2026-06-21T12:26:38.311Z"
   },
   "971": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_971.png",
+    "ts": "2026-06-21T12:26:38.326Z"
   },
   "972": {
     "status": "error",
     "error": "HTTP 429"
   },
   "973": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_973.png",
+    "ts": "2026-06-21T12:26:38.324Z"
   },
   "974": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_974.png",
+    "ts": "2026-06-21T12:26:38.327Z"
   },
   "975": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_975.png",
+    "ts": "2026-06-21T12:26:38.327Z"
   },
   "976": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_976.png",
+    "ts": "2026-06-21T12:26:38.336Z"
   },
   "977": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_977.png",
+    "ts": "2026-06-21T12:26:38.347Z"
   },
   "978": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_978.png",
+    "ts": "2026-06-21T12:26:38.347Z"
   },
   "979": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_979.png",
+    "ts": "2026-06-21T12:26:38.347Z"
   },
   "980": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_980.png",
+    "ts": "2026-06-21T12:26:38.353Z"
   },
   "981": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_981.png",
+    "ts": "2026-06-21T12:26:38.359Z"
   },
   "982": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_982.png",
+    "ts": "2026-06-21T12:26:38.358Z"
   },
   "983": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_983.png",
+    "ts": "2026-06-21T12:26:38.365Z"
   },
   "984": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_984.png",
+    "ts": "2026-06-21T12:26:38.368Z"
   },
   "985": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_985.png",
+    "ts": "2026-06-21T12:26:38.376Z"
   },
   "986": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_986.png",
+    "ts": "2026-06-21T12:26:38.375Z"
   },
   "987": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_987.png",
+    "ts": "2026-06-21T12:26:38.378Z"
   },
   "988": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_988.png",
+    "ts": "2026-06-21T12:26:38.387Z"
   },
   "989": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_989.png",
+    "ts": "2026-06-21T12:26:38.395Z"
   },
   "990": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_990.png",
+    "ts": "2026-06-21T12:26:38.393Z"
   },
   "991": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_991.png",
+    "ts": "2026-06-21T12:26:38.393Z"
   },
   "992": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_992.png",
+    "ts": "2026-06-21T12:26:38.402Z"
   },
   "993": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_993.png",
+    "ts": "2026-06-21T12:26:38.401Z"
   },
   "994": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_994.png",
+    "ts": "2026-06-21T12:26:38.422Z"
   },
   "995": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_995.png",
+    "ts": "2026-06-21T12:26:38.430Z"
   },
   "996": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_996.png",
+    "ts": "2026-06-21T12:26:38.427Z"
   },
   "997": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_997.png",
+    "ts": "2026-06-21T12:26:38.422Z"
   },
   "998": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_998.png",
+    "ts": "2026-06-21T12:26:38.438Z"
   },
   "999": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_999.png",
+    "ts": "2026-06-21T12:26:38.441Z"
   },
   "1000": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1000.png",
+    "ts": "2026-06-21T12:26:38.445Z"
   },
   "1001": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1001.png",
+    "ts": "2026-06-21T12:26:38.445Z"
   },
   "1002": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1002.png",
+    "ts": "2026-06-21T12:26:38.447Z"
   },
   "1003": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1003.png",
+    "ts": "2026-06-21T12:26:38.457Z"
   },
   "1004": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1004.png",
+    "ts": "2026-06-21T12:26:38.457Z"
   },
   "1005": {
     "status": "error",
     "error": "HTTP 429"
   },
   "1006": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1006.png",
+    "ts": "2026-06-21T12:26:38.465Z"
   },
   "1007": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1007.png",
+    "ts": "2026-06-21T12:26:38.468Z"
   },
   "1008": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1008.png",
+    "ts": "2026-06-21T12:26:38.468Z"
   },
   "1009": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1009.png",
+    "ts": "2026-06-21T12:26:38.481Z"
   },
   "1010": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1010.png",
+    "ts": "2026-06-21T12:26:38.477Z"
   },
   "1011": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1011.png",
+    "ts": "2026-06-21T12:26:38.482Z"
   },
   "1012": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1012.png",
+    "ts": "2026-06-21T12:26:38.484Z"
   },
   "1013": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1013.png",
+    "ts": "2026-06-21T12:26:38.492Z"
   },
   "1014": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1014.png",
+    "ts": "2026-06-21T12:26:38.494Z"
   },
   "1015": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1015.png",
+    "ts": "2026-06-21T12:26:38.498Z"
   },
   "1016": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1016.png",
+    "ts": "2026-06-21T12:26:38.502Z"
   },
   "1017": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1017.png",
+    "ts": "2026-06-21T12:26:38.511Z"
   },
   "1018": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1018.png",
+    "ts": "2026-06-21T12:26:38.512Z"
   },
   "1019": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1019.png",
+    "ts": "2026-06-21T12:26:38.514Z"
   },
   "1020": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1020.png",
+    "ts": "2026-06-21T12:26:38.517Z"
   },
   "1021": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1021.png",
+    "ts": "2026-06-21T12:26:38.528Z"
   },
   "1022": {
     "status": "error",
     "error": "HTTP 429"
   },
   "1023": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1023.png",
+    "ts": "2026-06-21T12:26:38.529Z"
   },
   "1024": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1024.png",
+    "ts": "2026-06-21T12:26:38.530Z"
   },
   "1025": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1025.png",
+    "ts": "2026-06-21T12:26:38.532Z"
   },
   "1026": {
     "status": "error",
     "error": "HTTP 429"
   },
   "1027": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1027.png",
+    "ts": "2026-06-21T12:26:38.548Z"
   },
   "1028": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1028.png",
+    "ts": "2026-06-21T12:26:38.543Z"
   },
   "1029": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1029.png",
+    "ts": "2026-06-21T12:26:38.549Z"
   },
   "1030": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1030.png",
+    "ts": "2026-06-21T12:26:38.548Z"
   },
   "1031": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1031.png",
+    "ts": "2026-06-21T12:26:38.558Z"
   },
   "1032": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1032.png",
+    "ts": "2026-06-21T12:26:38.565Z"
   },
   "1033": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1033.png",
+    "ts": "2026-06-21T12:26:38.570Z"
   },
   "1034": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1034.png",
+    "ts": "2026-06-21T12:26:38.570Z"
   },
   "1035": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1035.png",
+    "ts": "2026-06-21T12:26:38.573Z"
   },
   "1036": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1036.png",
+    "ts": "2026-06-21T12:26:38.581Z"
   },
   "1037": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1037.png",
+    "ts": "2026-06-21T12:26:38.589Z"
   },
   "1038": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1038.png",
+    "ts": "2026-06-21T12:26:38.583Z"
   },
   "1039": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1039.png",
+    "ts": "2026-06-21T12:26:38.590Z"
   },
   "1040": {
     "status": "error",
     "error": "HTTP 429"
   },
   "1041": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1041.png",
+    "ts": "2026-06-21T12:26:38.603Z"
   },
   "1042": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1042.png",
+    "ts": "2026-06-21T12:26:38.596Z"
   },
   "1043": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1043.png",
+    "ts": "2026-06-21T12:26:38.609Z"
   },
   "1044": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1044.png",
+    "ts": "2026-06-21T12:26:38.604Z"
   },
   "1045": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1045.png",
+    "ts": "2026-06-21T12:26:38.610Z"
   },
   "1046": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1046.png",
+    "ts": "2026-06-21T12:26:38.613Z"
   },
   "1047": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1047.png",
+    "ts": "2026-06-21T12:26:38.617Z"
   },
   "1048": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1048.png",
+    "ts": "2026-06-21T12:26:38.637Z"
   },
   "1049": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1049.png",
+    "ts": "2026-06-21T12:26:38.637Z"
   },
   "1050": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1050.png",
+    "ts": "2026-06-21T12:26:38.642Z"
   },
   "1051": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1051.png",
+    "ts": "2026-06-21T12:26:38.643Z"
   },
   "1052": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1052.png",
+    "ts": "2026-06-21T12:26:38.653Z"
   },
   "1053": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1053.png",
+    "ts": "2026-06-21T12:26:38.652Z"
   },
   "1054": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1054.png",
+    "ts": "2026-06-21T12:26:38.659Z"
   },
   "1055": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1055.png",
+    "ts": "2026-06-21T12:26:38.661Z"
   },
   "1056": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1056.png",
+    "ts": "2026-06-21T12:26:38.668Z"
   },
   "1057": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1057.png",
+    "ts": "2026-06-21T12:26:38.668Z"
   },
   "1058": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1058.png",
+    "ts": "2026-06-21T12:26:38.671Z"
   },
   "1059": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1059.png",
+    "ts": "2026-06-21T12:26:38.679Z"
   },
   "1060": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1060.png",
+    "ts": "2026-06-21T12:26:38.682Z"
   },
   "1061": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1061.png",
+    "ts": "2026-06-21T12:26:38.686Z"
   },
   "1062": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1062.png",
+    "ts": "2026-06-21T12:26:38.688Z"
   },
   "1063": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1063.png",
+    "ts": "2026-06-21T12:26:38.693Z"
   },
   "1064": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1064.png",
+    "ts": "2026-06-21T12:26:38.698Z"
   },
   "1065": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1065.png",
+    "ts": "2026-06-21T12:26:38.703Z"
   },
   "1066": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1066.png",
+    "ts": "2026-06-21T12:26:38.701Z"
   },
   "1067": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1067.png",
+    "ts": "2026-06-21T12:26:38.708Z"
   },
   "1068": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1068.png",
+    "ts": "2026-06-21T12:26:38.713Z"
   },
   "1069": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1069.png",
+    "ts": "2026-06-21T12:26:38.719Z"
   },
   "1070": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1070.png",
+    "ts": "2026-06-21T12:26:38.719Z"
   },
   "1071": {
     "status": "done",
@@ -4617,28 +5240,34 @@
     "ts": "2026-06-21T12:23:42.931Z"
   },
   "1072": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1072.png",
+    "ts": "2026-06-21T12:26:38.723Z"
   },
   "1073": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1073.png",
+    "ts": "2026-06-21T12:26:38.731Z"
   },
   "1074": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1074.png",
+    "ts": "2026-06-21T12:26:38.736Z"
   },
   "1075": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1075.png",
+    "ts": "2026-06-21T12:26:38.736Z"
   },
   "1076": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1076.png",
+    "ts": "2026-06-21T12:26:38.736Z"
   },
   "1077": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1077.png",
+    "ts": "2026-06-21T12:26:38.745Z"
   },
   "1078": {
     "status": "error",
@@ -4649,528 +5278,651 @@
     "error": "HTTP 429"
   },
   "1080": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1080.png",
+    "ts": "2026-06-21T12:26:38.748Z"
   },
   "1081": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1081.png",
+    "ts": "2026-06-21T12:26:38.751Z"
   },
   "1082": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1082.png",
+    "ts": "2026-06-21T12:26:38.751Z"
   },
   "1083": {
     "status": "error",
     "error": "HTTP 429"
   },
   "1084": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1084.png",
+    "ts": "2026-06-21T12:26:38.759Z"
   },
   "1085": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1085.png",
+    "ts": "2026-06-21T12:26:38.766Z"
   },
   "1086": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1086.png",
+    "ts": "2026-06-21T12:26:38.766Z"
   },
   "1087": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1087.png",
+    "ts": "2026-06-21T12:26:38.768Z"
   },
   "1088": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1088.png",
+    "ts": "2026-06-21T12:26:38.778Z"
   },
   "1089": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1089.png",
+    "ts": "2026-06-21T12:26:38.788Z"
   },
   "1090": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1090.png",
+    "ts": "2026-06-21T12:26:38.780Z"
   },
   "1091": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1091.png",
+    "ts": "2026-06-21T12:26:38.784Z"
   },
   "1092": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1092.png",
+    "ts": "2026-06-21T12:26:38.791Z"
   },
   "1093": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1093.png",
+    "ts": "2026-06-21T12:26:38.792Z"
   },
   "1094": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1094.png",
+    "ts": "2026-06-21T12:26:38.799Z"
   },
   "1095": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1095.png",
+    "ts": "2026-06-21T12:26:38.803Z"
   },
   "1096": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1096.png",
+    "ts": "2026-06-21T12:26:38.803Z"
   },
   "1097": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1097.png",
+    "ts": "2026-06-21T12:26:38.810Z"
   },
   "1098": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1098.png",
+    "ts": "2026-06-21T12:26:38.812Z"
   },
   "1099": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1099.png",
+    "ts": "2026-06-21T12:26:38.817Z"
   },
   "1100": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1100.png",
+    "ts": "2026-06-21T12:26:38.818Z"
   },
   "1101": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1101.png",
+    "ts": "2026-06-21T12:26:38.822Z"
   },
   "1102": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1102.png",
+    "ts": "2026-06-21T12:26:38.842Z"
   },
   "1103": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1103.png",
+    "ts": "2026-06-21T12:26:38.849Z"
   },
   "1104": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1104.png",
+    "ts": "2026-06-21T12:26:38.842Z"
   },
   "1105": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1105.png",
+    "ts": "2026-06-21T12:26:38.850Z"
   },
   "1106": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1106.png",
+    "ts": "2026-06-21T12:26:38.857Z"
   },
   "1107": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1107.png",
+    "ts": "2026-06-21T12:26:38.856Z"
   },
   "1108": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1108.png",
+    "ts": "2026-06-21T12:26:38.862Z"
   },
   "1109": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1109.png",
+    "ts": "2026-06-21T12:26:38.866Z"
   },
   "1110": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1110.png",
+    "ts": "2026-06-21T12:26:38.870Z"
   },
   "1111": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1111.png",
+    "ts": "2026-06-21T12:26:38.873Z"
   },
   "1112": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1112.png",
+    "ts": "2026-06-21T12:26:38.877Z"
   },
   "1113": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1113.png",
+    "ts": "2026-06-21T12:26:38.880Z"
   },
   "1114": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1114.png",
+    "ts": "2026-06-21T12:26:38.888Z"
   },
   "1115": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1115.png",
+    "ts": "2026-06-21T12:26:38.887Z"
   },
   "1116": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1116.png",
+    "ts": "2026-06-21T12:26:38.895Z"
   },
   "1117": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1117.png",
+    "ts": "2026-06-21T12:26:38.902Z"
   },
   "1118": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1118.png",
+    "ts": "2026-06-21T12:26:38.904Z"
   },
   "1119": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1119.png",
+    "ts": "2026-06-21T12:26:38.904Z"
   },
   "1120": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1120.png",
+    "ts": "2026-06-21T12:26:38.907Z"
   },
   "1121": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1121.png",
+    "ts": "2026-06-21T12:26:38.915Z"
   },
   "1122": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1122.png",
+    "ts": "2026-06-21T12:26:38.916Z"
   },
   "1123": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1123.png",
+    "ts": "2026-06-21T12:26:38.923Z"
   },
   "1124": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1124.png",
+    "ts": "2026-06-21T12:26:38.926Z"
   },
   "1125": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1125.png",
+    "ts": "2026-06-21T12:26:38.926Z"
   },
   "1126": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1126.png",
+    "ts": "2026-06-21T12:26:38.935Z"
   },
   "1127": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1127.png",
+    "ts": "2026-06-21T12:26:38.940Z"
   },
   "1128": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1128.png",
+    "ts": "2026-06-21T12:26:38.944Z"
   },
   "1129": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1129.png",
+    "ts": "2026-06-21T12:26:38.942Z"
   },
   "1130": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1130.png",
+    "ts": "2026-06-21T12:26:38.948Z"
   },
   "1131": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1131.png",
+    "ts": "2026-06-21T12:26:38.956Z"
   },
   "1132": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1132.png",
+    "ts": "2026-06-21T12:26:38.958Z"
   },
   "1133": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1133.png",
+    "ts": "2026-06-21T12:26:38.961Z"
   },
   "1134": {
     "status": "error",
     "error": "HTTP 429"
   },
   "1135": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1135.png",
+    "ts": "2026-06-21T12:26:38.962Z"
   },
   "1136": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1136.png",
+    "ts": "2026-06-21T12:26:38.970Z"
   },
   "1137": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1137.png",
+    "ts": "2026-06-21T12:26:38.973Z"
   },
   "1138": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1138.png",
+    "ts": "2026-06-21T12:26:38.978Z"
   },
   "1139": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1139.png",
+    "ts": "2026-06-21T12:26:38.983Z"
   },
   "1140": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1140.png",
+    "ts": "2026-06-21T12:26:38.986Z"
   },
   "1141": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1141.png",
+    "ts": "2026-06-21T12:26:38.984Z"
   },
   "1142": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1142.png",
+    "ts": "2026-06-21T12:26:38.996Z"
   },
   "1143": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1143.png",
+    "ts": "2026-06-21T12:26:39.004Z"
   },
   "1144": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1144.png",
+    "ts": "2026-06-21T12:26:38.999Z"
   },
   "1145": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1145.png",
+    "ts": "2026-06-21T12:26:39.006Z"
   },
   "1146": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1146.png",
+    "ts": "2026-06-21T12:26:39.011Z"
   },
   "1147": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1147.png",
+    "ts": "2026-06-21T12:26:39.011Z"
   },
   "1148": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1148.png",
+    "ts": "2026-06-21T12:26:39.016Z"
   },
   "1149": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1149.png",
+    "ts": "2026-06-21T12:26:39.020Z"
   },
   "1150": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1150.png",
+    "ts": "2026-06-21T12:26:39.028Z"
   },
   "1151": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1151.png",
+    "ts": "2026-06-21T12:26:39.023Z"
   },
   "1152": {
     "status": "error",
     "error": "HTTP 429"
   },
   "1153": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1153.png",
+    "ts": "2026-06-21T12:26:39.029Z"
   },
   "1154": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1154.png",
+    "ts": "2026-06-21T12:26:39.050Z"
   },
   "1155": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1155.png",
+    "ts": "2026-06-21T12:26:39.052Z"
   },
   "1156": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1156.png",
+    "ts": "2026-06-21T12:26:39.055Z"
   },
   "1157": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1157.png",
+    "ts": "2026-06-21T12:26:39.055Z"
   },
   "1158": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1158.png",
+    "ts": "2026-06-21T12:26:39.064Z"
   },
   "1159": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1159.png",
+    "ts": "2026-06-21T12:26:39.069Z"
   },
   "1160": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1160.png",
+    "ts": "2026-06-21T12:26:39.068Z"
   },
   "1161": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1161.png",
+    "ts": "2026-06-21T12:26:39.069Z"
   },
   "1162": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1162.png",
+    "ts": "2026-06-21T12:26:39.079Z"
   },
   "1163": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1163.png",
+    "ts": "2026-06-21T12:26:39.083Z"
   },
   "1164": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1164.png",
+    "ts": "2026-06-21T12:26:39.085Z"
   },
   "1165": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1165.png",
+    "ts": "2026-06-21T12:26:39.087Z"
   },
   "1166": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1166.png",
+    "ts": "2026-06-21T12:26:39.095Z"
   },
   "1167": {
     "status": "error",
     "error": "HTTP 429"
   },
   "1168": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1168.png",
+    "ts": "2026-06-21T12:26:39.097Z"
   },
   "1169": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1169.png",
+    "ts": "2026-06-21T12:26:39.101Z"
   },
   "1170": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1170.png",
+    "ts": "2026-06-21T12:26:39.103Z"
   },
   "1171": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1171.png",
+    "ts": "2026-06-21T12:26:39.112Z"
   },
   "1172": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1172.png",
+    "ts": "2026-06-21T12:26:39.112Z"
   },
   "1173": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1173.png",
+    "ts": "2026-06-21T12:26:39.114Z"
   },
   "1174": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1174.png",
+    "ts": "2026-06-21T12:26:39.115Z"
   },
   "1175": {
     "status": "error",
     "error": "HTTP 429"
   },
   "1176": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1176.png",
+    "ts": "2026-06-21T12:26:39.129Z"
   },
   "1177": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1177.png",
+    "ts": "2026-06-21T12:26:39.129Z"
   },
   "1178": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1178.png",
+    "ts": "2026-06-21T12:26:39.130Z"
   },
   "1179": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1179.png",
+    "ts": "2026-06-21T12:26:39.131Z"
   },
   "1180": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1180.png",
+    "ts": "2026-06-21T12:26:39.141Z"
   },
   "1181": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1181.png",
+    "ts": "2026-06-21T12:26:39.143Z"
   },
   "1182": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1182.png",
+    "ts": "2026-06-21T12:26:39.145Z"
   },
   "1183": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1183.png",
+    "ts": "2026-06-21T12:26:39.146Z"
   },
   "1184": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1184.png",
+    "ts": "2026-06-21T12:26:39.159Z"
   },
   "1185": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1185.png",
+    "ts": "2026-06-21T12:26:39.159Z"
   },
   "1186": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1186.png",
+    "ts": "2026-06-21T12:26:39.159Z"
   },
   "1187": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1187.png",
+    "ts": "2026-06-21T12:26:39.162Z"
   },
   "1188": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1188.png",
+    "ts": "2026-06-21T12:26:39.178Z"
   },
   "1189": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1189.png",
+    "ts": "2026-06-21T12:26:39.178Z"
   },
   "1190": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1190.png",
+    "ts": "2026-06-21T12:26:39.183Z"
   },
   "1191": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1191.png",
+    "ts": "2026-06-21T12:26:39.182Z"
   },
   "1192": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1192.png",
+    "ts": "2026-06-21T12:26:39.192Z"
   },
   "1193": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1193.png",
+    "ts": "2026-06-21T12:26:39.190Z"
   },
   "1194": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1194.png",
+    "ts": "2026-06-21T12:26:39.194Z"
   },
   "1195": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1195.png",
+    "ts": "2026-06-21T12:26:39.196Z"
   },
   "1196": {
     "status": "error",
     "error": "HTTP 429"
   },
   "1197": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1197.png",
+    "ts": "2026-06-21T12:26:39.204Z"
   },
   "1198": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1198.png",
+    "ts": "2026-06-21T12:26:39.211Z"
   },
   "1199": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1199.png",
+    "ts": "2026-06-21T12:26:39.216Z"
   },
   "1200": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1200.png",
+    "ts": "2026-06-21T12:26:39.209Z"
   },
   "1201": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1201.png",
+    "ts": "2026-06-21T12:26:39.224Z"
   },
   "1202": {
     "status": "error",
     "error": "HTTP 429"
   },
   "1203": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1203.png",
+    "ts": "2026-06-21T12:26:39.223Z"
   },
   "1204": {
     "status": "error",
     "error": "HTTP 429"
   },
   "1205": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1205.png",
+    "ts": "2026-06-21T12:26:39.229Z"
   },
   "1206": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1206.png",
+    "ts": "2026-06-21T12:26:39.228Z"
   },
   "1207": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1207.png",
+    "ts": "2026-06-21T12:26:39.235Z"
   },
   "1208": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1208.png",
+    "ts": "2026-06-21T12:26:39.235Z"
   },
   "1209": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1209.png",
+    "ts": "2026-06-21T12:26:39.254Z"
   },
   "1210": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1210.png",
+    "ts": "2026-06-21T12:26:39.261Z"
   },
   "1211": {
     "status": "done",
@@ -5178,83 +5930,102 @@
     "ts": "2026-06-21T12:23:44.036Z"
   },
   "1212": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1212.png",
+    "ts": "2026-06-21T12:26:39.253Z"
   },
   "1213": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1213.png",
+    "ts": "2026-06-21T12:26:39.253Z"
   },
   "1214": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1214.png",
+    "ts": "2026-06-21T12:26:39.269Z"
   },
   "1215": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1215.png",
+    "ts": "2026-06-21T12:26:39.271Z"
   },
   "1216": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1216.png",
+    "ts": "2026-06-21T12:26:39.277Z"
   },
   "1217": {
     "status": "error",
     "error": "HTTP 429"
   },
   "1218": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1218.png",
+    "ts": "2026-06-21T12:26:39.273Z"
   },
   "1219": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1219.png",
+    "ts": "2026-06-21T12:26:39.284Z"
   },
   "1220": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1220.png",
+    "ts": "2026-06-21T12:26:39.288Z"
   },
   "1221": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1221.png",
+    "ts": "2026-06-21T12:26:39.288Z"
   },
   "1222": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1222.png",
+    "ts": "2026-06-21T12:26:39.294Z"
   },
   "1223": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1223.png",
+    "ts": "2026-06-21T12:26:39.299Z"
   },
   "1224": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1224.png",
+    "ts": "2026-06-21T12:26:39.302Z"
   },
   "1225": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1225.png",
+    "ts": "2026-06-21T12:26:39.301Z"
   },
   "1226": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1226.png",
+    "ts": "2026-06-21T12:26:39.311Z"
   },
   "1227": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1227.png",
+    "ts": "2026-06-21T12:26:39.316Z"
   },
   "1228": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1228.png",
+    "ts": "2026-06-21T12:26:39.314Z"
   },
   "1229": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1229.png",
+    "ts": "2026-06-21T12:26:39.317Z"
   },
   "1230": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1230.png",
+    "ts": "2026-06-21T12:26:39.322Z"
   },
   "1231": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_1231.png",
+    "ts": "2026-06-21T12:26:39.324Z"
   }
 }
