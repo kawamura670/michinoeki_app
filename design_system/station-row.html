@@ -1,0 +1,77 @@
+<!-- @dsCard group="コンポーネント" -->
+<!DOCTYPE html>
+<html lang="ja"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>駅リスト行</title>
+<style>
+  :root { --primary:#1A6B4A; --primary-light:#28946A; --primary-pale:#E6F3EC; --gold:#D4941F; --text:#1A1A1A; --text-sub:#7A7A80; --text-light:#A8A8B0; --border:#EAEAE8; --bg:#FAFAF8; --card:#FFFFFF; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system,"Hiragino Sans",sans-serif; background: #FAFAF8; padding: 16px; max-width: 400px; margin: 0 auto; }
+  h3 { font-size: 11px; font-weight: 700; color: #A8A8B0; letter-spacing: 0.1em; margin: 16px 0 8px; }
+  h3:first-child { margin-top: 0; }
+
+  .station-row { display: flex; align-items: flex-start; gap: 12px; padding: 14px 16px; border-bottom: 1px solid var(--border); background: var(--card); border-radius: 12px; margin-bottom: 8px; }
+  .station-row.visited { background: linear-gradient(135deg, #F0F7F2, #F6FAF7); }
+
+  .stamp-btn {
+    width: 64px; height: 64px; border-radius: 50%;
+    border: 2.5px dashed #C8C8C6; background: #fff;
+    flex-shrink: 0; display: flex; align-items: center; justify-content: center;
+    font-size: 0.8rem; color: var(--text-light); font-weight: 700;
+  }
+  .stamp-btn.stamped {
+    border: 2px solid #D4C4A8; border-style: solid;
+    background: linear-gradient(145deg, #E6F3EC, #D0E8DA);
+    color: var(--primary); font-size: 1.5rem;
+  }
+
+  .station-info { flex: 1; }
+  .station-name { font-weight: 800; font-size: 1.05rem; }
+  .station-meta { font-size: 0.85rem; color: var(--text-sub); margin-top: 3px; }
+  .visited-date { font-size: 0.85rem; color: var(--primary); margin-top: 4px; font-weight: 700; }
+  .badge-new { display: inline-block; background: #C4623A; color: #fff; font-size: 0.65rem; font-weight: 800; border-radius: 8px; padding: 1px 8px; margin-left: 6px; }
+  .badge-closed { display: inline-block; background: #999; color: #fff; font-size: 0.65rem; font-weight: 800; border-radius: 8px; padding: 1px 8px; margin-left: 6px; }
+
+  .station-actions { display: flex; flex-direction: column; gap: 6px; flex-shrink: 0; align-self: center; }
+  .sa-btn {
+    display: flex; align-items: center; justify-content: center;
+    width: 40px; height: 40px; border-radius: 12px;
+    border: 1.5px solid var(--border); background: #fff; color: var(--text-sub);
+  }
+  .sa-camera { color: var(--primary); border-color: var(--primary-light); background: var(--primary-pale); }
+</style></head><body>
+<h3>未訪問</h3>
+<div class="station-row">
+  <div class="stamp-btn">押す</div>
+  <div class="station-info">
+    <div class="station-name">道の駅 もてぎ<span class="badge-new">NEW</span></div>
+    <div class="station-meta">茂木町（第14回 / 1998年登録）</div>
+  </div>
+</div>
+
+<h3>訪問済み</h3>
+<div class="station-row visited">
+  <div class="stamp-btn stamped">🌾🏡</div>
+  <div class="station-info">
+    <div class="station-name">道の駅 にのみや</div>
+    <div class="station-meta">真岡市（第11回 / 1997年登録）</div>
+    <div class="visited-date">📅 2024-06-10</div>
+  </div>
+  <div class="station-actions">
+    <div class="sa-btn sa-camera">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg>
+    </div>
+    <div class="sa-btn">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+    </div>
+  </div>
+</div>
+
+<h3>閉鎖</h3>
+<div class="station-row" style="opacity:0.5">
+  <div class="stamp-btn">押す</div>
+  <div class="station-info">
+    <div class="station-name">道の駅 かつら<span class="badge-closed">閉鎖</span></div>
+    <div class="station-meta">城里町（第9回 / 1996年登録）</div>
+  </div>
+</div>
+</body></html>

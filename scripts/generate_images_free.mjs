@@ -1,11 +1,12 @@
 #!/usr/bin/env node
 /**
- * 全1231駅スタンプ画像生成（完成形）
+ * 全1231駅スタンプ画像生成（高速版）
  *
  * 1. Pollinations.ai で風景イラストを生成（文字なし）
  * 2. sharp + svg-text で日本語駅名を画像内に焼き込み
  * 3. 完成したスタンプ画像をPNGで保存
  *
+ * 高速化: 並列5リクエスト、スリープ最小化、バッチ200枚
  * コスト: ¥0
  * 依存: npm install sharp
  */
@@ -31,7 +32,6 @@ if (existsSync(PROGRESS_PATH)) {
   console.log(`前回の進捗: ${done}枚生成済み`);
 }
 
-// sharp の動的インポート
 let sharp;
 try {
   sharp = (await import('sharp')).default;
@@ -42,7 +42,6 @@ try {
   sharp = (await import('sharp')).default;
 }
 
-// 風景画像を生成
 async function fetchLandscape(stamp) {
   const prompt = [
     'Circular watercolor landscape painting inside a thin circular border on cream background.',
@@ -56,12 +55,19 @@ async function fetchLandscape(stamp) {
   ].join(' ');
 
   const url = `https://image.pollinations.ai/prompt/${encodeURIComponent(prompt)}?width=512&height=512&seed=${stamp.id}&nologo=true`;
-  const res = await fetch(url);
-  if (!res.ok) throw new Error(`HTTP ${res.status}`);
-  return Buffer.from(await res.arrayBuffer());
+
+  for (let attempt = 0; attempt < 3; attempt++) {
+    try {
+      const res = await fetch(url, { signal: AbortSignal.timeout(30000) });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      return Buffer.from(await res.arrayBuffer());
+    } catch (e) {
+      if (attempt === 2) throw e;
+      await new Promise(r => setTimeout(r, 1000 * (attempt + 1)));
+    }
+  }
 }
 
-// 日本語駅名をSVGで生成 → 画像に合成
 function buildNameOverlay(stationName, prefName, width) {
   const nameLen = stationName.length;
   const fontSize = nameLen > 8 ? 28 : nameLen > 5 ? 34 : nameLen > 3 ? 40 : 48;
@@ -82,7 +88,6 @@ function buildNameOverlay(stationName, prefName, width) {
   </svg>`);
 }
 
-// 外枠をSVGで描画
 function buildFrame(width, borderColor) {
   return Buffer.from(`<svg width="${width}" height="${width}" xmlns="http://www.w3.org/2000/svg">
     <circle cx="${width/2}" cy="${width/2}" r="${width/2 - 3}" fill="none" stroke="${borderColor}" stroke-width="4"/>
@@ -90,7 +95,6 @@ function buildFrame(width, borderColor) {
   </svg>`);
 }
 
-// 完成形スタンプを合成
 async function createStamp(stamp, landscapeBuffer) {
   const SIZE = 512;
   const RARITY_COLORS = {
@@ -98,7 +102,6 @@ async function createStamp(stamp, landscapeBuffer) {
   };
   const borderColor = RARITY_COLORS[stamp.rarity] || RARITY_COLORS.common;
 
-  // 円形にクロップ
   const circleMask = Buffer.from(`<svg width="${SIZE}" height="${SIZE}"><circle cx="${SIZE/2}" cy="${SIZE/2}" r="${SIZE/2 - 6}" fill="white"/></svg>`);
 
   const cropped = await sharp(landscapeBuffer)
@@ -107,7 +110,6 @@ async function createStamp(stamp, landscapeBuffer) {
     .png()
     .toBuffer();
 
-  // クリーム背景 + 円形風景 + 名前 + 枠を合成
   const bg = await sharp({
     create: { width: SIZE, height: SIZE, channels: 4, background: { r: 245, g: 240, b: 228, alpha: 255 } }
   }).png().toBuffer();
@@ -127,46 +129,86 @@ async function createStamp(stamp, landscapeBuffer) {
   return final;
 }
 
-async function main() {
-  const BATCH = parseInt(process.env.BATCH_SIZE || '30');
-  const toGen = catalog.filter(s => !progress[s.id] || progress[s.id].status !== 'done').slice(0, BATCH);
+// 並列実行ユーティリティ
+async function parallelMap(items, fn, concurrency) {
+  const results = [];
+  let idx = 0;
 
-  console.log(`\n今回生成: ${toGen.length}枚 (コスト: ¥0)\n`);
-  let ok = 0, fail = 0;
-
-  for (const stamp of toGen) {
-    const imgPath = join(IMG_DIR, `stamp_${stamp.id}.png`);
-
-    try {
-      process.stdout.write(`#${stamp.id} ${stamp.pref} ${stamp.station_name}...`);
-
-      // 1. 風景画像を取得
-      const landscape = await fetchLandscape(stamp);
-
-      // 2. 駅名焼き込み＋枠合成で完成形を生成
-      const final = await createStamp(stamp, landscape);
-
-      // 3. 保存
-      writeFileSync(imgPath, final);
-      progress[stamp.id] = { status: 'done', file: `stamp_${stamp.id}.png`, ts: new Date().toISOString() };
-      ok++;
-      console.log(` OK (${(final.length/1024).toFixed(0)}KB)`);
-
-      writeFileSync(PROGRESS_PATH, JSON.stringify(progress, null, 2), 'utf-8');
-      await new Promise(r => setTimeout(r, 2500));
-
-    } catch (e) {
-      console.log(` FAIL: ${e.message}`);
-      progress[stamp.id] = { status: 'error', error: e.message };
-      fail++;
-      await new Promise(r => setTimeout(r, 5000));
+  async function worker() {
+    while (idx < items.length) {
+      const i = idx++;
+      results[i] = await fn(items[i], i);
     }
   }
 
+  await Promise.all(Array.from({ length: Math.min(concurrency, items.length) }, () => worker()));
+  return results;
+}
+
+async function processStamp(stamp) {
+  const imgPath = join(IMG_DIR, `stamp_${stamp.id}.png`);
+
+  try {
+    const landscape = await fetchLandscape(stamp);
+    const final = await createStamp(stamp, landscape);
+    writeFileSync(imgPath, final);
+
+    progress[stamp.id] = { status: 'done', file: `stamp_${stamp.id}.png`, ts: new Date().toISOString() };
+    return { id: stamp.id, name: stamp.station_name, ok: true, size: final.length };
+  } catch (e) {
+    progress[stamp.id] = { status: 'error', error: e.message };
+    return { id: stamp.id, name: stamp.station_name, ok: false, error: e.message };
+  }
+}
+
+async function main() {
+  const BATCH = parseInt(process.env.BATCH_SIZE || '200');
+  const CONCURRENCY = parseInt(process.env.CONCURRENCY || '5');
+  const toGen = catalog.filter(s => !progress[s.id] || progress[s.id].status !== 'done').slice(0, BATCH);
+
+  if (toGen.length === 0) {
+    console.log('\nすべて生成済みです！');
+    return;
+  }
+
+  console.log(`\n今回生成: ${toGen.length}枚 (並列${CONCURRENCY}, コスト: ¥0)\n`);
+  const startTime = Date.now();
+  let ok = 0, fail = 0, saveCounter = 0;
+
+  await parallelMap(toGen, async (stamp, i) => {
+    const result = await processStamp(stamp);
+
+    if (result.ok) {
+      ok++;
+      console.log(`[${ok + fail}/${toGen.length}] #${result.id} ${result.name} OK (${(result.size/1024).toFixed(0)}KB)`);
+    } else {
+      fail++;
+      console.log(`[${ok + fail}/${toGen.length}] #${result.id} ${result.name} FAIL: ${result.error}`);
+    }
+
+    // 20枚ごとに進捗保存
+    saveCounter++;
+    if (saveCounter % 20 === 0) {
+      writeFileSync(PROGRESS_PATH, JSON.stringify(progress, null, 2), 'utf-8');
+    }
+  }, CONCURRENCY);
+
   writeFileSync(PROGRESS_PATH, JSON.stringify(progress, null, 2), 'utf-8');
+
+  const elapsed = ((Date.now() - startTime) / 1000).toFixed(1);
   const totalDone = Object.values(progress).filter(p => p.status === 'done').length;
-  console.log(`\n=== 完了 === 今回: ${ok}枚 エラー: ${fail}枚 累計: ${totalDone}/${catalog.length}枚`);
-  console.log(`残り: ${catalog.length - totalDone}枚`);
+  const remaining = catalog.length - totalDone;
+  const perImage = ok > 0 ? (elapsed / ok).toFixed(1) : '-';
+
+  console.log(`\n=== 完了 ===`);
+  console.log(`今回: ${ok}枚 OK / ${fail}枚 エラー`);
+  console.log(`所要時間: ${elapsed}秒（${perImage}秒/枚）`);
+  console.log(`累計: ${totalDone}/${catalog.length}枚`);
+  console.log(`残り: ${remaining}枚`);
+  if (remaining > 0) {
+    const estMinutes = (remaining * parseFloat(perImage || '5') / 60).toFixed(0);
+    console.log(`推定残り時間: 約${estMinutes}分（並列${CONCURRENCY}時）`);
+  }
 }
 
 main().catch(e => { console.error(e); process.exit(1); });

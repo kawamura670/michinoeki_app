@@ -1,0 +1,82 @@
+<!-- @dsCard group="コンポーネント" -->
+<!DOCTYPE html>
+<html lang="ja"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>カード類</title>
+<style>
+  :root { --primary:#1A6B4A; --gold:#D4941F; --text:#1A1A1A; --text-sub:#7A7A80; --border:#EAEAE8; --bg:#FAFAF8; --card:#FFFFFF; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system,"Hiragino Sans",sans-serif; background: #FAFAF8; padding: 20px; max-width: 380px; margin: 0 auto; }
+  h3 { font-size: 11px; font-weight: 700; color: #A8A8B0; letter-spacing: 0.1em; margin: 20px 0 10px; }
+  h3:first-child { margin-top: 0; }
+
+  .level-card { background: var(--card); border-radius: 18px; padding: 18px 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); border: 1px solid var(--border); margin-bottom: 12px; }
+  .level-current { font-size: 1.1rem; font-weight: 900; }
+  .level-next { font-size: 0.8rem; color: var(--text-sub); margin-top: 5px; font-weight: 500; }
+  .level-bar { height: 8px; background: var(--border); border-radius: 4px; margin-top: 12px; overflow: hidden; }
+  .level-bar-fill { height: 100%; background: linear-gradient(90deg, var(--primary), #28946A, #D4941F); border-radius: 4px; }
+
+  .pref-card { background: var(--card); border-radius: 18px; margin-bottom: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.04); border-left: 4px solid #4090C8; }
+  .pref-header { display: flex; align-items: center; justify-content: space-between; padding: 14px 16px; min-height: 50px; }
+  .pref-name { font-weight: 700; font-size: 1rem; display: flex; align-items: center; gap: 5px; }
+  .pref-progress-text { font-size: 0.8rem; color: var(--text-sub); font-weight: 500; }
+  .pref-bar { height: 4px; background: #F6F6F4; }
+  .pref-bar-fill { height: 100%; background: linear-gradient(90deg,#4A7C59,#66bb6a); }
+
+  .pref-card.complete { border-color: var(--gold) !important; background: linear-gradient(135deg,#FDF5E6,var(--card)) !important; }
+  .pref-complete-badge { display: inline-block; background: var(--gold); color: #5a4500; font-size: 0.68rem; font-weight: 800; border-radius: 10px; padding: 2px 8px; }
+
+  .region-row { display: flex; align-items: center; gap: 10px; background: var(--card); border-radius: 12px; padding: 12px 14px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); position: relative; overflow: hidden; margin-bottom: 6px; }
+  .region-row::before { content:""; position:absolute; left:0; top:0; bottom:0; width:3px; background:#4090C8; }
+  .region-name { font-weight: 700; font-size: 0.9rem; width: 72px; flex-shrink: 0; }
+  .region-bar-wrap { flex: 1; height: 10px; background: var(--bg); border-radius: 5px; overflow: hidden; }
+  .region-bar-fill { height: 100%; background: linear-gradient(90deg,#4090C8,#6db8ef); border-radius: 5px; }
+  .region-pct { font-size: 0.88rem; font-weight: 800; color: #4090C8; width: 40px; text-align: right; }
+  .region-count { font-size: 0.78rem; color: var(--text-sub); width: 56px; text-align: right; }
+
+  .streak-card { display: flex; align-items: center; gap: 12px; background: linear-gradient(135deg, #FFF5EE, #FFEEE0); border-radius: 18px; padding: 14px 16px; border: 1px solid rgba(212,115,74,0.15); margin-bottom: 10px; }
+  .streak-flame { font-size: 1.8rem; }
+  .streak-count { font-size: 0.95rem; font-weight: 800; color: #C0392B; }
+  .streak-msg { font-size: 0.78rem; color: var(--text-sub); margin-top: 2px; }
+
+  .almost-chip { background: linear-gradient(135deg, #FFF8E1, #FFF3CD); border-radius: 12px; padding: 10px 16px; font-size: 0.88rem; font-weight: 700; color: #6D4C00; margin-bottom: 6px; }
+</style></head><body>
+<h3>レベルカード</h3>
+<div class="level-card">
+  <div class="level-current">⭐ 駆け出し旅人</div>
+  <div class="level-next">次のレベルまで あと22駅</div>
+  <div class="level-bar"><div class="level-bar-fill" style="width:56%"></div></div>
+</div>
+
+<h3>都道府県カード</h3>
+<div class="pref-card">
+  <div class="pref-header">
+    <div class="pref-name">🍓 栃木県 <span class="pref-progress-text">12/25（48%）</span></div>
+    <span style="font-size:0.85rem;color:#A8A8B0">▶</span>
+  </div>
+  <div class="pref-bar"><div class="pref-bar-fill" style="width:48%"></div></div>
+</div>
+<div class="pref-card complete">
+  <div class="pref-header">
+    <div class="pref-name">🍜 香川県 <span class="pref-complete-badge">制覇！</span> <span class="pref-progress-text">18/18（100%）</span></div>
+    <span style="font-size:0.85rem;color:#A8A8B0">▶</span>
+  </div>
+  <div class="pref-bar"><div class="pref-bar-fill" style="width:100%"></div></div>
+</div>
+
+<h3>地方進捗</h3>
+<div class="region-row">
+  <div class="region-name">関東</div>
+  <div class="region-bar-wrap"><div class="region-bar-fill" style="width:62%"></div></div>
+  <div class="region-pct">62%</div>
+  <div class="region-count">55/89</div>
+</div>
+
+<h3>ストリーク</h3>
+<div class="streak-card">
+  <div class="streak-flame">🔥</div>
+  <div><div class="streak-count">5日連続スタンプ中！</div><div class="streak-msg">調子いいですね！</div></div>
+</div>
+
+<h3>もうすぐ制覇</h3>
+<div class="almost-chip">🔥 🍊 和歌山県 あと2駅</div>
+</body></html>

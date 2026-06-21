@@ -1,215 +1,247 @@
 /*
- * 道の駅スタンプ帳 v5 — Premium Collection Design
- * Inspired by: Starbucks Rewards × Apple Fitness × Duolingo
+ * 道の駅スタンプ帳 v6 — Premium Collection Design
+ * Design Language: Apple Fitness + Starbucks Rewards + Nike Run Club
+ * Philosophy: 余白の美学、奥行きのある影、触感的フィードバック
  */
 
 :root {
-  --primary: #1A6B4A;
-  --primary-light: #28946A;
-  --primary-dark: #0F4A32;
-  --primary-pale: #E6F3EC;
-  --green: #4A7C59;
-  --green-light: #EDF5F0;
+  /* ブランドカラー — Starbucks的な深みのある緑 */
+  --primary: #1B7A4E;
+  --primary-light: #2DA06A;
+  --primary-dark: #0D5535;
+  --primary-pale: #E8F5EE;
+  --green: #4A8C5E;
+  --green-light: #EDF7F1;
   --green-dark: #2E5A3D;
-  --gold: #D4941F;
-  --gold-light: #FDF5E6;
-  --gold-glow: rgba(212,148,31,0.35);
-  --sky: #3A7CA5;
-  --sunset: #C4623A;
-  --bg: #FAFAF8;
+
+  /* アクセント — よりリッチなゴールド（Starbucks Gold Tier） */
+  --gold: #C8942A;
+  --gold-light: #FBF4E4;
+  --gold-glow: rgba(200,148,42,0.35);
+  --sky: #3B82B8;
+  --sunset: #D4623A;
+
+  /* ニュートラル — Apple HIG準拠のグレースケール */
+  --bg: #F5F5F3;
   --card: #FFFFFF;
-  --hover: #F6F6F4;
-  --text: #1A1A1A;
-  --text-sub: #7A7A80;
-  --text-light: #A8A8B0;
-  --border: #EAEAE8;
-  --border-active: #C8C8C6;
-  --shadow: 0 2px 8px rgba(0,0,0,0.04);
-  --shadow-md: 0 8px 24px rgba(0,0,0,0.06);
-  --shadow-lg: 0 12px 40px rgba(0,0,0,0.08);
-  --radius: 18px;
-  --radius-sm: 12px;
-  --nav-height: 56px;
-  --tab-height: 84px;
+  --hover: #F0F0EE;
+  --text: #1C1C1E;
+  --text-sub: #6E6E73;
+  --text-light: #AEAEB2;
+  --border: #E5E5EA;
+  --border-active: #C7C7CC;
+
+  /* 影 — Apple式の3段階エレベーション */
+  --shadow: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.06);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.06), 0 1px 4px rgba(0,0,0,0.04);
+  --shadow-lg: 0 12px 40px rgba(0,0,0,0.1), 0 4px 12px rgba(0,0,0,0.04);
+
+  /* 角丸 — iOS 18準拠の連続角丸 */
+  --radius: 20px;
+  --radius-sm: 14px;
+  --radius-xs: 10px;
+
+  /* レイアウト */
+  --nav-height: 52px;
+  --tab-height: 82px;
   --safe-bottom: env(safe-area-inset-bottom, 0px);
-  --region-hokkaido: #8B6BAE; --region-hokkaido-light: #F0E8F6;
-  --region-tohoku: #3D7A4A; --region-tohoku-light: #E3F0E5;
-  --region-kanto: #4090C8; --region-kanto-light: #E3F0FA;
-  --region-chubu: #C49015; --region-chubu-light: #FDF3D7;
-  --region-kinki: #B83A2A; --region-kinki-light: #FAE5E2;
-  --region-chugoku: #C87D9D; --region-chugoku-light: #FBE9F0;
-  --region-shikoku: #2A5280; --region-shikoku-light: #E0EAF4;
-  --region-kyushu: #D06030; --region-kyushu-light: #FDEEE7;
+  --content-padding: 20px;
+
+  /* 地方カラー — より洗練されたトーン */
+  --region-hokkaido: #8B6DB0; --region-hokkaido-light: #F2EBF8;
+  --region-tohoku: #3D8A50; --region-tohoku-light: #E5F2E8;
+  --region-kanto: #4090C8; --region-kanto-light: #E5F0FA;
+  --region-chubu: #C89520; --region-chubu-light: #FDF4D8;
+  --region-kinki: #C04030; --region-kinki-light: #FCE7E4;
+  --region-chugoku: #C87DA0; --region-chugoku-light: #FCEAF2;
+  --region-shikoku: #2A5B88; --region-shikoku-light: #E2EBF6;
+  --region-kyushu: #D86835; --region-kyushu-light: #FDEFE8;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
   font-family: -apple-system, "Hiragino Sans", "Yu Gothic UI", "Meiryo", sans-serif;
-  font-size: 17px;
+  font-size: 16px;
   background: var(--bg);
   color: var(--text);
-  line-height: 1.7;
+  line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   -webkit-tap-highlight-color: transparent;
   padding-top: var(--nav-height);
   padding-bottom: var(--tab-height);
+  letter-spacing: 0.01em;
 }
 
-/* ===== 背景 ===== */
+/* ===== 背景 — Apple式のサブトルなグラデーション ===== */
 .scenery-bg {
   position: fixed; top: 0; left: 0; right: 0; bottom: 0;
   z-index: -1; pointer-events: none;
-  background: var(--bg);
+  background: linear-gradient(180deg, #F0F0ED 0%, var(--bg) 30%);
 }
 
-/* ===== ナビゲーションバー ===== */
+/* ===== ナビゲーションバー — iOS 18 グラスモーフィズム ===== */
 .nav-bar {
   position: fixed; top: 0; left: 0; right: 0; z-index: 50;
   height: var(--nav-height);
-  background: linear-gradient(135deg, #0F3D28, #1A6B4A);
+  background: rgba(13,85,53,0.92);
+  backdrop-filter: saturate(180%) blur(24px); -webkit-backdrop-filter: saturate(180%) blur(24px);
   display: flex; align-items: center; justify-content: center;
   padding: 0 16px;
+  border-bottom: 0.5px solid rgba(255,255,255,0.08);
 }
 .nav-title {
-  font-size: 1.1rem; font-weight: 800; color: #fff;
-  letter-spacing: 0.03em;
+  font-size: 1.05rem; font-weight: 700; color: #fff;
+  letter-spacing: 0.02em;
 }
 .nav-icon {
   position: absolute; right: 12px; top: 50%; transform: translateY(-50%);
-  background: none; border: none; cursor: pointer; padding: 8px;
-  color: rgba(255,255,255,0.8); display: flex; align-items: center; justify-content: center;
+  background: rgba(255,255,255,0.12); border: none; cursor: pointer;
+  padding: 8px; border-radius: 50%;
+  color: rgba(255,255,255,0.9); display: flex; align-items: center; justify-content: center;
+  transition: background 0.15s;
 }
+.nav-icon:active { background: rgba(255,255,255,0.24); }
 
-/* ===== 下部タブバー ===== */
+/* ===== 下部タブバー — Apple式ピルインジケーター ===== */
 .bottom-tab-bar {
   position: fixed; bottom: 0; left: 0; right: 0; z-index: 50;
-  background: rgba(255,255,255,0.85);
-  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-  border-top: 0.5px solid rgba(0,0,0,0.12);
+  background: rgba(255,255,255,0.88);
+  backdrop-filter: saturate(180%) blur(24px); -webkit-backdrop-filter: saturate(180%) blur(24px);
+  border-top: 0.5px solid rgba(0,0,0,0.08);
   display: flex; align-items: stretch; justify-content: space-around;
   height: var(--tab-height);
   padding-bottom: var(--safe-bottom);
 }
 .btab {
   flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;
-  gap: 4px; background: none; border: none; cursor: pointer;
-  color: var(--text-sub); font-size: 0.72rem; font-weight: 600;
-  padding: 8px 0; transition: color 0.15s;
+  gap: 3px; background: none; border: none; cursor: pointer;
+  color: var(--text-light); font-size: 0.68rem; font-weight: 500;
+  padding: 8px 0; transition: color 0.2s, transform 0.15s;
+  position: relative;
 }
-.btab svg { stroke: var(--text-sub); transition: stroke 0.15s; }
-.btab.active { color: var(--primary); font-weight: 800; }
+.btab svg { stroke: var(--text-light); transition: stroke 0.2s; }
+.btab.active { color: var(--primary); font-weight: 700; }
 .btab.active svg { stroke: var(--primary); }
+.btab:active { transform: scale(0.9); }
 
 /* ===== タブコンテンツ ===== */
 .tab-content { display: none; }
 .tab-content.active { display: block; }
 
-/* ===== ホームタブ ===== */
-.home-container { padding: 16px; max-width: 600px; margin: 0 auto; }
+/* ===== ホームタブ — Apple Fitness+インスパイア ===== */
+.home-container { padding: var(--content-padding); max-width: 600px; margin: 0 auto; }
 
 .hero-card {
-  background: linear-gradient(145deg, #0F3D28, #1A6B4A, #1F7B55);
-  border-radius: 22px;
-  padding: 30px 24px 26px; text-align: center;
-  box-shadow: 0 12px 40px rgba(15,61,40,0.25);
+  background: linear-gradient(160deg, #0A3D2A 0%, #12614A 45%, #1B8060 100%);
+  border-radius: 24px;
+  padding: 32px 28px 28px; text-align: center;
+  box-shadow: 0 16px 48px rgba(10,61,42,0.3), 0 4px 12px rgba(10,61,42,0.15);
   position: relative; overflow: hidden;
 }
 .hero-card::before {
-  content: ''; position: absolute; top: -40%; right: -20%;
-  width: 200px; height: 200px; border-radius: 50%;
-  background: radial-gradient(circle, rgba(255,255,255,0.06), transparent 70%);
+  content: ''; position: absolute; top: -50%; right: -25%;
+  width: 260px; height: 260px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,255,255,0.05), transparent 60%);
 }
 .hero-card::after {
-  content: ''; position: absolute; bottom: -30%; left: -15%;
-  width: 160px; height: 160px; border-radius: 50%;
-  background: radial-gradient(circle, rgba(212,148,31,0.08), transparent 70%);
+  content: ''; position: absolute; bottom: -35%; left: -20%;
+  width: 200px; height: 200px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(200,148,42,0.06), transparent 60%);
 }
 .hero-label {
-  font-size: 0.72rem; font-weight: 700; color: rgba(255,255,255,0.5);
-  text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 18px;
+  font-size: 0.68rem; font-weight: 600; color: rgba(255,255,255,0.45);
+  text-transform: uppercase; letter-spacing: 0.18em; margin-bottom: 20px;
   position: relative; z-index: 1;
 }
 .hero-ring-wrap {
-  position: relative; width: 150px; height: 150px; margin: 0 auto 22px; z-index: 1;
+  position: relative; width: 160px; height: 160px; margin: 0 auto 24px; z-index: 1;
 }
 .hero-ring { width: 100%; height: 100%; }
-.hero-ring circle:first-child { stroke: rgba(255,255,255,0.12); }
+.hero-ring circle:first-child { stroke: rgba(255,255,255,0.08); }
 .hero-ring circle:last-child {
-  stroke: #D4941F;
-  transition: stroke-dashoffset 1.2s cubic-bezier(0.4,0,0.2,1);
-  filter: drop-shadow(0 0 6px rgba(212,148,31,0.4));
+  stroke: url(#ring-gradient, #C8942A);
+  transition: stroke-dashoffset 1.4s cubic-bezier(0.4,0,0.2,1);
+  filter: drop-shadow(0 0 8px rgba(200,148,42,0.5));
 }
 .hero-pct {
   position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
-  font-size: 2.4rem; font-weight: 900; color: #fff;
+  font-size: 2.6rem; font-weight: 900; color: #fff;
+  letter-spacing: -0.02em;
 }
 .hero-stats {
   display: flex; align-items: center; justify-content: center; gap: 0;
   position: relative; z-index: 1;
+  background: rgba(255,255,255,0.06); border-radius: 16px;
+  padding: 14px 0; margin-top: 4px;
 }
 .hero-stat {
   flex: 1; display: flex; flex-direction: column; align-items: center;
 }
 .hero-stat-num {
-  font-size: 1.6rem; font-weight: 900; color: #fff;
+  font-size: 1.5rem; font-weight: 800; color: #fff;
+  letter-spacing: -0.01em;
 }
 .hero-stat-label {
-  font-size: 0.7rem; color: rgba(255,255,255,0.5); margin-top: 3px;
-  font-weight: 600; letter-spacing: 0.05em;
+  font-size: 0.65rem; color: rgba(255,255,255,0.4); margin-top: 4px;
+  font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
 }
 .hero-stat-divider {
-  width: 1px; height: 36px; background: rgba(255,255,255,0.15); flex-shrink: 0;
+  width: 1px; height: 32px; background: rgba(255,255,255,0.1); flex-shrink: 0;
 }
 
 .count-up-active { display: inline-block; animation: countPop 0.5s cubic-bezier(0.34,1.56,0.64,1); }
 @keyframes countPop { 0%{transform:scale(1)} 40%{transform:scale(1.3);color:var(--gold)} 100%{transform:scale(1)} }
 
-/* ===== レベルカード ===== */
+/* ===== レベルカード — Duolingo XP風 ===== */
 .level-card {
   background: var(--card); border-radius: var(--radius);
-  padding: 18px 20px; margin-top: 14px;
+  padding: 18px 20px; margin-top: 16px;
   box-shadow: var(--shadow);
-  border: 1px solid var(--border);
 }
 .level-current {
-  font-size: 1.1rem; font-weight: 900;
+  font-size: 1.05rem; font-weight: 800;
 }
 .level-next {
-  font-size: 0.8rem; color: var(--text-sub); margin-top: 5px; font-weight: 500;
+  font-size: 0.78rem; color: var(--text-sub); margin-top: 5px; font-weight: 500;
 }
 .level-bar {
-  height: 8px; background: var(--border); border-radius: 4px;
+  height: 10px; background: var(--bg); border-radius: 5px;
   margin-top: 12px; overflow: hidden;
 }
 .level-bar-fill {
-  height: 100%; background: linear-gradient(90deg, var(--primary), #28946A, #D4941F);
-  border-radius: 4px; transition: width 1s cubic-bezier(0.4,0,0.2,1);
+  height: 100%; background: linear-gradient(90deg, var(--primary), #2DA06A, #C8942A);
+  border-radius: 5px; transition: width 1.2s cubic-bezier(0.4,0,0.2,1);
+  box-shadow: inset 0 -1px 0 rgba(0,0,0,0.1);
 }
 
-/* ===== セクションヘッダー ===== */
+/* ===== セクションヘッダー — Nike Run Club風 ===== */
 .section-header {
-  font-size: 1.05rem; font-weight: 800; color: var(--text);
-  padding: 24px 0 12px; letter-spacing: -0.01em;
+  font-size: 0.82rem; font-weight: 700; color: var(--text-sub);
+  padding: 28px 0 12px; letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
 
-/* ===== 最近の訪問（ホーム） ===== */
+/* ===== 最近の訪問（ホーム） — Apple Music風チップ ===== */
 .home-recent {
   display: flex; flex-wrap: wrap; gap: 8px;
 }
 .recent-chip {
-  background: var(--card); border-radius: 22px;
-  padding: 10px 16px; font-size: 0.84rem; font-weight: 600;
+  background: var(--card); border-radius: 24px;
+  padding: 10px 16px; font-size: 0.82rem; font-weight: 600;
   box-shadow: var(--shadow); white-space: nowrap;
-  border: 1px solid var(--border);
+  transition: transform 0.15s, box-shadow 0.15s;
 }
+.recent-chip:active { transform: scale(0.96); box-shadow: var(--shadow-md); }
 .recent-chip-date {
   color: var(--text-light); font-weight: 400; margin-left: 6px;
-  font-size: 0.75rem;
+  font-size: 0.72rem;
 }
 .empty-state {
-  text-align: center; color: var(--text-sub); padding: 28px 20px;
-  font-size: 0.9rem; line-height: 1.6;
+  text-align: center; color: var(--text-sub); padding: 36px 24px;
+  font-size: 0.88rem; line-height: 1.65;
+  background: var(--card); border-radius: var(--radius);
+  box-shadow: var(--shadow);
 }
 
 /* ===== もうすぐ制覇 ===== */
@@ -220,80 +252,81 @@ body {
   margin-bottom: 6px;
 }
 
-/* ===== アクションボタン ===== */
+/* ===== アクションボタン — Apple HIG 大型タップターゲット ===== */
 .home-actions {
-  display: flex; gap: 10px; margin-top: 20px;
+  display: flex; gap: 12px; margin-top: 24px;
 }
-.home-actions.sub-actions { margin-top: 10px; justify-content: center; }
+.home-actions.sub-actions { margin-top: 12px; justify-content: center; }
 .action-btn {
-  flex: 1; padding: 16px; border: none; border-radius: var(--radius);
-  font-size: 0.95rem; font-weight: 800; cursor: pointer;
-  min-height: 54px; transition: all 0.2s; display: flex;
+  flex: 1; padding: 16px 20px; border: none; border-radius: 16px;
+  font-size: 0.92rem; font-weight: 700; cursor: pointer;
+  min-height: 56px; transition: transform 0.15s, box-shadow 0.15s; display: flex;
   align-items: center; justify-content: center; gap: 8px;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.01em;
 }
-.action-btn:active { transform: scale(0.97); }
+.action-btn:active { transform: scale(0.96); }
 .primary-btn {
-  background: linear-gradient(135deg, #0F3D28, #1A6B4A); color: #fff;
-  box-shadow: 0 4px 16px rgba(15,61,40,0.25);
-  box-shadow: 0 3px 12px rgba(27,122,78,0.3);
+  background: var(--primary); color: #fff;
+  box-shadow: 0 4px 16px rgba(27,122,78,0.3);
 }
-.primary-btn:active { transform: scale(0.97); }
+.primary-btn:active { box-shadow: 0 2px 8px rgba(27,122,78,0.2); }
 .secondary-btn {
   background: var(--sky); color: #fff;
-  box-shadow: 0 3px 12px rgba(74,144,184,0.3);
+  box-shadow: 0 4px 16px rgba(59,130,184,0.3);
 }
-.secondary-btn:active { transform: scale(0.97); }
+.secondary-btn:active { box-shadow: 0 2px 8px rgba(59,130,184,0.2); }
 .text-btn {
   background: none; border: none; color: var(--text-sub);
-  font-size: 0.88rem; font-weight: 600; cursor: pointer;
-  padding: 10px 16px;
+  font-size: 0.85rem; font-weight: 600; cursor: pointer;
+  padding: 10px 16px; transition: color 0.15s;
 }
 .text-btn:active { color: var(--primary); }
 
-/* ===== 一覧タブ ===== */
+/* ===== 一覧タブ — Apple Music風リスト ===== */
 .list-container { max-width: 600px; margin: 0 auto; }
 
 .search-bar {
   position: sticky; top: var(--nav-height); z-index: 10;
-  background: var(--bg); padding: 10px 16px;
+  background: rgba(245,245,243,0.92);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  padding: 10px var(--content-padding);
   display: flex; align-items: center; gap: 8px;
 }
 .search-bar input {
-  flex: 1; padding: 10px 12px 10px 36px; border: none;
-  border-radius: var(--radius-sm); background: var(--card);
-  font-size: 0.95rem; color: var(--text); min-height: 42px;
-  box-shadow: var(--shadow);
+  flex: 1; padding: 10px 12px 10px 38px; border: none;
+  border-radius: var(--radius-xs); background: rgba(118,118,128,0.08);
+  font-size: 0.92rem; color: var(--text); min-height: 40px;
+  font-family: inherit;
 }
-.search-bar input:focus { outline: 2px solid var(--primary); outline-offset: -2px; }
+.search-bar input:focus { outline: none; background: rgba(118,118,128,0.12); }
 .search-icon {
-  position: absolute; left: 28px; top: 50%; transform: translateY(-50%);
+  position: absolute; left: calc(var(--content-padding) + 12px); top: 50%; transform: translateY(-50%);
   pointer-events: none; z-index: 1;
 }
 
 .filter-row {
-  display: flex; gap: 8px; padding: 0 16px 10px;
+  display: flex; gap: 8px; padding: 0 var(--content-padding) 12px;
   background: var(--bg);
 }
 .filter-chip {
-  padding: 7px 16px; border-radius: 20px;
-  border: 1.5px solid var(--border); background: var(--card);
-  font-size: 0.85rem; font-weight: 600; color: var(--text-sub);
-  cursor: pointer; transition: all 0.15s;
+  padding: 7px 18px; border-radius: 22px;
+  border: none; background: rgba(118,118,128,0.08);
+  font-size: 0.82rem; font-weight: 600; color: var(--text-sub);
+  cursor: pointer; transition: all 0.2s;
 }
 .filter-chip.active {
-  background: var(--primary); color: #fff; border-color: var(--primary);
+  background: var(--primary); color: #fff;
 }
 
-/* ===== 都道府県カード ===== */
-#pref-list { padding: 0 16px 20px; }
+/* ===== 都道府県カード — Material Design 3 エレベーション ===== */
+#pref-list { padding: 0 var(--content-padding) 20px; }
 
 .pref-card {
   background: var(--card); border-radius: var(--radius);
-  margin-bottom: 8px; overflow: hidden;
-  box-shadow: var(--shadow); transition: all 0.2s;
+  margin-bottom: 10px; overflow: hidden;
+  box-shadow: var(--shadow); transition: box-shadow 0.25s, transform 0.15s;
 }
-.pref-card.open { box-shadow: var(--shadow-md); }
+.pref-card.open { box-shadow: var(--shadow-md); transform: translateY(-1px); }
 .pref-card[data-region="hokkaido"] { border-left: 4px solid var(--region-hokkaido); }
 .pref-card[data-region="tohoku"]   { border-left: 4px solid var(--region-tohoku); }
 .pref-card[data-region="kanto"]    { border-left: 4px solid var(--region-kanto); }
@@ -311,13 +344,13 @@ body {
   transition: background 0.15s; min-height: 50px;
 }
 .pref-header:active { background: var(--hover); }
-.pref-name { font-weight: 700; font-size: 1rem; display: flex; align-items: center; gap: 5px; flex-wrap: wrap; }
-.pref-emoji { font-size: 1.05rem; }
-.pref-progress-text { font-size: 0.8rem; color: var(--text-sub); font-weight: 500; }
-.pref-almost { color: var(--sunset); font-weight: 700; font-size: 0.78rem; }
-.pref-complete-badge { display: inline-block; background: var(--gold); color: #5a4500; font-size: 0.68rem; font-weight: 800; border-radius: 10px; padding: 2px 8px; }
-.pref-bar { height: 4px; background: var(--hover); }
-.pref-bar-fill { height: 100%; background: linear-gradient(90deg,var(--green),#66bb6a); transition: width 0.6s ease; }
+.pref-name { font-weight: 700; font-size: 0.95rem; display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.pref-emoji { font-size: 1.1rem; }
+.pref-progress-text { font-size: 0.75rem; color: var(--text-light); font-weight: 500; }
+.pref-almost { color: var(--sunset); font-weight: 700; font-size: 0.75rem; }
+.pref-complete-badge { display: inline-block; background: linear-gradient(135deg, #C8942A, #E0B040); color: #5a4500; font-size: 0.65rem; font-weight: 800; border-radius: 10px; padding: 2px 10px; box-shadow: 0 1px 4px rgba(200,148,42,0.25); }
+.pref-bar { height: 3px; background: var(--bg); }
+.pref-bar-fill { height: 100%; background: linear-gradient(90deg,var(--green),#5AAE70); transition: width 0.8s cubic-bezier(0.4,0,0.2,1); border-radius: 1.5px; }
 .chevron { font-size: 0.85rem; color: var(--text-light); flex-shrink: 0; transition: transform 0.25s; }
 .pref-card.open .chevron { transform: rotate(90deg); }
 
@@ -325,25 +358,25 @@ body {
 .station-list.open { display: block; }
 
 .station-row {
-  display: flex; align-items: flex-start; gap: 12px;
-  padding: 14px 16px; border-bottom: 1px solid var(--border);
+  display: flex; align-items: flex-start; gap: 14px;
+  padding: 16px 18px; border-bottom: 0.5px solid rgba(0,0,0,0.06);
   transition: background 0.2s; position: relative; overflow: hidden;
 }
 .station-row:last-child { border-bottom: none; }
-.station-row.visited { background: linear-gradient(135deg, #F0F7F2, #F6FAF7); }
+.station-row.visited { background: linear-gradient(135deg, #F0F8F3, #F6FAF7); }
 
 .stamp-btn {
-  width: 64px; height: 64px; border-radius: 50%;
-  border: 2.5px dashed var(--border-active); background: #fff;
+  width: 60px; height: 60px; border-radius: 50%;
+  border: 2px dashed var(--border-active); background: var(--bg);
   cursor: pointer; flex-shrink: 0;
-  transition: all 0.2s; position: relative;
+  transition: transform 0.15s, border-color 0.15s; position: relative;
   display: flex; align-items: center; justify-content: center;
   -webkit-tap-highlight-color: transparent;
-  font-size: 0.8rem; color: var(--text-light);
+  font-size: 0.75rem; color: var(--text-light);
   padding: 0; overflow: hidden;
 }
-.stamp-btn::before { content: "押す"; font-weight: 700; }
-.stamp-btn:active { transform: scale(0.88); }
+.stamp-btn::before { content: "押す"; font-weight: 700; letter-spacing: 0.05em; }
+.stamp-btn:active { transform: scale(0.85); }
 .stamp-btn.stamped {
   border: 2px solid #D4C4A8; background: transparent;
   border-style: solid; padding: 0;
@@ -370,10 +403,10 @@ body {
   50% { box-shadow: 0 4px 18px rgba(184,134,11,0.5); }
 }
 
-.station-info { flex: 1; }
-.station-name { font-weight: 800; font-size: 1.05rem; }
-.station-meta { font-size: 0.85rem; color: var(--text-sub); margin-top: 3px; }
-.visited-date { font-size: 0.85rem; color: var(--primary); margin-top: 4px; font-weight: 700; }
+.station-info { flex: 1; min-width: 0; }
+.station-name { font-weight: 700; font-size: 0.98rem; letter-spacing: -0.01em; }
+.station-meta { font-size: 0.78rem; color: var(--text-light); margin-top: 3px; }
+.visited-date { font-size: 0.78rem; color: var(--primary); margin-top: 4px; font-weight: 700; }
 
 /* 駅アクションボタン */
 .station-actions {
@@ -489,8 +522,8 @@ body {
 @keyframes confettiFallA { 0%{opacity:1;transform:translateY(0) translateX(0) rotate(0deg)} 25%{transform:translateY(25vh) translateX(15px) rotate(180deg)} 50%{transform:translateY(50vh) translateX(-10px) rotate(360deg)} 100%{opacity:0;transform:translateY(105vh) translateX(8px) rotate(720deg)} }
 @keyframes confettiFallB { 0%{opacity:1;transform:translateY(0) translateX(0) rotate(0deg)} 30%{transform:translateY(30vh) translateX(-20px) rotate(200deg)} 60%{transform:translateY(60vh) translateX(12px) rotate(440deg)} 100%{opacity:0;transform:translateY(105vh) translateX(-5px) rotate(680deg)} }
 
-/* ===== 統計タブ ===== */
-.stats-container, .badges-container { padding: 16px; max-width: 600px; margin: 0 auto; }
+/* ===== 統計タブ — Nike Run Club風 ===== */
+.stats-container, .badges-container { padding: var(--content-padding); max-width: 600px; margin: 0 auto; }
 
 .region-stats { display: flex; flex-direction: column; gap: 8px; }
 .region-row {
@@ -524,11 +557,11 @@ body {
 .region-row[data-region="chugoku"]  .region-pct { color:var(--region-chugoku); }
 .region-row[data-region="shikoku"]  .region-pct { color:var(--region-shikoku); }
 .region-row[data-region="kyushu"]   .region-pct { color:var(--region-kyushu); }
-.region-name { font-weight: 700; font-size: 0.9rem; width: 72px; flex-shrink: 0; }
-.region-bar-wrap { flex: 1; height: 10px; background: var(--bg); border-radius: 5px; overflow: hidden; }
-.region-bar-fill { height: 100%; background: linear-gradient(90deg,var(--green),#66bb6a); border-radius: 5px; transition: width 0.6s ease; }
-.region-pct { font-size: 0.88rem; font-weight: 800; color: var(--green); width: 40px; text-align: right; }
-.region-count { font-size: 0.78rem; color: var(--text-sub); width: 56px; text-align: right; }
+.region-name { font-weight: 700; font-size: 0.85rem; width: 68px; flex-shrink: 0; letter-spacing: -0.01em; }
+.region-bar-wrap { flex: 1; height: 8px; background: var(--bg); border-radius: 4px; overflow: hidden; }
+.region-bar-fill { height: 100%; background: linear-gradient(90deg,var(--green),#5AAE70); border-radius: 4px; transition: width 0.8s cubic-bezier(0.4,0,0.2,1); }
+.region-pct { font-size: 0.85rem; font-weight: 800; color: var(--green); width: 40px; text-align: right; }
+.region-count { font-size: 0.72rem; color: var(--text-light); width: 52px; text-align: right; }
 
 .recent-visits { display: flex; flex-direction: column; gap: 6px; }
 .recent-item {
@@ -543,28 +576,26 @@ body {
 .recent-date { font-size: 0.82rem; color: var(--primary); font-weight: 600; white-space: nowrap; }
 .no-data { text-align: center; color: var(--text-sub); padding: 28px; font-size: 0.92rem; }
 
-/* ===== バッジ ===== */
-.badge-list { display: grid; grid-template-columns: repeat(2,1fr); gap: 10px; }
+/* ===== バッジ — Pokemon GO メダル風 ===== */
+.badge-list { display: grid; grid-template-columns: repeat(2,1fr); gap: 12px; }
 .badge-card {
   background: var(--card); border-radius: var(--radius);
-  padding: 18px 14px; text-align: center;
-  box-shadow: var(--shadow); transition: transform 0.2s;
+  padding: 20px 16px; text-align: center;
+  box-shadow: var(--shadow); transition: transform 0.15s;
   position: relative; overflow: hidden;
 }
 .badge-card.earned {
-  border: 1.5px solid var(--gold);
   background: linear-gradient(160deg,var(--gold-light),#fff);
+  box-shadow: var(--shadow-md), 0 0 0 1px rgba(200,148,42,0.15);
 }
-.badge-card.earned:active { transform: scale(0.97); }
-.badge-card.earned::before { content: "✦"; position: absolute; top: 8px; right: 10px; font-size: 0.7rem; color: var(--gold); animation: sparkle 3s ease-in-out infinite; }
-@keyframes sparkle { 0%,100%{opacity:0;transform:scale(0) rotate(0deg)} 50%{opacity:1;transform:scale(1) rotate(180deg)} }
-.badge-card.locked { opacity: 0.35; filter: grayscale(0.7); }
-.badge-emoji { font-size: 2.4rem; margin-bottom: 6px; }
-.badge-title { font-weight: 800; font-size: 0.88rem; margin-bottom: 3px; }
-.badge-desc { font-size: 0.78rem; color: var(--text-sub); line-height: 1.3; }
-.badge-progress { margin-top: 8px; height: 6px; background: var(--bg); border-radius: 3px; overflow: hidden; }
-.badge-progress-fill { height: 100%; background: linear-gradient(90deg,var(--gold),#ffb300); border-radius: 3px; transition: width 0.5s ease; }
-.badge-progress-text { font-size: 0.72rem; color: var(--text-sub); margin-top: 4px; }
+.badge-card.earned:active { transform: scale(0.96); }
+.badge-card.locked { opacity: 0.3; filter: grayscale(0.8); }
+.badge-emoji { font-size: 2.2rem; margin-bottom: 8px; }
+.badge-title { font-weight: 700; font-size: 0.85rem; margin-bottom: 4px; }
+.badge-desc { font-size: 0.72rem; color: var(--text-light); line-height: 1.35; }
+.badge-progress { margin-top: 10px; height: 5px; background: var(--bg); border-radius: 2.5px; overflow: hidden; }
+.badge-progress-fill { height: 100%; background: linear-gradient(90deg,#C8942A,#E8B840); border-radius: 2.5px; transition: width 0.8s cubic-bezier(0.4,0,0.2,1); }
+.badge-progress-text { font-size: 0.68rem; color: var(--text-light); margin-top: 5px; }
 
 /* ===== バッジ獲得ポップアップ ===== */
 .badge-popup-overlay {
@@ -603,23 +634,28 @@ body {
 .share-card .share-detail { font-size: 0.88rem; opacity: 0.8; margin-top: 8px; }
 .share-card .share-app { font-size: 0.72rem; opacity: 0.5; margin-top: 12px; }
 
-/* ===== モーダル ===== */
+/* ===== モーダル — Apple ボトムシート ===== */
 .modal-overlay {
   position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(0,0,0,0.35); display: flex;
+  background: rgba(0,0,0,0.3); display: flex;
   align-items: flex-end; justify-content: center;
-  z-index: 100; backdrop-filter: blur(4px);
+  z-index: 100; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
 }
 .modal-overlay[hidden] { display: none; }
 .modal {
-  background: #fff; border-radius: 20px 20px 0 0;
-  padding: 24px 20px calc(20px + var(--safe-bottom));
+  background: #fff; border-radius: 16px 16px 0 0;
+  padding: 8px 20px calc(20px + var(--safe-bottom));
   width: 100%; max-width: 500px; max-height: 85vh;
-  overflow-y: auto; box-shadow: 0 -4px 24px rgba(0,0,0,0.12);
-  animation: modalSlideUp 0.35s cubic-bezier(0.32,0.72,0,1);
+  overflow-y: auto; box-shadow: 0 -8px 32px rgba(0,0,0,0.15);
+  animation: modalSlideUp 0.4s cubic-bezier(0.32,0.72,0,1);
+}
+.modal::before {
+  content: ''; display: block; width: 36px; height: 5px;
+  background: rgba(0,0,0,0.1); border-radius: 2.5px;
+  margin: 8px auto 16px;
 }
 @keyframes modalSlideUp { from{transform:translateY(100%)} to{transform:translateY(0)} }
-.modal h2 { margin-bottom: 16px; font-size: 1.15rem; font-weight: 800; }
+.modal h2 { margin-bottom: 16px; font-size: 1.1rem; font-weight: 700; }
 .modal input[type="file"] { width: 100%; margin-bottom: 12px; font-size: 0.92rem; }
 .modal input[type="text"] {
   width: 100%; padding: 12px 14px; border: 1.5px solid var(--border);
@@ -632,11 +668,12 @@ body {
 .stamp-results div { padding: 12px 14px; cursor: pointer; font-size: 0.92rem; border-bottom: 0.5px solid var(--border); }
 .stamp-results div:active { background: var(--primary-pale); }
 .stamp-selected { font-size: 0.95rem; font-weight: 700; color: var(--primary); min-height: 1.6em; margin-bottom: 10px; }
-.modal-actions { display: flex; gap: 10px; margin-top: 4px; }
-.modal-actions button { flex: 1; padding: 14px; border: none; border-radius: var(--radius); font-size: 0.95rem; font-weight: 700; cursor: pointer; min-height: 48px; }
-.modal-cancel { background: var(--bg); color: var(--text-sub); }
+.modal-actions { display: flex; gap: 10px; margin-top: 8px; }
+.modal-actions button { flex: 1; padding: 15px; border: none; border-radius: 14px; font-size: 0.92rem; font-weight: 600; cursor: pointer; min-height: 50px; transition: transform 0.15s; }
+.modal-actions button:active { transform: scale(0.97); }
+.modal-cancel { background: rgba(118,118,128,0.08); color: var(--text-sub); }
 .modal-confirm { background: var(--primary); color: #fff; }
-.modal-confirm:disabled { background: #ccc; cursor: not-allowed; }
+.modal-confirm:disabled { background: rgba(118,118,128,0.12); color: var(--text-light); cursor: not-allowed; }
 
 /* ===== 駅詳細モーダル ===== */
 .station-detail-modal { max-height: 90vh; }
@@ -1389,63 +1426,69 @@ body {
   background: var(--gold); box-shadow: 0 0 4px var(--gold-glow);
 }
 
-/* ===== ペイウォール ===== */
+/* ===== ペイウォール — Spotify Premium風 ===== */
 .paywall-overlay {
   position: fixed; top: 0; left: 0; right: 0; bottom: 0;
   background: rgba(0,0,0,0.5); display: flex;
   align-items: center; justify-content: center;
-  z-index: 300; backdrop-filter: blur(8px);
+  z-index: 300; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
 }
 .paywall-overlay[hidden] { display: none; }
 .paywall {
-  background: #fff; border-radius: 24px; padding: 0;
-  max-width: 380px; width: 90%; overflow: hidden;
-  box-shadow: var(--shadow-lg);
-  animation: payIn 0.4s cubic-bezier(0.17,0.89,0.32,1.28);
+  background: #fff; border-radius: 28px; padding: 0;
+  max-width: 380px; width: 92%; overflow: hidden;
+  box-shadow: 0 24px 80px rgba(0,0,0,0.2);
+  animation: payIn 0.45s cubic-bezier(0.17,0.89,0.32,1.28);
 }
-@keyframes payIn { from{opacity:0;transform:scale(0.85) translateY(20px)} to{opacity:1;transform:scale(1) translateY(0)} }
+@keyframes payIn { from{opacity:0;transform:scale(0.88) translateY(20px)} to{opacity:1;transform:scale(1) translateY(0)} }
 .paywall-hero {
-  background: linear-gradient(135deg, #1B7A4E, #2A9D6A, #1B7A4E);
-  padding: 32px 24px; text-align: center; color: #fff;
+  background: linear-gradient(160deg, #0A3D2A 0%, #12614A 50%, #1B8060 100%);
+  padding: 36px 28px; text-align: center; color: #fff;
   position: relative; overflow: hidden;
 }
+.paywall-hero::before {
+  content: ''; position: absolute; top: -60px; right: -40px;
+  width: 180px; height: 180px; border-radius: 50%;
+  background: rgba(200,148,42,0.08);
+}
 .paywall-hero::after {
-  content: ''; position: absolute; top: -30px; right: -30px;
+  content: ''; position: absolute; bottom: -40px; left: -30px;
   width: 120px; height: 120px; border-radius: 50%;
-  background: rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.04);
 }
-.paywall-crown { font-size: 3rem; margin-bottom: 8px; display: block; }
-.paywall-title { font-size: 1.3rem; font-weight: 800; }
-.paywall-sub { font-size: 0.88rem; opacity: 0.8; margin-top: 6px; }
-.paywall-features { padding: 24px; }
+.paywall-crown { font-size: 3.2rem; margin-bottom: 10px; display: block; position: relative; z-index: 1; }
+.paywall-title { font-size: 1.3rem; font-weight: 800; position: relative; z-index: 1; }
+.paywall-sub { font-size: 0.85rem; opacity: 0.7; margin-top: 8px; position: relative; z-index: 1; }
+.paywall-features { padding: 24px 28px; }
 .paywall-feature {
-  display: flex; align-items: center; gap: 10px;
-  padding: 8px 0; font-size: 0.92rem;
+  display: flex; align-items: center; gap: 12px;
+  padding: 10px 0; font-size: 0.88rem;
 }
-.paywall-feature-icon { font-size: 1.1rem; width: 28px; text-align: center; }
-.paywall-feature-text { flex: 1; font-weight: 600; }
-.paywall-pricing { padding: 0 24px 20px; display: flex; gap: 10px; }
+.paywall-feature-icon { font-size: 1.15rem; width: 28px; text-align: center; }
+.paywall-feature-text { flex: 1; font-weight: 600; color: var(--text); }
+.paywall-pricing { padding: 0 28px 20px; display: flex; gap: 10px; }
 .price-option {
-  flex: 1; border: 2px solid var(--border); border-radius: var(--radius);
-  padding: 16px 12px; text-align: center; cursor: pointer; transition: all 0.2s;
+  flex: 1; border: 2px solid var(--border); border-radius: 16px;
+  padding: 18px 14px; text-align: center; cursor: pointer; transition: all 0.2s;
 }
-.price-option.selected { border-color: var(--primary); background: var(--primary-pale); }
-.price-amount { font-size: 1.4rem; font-weight: 800; color: var(--text); }
-.price-period { font-size: 0.75rem; color: var(--text-sub); margin-top: 2px; }
-.price-discount { font-size: 0.72rem; color: var(--primary); font-weight: 700; margin-top: 4px; }
+.price-option.selected { border-color: var(--primary); background: var(--primary-pale); box-shadow: 0 0 0 1px var(--primary); }
+.price-amount { font-size: 1.5rem; font-weight: 800; color: var(--text); letter-spacing: -0.02em; }
+.price-period { font-size: 0.72rem; color: var(--text-light); margin-top: 3px; }
+.price-discount { font-size: 0.7rem; color: var(--primary); font-weight: 700; margin-top: 6px; }
 .paywall-cta {
-  margin: 0 24px 16px; padding: 16px; border: none; border-radius: var(--radius);
-  background: var(--primary); color: #fff; font-size: 1rem; font-weight: 800;
-  cursor: pointer; width: calc(100% - 48px); transition: all 0.2s;
+  margin: 0 28px 16px; padding: 17px; border: none; border-radius: 16px;
+  background: var(--primary); color: #fff; font-size: 0.95rem; font-weight: 700;
+  cursor: pointer; width: calc(100% - 56px); transition: transform 0.15s;
+  box-shadow: 0 4px 16px rgba(27,122,78,0.3);
 }
 .paywall-cta:active { transform: scale(0.97); }
 .paywall-guarantee {
-  text-align: center; font-size: 0.72rem; color: var(--text-light);
-  padding: 8px 24px 0; font-weight: 500;
+  text-align: center; font-size: 0.68rem; color: var(--text-light);
+  padding: 4px 28px 0; font-weight: 500;
 }
 .paywall-skip {
-  display: block; text-align: center; padding: 12px;
-  color: var(--text-sub); font-size: 0.82rem; cursor: pointer;
+  display: block; text-align: center; padding: 14px;
+  color: var(--text-light); font-size: 0.78rem; cursor: pointer;
   border: none; background: none; width: 100%;
 }
 

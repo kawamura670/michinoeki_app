@@ -5,7 +5,10 @@ on:
     inputs:
       batch_size:
         description: '一度に生成する枚数'
-        default: '30'
+        default: '200'
+      concurrency:
+        description: '並列リクエスト数'
+        default: '5'
 
 permissions:
   contents: write
@@ -13,7 +16,7 @@ permissions:
 jobs:
   generate:
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    timeout-minutes: 55
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -30,6 +33,7 @@ jobs:
       - name: Generate stamp images
         env:
           BATCH_SIZE: ${{ inputs.batch_size }}
+          CONCURRENCY: ${{ inputs.concurrency }}
         run: node scripts/generate_images_free.mjs
 
       - name: Commit generated images

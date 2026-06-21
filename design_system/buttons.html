@@ -1,0 +1,62 @@
+<!-- @dsCard group="コンポーネント" -->
+<!DOCTYPE html>
+<html lang="ja"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ボタン</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system,"Hiragino Sans",sans-serif; background: #FAFAF8; padding: 20px; max-width: 360px; margin: 0 auto; }
+  h3 { font-size: 11px; font-weight: 700; color: #A8A8B0; letter-spacing: 0.1em; text-transform: uppercase; margin: 16px 0 8px; }
+  h3:first-child { margin-top: 0; }
+  .row { display: flex; gap: 10px; margin-bottom: 12px; }
+  .action-btn {
+    flex: 1; padding: 16px; border: none; border-radius: 18px;
+    font-size: 0.95rem; font-weight: 800; cursor: pointer;
+    min-height: 54px; display: flex; align-items: center; justify-content: center; gap: 8px;
+    letter-spacing: 0.02em;
+  }
+  .primary-btn { background: linear-gradient(135deg, #0F3D28, #1A6B4A); color: #fff; box-shadow: 0 3px 12px rgba(27,122,78,0.3); }
+  .secondary-btn { background: #3A7CA5; color: #fff; box-shadow: 0 3px 12px rgba(74,144,184,0.3); }
+  .gold-btn { background: linear-gradient(135deg, #E8A735, #F0C060); color: #5A3D00; box-shadow: 0 4px 12px rgba(232,167,53,0.35); font-weight: 800; }
+  .text-btn { background: none; border: none; color: #7A7A80; font-size: 0.88rem; font-weight: 600; cursor: pointer; padding: 10px 16px; }
+  .filter-chip {
+    padding: 7px 16px; border-radius: 20px;
+    border: 1.5px solid #EAEAE8; background: #FFFFFF;
+    font-size: 0.85rem; font-weight: 600; color: #7A7A80; cursor: pointer;
+  }
+  .filter-chip.active { background: #1A6B4A; color: #fff; border-color: #1A6B4A; }
+  .sb-chip {
+    padding: 6px 14px; border-radius: 20px; border: 1.5px solid #C4B8A0;
+    background: rgba(255,255,255,0.5); color: #8B7355;
+    font-size: 0.78rem; font-weight: 700; cursor: pointer;
+  }
+  .sb-chip.active { background: #5A4020; color: #F5EDDA; border-color: #5A4020; }
+</style></head><body>
+<h3>アクションボタン</h3>
+<div class="row">
+  <button class="action-btn primary-btn">📷 スタンプを記録</button>
+  <button class="action-btn secondary-btn">🎤 声でスタンプ</button>
+</div>
+<div class="row">
+  <button class="action-btn gold-btn">👑 ¥980 で解放する</button>
+</div>
+
+<h3>テキストボタン</h3>
+<div class="row">
+  <button class="text-btn">💾 バックアップ</button>
+  <button class="text-btn">📂 読み込み</button>
+</div>
+
+<h3>フィルターチップ</h3>
+<div class="row">
+  <button class="filter-chip active">すべて</button>
+  <button class="filter-chip">訪問済み</button>
+  <button class="filter-chip">未訪問</button>
+</div>
+
+<h3>スタンプ帳チップ</h3>
+<div class="row">
+  <button class="sb-chip active">全て</button>
+  <button class="sb-chip">獲得済み</button>
+  <button class="sb-chip">未獲得</button>
+</div>
+</body></html>

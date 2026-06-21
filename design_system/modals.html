@@ -1,0 +1,71 @@
+<!-- @dsCard group="モーダル" -->
+<!DOCTYPE html>
+<html lang="ja"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>モーダル & シート</title>
+<style>
+  :root { --primary:#1A6B4A; --primary-pale:#E6F3EC; --text:#1A1A1A; --text-sub:#7A7A80; --text-light:#A8A8B0; --border:#EAEAE8; --bg:#FAFAF8; --card:#FFFFFF; --radius:18px; --radius-sm:12px; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system,"Hiragino Sans",sans-serif; background: #E8E8E8; padding: 20px; max-width: 400px; margin: 0 auto; }
+  h3 { font-size: 11px; font-weight: 700; color: #7A7A80; letter-spacing: 0.1em; margin: 24px 0 10px; }
+  h3:first-child { margin-top: 0; }
+
+  .modal {
+    background: #fff; border-radius: 20px 20px 0 0;
+    padding: 24px 20px 24px; width: 100%; max-width: 500px;
+    box-shadow: 0 -4px 24px rgba(0,0,0,0.12); margin-bottom: 20px;
+  }
+  .modal h2 { margin-bottom: 16px; font-size: 1.15rem; font-weight: 800; }
+  .modal input[type="text"] {
+    width: 100%; padding: 12px 14px; border: 1.5px solid var(--border);
+    border-radius: var(--radius-sm); margin-bottom: 10px;
+    font-size: 0.95rem; min-height: 46px; background: var(--bg); font-family: inherit;
+  }
+  .stamp-results { max-height: 100px; overflow-y: auto; border: 1.5px solid var(--border); border-radius: var(--radius-sm); margin-bottom: 10px; }
+  .stamp-results div { padding: 12px 14px; font-size: 0.92rem; border-bottom: 0.5px solid var(--border); }
+  .stamp-selected { font-size: 0.95rem; font-weight: 700; color: var(--primary); min-height: 1.6em; margin-bottom: 10px; }
+  .modal-actions { display: flex; gap: 10px; margin-top: 4px; }
+  .modal-actions button { flex: 1; padding: 14px; border: none; border-radius: var(--radius); font-size: 0.95rem; font-weight: 700; cursor: pointer; min-height: 48px; }
+  .modal-cancel { background: var(--bg); color: var(--text-sub); }
+  .modal-confirm { background: var(--primary); color: #fff; }
+  .modal-confirm:disabled { background: #ccc; }
+
+  .share-card {
+    background: linear-gradient(160deg,#0F4A32,#1A6B4A);
+    color: #fff; border-radius: var(--radius); padding: 24px 20px;
+    text-align: center; margin-bottom: 16px;
+  }
+  .share-card h4 { font-size: 1rem; margin-bottom: 8px; opacity: 0.85; font-weight: 600; }
+  .share-number { font-size: 2.8rem; font-weight: 800; line-height: 1.1; }
+  .share-detail { font-size: 0.88rem; opacity: 0.8; margin-top: 8px; }
+  .share-app { font-size: 0.72rem; opacity: 0.5; margin-top: 12px; }
+</style></head><body>
+<h3>スタンプ記録モーダル</h3>
+<div class="modal">
+  <h2>📷 スタンプを記録</h2>
+  <input type="text" placeholder="道の駅名で検索して選択" readonly>
+  <div class="stamp-results">
+    <div>道の駅 もてぎ（栃木県）</div>
+    <div>道の駅 にのみや（栃木県）</div>
+  </div>
+  <div class="stamp-selected">選択中: 道の駅 もてぎ</div>
+  <div class="modal-actions">
+    <button class="modal-cancel">キャンセル</button>
+    <button class="modal-confirm">記録する</button>
+  </div>
+</div>
+
+<h3>シェアカード</h3>
+<div class="modal">
+  <h2>進捗をシェア</h2>
+  <div class="share-card">
+    <h4>道の駅スタンプ帳</h4>
+    <div class="share-number">308 / 1231</div>
+    <div class="share-detail">25% 達成 | 5県制覇</div>
+    <div class="share-app">道の駅スタンプ帳 で記録中</div>
+  </div>
+  <div class="modal-actions">
+    <button class="modal-cancel">閉じる</button>
+    <button class="modal-confirm">📋 コピー</button>
+  </div>
+</div>
+</body></html>

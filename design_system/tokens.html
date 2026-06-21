@@ -1,0 +1,71 @@
+<!-- @dsCard group="基本" -->
+<!DOCTYPE html>
+<html lang="ja"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>カラートークン</title>
+<style>
+  :root {
+    --primary: #1A6B4A; --primary-light: #28946A; --primary-dark: #0F4A32; --primary-pale: #E6F3EC;
+    --gold: #D4941F; --gold-light: #FDF5E6;
+    --sky: #3A7CA5; --sunset: #C4623A;
+    --bg: #FAFAF8; --card: #FFFFFF;
+    --text: #1A1A1A; --text-sub: #7A7A80; --text-light: #A8A8B0;
+    --border: #EAEAE8;
+    --region-hokkaido: #8B6BAE; --region-tohoku: #3D7A4A; --region-kanto: #4090C8;
+    --region-chubu: #C49015; --region-kinki: #B83A2A; --region-chugoku: #C87D9D;
+    --region-shikoku: #2A5280; --region-kyushu: #D06030;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system,"Hiragino Sans",sans-serif; background: #fff; padding: 20px; color: #1A1A1A; }
+  h2 { font-size: 14px; font-weight: 800; margin: 20px 0 10px; color: #7A7A80; letter-spacing: 0.1em; text-transform: uppercase; }
+  h2:first-child { margin-top: 0; }
+  .row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+  .swatch { width: 72px; text-align: center; }
+  .swatch-color { width: 72px; height: 48px; border-radius: 10px; border: 1px solid rgba(0,0,0,0.08); }
+  .swatch-label { font-size: 10px; font-weight: 600; color: #7A7A80; margin-top: 4px; }
+  .swatch-hex { font-size: 9px; color: #A8A8B0; font-family: monospace; }
+  .typo-row { margin-bottom: 12px; }
+  .typo-label { font-size: 10px; color: #A8A8B0; margin-bottom: 2px; }
+</style></head><body>
+<h2>ブランドカラー</h2>
+<div class="row">
+  <div class="swatch"><div class="swatch-color" style="background:#0F4A32"></div><div class="swatch-label">Primary Dark</div><div class="swatch-hex">#0F4A32</div></div>
+  <div class="swatch"><div class="swatch-color" style="background:#1A6B4A"></div><div class="swatch-label">Primary</div><div class="swatch-hex">#1A6B4A</div></div>
+  <div class="swatch"><div class="swatch-color" style="background:#28946A"></div><div class="swatch-label">Primary Light</div><div class="swatch-hex">#28946A</div></div>
+  <div class="swatch"><div class="swatch-color" style="background:#E6F3EC"></div><div class="swatch-label">Primary Pale</div><div class="swatch-hex">#E6F3EC</div></div>
+</div>
+<div class="row">
+  <div class="swatch"><div class="swatch-color" style="background:#D4941F"></div><div class="swatch-label">Gold</div><div class="swatch-hex">#D4941F</div></div>
+  <div class="swatch"><div class="swatch-color" style="background:#FDF5E6"></div><div class="swatch-label">Gold Light</div><div class="swatch-hex">#FDF5E6</div></div>
+  <div class="swatch"><div class="swatch-color" style="background:#3A7CA5"></div><div class="swatch-label">Sky</div><div class="swatch-hex">#3A7CA5</div></div>
+  <div class="swatch"><div class="swatch-color" style="background:#C4623A"></div><div class="swatch-label">Sunset</div><div class="swatch-hex">#C4623A</div></div>
+</div>
+
+<h2>地方カラー</h2>
+<div class="row">
+  <div class="swatch"><div class="swatch-color" style="background:#8B6BAE"></div><div class="swatch-label">北海道</div><div class="swatch-hex">#8B6BAE</div></div>
+  <div class="swatch"><div class="swatch-color" style="background:#3D7A4A"></div><div class="swatch-label">東北</div><div class="swatch-hex">#3D7A4A</div></div>
+  <div class="swatch"><div class="swatch-color" style="background:#4090C8"></div><div class="swatch-label">関東</div><div class="swatch-hex">#4090C8</div></div>
+  <div class="swatch"><div class="swatch-color" style="background:#C49015"></div><div class="swatch-label">中部</div><div class="swatch-hex">#C49015</div></div>
+</div>
+<div class="row">
+  <div class="swatch"><div class="swatch-color" style="background:#B83A2A"></div><div class="swatch-label">近畿</div><div class="swatch-hex">#B83A2A</div></div>
+  <div class="swatch"><div class="swatch-color" style="background:#C87D9D"></div><div class="swatch-label">中国</div><div class="swatch-hex">#C87D9D</div></div>
+  <div class="swatch"><div class="swatch-color" style="background:#2A5280"></div><div class="swatch-label">四国</div><div class="swatch-hex">#2A5280</div></div>
+  <div class="swatch"><div class="swatch-color" style="background:#D06030"></div><div class="swatch-label">九州</div><div class="swatch-hex">#D06030</div></div>
+</div>
+
+<h2>テキスト & 背景</h2>
+<div class="row">
+  <div class="swatch"><div class="swatch-color" style="background:#1A1A1A"></div><div class="swatch-label">Text</div><div class="swatch-hex">#1A1A1A</div></div>
+  <div class="swatch"><div class="swatch-color" style="background:#7A7A80"></div><div class="swatch-label">Text Sub</div><div class="swatch-hex">#7A7A80</div></div>
+  <div class="swatch"><div class="swatch-color" style="background:#A8A8B0"></div><div class="swatch-label">Text Light</div><div class="swatch-hex">#A8A8B0</div></div>
+  <div class="swatch"><div class="swatch-color" style="background:#FAFAF8"></div><div class="swatch-label">BG</div><div class="swatch-hex">#FAFAF8</div></div>
+</div>
+
+<h2>タイポグラフィ</h2>
+<div class="typo-row"><div class="typo-label">Hero / 2.4rem 900</div><div style="font-size:2.4rem;font-weight:900">24%</div></div>
+<div class="typo-row"><div class="typo-label">Heading / 1.1rem 800</div><div style="font-size:1.1rem;font-weight:800">道の駅スタンプ帳</div></div>
+<div class="typo-row"><div class="typo-label">Section / 1.05rem 800</div><div style="font-size:1.05rem;font-weight:800">スタンプ帳</div></div>
+<div class="typo-row"><div class="typo-label">Body / 17px 400</div><div style="font-size:17px">全国の道の駅を巡る旅</div></div>
+<div class="typo-row"><div class="typo-label">Caption / 0.78rem 600</div><div style="font-size:0.78rem;font-weight:600;color:#7A7A80">2024-06-15</div></div>
+</body></html>

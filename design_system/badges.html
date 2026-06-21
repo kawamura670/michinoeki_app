@@ -1,0 +1,53 @@
+<!-- @dsCard group="コンポーネント" -->
+<!DOCTYPE html>
+<html lang="ja"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>実績バッジ</title>
+<style>
+  :root { --gold:#D4941F; --gold-light:#FDF5E6; --text:#1A1A1A; --text-sub:#7A7A80; --bg:#FAFAF8; --card:#FFFFFF; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system,"Hiragino Sans",sans-serif; background: var(--bg); padding: 16px; max-width: 380px; margin: 0 auto; }
+  .badge-list { display: grid; grid-template-columns: repeat(2,1fr); gap: 10px; }
+  .badge-card {
+    background: var(--card); border-radius: 18px; padding: 18px 14px;
+    text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.04); position: relative; overflow: hidden;
+  }
+  .badge-card.earned { border: 1.5px solid var(--gold); background: linear-gradient(160deg,var(--gold-light),#fff); }
+  .badge-card.locked { opacity: 0.35; filter: grayscale(0.7); }
+  .badge-emoji { font-size: 2.4rem; margin-bottom: 6px; }
+  .badge-title { font-weight: 800; font-size: 0.88rem; margin-bottom: 3px; }
+  .badge-desc { font-size: 0.78rem; color: var(--text-sub); line-height: 1.3; }
+  .badge-progress { margin-top: 8px; height: 6px; background: var(--bg); border-radius: 3px; overflow: hidden; }
+  .badge-progress-fill { height: 100%; background: linear-gradient(90deg,var(--gold),#ffb300); border-radius: 3px; }
+  .badge-progress-text { font-size: 0.72rem; color: var(--text-sub); margin-top: 4px; }
+</style></head><body>
+<div class="badge-list">
+  <div class="badge-card earned">
+    <div class="badge-emoji">🎯</div>
+    <div class="badge-title">はじめの一歩</div>
+    <div class="badge-desc">最初の道の駅を訪問</div>
+    <div class="badge-progress"><div class="badge-progress-fill" style="width:100%"></div></div>
+    <div class="badge-progress-text">1 / 1</div>
+  </div>
+  <div class="badge-card earned">
+    <div class="badge-emoji">⭐</div>
+    <div class="badge-title">10駅達成</div>
+    <div class="badge-desc">10駅を訪問</div>
+    <div class="badge-progress"><div class="badge-progress-fill" style="width:100%"></div></div>
+    <div class="badge-progress-text">10 / 10</div>
+  </div>
+  <div class="badge-card">
+    <div class="badge-emoji">🌟</div>
+    <div class="badge-title">50駅達成</div>
+    <div class="badge-desc">50駅を訪問</div>
+    <div class="badge-progress"><div class="badge-progress-fill" style="width:56%"></div></div>
+    <div class="badge-progress-text">28 / 50</div>
+  </div>
+  <div class="badge-card locked">
+    <div class="badge-emoji">🔒</div>
+    <div class="badge-title">100駅マスター</div>
+    <div class="badge-desc">100駅を訪問</div>
+    <div class="badge-progress"><div class="badge-progress-fill" style="width:28%"></div></div>
+    <div class="badge-progress-text">28 / 100</div>
+  </div>
+</div>
+</body></html>
