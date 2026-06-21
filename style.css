@@ -709,6 +709,26 @@ body {
   object-fit: contain;
 }
 
+/* ===== アフィリエイトリンク ===== */
+.sd-affiliate { margin-bottom: 18px; }
+.sd-affiliate-links { display: flex; flex-direction: column; gap: 8px; }
+.sd-aff-link {
+  display: flex; align-items: center; gap: 12px;
+  padding: 12px 14px; border-radius: 12px;
+  text-decoration: none; color: var(--text);
+  transition: background 0.15s, transform 0.1s;
+}
+.sd-aff-link:active { transform: scale(0.98); }
+.sd-aff-hotel { background: linear-gradient(135deg, #EEF4FF, #E8F0FE); }
+.sd-aff-hotel:active { background: #D8E6FD; }
+.sd-aff-shop { background: linear-gradient(135deg, #FFF5EE, #FFEEE0); }
+.sd-aff-shop:active { background: #FFDDC8; }
+.sd-aff-icon { font-size: 1.6rem; flex-shrink: 0; }
+.sd-aff-text { flex: 1; }
+.sd-aff-title { font-size: 0.9rem; font-weight: 700; display: block; }
+.sd-aff-sub { font-size: 0.72rem; color: var(--text-sub); display: block; margin-top: 1px; }
+.sd-aff-arrow { font-size: 1.4rem; color: var(--text-light); font-weight: 300; flex-shrink: 0; }
+
 /* ===== 音声モーダル ===== */
 .voice-modal { text-align: center; }
 .voice-status { font-size: 0.95rem; color: var(--text-sub); margin-bottom: 14px; }
@@ -1204,6 +1224,10 @@ body {
   cursor: pointer; width: calc(100% - 48px); transition: all 0.2s;
 }
 .paywall-cta:active { transform: scale(0.97); }
+.paywall-guarantee {
+  text-align: center; font-size: 0.72rem; color: var(--text-light);
+  padding: 8px 24px 0; font-weight: 500;
+}
 .paywall-skip {
   display: block; text-align: center; padding: 12px;
   color: var(--text-sub); font-size: 0.82rem; cursor: pointer;

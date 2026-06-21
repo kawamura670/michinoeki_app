@@ -1,3 +1,16 @@
+// ===== 収益化設定（各サービス登録後にIDを入れる） =====
+const REVENUE_CONFIG = {
+  // Stripe Payment Link — https://dashboard.stripe.com/payment-links で作成
+  // 作成時 "決済後のリダイレクト先" に ?premium=activated を付けたURLを設定
+  stripePaymentLink: "", // 例: "https://buy.stripe.com/xxxxx"
+
+  // 楽天アフィリエイトID — https://affiliate.rakuten.co.jp/ で取得
+  rakutenAffiliateId: "", // 例: "1234abcd.5678efgh.9012ijkl"
+
+  // Amazonアソシエイト タグ — https://affiliate.amazon.co.jp/ で取得
+  amazonTag: "", // 例: "michinoeki-22"
+};
+
 // ===== 定数 =====
 const PREF_ORDER = [
   "北海道","青森県","岩手県","宮城県","秋田県","山形県","福島県",
@@ -142,6 +155,47 @@ function setVisited(id, visited, photo) {
 }
 
 function getLevel(visited) { let lv=LEVELS[0]; for(const l of LEVELS){ if(visited>=l.min) lv=l; } return lv; }
+
+// ===== アフィリエイトリンク =====
+function buildAffiliateSection(station){
+  const prefShort=station.pref.replace(/[都道府県]$/,"");
+  const rakutenId=REVENUE_CONFIG.rakutenAffiliateId;
+  const amazonTag=REVENUE_CONFIG.amazonTag;
+
+  const travelQuery=encodeURIComponent(prefShort+" "+station.location);
+  const productQuery=encodeURIComponent("道の駅 "+prefShort+" 名産");
+
+  let travelUrl=`https://travel.rakuten.co.jp/search/?f_keyword=${travelQuery}`;
+  if(rakutenId) travelUrl+=`&af_id=${rakutenId}`;
+
+  let shopUrl=`https://search.rakuten.co.jp/search/mall/${encodeURIComponent("道の駅 "+prefShort)}/?scid=af_pc_etc&sc2id=af_101_0_0`;
+  if(rakutenId) shopUrl+=`&af_id=${rakutenId}`;
+
+  let amazonUrl=`https://www.amazon.co.jp/s?k=${productQuery}`;
+  if(amazonTag) amazonUrl+=`&tag=${amazonTag}`;
+
+  return `<div class="sd-section sd-affiliate">`+
+    `<div class="sd-section-title">🚗 旅のおともに</div>`+
+    `<div class="sd-affiliate-links">`+
+      `<a href="${travelUrl}" target="_blank" rel="noopener" class="sd-aff-link sd-aff-hotel">`+
+        `<span class="sd-aff-icon">🏨</span>`+
+        `<span class="sd-aff-text">`+
+          `<span class="sd-aff-title">${prefShort}の宿を探す</span>`+
+          `<span class="sd-aff-sub">楽天トラベル</span>`+
+        `</span>`+
+        `<span class="sd-aff-arrow">›</span>`+
+      `</a>`+
+      `<a href="${shopUrl}" target="_blank" rel="noopener" class="sd-aff-link sd-aff-shop">`+
+        `<span class="sd-aff-icon">🛒</span>`+
+        `<span class="sd-aff-text">`+
+          `<span class="sd-aff-title">${prefShort}の名産品</span>`+
+          `<span class="sd-aff-sub">お取り寄せ</span>`+
+        `</span>`+
+        `<span class="sd-aff-arrow">›</span>`+
+      `</a>`+
+    `</div>`+
+  `</div>`;
+}
 
 function compressAndSavePhoto(stationId, file, callback){
   const reader=new FileReader(), img=new Image();
@@ -611,9 +665,7 @@ function updatePremiumUI(){
 function showPaywall(){ document.getElementById("paywall-modal").hidden=false; }
 
 document.getElementById("premium-gate-cta").addEventListener("click", showPaywall);
-document.getElementById("premium-gate-restore").addEventListener("click",()=>{
-  activatePremium();
-});
+document.getElementById("premium-gate-restore").addEventListener("click", showPaywall);
 
 document.querySelectorAll(".price-option").forEach(o=>{
   o.addEventListener("click",()=>{
@@ -623,14 +675,32 @@ document.querySelectorAll(".price-option").forEach(o=>{
 });
 document.getElementById("paywall-cta").addEventListener("click",()=>{
   document.getElementById("paywall-modal").hidden=true;
-  activatePremium();
+  handleStripeCheckout();
 });
+
+function handleStripeCheckout(){
+  if(REVENUE_CONFIG.stripePaymentLink){
+    window.location.href=REVENUE_CONFIG.stripePaymentLink;
+  } else {
+    activatePremium();
+  }
+}
 
 function activatePremium(){
   setPremium(true);
   updatePremiumUI(); render();
   showPremiumCelebration();
 }
+
+// 決済後リダイレクト判定
+(function checkPaymentReturn(){
+  const params=new URLSearchParams(window.location.search);
+  if(params.get("premium")==="activated"){
+    setPremium(true);
+    window.history.replaceState({}, "", window.location.pathname);
+    setTimeout(()=>{ updatePremiumUI(); render(); showPremiumCelebration(); }, 500);
+  }
+})();
 
 function showPremiumCelebration(){
   triggerConfetti(50);
@@ -716,6 +786,8 @@ function openStationDetail(stationId){
     html+=`<div class="sd-photo-add locked" id="sd-photo-add-locked"><span>👑</span><span class="sd-photo-add-label">PRO</span></div>`;
   }
   html+=`</div></div>`;
+
+  html+=buildAffiliateSection(st);
 
   html+=`<div class="sd-section">`;
   html+=`<div class="sd-section-title">📝 旅の日記</div>`;
