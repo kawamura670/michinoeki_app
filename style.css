@@ -899,6 +899,61 @@ body {
   font-weight: 400;
 }
 
+/* ===== スタンプ獲得演出 ===== */
+.stamp-reveal-overlay {
+  position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.75); z-index: 400;
+  display: flex; align-items: center; justify-content: center;
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  opacity: 0; transition: opacity 0.4s;
+}
+.stamp-reveal-overlay.show { opacity: 1; }
+
+.stamp-reveal {
+  text-align: center; padding: 20px;
+  transform: scale(0.5) rotate(-10deg);
+  transition: transform 0.6s cubic-bezier(0.17,0.89,0.32,1.28);
+}
+.stamp-reveal-overlay.show .stamp-reveal {
+  transform: scale(1) rotate(0deg);
+}
+
+.stamp-reveal-label {
+  font-size: 1.8rem; font-weight: 900; margin-bottom: 12px;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.3);
+  animation: revealPulse 1s ease-in-out infinite;
+}
+@keyframes revealPulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.08)} }
+
+.stamp-reveal-svg {
+  width: 220px; height: 220px; margin: 0 auto 16px;
+  animation: stampDrop 0.7s cubic-bezier(0.17,0.89,0.32,1.28) 0.2s both;
+}
+.stamp-reveal-svg svg { width: 100%; height: 100%; }
+@keyframes stampDrop {
+  0% { transform: scale(2) rotate(-15deg); opacity: 0; }
+  50% { transform: scale(0.9) rotate(3deg); opacity: 1; }
+  70% { transform: scale(1.05) rotate(-1deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+
+.stamp-reveal-name {
+  color: #fff; font-size: 1.3rem; font-weight: 900;
+  margin-bottom: 6px; text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+.stamp-reveal-theme {
+  color: rgba(255,255,255,0.6); font-size: 0.85rem; font-weight: 500;
+  margin-bottom: 12px; font-style: italic;
+}
+.stamp-reveal-rarity {
+  display: inline-block; color: #fff; font-size: 0.7rem; font-weight: 800;
+  letter-spacing: 3px; padding: 5px 16px; border-radius: 20px;
+  margin-bottom: 16px;
+}
+.stamp-reveal-tap {
+  color: rgba(255,255,255,0.35); font-size: 0.75rem; font-weight: 500;
+}
+
 /* ===== スタンプストリーク ===== */
 .streak-card {
   display: flex; align-items: center; gap: 12px;

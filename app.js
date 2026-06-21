@@ -283,6 +283,98 @@ function triggerStampAnimation(row) {
   setTimeout(()=>row.classList.remove('stamp-flash'),800);
 }
 
+// ===== スタンプ獲得演出 =====
+const RARITY_STYLE = {
+  common:   {label:"COMMON",bg:"#2D5A3D",border:"#4A8B5E",glow:"rgba(45,90,61,0.3)",star:""},
+  rare:     {label:"RARE",bg:"#1B4F72",border:"#3A8EC4",glow:"rgba(58,142,196,0.4)",star:"⭐"},
+  epic:     {label:"EPIC",bg:"#6A3D9A",border:"#9B6DD7",glow:"rgba(155,109,215,0.5)",star:"⭐⭐"},
+  legendary:{label:"LEGENDARY",bg:"#8B6914",border:"#D4A017",glow:"rgba(212,160,23,0.6)",star:"⭐⭐⭐"},
+};
+
+function buildStampSVG(station, stampData) {
+  const art = stampData ? stampData.stamp_art : getStampArt(station);
+  const rarity = stampData ? stampData.rarity : "common";
+  const rs = RARITY_STYLE[rarity];
+  const theme = stampData ? stampData.art_theme : "";
+  const mainSym = stampData ? stampData.main_symbol : "";
+  const emoji = PREF_EMOJI[station.pref] || "📍";
+
+  const patternId = `p${station.id}`;
+  const hashVal = station.id * 2654435761;
+  const hue1 = hashVal % 360;
+  const hue2 = (hashVal * 7) % 360;
+  const decoCount = 8 + (station.id % 8);
+
+  let decoLines = "";
+  for (let i = 0; i < decoCount; i++) {
+    const angle = (360 / decoCount) * i;
+    const r1 = 115 + (station.id * (i+1) * 3) % 10;
+    const r2 = 125 + (station.id * (i+1) * 7) % 8;
+    const x1 = 150 + r1 * Math.cos(angle * Math.PI / 180);
+    const y1 = 150 + r1 * Math.sin(angle * Math.PI / 180);
+    const x2 = 150 + r2 * Math.cos(angle * Math.PI / 180);
+    const y2 = 150 + r2 * Math.sin(angle * Math.PI / 180);
+    decoLines += `<line x1="${x1.toFixed(1)}" y1="${y1.toFixed(1)}" x2="${x2.toFixed(1)}" y2="${y2.toFixed(1)}" stroke="${rs.border}" stroke-width="2" opacity="0.5"/>`;
+  }
+
+  const seriesBadge = stampData && stampData.series ?
+    `<rect x="95" y="240" width="110" height="20" rx="10" fill="${rs.bg}" opacity="0.8"/>
+     <text x="150" y="254" text-anchor="middle" fill="#fff" font-size="10" font-weight="700">${
+       {ocean:"🌊 海シリーズ",mountain:"⛰️ 山シリーズ",onsen:"♨️ 温泉シリーズ",castle:"🏯 城シリーズ",sakura:"🌸 花シリーズ",scenic:"🏞️ 絶景シリーズ",dog:"🐕 犬旅シリーズ",rv:"🚐 車中泊シリーズ"}[stampData.series]||""
+     }</text>` : "";
+
+  return `<svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <radialGradient id="${patternId}g"><stop offset="0%" stop-color="hsl(${hue1},20%,97%)"/><stop offset="100%" stop-color="hsl(${hue2},15%,93%)"/></radialGradient>
+      <filter id="${patternId}f"><feGaussianBlur stdDeviation="1.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    </defs>
+    <circle cx="150" cy="150" r="145" fill="url(#${patternId}g)" stroke="${rs.border}" stroke-width="4"/>
+    <circle cx="150" cy="150" r="130" fill="none" stroke="${rs.border}" stroke-width="1.5" stroke-dasharray="4,3" opacity="0.4"/>
+    <circle cx="150" cy="150" r="118" fill="none" stroke="${rs.border}" stroke-width="0.8" opacity="0.25"/>
+    ${decoLines}
+    <text x="150" y="105" text-anchor="middle" font-size="60" filter="url(#${patternId}f)">${art}</text>
+    <text x="150" y="145" text-anchor="middle" font-size="14" fill="${rs.bg}" font-weight="800" opacity="0.5">${emoji} ${station.pref}</text>
+    <text x="150" y="185" text-anchor="middle" font-size="22" fill="${rs.bg}" font-weight="900" font-family="'Yu Mincho','Hiragino Mincho Pro',serif">${station.name}</text>
+    <text x="150" y="210" text-anchor="middle" font-size="9" fill="${rs.bg}" opacity="0.5" font-weight="600">${station.location}</text>
+    ${seriesBadge}
+    <text x="150" y="280" text-anchor="middle" font-size="10" fill="${rs.border}" font-weight="800" letter-spacing="3" opacity="0.6">${rs.label}</text>
+  </svg>`;
+}
+
+function showStampReveal(station) {
+  const sData = getStampData(station.id);
+  const rarity = sData ? sData.rarity : "common";
+  const rs = RARITY_STYLE[rarity];
+
+  triggerConfetti(rarity==="legendary"?50:rarity==="epic"?35:rarity==="rare"?20:12);
+
+  const overlay = document.createElement("div");
+  overlay.className = "stamp-reveal-overlay";
+  overlay.innerHTML =
+    `<div class="stamp-reveal">` +
+      `<div class="stamp-reveal-label" style="color:${rs.border}">${rs.star} GET! ${rs.star}</div>` +
+      `<div class="stamp-reveal-svg" style="filter:drop-shadow(0 0 20px ${rs.glow})">${buildStampSVG(station, sData)}</div>` +
+      `<div class="stamp-reveal-name">${station.pref} ${station.name}</div>` +
+      (sData && sData.art_theme ? `<div class="stamp-reveal-theme">${sData.art_theme}</div>` : "") +
+      `<div class="stamp-reveal-rarity" style="background:${rs.bg}">${rs.label}</div>` +
+      `<div class="stamp-reveal-tap">タップして閉じる</div>` +
+    `</div>`;
+  document.body.appendChild(overlay);
+  requestAnimationFrame(() => overlay.classList.add("show"));
+
+  overlay.addEventListener("click", () => {
+    overlay.classList.remove("show");
+    setTimeout(() => { if(overlay.parentNode) overlay.remove(); }, 400);
+  });
+
+  setTimeout(() => {
+    if(overlay.parentNode) {
+      overlay.classList.remove("show");
+      setTimeout(() => { if(overlay.parentNode) overlay.remove(); }, 400);
+    }
+  }, 8000);
+}
+
 function triggerConfetti(count) {
   if(window.matchMedia('(prefers-reduced-motion:reduce)').matches) return;
   const c=document.createElement('div'); c.className='confetti-container'; document.body.appendChild(c);
@@ -515,15 +607,13 @@ function renderList(s){
 
       stampBtn.addEventListener("click",()=>{
         if(isV){
-          if(confirm(`「${st.name}」のスタンプを取り消しますか？`)){
-            _completedPrefs.delete(st.pref); setVisited(st.id,false); render();
-          }
+          showStampReveal(st);
           return;
         }
         const prev=calcStats().visited;
         setVisited(st.id,true);
         stampBtn.classList.add("stamped");
-        triggerSpecialtyPopup(row, st.id, st.name, st.pref);
+        showStampReveal(st);
         const ns=calcStats();
         for(const m of MILESTONES){ if(prev<m&&ns.visited>=m){ triggerConfetti(m>=100?40:m>=50?30:20); break; } }
         if(ns.prefStats[st.pref].visited>=ns.prefStats[st.pref].total&&!_completedPrefs.has(st.pref)){
