@@ -1,0 +1,42 @@
+name: Update Station Data
+
+on:
+  schedule:
+    # 毎週月曜 日本時間 正午 (UTC 03:00)
+    - cron: '0 3 * * 1'
+  workflow_dispatch: # 手動実行も可能
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run update script
+        run: node scripts/update_stations.mjs
+
+      - name: Check for changes
+        id: changes
+        run: |
+          if git diff --quiet data.js; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Commit and push
+        if: steps.changes.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data.js update_log.json
+          ADDED=$(node -e "const l=require('./update_log.json');const last=l[l.length-1];console.log(last.added.length+'駅追加: '+last.added.join(', '))")
+          git commit -m "auto: 道の駅データ更新 ($ADDED)"
+          git push

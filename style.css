@@ -460,6 +460,11 @@ body {
 
 .badge-new { display: inline-block; background: var(--sunset); color: #fff; font-size: 0.68rem; font-weight: 800; border-radius: 8px; padding: 1px 8px; margin-left: 6px; animation: newPulse 2s ease-in-out infinite; }
 @keyframes newPulse { 0%,100%{opacity:1} 50%{opacity:0.6} }
+.badge-closed { display: inline-block; background: #999; color: #fff; font-size: 0.65rem; font-weight: 800; border-radius: 8px; padding: 1px 8px; margin-left: 6px; }
+.badge-temp-closed { display: inline-block; background: #E67E22; color: #fff; font-size: 0.65rem; font-weight: 800; border-radius: 8px; padding: 1px 8px; margin-left: 6px; }
+.badge-renewed { display: inline-block; background: #3498DB; color: #fff; font-size: 0.65rem; font-weight: 800; border-radius: 8px; padding: 1px 8px; margin-left: 6px; animation: newPulse 2s ease-in-out infinite; }
+.station-row.closed { opacity: 0.5; }
+.station-row.closed .stamp-btn { pointer-events: none; }
 
 .station-photo {
   width: 52px; height: 52px; object-fit: cover; border-radius: 8px;

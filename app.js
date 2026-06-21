@@ -502,7 +502,8 @@ function renderList(s){
     const list=document.createElement("div"); list.className="station-list";
     filtered.forEach(st=>{
       const info=getVisitInfo(st.id), isV=!!(info&&info.visited);
-      const row=document.createElement("div"); row.className="station-row"+(isV?" visited":"");
+      const isClosed=st.status==="closed";
+      const row=document.createElement("div"); row.className="station-row"+(isV?" visited":"")+(isClosed?" closed":"");
 
       const stampArt=getStampArt(st);
       const sData=getStampData(st.id);
@@ -532,7 +533,11 @@ function renderList(s){
       });
 
       const infoDiv=document.createElement("div"); infoDiv.className="station-info";
-      const nb=st.isNew?'<span class="badge-new">NEW</span>':"";
+      const statusBadge = st.status==="closed"?'<span class="badge-closed">閉鎖</span>'
+        : st.status==="temp_closed"?'<span class="badge-temp-closed">休業中</span>'
+        : st.status==="renewed"?'<span class="badge-renewed">リニューアル</span>'
+        : "";
+      const nb=st.isNew?'<span class="badge-new">NEW</span>':statusBadge;
       const photoCount=isV?((info.photo?1:0)+(info.photos?info.photos.length:0)):0;
       const hasNote=isV&&info.note&&info.note.length>0;
       const notePreview=hasNote?`<div class="visited-note">📝 ${info.note.slice(0,30)}${info.note.length>30?"…":""}</div>`:"";
