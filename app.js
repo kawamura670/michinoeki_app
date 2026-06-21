@@ -294,98 +294,141 @@ const RARITY_STYLE = {
 function buildStampSVG(station, stampData) {
   const rarity = stampData ? stampData.rarity : "common";
   const rs = RARITY_STYLE[rarity];
-  const emoji = PREF_EMOJI[station.pref] || "📍";
-  const mainSym = stampData ? stampData.main_symbol : station.pref + "の風景";
-  const secondSym = stampData ? stampData.secondary_symbol : "";
+  const mainSym = stampData ? stampData.main_symbol : "";
   const series = stampData ? stampData.series : "";
   const pid = `s${station.id}`;
+  const H = (station.id * 2654435761 >>> 0);
 
-  const h = (station.id * 2654435761 >>> 0) % 360;
-  const bgCol1 = `hsl(${h},25%,96%)`;
-  const bgCol2 = `hsl(${(h+40)%360},20%,92%)`;
+  // 空の色（駅IDで変化）
+  const skyHue = [200,210,195,25,280,190,205,30,215,185][station.id % 10];
+  const skySat = 40 + (H % 30);
+  const skyLit = 75 + (H % 10);
+  const skyTop = `hsl(${skyHue},${skySat}%,${skyLit}%)`;
+  const skyBot = `hsl(${(skyHue+15)%360},${skySat-10}%,${skyLit+8}%)`;
 
-  // 風景イラスト用SVGパーツ（手描き風の線画パーツを組み合わせ）
-  const landscapes = [
-    // 山
-    `<path d="M60,190 Q90,130 120,190 Q140,145 170,190 Q185,155 210,190 Q225,140 250,190" fill="none" stroke="${rs.border}" stroke-width="1.8" opacity="0.35" stroke-linecap="round"/>
-     <path d="M80,190 Q105,160 130,190" fill="none" stroke="${rs.border}" stroke-width="1" opacity="0.2" stroke-dasharray="3,2"/>`,
-    // 波
-    `<path d="M55,185 Q75,170 95,185 Q115,170 135,185 Q155,170 175,185 Q195,170 215,185 Q235,170 255,185" fill="none" stroke="${rs.border}" stroke-width="1.8" opacity="0.35" stroke-linecap="round"/>
-     <path d="M65,195 Q85,185 105,195 Q125,185 145,195 Q165,185 185,195 Q205,185 225,195" fill="none" stroke="${rs.border}" stroke-width="1" opacity="0.2"/>`,
-    // 木
-    `<line x1="110" y1="195" x2="110" y2="160" stroke="${rs.border}" stroke-width="2" opacity="0.3" stroke-linecap="round"/>
-     <path d="M95,165 Q110,130 125,165" fill="none" stroke="${rs.border}" stroke-width="1.5" opacity="0.3"/>
-     <path d="M100,175 Q110,145 120,175" fill="none" stroke="${rs.border}" stroke-width="1" opacity="0.2"/>
-     <line x1="200" y1="195" x2="200" y2="170" stroke="${rs.border}" stroke-width="1.5" opacity="0.25"/>
-     <path d="M190,175 Q200,152 210,175" fill="none" stroke="${rs.border}" stroke-width="1.2" opacity="0.25"/>`,
-    // 鳥居
-    `<line x1="130" y1="195" x2="130" y2="155" stroke="${rs.border}" stroke-width="2" opacity="0.3"/>
-     <line x1="180" y1="195" x2="180" y2="155" stroke="${rs.border}" stroke-width="2" opacity="0.3"/>
-     <path d="M120,158 Q155,148 190,158" fill="none" stroke="${rs.border}" stroke-width="2.5" opacity="0.35" stroke-linecap="round"/>
-     <line x1="125" y1="170" x2="185" y2="170" stroke="${rs.border}" stroke-width="1.5" opacity="0.25"/>`,
-    // 灯台
-    `<rect x="147" y="150" width="16" height="40" rx="2" fill="none" stroke="${rs.border}" stroke-width="1.8" opacity="0.3"/>
-     <path d="M140,152 Q155,140 170,152" fill="none" stroke="${rs.border}" stroke-width="1.5" opacity="0.3"/>
-     <circle cx="155" cy="148" r="4" fill="none" stroke="${rs.border}" stroke-width="1.2" opacity="0.35"/>
-     <path d="M100,195 Q130,185 155,190 Q180,185 210,195" fill="none" stroke="${rs.border}" stroke-width="1.2" opacity="0.2"/>`,
-    // 田園
-    `<path d="M70,185 L240,185" stroke="${rs.border}" stroke-width="0.8" opacity="0.2"/>
-     <path d="M80,175 L230,175" stroke="${rs.border}" stroke-width="0.8" opacity="0.15"/>
-     <path d="M90,165 L220,165" stroke="${rs.border}" stroke-width="0.8" opacity="0.12"/>
-     <path d="M100,190 Q120,170 140,190 Q160,168 180,190 Q200,172 220,190" fill="none" stroke="${rs.border}" stroke-width="1.5" opacity="0.25"/>`,
-    // 橋
-    `<path d="M80,180 Q120,155 155,180 Q190,155 230,180" fill="none" stroke="${rs.border}" stroke-width="2" opacity="0.35" stroke-linecap="round"/>
-     <line x1="120" y1="180" x2="120" y2="195" stroke="${rs.border}" stroke-width="1.5" opacity="0.2"/>
-     <line x1="190" y1="180" x2="190" y2="195" stroke="${rs.border}" stroke-width="1.5" opacity="0.2"/>`,
-    // 温泉
-    `<ellipse cx="155" cy="190" rx="40" ry="12" fill="none" stroke="${rs.border}" stroke-width="1.5" opacity="0.3"/>
-     <path d="M135,180 Q138,165 135,155" fill="none" stroke="${rs.border}" stroke-width="1.2" opacity="0.2" stroke-linecap="round"/>
-     <path d="M155,178 Q158,160 155,148" fill="none" stroke="${rs.border}" stroke-width="1.5" opacity="0.25" stroke-linecap="round"/>
-     <path d="M175,180 Q178,165 175,155" fill="none" stroke="${rs.border}" stroke-width="1.2" opacity="0.2" stroke-linecap="round"/>`,
+  // 地面の色
+  const gndHue = [120,100,130,140,110,95,125,135,105,115][station.id % 10];
+  const gndCol = `hsl(${gndHue},35%,55%)`;
+  const gndLight = `hsl(${gndHue},30%,70%)`;
+
+  // 水の色
+  const waterCol = `hsl(${200+(H%30)},50%,60%)`;
+
+  // 山の色
+  const mtFar = `hsl(${220+(H%20)},20%,72%)`;
+  const mtNear = `hsl(${gndHue},30%,48%)`;
+
+  // 夕焼けモード（一部の駅）
+  const isSunset = station.id % 7 === 0;
+  const sunsetCol = isSunset ? `hsl(${20+(H%20)},70%,70%)` : "";
+
+  // 風景パーツ（フルカラー水彩風）
+  const scenes = [
+    // 0: 山と湖
+    `<path d="M20,160 Q70,100 120,160 Q150,90 200,145 Q230,110 280,155" fill="${mtFar}" opacity="0.5"/>
+     <path d="M20,170 Q80,120 140,165 Q180,125 230,160 Q260,135 290,165" fill="${mtNear}" opacity="0.4"/>
+     <path d="M20,175 L290,175 L290,210 Q200,195 155,200 Q100,195 20,210 Z" fill="${waterCol}" opacity="0.35"/>
+     <path d="M60,200 Q100,192 155,196 Q200,192 250,200" fill="none" stroke="#fff" stroke-width="0.8" opacity="0.4"/>`,
+    // 1: 海岸と灯台
+    `<rect x="200" y="115" width="14" height="50" rx="2" fill="#E8E0D0" opacity="0.8"/>
+     <path d="M192,118 Q207,105 222,118" fill="#C44" opacity="0.6"/>
+     <circle cx="207" cy="112" r="4" fill="#FDB" opacity="0.7"/>
+     <path d="M20,175 Q80,165 140,172 Q200,160 290,170 L290,220 L20,220 Z" fill="${waterCol}" opacity="0.4"/>
+     <path d="M20,180 Q90,172 160,178 Q220,168 290,175" fill="none" stroke="#fff" stroke-width="1" opacity="0.3"/>
+     <path d="M20,190 Q100,185 180,188 Q240,182 290,186" fill="none" stroke="#fff" stroke-width="0.6" opacity="0.2"/>`,
+    // 2: 田園と山並み
+    `<path d="M20,150 Q80,115 155,145 Q230,110 290,145" fill="${mtFar}" opacity="0.4"/>
+     <rect x="20" y="160" width="270" height="55" fill="${gndLight}" opacity="0.3"/>
+     <path d="M30,170 L270,170" stroke="${gndCol}" stroke-width="0.5" opacity="0.3"/>
+     <path d="M35,180 L265,180" stroke="${gndCol}" stroke-width="0.5" opacity="0.25"/>
+     <path d="M40,190 L260,190" stroke="${gndCol}" stroke-width="0.5" opacity="0.2"/>
+     <path d="M80,160 Q100,140 120,160 Q140,138 160,160" fill="${gndCol}" opacity="0.2"/>`,
+    // 3: 鳥居と参道
+    `<path d="M20,160 Q80,130 155,155 Q220,125 290,155" fill="${mtNear}" opacity="0.25"/>
+     <rect x="20" y="170" width="270" height="45" fill="${gndLight}" opacity="0.2"/>
+     <line x1="130" y1="200" x2="130" y2="125" stroke="#B33" stroke-width="3.5" opacity="0.7"/>
+     <line x1="180" y1="200" x2="180" y2="125" stroke="#B33" stroke-width="3.5" opacity="0.7"/>
+     <path d="M118,130 Q155,115 192,130" fill="none" stroke="#B33" stroke-width="4" opacity="0.75" stroke-linecap="round"/>
+     <line x1="123" y1="142" x2="187" y2="142" stroke="#B33" stroke-width="2.5" opacity="0.5"/>
+     <path d="M100,200 L155,170 L210,200" fill="${gndLight}" opacity="0.15"/>`,
+    // 4: 橋と渓谷
+    `<path d="M20,190 L290,190 L290,220 L20,220 Z" fill="${waterCol}" opacity="0.3"/>
+     <path d="M20,155 Q50,180 80,160 L80,195" fill="${mtNear}" opacity="0.3"/>
+     <path d="M230,155 Q250,175 280,160 L280,195" fill="${mtNear}" opacity="0.3"/>
+     <path d="M60,155 Q120,130 155,145 Q190,130 250,155" fill="none" stroke="#8B7355" stroke-width="3" opacity="0.6" stroke-linecap="round"/>
+     <line x1="100" y1="155" x2="100" y2="175" stroke="#8B7355" stroke-width="1.5" opacity="0.4"/>
+     <line x1="155" y1="148" x2="155" y2="175" stroke="#8B7355" stroke-width="1.5" opacity="0.4"/>
+     <line x1="210" y1="155" x2="210" y2="175" stroke="#8B7355" stroke-width="1.5" opacity="0.4"/>`,
+    // 5: 森と小川
+    `<path d="M20,180 L290,180 L290,210 L20,210 Z" fill="${gndLight}" opacity="0.25"/>
+     <path d="M120,185 Q155,178 190,185 Q220,178 250,185" fill="${waterCol}" opacity="0.3" stroke="${waterCol}" stroke-width="0.5"/>
+     <path d="M60,180 L60,130" stroke="#6B4" stroke-width="2" opacity="0.5"/><path d="M42,140 Q60,105 78,140" fill="#5A3" opacity="0.35"/>
+     <path d="M100,180 L100,140" stroke="#6B4" stroke-width="2.5" opacity="0.5"/><path d="M78,148 Q100,108 122,148" fill="#4A2" opacity="0.3"/><path d="M84,155 Q100,122 116,155" fill="#5B3" opacity="0.25"/>
+     <path d="M200,180 L200,135" stroke="#6B4" stroke-width="2" opacity="0.5"/><path d="M182,145 Q200,110 218,145" fill="#5A3" opacity="0.35"/>
+     <path d="M250,180 L250,145" stroke="#6B4" stroke-width="1.5" opacity="0.4"/><path d="M238,152 Q250,125 262,152" fill="#4A2" opacity="0.3"/>`,
+    // 6: 城と桜
+    `<path d="M20,175 L290,175 L290,210 L20,210 Z" fill="${gndLight}" opacity="0.2"/>
+     <rect x="135" y="115" width="40" height="60" fill="#E8E0D0" opacity="0.7"/>
+     <path d="M128,118 L155,95 L182,118" fill="#445" opacity="0.5"/>
+     <path d="M132,105 L155,88 L178,105" fill="#445" opacity="0.4"/>
+     <rect x="148" y="140" width="14" height="18" fill="#654" opacity="0.3"/>
+     <circle cx="80" cy="145" r="18" fill="#F9C" opacity="0.35"/><circle cx="72" cy="138" r="14" fill="#FAD" opacity="0.3"/>
+     <circle cx="230" cy="140" r="16" fill="#F9C" opacity="0.3"/><circle cx="238" cy="148" r="12" fill="#FAD" opacity="0.25"/>`,
+    // 7: 温泉街
+    `<path d="M20,170 L290,170 L290,210 L20,210 Z" fill="${gndLight}" opacity="0.2"/>
+     <rect x="70" y="135" width="35" height="40" rx="2" fill="#D4C4A8" opacity="0.5"/>
+     <path d="M65,137 L87,120 L110,137" fill="#8B7355" opacity="0.4"/>
+     <rect x="195" y="140" width="30" height="35" rx="2" fill="#D4C4A8" opacity="0.5"/>
+     <path d="M190,142 L210,128 L230,142" fill="#8B7355" opacity="0.4"/>
+     <path d="M125,155 Q130,130 125,110" fill="none" stroke="#fff" stroke-width="2" opacity="0.35" stroke-linecap="round"/>
+     <path d="M145,155 Q150,125 145,100" fill="none" stroke="#fff" stroke-width="2.5" opacity="0.4" stroke-linecap="round"/>
+     <path d="M165,155 Q170,130 165,110" fill="none" stroke="#fff" stroke-width="2" opacity="0.35" stroke-linecap="round"/>
+     <ellipse cx="145" cy="165" rx="35" ry="10" fill="${waterCol}" opacity="0.3"/>`,
+    // 8: 港と漁船
+    `<path d="M20,165 L290,165 L290,220 L20,220 Z" fill="${waterCol}" opacity="0.35"/>
+     <path d="M30,172 Q80,165 130,170 Q200,163 280,170" fill="none" stroke="#fff" stroke-width="0.8" opacity="0.3"/>
+     <path d="M140,155 L155,140 L170,155 L175,165 L135,165 Z" fill="#E8E0D0" opacity="0.6"/>
+     <line x1="155" y1="140" x2="155" y2="118" stroke="#8B7355" stroke-width="1.5" opacity="0.5"/>
+     <path d="M155,120 L180,135" fill="none" stroke="#B33" stroke-width="0.8" opacity="0.3"/>
+     <path d="M80,160 L90,148 L100,160 L103,165 L77,165 Z" fill="#8B7355" opacity="0.4"/>
+     <line x1="90" y1="148" x2="90" y2="135" stroke="#654" stroke-width="1" opacity="0.4"/>`,
+    // 9: 高原と花畑
+    `<path d="M20,155 Q80,125 155,148 Q230,120 290,150" fill="${mtFar}" opacity="0.35"/>
+     <path d="M20,170 L290,170 L290,210 L20,210 Z" fill="${gndLight}" opacity="0.25"/>
+     <circle cx="60" cy="175" r="3" fill="#E8A" opacity="0.5"/><circle cx="75" cy="178" r="2.5" fill="#FA5" opacity="0.45"/>
+     <circle cx="95" cy="173" r="3" fill="#F9C" opacity="0.5"/><circle cx="110" cy="176" r="2" fill="#E8A" opacity="0.4"/>
+     <circle cx="130" cy="174" r="3" fill="#FA5" opacity="0.45"/><circle cx="150" cy="177" r="2.5" fill="#F9C" opacity="0.5"/>
+     <circle cx="170" cy="173" r="2" fill="#E8A" opacity="0.45"/><circle cx="190" cy="176" r="3" fill="#FA5" opacity="0.5"/>
+     <circle cx="210" cy="175" r="2.5" fill="#F9C" opacity="0.45"/><circle cx="230" cy="178" r="2" fill="#E8A" opacity="0.4"/>
+     <circle cx="245" cy="174" r="3" fill="#FA5" opacity="0.5"/>`,
   ];
 
-  // 駅IDで風景パーツを選択（組み合わせで多様性）
-  const sceneIdx = station.id % landscapes.length;
-  const scene = landscapes[sceneIdx];
-
-  // 外周装飾（ドット＆ダッシュのバリエーション）
-  const dotCount = 24 + (station.id % 12);
-  let dots = "";
-  for (let i = 0; i < dotCount; i++) {
-    const a = (360 / dotCount) * i * Math.PI / 180;
-    const r = 138 + ((station.id * i * 3) % 5);
-    const x = 155 + r * Math.cos(a);
-    const y = 155 + r * Math.sin(a);
-    const sz = 1 + (station.id * i) % 3 * 0.5;
-    dots += `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${sz.toFixed(1)}" fill="${rs.border}" opacity="0.2"/>`;
-  }
+  const sceneIdx = station.id % scenes.length;
+  const scene2Idx = (station.id * 7 + 3) % scenes.length;
 
   const seriesLabel = {ocean:"海",mountain:"山",onsen:"湯",castle:"城",sakura:"花",scenic:"景",dog:"犬",rv:"車"}[series];
-  const seriesBadge = seriesLabel ?
-    `<circle cx="250" cy="60" r="18" fill="${rs.bg}" opacity="0.85"/>
-     <text x="250" y="65" text-anchor="middle" fill="#fff" font-size="14" font-weight="900">${seriesLabel}</text>` : "";
 
   return `<svg viewBox="0 0 310 310" xmlns="http://www.w3.org/2000/svg">
     <defs>
-      <radialGradient id="${pid}bg"><stop offset="0%" stop-color="${bgCol1}"/><stop offset="100%" stop-color="${bgCol2}"/></radialGradient>
+      <linearGradient id="${pid}sky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="${isSunset?sunsetCol:skyTop}"/>
+        <stop offset="100%" stop-color="${skyBot}"/>
+      </linearGradient>
+      <clipPath id="${pid}clip"><circle cx="155" cy="155" r="145"/></clipPath>
     </defs>
-    <!-- 外円 -->
-    <circle cx="155" cy="155" r="150" fill="url(#${pid}bg)" stroke="${rs.border}" stroke-width="3.5"/>
-    <circle cx="155" cy="155" r="143" fill="none" stroke="${rs.border}" stroke-width="1" opacity="0.15"/>
-    ${dots}
-    <!-- 上部弧: 都道府県名 -->
-    <path id="${pid}arc" d="M65,155 A90,90 0 0,1 245,155" fill="none"/>
-    <text font-size="12" fill="${rs.border}" font-weight="700" opacity="0.5"><textPath href="#${pid}arc" startOffset="50%" text-anchor="middle">${emoji} ${station.pref} ${emoji}</textPath></text>
-    <!-- 風景イラスト -->
-    ${scene}
-    <!-- 駅名（メイン） -->
-    <text x="155" y="230" text-anchor="middle" font-size="${station.name.length>6?18:station.name.length>4?22:26}" fill="${rs.bg}" font-weight="900" font-family="'Yu Mincho','Hiragino Mincho Pro','Yu Gothic',serif">${station.name}</text>
-    <!-- テーマ -->
-    <text x="155" y="252" text-anchor="middle" font-size="8.5" fill="${rs.border}" font-weight="500" opacity="0.5">${mainSym.slice(0,15)}</text>
-    <!-- レアリティ -->
-    <text x="155" y="280" text-anchor="middle" font-size="8" fill="${rs.border}" font-weight="800" letter-spacing="4" opacity="0.4">${rs.label}</text>
-    <!-- シリーズバッジ -->
-    ${seriesBadge}
+    <circle cx="155" cy="155" r="148" fill="#F5F0E8" stroke="${rs.border}" stroke-width="3"/>
+    <g clip-path="url(#${pid}clip)">
+      <rect x="5" y="5" width="300" height="300" fill="url(#${pid}sky)"/>
+      ${isSunset?`<circle cx="240" cy="110" r="25" fill="hsl(35,80%,75%)" opacity="0.5"/><circle cx="240" cy="110" r="15" fill="hsl(40,90%,82%)" opacity="0.6"/>`:`<circle cx="220" cy="80" r="10" fill="#fff" opacity="0.3"/><circle cx="235" cy="85" r="12" fill="#fff" opacity="0.25"/><circle cx="90" cy="70" r="8" fill="#fff" opacity="0.2"/>`}
+      ${scenes[sceneIdx]}
+      <rect x="5" y="200" width="300" height="110" fill="${gndCol}" opacity="0.15"/>
+    </g>
+    <circle cx="155" cy="155" r="145" fill="none" stroke="${rs.border}" stroke-width="3"/>
+    <circle cx="155" cy="155" r="139" fill="none" stroke="${rs.border}" stroke-width="0.8" opacity="0.2"/>
+    <rect x="45" y="225" width="220" height="50" rx="6" fill="rgba(255,255,255,0.85)"/>
+    <text x="155" y="248" text-anchor="middle" font-size="${station.name.length>6?16:station.name.length>4?20:24}" fill="#3A3020" font-weight="900" font-family="'Yu Mincho','Hiragino Mincho Pro',serif">${station.name}</text>
+    <text x="155" y="266" text-anchor="middle" font-size="9" fill="#8B7355" font-weight="600">${station.pref} ${station.location.split(/[市町村区郡]/)[0]||""}</text>
+    ${seriesLabel?`<circle cx="260" cy="55" r="16" fill="${rs.bg}" opacity="0.85" stroke="#fff" stroke-width="1.5"/><text x="260" y="60" text-anchor="middle" fill="#fff" font-size="12" font-weight="900">${seriesLabel}</text>`:""}
   </svg>`;
 }
 
