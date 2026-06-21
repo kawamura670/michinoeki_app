@@ -1215,104 +1215,126 @@
     "ts": "2026-06-21T11:23:51.390Z"
   },
   "244": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_244.png",
+    "ts": "2026-06-21T11:31:25.422Z"
   },
   "245": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_245.png",
+    "ts": "2026-06-21T11:31:25.477Z"
   },
   "246": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_246.png",
+    "ts": "2026-06-21T11:31:25.421Z"
   },
   "247": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_247.png",
+    "ts": "2026-06-21T11:31:25.398Z"
   },
   "248": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_248.png",
+    "ts": "2026-06-21T11:31:25.885Z"
   },
   "249": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_249.png",
+    "ts": "2026-06-21T11:31:25.913Z"
   },
   "250": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_250.png",
+    "ts": "2026-06-21T11:31:25.994Z"
   },
   "251": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_251.png",
+    "ts": "2026-06-21T11:31:26.193Z"
   },
   "252": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_252.png",
+    "ts": "2026-06-21T11:31:25.991Z"
   },
   "253": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_253.png",
+    "ts": "2026-06-21T11:31:26.412Z"
   },
   "254": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_254.png",
+    "ts": "2026-06-21T11:31:26.393Z"
   },
   "255": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_255.png",
+    "ts": "2026-06-21T11:31:26.587Z"
   },
   "256": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_256.png",
+    "ts": "2026-06-21T11:31:26.987Z"
   },
   "257": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_257.png",
+    "ts": "2026-06-21T11:31:27.168Z"
   },
   "258": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_258.png",
+    "ts": "2026-06-21T11:31:26.885Z"
   },
   "259": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_259.png",
+    "ts": "2026-06-21T11:31:27.159Z"
   },
   "260": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_260.png",
+    "ts": "2026-06-21T11:31:27.266Z"
   },
   "261": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_261.png",
+    "ts": "2026-06-21T11:31:28.141Z"
   },
   "262": {
     "status": "error",
     "error": "HTTP 429"
   },
   "263": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_263.png",
+    "ts": "2026-06-21T11:31:27.718Z"
   },
   "264": {
     "status": "error",
     "error": "HTTP 429"
   },
   "265": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_265.png",
+    "ts": "2026-06-21T11:31:27.997Z"
   },
   "266": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_266.png",
+    "ts": "2026-06-21T11:32:12.960Z"
   },
   "267": {
     "status": "error",
     "error": "HTTP 429"
   },
   "268": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_268.png",
+    "ts": "2026-06-21T11:31:28.724Z"
   },
   "269": {
     "status": "error",
@@ -1343,8 +1365,9 @@
     "error": "HTTP 429"
   },
   "276": {
-    "status": "error",
-    "error": "The operation was aborted due to timeout"
+    "status": "done",
+    "file": "stamp_276.png",
+    "ts": "2026-06-21T11:31:36.336Z"
   },
   "277": {
     "status": "error",
@@ -1355,8 +1378,9 @@
     "error": "HTTP 429"
   },
   "279": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_279.png",
+    "ts": "2026-06-21T11:31:38.818Z"
   },
   "280": {
     "status": "error",
@@ -1367,8 +1391,9 @@
     "error": "HTTP 429"
   },
   "282": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_282.png",
+    "ts": "2026-06-21T11:31:40.723Z"
   },
   "283": {
     "status": "error",
@@ -1383,12 +1408,14 @@
     "error": "HTTP 429"
   },
   "286": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_286.png",
+    "ts": "2026-06-21T11:31:43.188Z"
   },
   "287": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_287.png",
+    "ts": "2026-06-21T11:31:43.772Z"
   },
   "288": {
     "status": "error",
@@ -1443,8 +1470,9 @@
     "error": "HTTP 429"
   },
   "301": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_301.png",
+    "ts": "2026-06-21T11:31:55.762Z"
   },
   "302": {
     "status": "error",
@@ -1455,8 +1483,9 @@
     "error": "HTTP 429"
   },
   "304": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_304.png",
+    "ts": "2026-06-21T11:31:58.006Z"
   },
   "305": {
     "status": "error",
@@ -1491,8 +1520,9 @@
     "error": "HTTP 429"
   },
   "313": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_313.png",
+    "ts": "2026-06-21T11:32:06.096Z"
   },
   "314": {
     "status": "error",
@@ -1511,8 +1541,9 @@
     "error": "HTTP 429"
   },
   "318": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_318.png",
+    "ts": "2026-06-21T11:32:10.249Z"
   },
   "319": {
     "status": "error",
@@ -1531,12 +1562,14 @@
     "error": "HTTP 429"
   },
   "323": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_323.png",
+    "ts": "2026-06-21T11:32:57.896Z"
   },
   "324": {
-    "status": "error",
-    "error": "The operation was aborted due to timeout"
+    "status": "done",
+    "file": "stamp_324.png",
+    "ts": "2026-06-21T11:32:14.404Z"
   },
   "325": {
     "status": "error",
@@ -1599,8 +1632,9 @@
     "error": "HTTP 429"
   },
   "340": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_340.png",
+    "ts": "2026-06-21T11:32:26.766Z"
   },
   "341": {
     "status": "error",
@@ -1615,8 +1649,9 @@
     "error": "HTTP 429"
   },
   "344": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_344.png",
+    "ts": "2026-06-21T11:32:30.166Z"
   },
   "345": {
     "status": "error",
@@ -1631,8 +1666,9 @@
     "error": "HTTP 429"
   },
   "348": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_348.png",
+    "ts": "2026-06-21T11:32:33.566Z"
   },
   "349": {
     "status": "error",
@@ -1647,16 +1683,18 @@
     "error": "HTTP 429"
   },
   "352": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_352.png",
+    "ts": "2026-06-21T11:32:37.344Z"
   },
   "353": {
     "status": "error",
     "error": "HTTP 429"
   },
   "354": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_354.png",
+    "ts": "2026-06-21T11:32:38.117Z"
   },
   "355": {
     "status": "error",
@@ -1731,32 +1769,36 @@
     "error": "HTTP 429"
   },
   "373": {
-    "status": "error",
-    "error": "The operation was aborted due to timeout"
+    "status": "done",
+    "file": "stamp_373.png",
+    "ts": "2026-06-21T11:32:53.607Z"
   },
   "374": {
     "status": "error",
     "error": "HTTP 429"
   },
   "375": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_375.png",
+    "ts": "2026-06-21T11:32:56.929Z"
   },
   "376": {
     "status": "error",
     "error": "HTTP 429"
   },
   "377": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_377.png",
+    "ts": "2026-06-21T11:32:57.546Z"
   },
   "378": {
     "status": "error",
     "error": "HTTP 429"
   },
   "379": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_379.png",
+    "ts": "2026-06-21T11:33:43.048Z"
   },
   "380": {
     "status": "error",
@@ -1799,8 +1841,9 @@
     "error": "HTTP 429"
   },
   "390": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_390.png",
+    "ts": "2026-06-21T11:33:08.564Z"
   },
   "391": {
     "status": "error",
@@ -1831,16 +1874,18 @@
     "error": "HTTP 429"
   },
   "398": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_398.png",
+    "ts": "2026-06-21T11:33:13.312Z"
   },
   "399": {
     "status": "error",
     "error": "HTTP 429"
   },
   "400": {
-    "status": "error",
-    "error": "HTTP 429"
+    "status": "done",
+    "file": "stamp_400.png",
+    "ts": "2026-06-21T11:33:16.375Z"
   },
   "401": {
     "status": "error",
@@ -1879,6 +1924,139 @@
     "error": "HTTP 429"
   },
   "410": {
+    "status": "error",
+    "error": "HTTP 429"
+  },
+  "411": {
+    "status": "error",
+    "error": "HTTP 429"
+  },
+  "412": {
+    "status": "error",
+    "error": "HTTP 429"
+  },
+  "413": {
+    "status": "error",
+    "error": "HTTP 429"
+  },
+  "414": {
+    "status": "error",
+    "error": "HTTP 429"
+  },
+  "415": {
+    "status": "error",
+    "error": "HTTP 429"
+  },
+  "416": {
+    "status": "error",
+    "error": "HTTP 429"
+  },
+  "417": {
+    "status": "error",
+    "error": "HTTP 429"
+  },
+  "418": {
+    "status": "error",
+    "error": "HTTP 429"
+  },
+  "419": {
+    "status": "error",
+    "error": "HTTP 429"
+  },
+  "420": {
+    "status": "error",
+    "error": "HTTP 429"
+  },
+  "421": {
+    "status": "error",
+    "error": "HTTP 429"
+  },
+  "422": {
+    "status": "error",
+    "error": "HTTP 429"
+  },
+  "423": {
+    "status": "error",
+    "error": "HTTP 429"
+  },
+  "424": {
+    "status": "error",
+    "error": "HTTP 429"
+  },
+  "425": {
+    "status": "error",
+    "error": "HTTP 429"
+  },
+  "426": {
+    "status": "error",
+    "error": "HTTP 429"
+  },
+  "427": {
+    "status": "error",
+    "error": "HTTP 429"
+  },
+  "428": {
+    "status": "error",
+    "error": "HTTP 429"
+  },
+  "429": {
+    "status": "done",
+    "file": "stamp_429.png",
+    "ts": "2026-06-21T11:34:28.281Z"
+  },
+  "430": {
+    "status": "error",
+    "error": "HTTP 429"
+  },
+  "431": {
+    "status": "error",
+    "error": "HTTP 429"
+  },
+  "432": {
+    "status": "error",
+    "error": "HTTP 429"
+  },
+  "433": {
+    "status": "error",
+    "error": "HTTP 429"
+  },
+  "434": {
+    "status": "error",
+    "error": "HTTP 429"
+  },
+  "435": {
+    "status": "error",
+    "error": "HTTP 429"
+  },
+  "436": {
+    "status": "error",
+    "error": "HTTP 429"
+  },
+  "437": {
+    "status": "error",
+    "error": "HTTP 429"
+  },
+  "438": {
+    "status": "error",
+    "error": "HTTP 429"
+  },
+  "439": {
+    "status": "error",
+    "error": "HTTP 429"
+  },
+  "440": {
+    "status": "error",
+    "error": "HTTP 429"
+  },
+  "441": {
+    "status": "error",
+    "error": "HTTP 429"
+  },
+  "442": {
+    "status": "error",
+    "error": "HTTP 429"
+  },
+  "443": {
     "status": "error",
     "error": "HTTP 429"
   }
