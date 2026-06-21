@@ -343,21 +343,38 @@ body {
 .station-row:last-child { border-bottom: none; }
 .station-row.visited { background: var(--green-light); }
 
-.station-row input[type="checkbox"] {
-  -webkit-appearance: none; appearance: none;
-  width: 26px; height: 26px; border: 2px solid var(--border-active); border-radius: 50%;
-  background: #fff; cursor: pointer; flex-shrink: 0; margin-top: 1px;
+.stamp-btn {
+  width: 44px; height: 44px; border-radius: 50%;
+  border: 2.5px dashed var(--border-active); background: #fff;
+  cursor: pointer; flex-shrink: 0; margin-top: 1px;
   transition: all 0.2s; position: relative;
+  display: flex; align-items: center; justify-content: center;
+  -webkit-tap-highlight-color: transparent;
 }
-.station-row input[type="checkbox"]:checked {
-  background: var(--primary); border-color: var(--primary);
-  animation: checkBounce 0.4s cubic-bezier(0.34,1.56,0.64,1);
+.stamp-btn::after {
+  content: ""; font-size: 0.7rem; color: var(--text-light);
+  font-weight: 600;
 }
-.station-row input[type="checkbox"]:checked::after {
-  content: "✓"; color: #fff; font-size: 0.85rem; font-weight: 800;
-  position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+.stamp-btn:active { transform: scale(0.9); }
+.stamp-btn.stamped {
+  border: 2.5px solid #C0392B; background: #FDF2F0;
+  border-style: solid;
+  animation: stampPress 0.5s cubic-bezier(0.34,1.56,0.64,1);
 }
-@keyframes checkBounce { 0%{transform:scale(1)} 35%{transform:scale(1.25)} 55%{transform:scale(0.9)} 100%{transform:scale(1)} }
+.stamp-btn.stamped::after {
+  content: "済"; color: #C0392B; font-size: 0.9rem; font-weight: 900;
+  font-family: "Yu Mincho", "Hiragino Mincho Pro", serif;
+}
+@keyframes stampPress {
+  0% { transform: scale(1.8) rotate(-15deg); opacity: 0.3; }
+  40% { transform: scale(0.85) rotate(2deg); opacity: 1; }
+  60% { transform: scale(1.1) rotate(-1deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+
+.station-row.visited .stamp-btn.stamped {
+  box-shadow: 0 0 0 2px rgba(192,57,43,0.15);
+}
 
 .station-info { flex: 1; }
 .station-name { font-weight: 700; font-size: 0.95rem; }
@@ -392,7 +409,7 @@ body {
 }
 
 .stamp-mark {
-  display: inline-flex; align-items: center; justify-content: center;
+  display: none;
   width: 28px; height: 28px; border: 2.5px solid var(--primary);
   border-radius: 50%; color: var(--primary); font-size: 0.72rem;
   font-weight: 900; opacity: 0; transform: scale(2.5) rotate(-25deg);
@@ -880,6 +897,29 @@ body {
   font-size: 0.72rem; color: var(--text-light);
   font-weight: 400;
 }
+
+/* ===== スタンプストリーク ===== */
+.streak-card {
+  display: flex; align-items: center; gap: 12px;
+  background: linear-gradient(135deg, #FFF5EE, #FFEEE0);
+  border-radius: var(--radius); padding: 14px 16px;
+  margin-bottom: 10px; border: 1px solid rgba(212,115,74,0.15);
+}
+.streak-flame { font-size: 1.8rem; animation: flamePulse 1.5s ease-in-out infinite; }
+@keyframes flamePulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.15)} }
+.streak-info { flex: 1; }
+.streak-count { font-size: 0.95rem; font-weight: 800; color: #C0392B; }
+.streak-msg { font-size: 0.78rem; color: var(--text-sub); margin-top: 2px; }
+
+.milestone-nudge {
+  display: flex; align-items: center; gap: 8px;
+  background: var(--gold-light); border-radius: var(--radius-sm);
+  padding: 10px 14px; margin-bottom: 10px;
+  border: 1px solid rgba(232,167,53,0.2);
+}
+.milestone-nudge-icon { font-size: 1.2rem; }
+.milestone-nudge-text { font-size: 0.85rem; color: #8B6914; font-weight: 600; }
+.milestone-nudge-text strong { color: #C0392B; }
 
 /* ===== プレミアムバッジ＆バナー ===== */
 .nav-premium-badge {

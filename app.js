@@ -231,12 +231,7 @@ function calcStats() {
 
 // ===== エフェクト =====
 function triggerStampAnimation(row) {
-  if(row.querySelector('.stamp-mark')) return;
-  const s=document.createElement('span'); s.className='stamp-mark'; s.textContent='済';
-  row.querySelector('.station-info').appendChild(s);
   row.classList.add('stamp-flash');
-  requestAnimationFrame(()=>s.classList.add('stamp-animate'));
-  s.addEventListener('animationend',()=>{ s.classList.remove('stamp-animate'); s.classList.add('stamp-shown'); },{once:true});
   setTimeout(()=>row.classList.remove('stamp-flash'),800);
 }
 
@@ -275,8 +270,8 @@ function triggerSpecialtyPopup(row, stationId, stationName, pref){
   const rk=getRegionKey(pref);
   if(!row.querySelector('.specialty-emoji')){
     const em=document.createElement('span'); em.className='specialty-emoji'; em.textContent=sp.emoji;
-    const cb=row.querySelector('input[type="checkbox"]');
-    if(cb&&cb.nextSibling) row.insertBefore(em,cb.nextSibling); else row.appendChild(em);
+    const btn=row.querySelector('.stamp-btn');
+    if(btn&&btn.nextSibling) row.insertBefore(em,btn.nextSibling); else row.appendChild(em);
     requestAnimationFrame(()=>em.classList.add('pop-in'));
     em.addEventListener('animationend',()=>{em.classList.remove('pop-in');em.classList.add('shown');},{once:true});
   }
@@ -323,9 +318,53 @@ let currentFilter="all";
 
 function render(){
   const s=calcStats();
-  renderHero(s); renderLevelCard(s); renderPremiumNudge(s); renderHomeRecent(s); renderAlmostComplete(s);
+  renderHero(s); renderLevelCard(s); renderPremiumNudge(s); renderStampStreak(s); renderHomeRecent(s); renderAlmostComplete(s);
   renderList(s); renderMap(s); renderStats(s); renderStatsMapTeaser(s); renderBadges(s);
   renderAlmostMapHint();
+}
+
+function renderStampStreak(stats){
+  const el=document.getElementById("stamp-streak-section");
+  if(!el) return;
+
+  const dates=stats.recentVisits.map(v=>v.date).filter(Boolean);
+  const uniqueDates=[...new Set(dates)].sort().reverse();
+
+  let streak=0;
+  if(uniqueDates.length>0){
+    const today=new Date().toISOString().slice(0,10);
+    const yesterday=new Date(Date.now()-86400000).toISOString().slice(0,10);
+    if(uniqueDates[0]===today||uniqueDates[0]===yesterday){
+      streak=1;
+      for(let i=1;i<uniqueDates.length;i++){
+        const d1=new Date(uniqueDates[i-1]), d2=new Date(uniqueDates[i]);
+        if((d1-d2)/(86400000)<=1) streak++; else break;
+      }
+    }
+  }
+
+  const nextMilestone=MILESTONES.find(m=>m>stats.visited)||stats.total;
+  const remaining=nextMilestone-stats.visited;
+
+  let html="";
+
+  if(streak>0){
+    html+=`<div class="streak-card">`;
+    html+=`<div class="streak-flame">🔥</div>`;
+    html+=`<div class="streak-info">`;
+    html+=`<div class="streak-count">${streak}日連続スタンプ中！</div>`;
+    html+=`<div class="streak-msg">${streak>=7?"すごい！1週間連続！":streak>=3?"調子いいですね！":"この調子で続けよう！"}</div>`;
+    html+=`</div></div>`;
+  }
+
+  if(remaining<=10&&remaining>0){
+    html+=`<div class="milestone-nudge">`;
+    html+=`<span class="milestone-nudge-icon">🎯</span>`;
+    html+=`<span class="milestone-nudge-text">${nextMilestone}駅まで あと<strong>${remaining}スタンプ</strong></span>`;
+    html+=`</div>`;
+  }
+
+  el.innerHTML=html;
 }
 
 function renderHero(s){
@@ -361,7 +400,7 @@ function renderLevelCard(s){
 function renderHomeRecent(s){
   const el=document.getElementById("home-recent");
   if(s.recentVisits.length===0){
-    el.innerHTML='<div class="empty-state">まだ訪問記録がありません</div>';
+    el.innerHTML='<div class="empty-state">まだスタンプがありません。<br>一覧から最初のスタンプを押してみましょう！</div>';
     return;
   }
   el.innerHTML=s.recentVisits.slice(0,5).map(v=>
@@ -416,32 +455,37 @@ function renderList(s){
     filtered.forEach(st=>{
       const info=getVisitInfo(st.id), isV=!!(info&&info.visited);
       const row=document.createElement("div"); row.className="station-row"+(isV?" visited":"");
-      const cb=document.createElement("input"); cb.type="checkbox"; cb.checked=isV;
 
-      cb.addEventListener("change",e=>{
-        const checked=e.target.checked;
-        const prev=calcStats().visited;
-        setVisited(st.id,checked);
-        if(checked){
-          triggerStampAnimation(row);
-          triggerSpecialtyPopup(row, st.id, st.name, st.pref);
-          const ns=calcStats();
-          for(const m of MILESTONES){ if(prev<m&&ns.visited>=m){ triggerConfetti(m>=100?40:m>=50?30:20); break; } }
-          if(ns.prefStats[st.pref].visited>=ns.prefStats[st.pref].total&&!_completedPrefs.has(st.pref)){
-            _completedPrefs.add(st.pref); triggerConfetti(35);
+      const stampBtn=document.createElement("button");
+      stampBtn.className="stamp-btn"+(isV?" stamped":"");
+      stampBtn.setAttribute("aria-label", isV?"スタンプ済み":"スタンプを押す");
+
+      stampBtn.addEventListener("click",()=>{
+        if(isV){
+          if(confirm(`「${st.name}」のスタンプを取り消しますか？`)){
+            _completedPrefs.delete(st.pref); setVisited(st.id,false); render();
           }
-          setTimeout(()=>{ render(); checkNewBadges(); showPremiumToast(st.name,st.pref); },500);
-        } else { _completedPrefs.delete(st.pref); render(); }
+          return;
+        }
+        const prev=calcStats().visited;
+        setVisited(st.id,true);
+        stampBtn.classList.add("stamped");
+        triggerSpecialtyPopup(row, st.id, st.name, st.pref);
+        const ns=calcStats();
+        for(const m of MILESTONES){ if(prev<m&&ns.visited>=m){ triggerConfetti(m>=100?40:m>=50?30:20); break; } }
+        if(ns.prefStats[st.pref].visited>=ns.prefStats[st.pref].total&&!_completedPrefs.has(st.pref)){
+          _completedPrefs.add(st.pref); triggerConfetti(35);
+        }
+        setTimeout(()=>{ render(); checkNewBadges(); showPremiumToast(st.name,st.pref); },600);
       });
 
       const infoDiv=document.createElement("div"); infoDiv.className="station-info";
       const nb=st.isNew?'<span class="badge-new">NEW</span>':"";
-      const stamp=isV?'<span class="stamp-mark stamp-shown">済</span>':"";
       const photoCount=isV?((info.photo?1:0)+(info.photos?info.photos.length:0)):0;
       const hasNote=isV&&info.note&&info.note.length>0;
       const notePreview=hasNote?`<div class="visited-note">📝 ${info.note.slice(0,30)}${info.note.length>30?"…":""}</div>`:"";
       const photoPreview=isV&&info.photo?`<img class="station-photo" src="${info.photo}" alt="写真">${photoCount>1?`<span class="photo-count">+${photoCount-1}</span>`:""}`:"";
-      infoDiv.innerHTML=`<div class="station-name">${st.name}${stamp}${nb}</div><div class="station-meta">${st.location}（${st.round} / ${st.date}登録）</div>${isV&&info.date?`<div class="visited-date">📅 ${info.date}</div>`:""}${notePreview}${photoPreview}`;
+      infoDiv.innerHTML=`<div class="station-name">${st.name}${nb}</div><div class="station-meta">${st.location}（${st.round} / ${st.date}登録）</div>${isV&&info.date?`<div class="visited-date">📅 ${info.date}</div>`:""}${notePreview}${photoPreview}`;
 
       const actionsDiv=document.createElement("div");
       actionsDiv.className="station-actions";
@@ -486,7 +530,7 @@ function renderList(s){
         });
       }
 
-      row.appendChild(cb); row.appendChild(infoDiv); row.appendChild(actionsDiv); list.appendChild(row);
+      row.appendChild(stampBtn); row.appendChild(infoDiv); row.appendChild(actionsDiv); list.appendChild(row);
     });
 
     if(openPrefs.has(pref)){card.classList.add("open");list.classList.add("open");header.querySelector(".chevron").textContent="▼";}
