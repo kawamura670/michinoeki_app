@@ -242,7 +242,6 @@ function initMapPreview() {
 }
 
 function renderMap(stats) {
-  if (typeof isPremium === "function" && !isPremium()) { initMapPreview(); return; }
   if (!_mapInited) initMap();
   if (!_mapInited) return;
 

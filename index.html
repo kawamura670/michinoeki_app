@@ -9,13 +9,76 @@
 <meta name="description" content="全国の道の駅を巡る旅の記録。チェックするたび、ご当地の宝が現れる。">
 <title>道の駅スタンプ帳</title>
 <link rel="manifest" href="manifest.json">
+<script>
+if('serviceWorker' in navigator){
+  navigator.serviceWorker.getRegistrations().then(function(regs){
+    regs.forEach(function(r){r.unregister();});
+  });
+  caches.keys().then(function(names){
+    names.forEach(function(n){caches.delete(n);});
+  });
+}
+</script>
 <link rel="apple-touch-icon" sizes="192x192" href="icon-192.png">
-<link rel="stylesheet" href="style.css?v=11">
+<link rel="stylesheet" href="style.css?v=13">
 </head>
 <body>
 
-<!-- ===== 流れる景色背景 ===== -->
-<div class="scenery-bg"></div>
+<!-- ===== 流れる景色背景（富士山） ===== -->
+<div class="scenery-bg">
+  <svg class="fuji-svg" viewBox="0 0 800 600" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
+    <!-- 空のグラデーション -->
+    <defs>
+      <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#87CEEB" stop-opacity="0.10"/>
+        <stop offset="60%" stop-color="#B0D4E8" stop-opacity="0.06"/>
+        <stop offset="100%" stop-color="#E8E4D8" stop-opacity="0.02"/>
+      </linearGradient>
+      <linearGradient id="fujiBody" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#4A6FA5"/>
+        <stop offset="40%" stop-color="#5B7FAA"/>
+        <stop offset="100%" stop-color="#6A8EB5"/>
+      </linearGradient>
+      <linearGradient id="fujiSnow" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#FFFFFF"/>
+        <stop offset="100%" stop-color="#E8EEF4"/>
+      </linearGradient>
+      <linearGradient id="hillFront" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#5A8A5E"/>
+        <stop offset="100%" stop-color="#4A7A4E"/>
+      </linearGradient>
+      <linearGradient id="hillBack" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#6B9A6F"/>
+        <stop offset="100%" stop-color="#5A8A5E"/>
+      </linearGradient>
+    </defs>
+    <!-- 空 -->
+    <rect width="800" height="600" fill="url(#skyGrad)"/>
+    <!-- 富士山本体 -->
+    <path d="M400 120 L250 480 Q320 460 400 470 Q480 460 550 480 Z" fill="url(#fujiBody)" opacity="0.12"/>
+    <!-- 富士山の左右の裾野 -->
+    <path d="M250 480 L140 540 Q200 510 250 480 Z" fill="url(#fujiBody)" opacity="0.08"/>
+    <path d="M550 480 L660 540 Q600 510 550 480 Z" fill="url(#fujiBody)" opacity="0.08"/>
+    <!-- 雪冠 -->
+    <path d="M400 120 L365 210 Q375 195 400 200 Q425 195 435 210 Z" fill="url(#fujiSnow)" opacity="0.18"/>
+    <!-- 雪の筋 -->
+    <path d="M380 200 L370 260 Q385 240 380 200 Z" fill="#fff" opacity="0.06"/>
+    <path d="M420 200 L430 260 Q415 240 420 200 Z" fill="#fff" opacity="0.06"/>
+    <!-- 手前の丘（奥） -->
+    <path d="M0 500 Q100 440 200 460 Q350 430 500 455 Q650 435 800 470 L800 600 L0 600 Z" fill="url(#hillBack)" opacity="0.07"/>
+    <!-- 手前の丘（前） -->
+    <path d="M0 540 Q150 490 300 510 Q450 490 600 515 Q700 500 800 520 L800 600 L0 600 Z" fill="url(#hillFront)" opacity="0.06"/>
+    <!-- 雲 -->
+    <g class="fuji-clouds">
+      <ellipse cx="180" cy="280" rx="60" ry="14" fill="#fff" opacity="0.12"/>
+      <ellipse cx="210" cy="278" rx="45" ry="12" fill="#fff" opacity="0.10"/>
+      <ellipse cx="580" cy="250" rx="70" ry="16" fill="#fff" opacity="0.10"/>
+      <ellipse cx="620" cy="248" rx="50" ry="13" fill="#fff" opacity="0.08"/>
+      <ellipse cx="120" cy="200" rx="40" ry="10" fill="#fff" opacity="0.08"/>
+      <ellipse cx="680" cy="320" rx="55" ry="12" fill="#fff" opacity="0.07"/>
+    </g>
+  </svg>
+</div>
 
 <!-- ===== ナビゲーションバー ===== -->
 <nav class="nav-bar">
@@ -120,39 +183,25 @@
 
 <!-- ===== マップタブ ===== -->
 <div id="tab-map" class="tab-content">
-  <!-- プレミアムゲート -->
+  <!-- プレミアムゲート（未課金時表示） -->
   <div id="map-premium-gate" class="premium-gate">
     <div class="premium-gate-preview">
-      <div class="map-container">
-        <div class="map-header-card">
-          <div class="map-title">🗾 全国制覇マップ</div>
-          <div class="map-summary"><div class="map-stat-row">
-            <div class="map-stat"><span class="map-stat-num">—</span><span class="map-stat-unit">駅</span></div>
-            <div class="map-stat-divider"></div>
-            <div class="map-stat"><span class="map-stat-num">—</span><span class="map-stat-unit">県制覇</span></div>
-          </div></div>
-        </div>
-        <div class="map-card">
-          <div id="map-preview-container" class="map-svg-container"></div>
-        </div>
+      <div class="map-container" style="pointer-events:none">
+        <div class="map-header-card"><div class="map-title">🗾 全国制覇マップ</div></div>
+        <div class="map-card" style="height:300px;background:var(--bg)"></div>
       </div>
     </div>
     <div class="premium-gate-overlay">
       <div class="premium-gate-card">
-        <div class="premium-gate-icon">🔒</div>
-        <div class="premium-gate-title">プレミアム機能</div>
-        <div class="premium-gate-desc">全国制覇マップは<br>有料プランでご利用いただけます</div>
-        <div class="premium-gate-features">
-          <div class="premium-gate-feat">🗾 都道府県別の訪問率を可視化</div>
-          <div class="premium-gate-feat">📊 タップで詳細ステータス表示</div>
-          <div class="premium-gate-feat">🏆 制覇県がゴールドに輝く演出</div>
-        </div>
-        <button id="premium-gate-cta" class="premium-gate-btn">👑 ¥980 で解放する（買い切り）</button>
+        <div class="premium-gate-icon">🗾</div>
+        <div class="premium-gate-title">全国制覇マップ</div>
+        <div class="premium-gate-desc">都道府県別の訪問状況を地図で確認。制覇した県が輝きます。</div>
+        <button id="premium-gate-cta" class="premium-gate-btn">👑 マップを解放する</button>
         <button id="premium-gate-restore" class="premium-gate-restore">購入済みの方はこちら</button>
       </div>
     </div>
+    <span id="map-premium-dot" class="premium-dot"></span>
   </div>
-  <!-- マップ本体（プレミアム時表示） -->
   <div id="map-unlocked" class="map-container" style="display:none">
     <div class="map-header-card">
       <div class="map-title">🗾 全国制覇マップ</div>
@@ -210,10 +259,9 @@
     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12l2 2 4-4"/></svg>
     <span>スタンプ帳</span>
   </button>
-  <button class="btab" data-tab="map" style="position:relative">
+  <button class="btab" data-tab="map">
     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 6v16l7-4 8 4 7-4V2l-7 4-8-4-7 4z"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
     <span>マップ</span>
-    <span id="map-premium-dot" class="premium-dot"></span>
   </button>
   <button class="btab" data-tab="list">
     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
@@ -326,6 +374,6 @@
 <script src="progress.js"></script>
 <script src="stamp_engine.js"></script>
 <script src="map.js"></script>
-<script src="app.js?v=11"></script>
+<script src="app.js?v=13"></script>
 </body>
 </html>

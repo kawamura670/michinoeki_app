@@ -298,13 +298,12 @@ return { generate };
 })();
 
 // 起動時に生成してグローバルに公開
+// data.js は先に読み込まれるため、DOMContentLoaded を待たず即座に生成する
 let STAMP_CATALOG = {};
-document.addEventListener("DOMContentLoaded", function() {
-  if (typeof MICHINOEKI_DATA !== "undefined") {
-    STAMP_CATALOG = STAMP_ENGINE.generate(MICHINOEKI_DATA);
-    console.log("Stamp catalog generated:", Object.keys(STAMP_CATALOG).length, "stamps");
-    const stats = {common:0, rare:0, epic:0, legendary:0};
-    Object.values(STAMP_CATALOG).forEach(s => stats[s.rarity]++);
-    console.log("Rarity distribution:", stats);
-  }
-});
+if (typeof MICHINOEKI_DATA !== "undefined") {
+  STAMP_CATALOG = STAMP_ENGINE.generate(MICHINOEKI_DATA);
+  console.log("Stamp catalog generated:", Object.keys(STAMP_CATALOG).length, "stamps");
+  const stats = {common:0, rare:0, epic:0, legendary:0};
+  Object.values(STAMP_CATALOG).forEach(s => stats[s.rarity]++);
+  console.log("Rarity distribution:", stats);
+}
