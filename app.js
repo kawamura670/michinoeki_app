@@ -568,9 +568,34 @@ let currentFilter="all";
 
 function render(){
   const s=calcStats();
-  renderHero(s); renderLevelCard(s); renderPremiumNudge(s); renderStampStreak(s); renderHomeRecent(s); renderAlmostComplete(s);
+  renderHero(s); renderLevelCard(s); renderPremiumNudge(s); renderStampCollection(s); renderStampStreak(s); renderHomeRecent(s); renderAlmostComplete(s);
   renderList(s); renderMap(s); renderStats(s); renderStatsMapTeaser(s); renderBadges(s);
   renderAlmostMapHint();
+}
+
+function renderStampCollection(stats){
+  const el=document.getElementById("stamp-collection");
+  if(!el) return;
+  const visited=MICHINOEKI_DATA.filter(st=>{const i=getVisitInfo(st.id);return i&&i.visited;});
+  if(visited.length===0){ el.innerHTML='<div class="empty-state">スタンプを押すとここに並びます</div>'; return; }
+  const recent=visited.sort((a,b)=>{
+    const da=getVisitInfo(a.id),db=getVisitInfo(b.id);
+    return (db.date||"").localeCompare(da.date||"");
+  }).slice(0,20);
+  let html='<div class="stamp-grid">';
+  recent.forEach(st=>{
+    const sData=getStampData(st.id);
+    html+=`<div class="stamp-grid-item" data-id="${st.id}">${buildStampSVG(st,sData)}</div>`;
+  });
+  if(visited.length>20) html+=`<div class="stamp-grid-more">+${visited.length-20}</div>`;
+  html+='</div>';
+  el.innerHTML=html;
+  el.querySelectorAll(".stamp-grid-item").forEach(item=>{
+    item.addEventListener("click",()=>{
+      const st=MICHINOEKI_DATA.find(s=>s.id===parseInt(item.dataset.id));
+      if(st) showStampReveal(st,true);
+    });
+  });
 }
 
 function renderStampStreak(stats){
@@ -707,13 +732,12 @@ function renderList(s){
       const isClosed=st.status==="closed";
       const row=document.createElement("div"); row.className="station-row"+(isV?" visited":"")+(isClosed?" closed":"");
 
-      const stampArt=getStampArt(st);
       const sData=getStampData(st.id);
       const rarity=sData?sData.rarity:"common";
       const stampBtn=document.createElement("button");
       stampBtn.className="stamp-btn"+(isV?" stamped":"")+" rarity-"+rarity;
       stampBtn.setAttribute("aria-label", isV?"スタンプ済み":"スタンプを押す");
-      if(isV) stampBtn.setAttribute("data-art", stampArt);
+      if(isV) stampBtn.innerHTML=buildStampSVG(st, sData);
 
       stampBtn.addEventListener("click",()=>{
         if(isV){

@@ -1,4 +1,4 @@
-const CACHE_NAME = 'michinoeki-v8';
+const CACHE_NAME = 'michinoeki-v9';
 const ASSETS = ['./index.html', './style.css', './app.js', './data.js', './progress.js', './stamp_engine.js', './map.js', './icon-192.png', './icon-512.png'];
 
 self.addEventListener('install', e => {

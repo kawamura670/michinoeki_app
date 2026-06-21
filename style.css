@@ -333,43 +333,40 @@ body {
 .station-row.visited { background: linear-gradient(135deg, #F0F7F2, #F6FAF7); }
 
 .stamp-btn {
-  width: 56px; height: 56px; border-radius: 50%;
+  width: 64px; height: 64px; border-radius: 50%;
   border: 2.5px dashed var(--border-active); background: #fff;
   cursor: pointer; flex-shrink: 0;
   transition: all 0.2s; position: relative;
   display: flex; align-items: center; justify-content: center;
   -webkit-tap-highlight-color: transparent;
-  font-size: 0.75rem; color: var(--text-light);
+  font-size: 0.8rem; color: var(--text-light);
+  padding: 0; overflow: hidden;
 }
 .stamp-btn::before { content: "押す"; font-weight: 700; }
 .stamp-btn:active { transform: scale(0.88); }
 .stamp-btn.stamped {
-  border: 2.5px solid var(--primary); background: var(--primary-pale);
-  border-style: solid;
+  border: 2px solid #D4C4A8; background: transparent;
+  border-style: solid; padding: 0;
   animation: stampPress 0.5s cubic-bezier(0.34,1.56,0.64,1);
-  font-size: 1.2rem;
 }
-.stamp-btn.stamped::before { content: attr(data-art); }
+.stamp-btn.stamped::before { content: none; }
+.stamp-btn.stamped svg { width: 100%; height: 100%; display: block; }
 @keyframes stampPress {
   0% { transform: scale(1.6) rotate(-12deg); opacity: 0.3; }
   40% { transform: scale(0.88) rotate(2deg); opacity: 1; }
   60% { transform: scale(1.08) rotate(-1deg); }
   100% { transform: scale(1) rotate(0deg); }
 }
-.station-row.visited .stamp-btn.stamped {
-  box-shadow: 0 2px 8px rgba(26,107,74,0.15);
-}
-.stamp-btn.stamped.rarity-common { border-color: #2D5A3D; background: #EDF5F0; }
-.stamp-btn.stamped.rarity-rare { border-color: #1B4F72; background: #E8F0F8; box-shadow: 0 2px 10px rgba(27,79,114,0.2); }
-.stamp-btn.stamped.rarity-epic { border-color: #6A3D9A; background: #F0E8F6; box-shadow: 0 2px 12px rgba(106,61,154,0.25); }
+.stamp-btn.stamped.rarity-common { border-color: #A8C4A8; box-shadow: 0 2px 6px rgba(45,90,61,0.15); }
+.stamp-btn.stamped.rarity-rare { border-color: #88B0D0; box-shadow: 0 2px 8px rgba(27,79,114,0.2); }
+.stamp-btn.stamped.rarity-epic { border-color: #B89DD8; box-shadow: 0 2px 10px rgba(106,61,154,0.25); }
 .stamp-btn.stamped.rarity-legendary {
-  border-color: #B8860B; background: linear-gradient(135deg, #FDF5E6, #FFF8DC);
-  box-shadow: 0 2px 14px rgba(184,134,11,0.35);
+  border-color: #D4A017; box-shadow: 0 2px 12px rgba(184,134,11,0.35);
   animation: stampPress 0.5s cubic-bezier(0.34,1.56,0.64,1), legendaryGlow 2s ease-in-out infinite;
 }
 @keyframes legendaryGlow {
-  0%,100% { box-shadow: 0 2px 12px rgba(184,134,11,0.3); }
-  50% { box-shadow: 0 4px 20px rgba(184,134,11,0.5); }
+  0%,100% { box-shadow: 0 2px 10px rgba(184,134,11,0.3); }
+  50% { box-shadow: 0 4px 18px rgba(184,134,11,0.5); }
 }
 
 .station-info { flex: 1; }
@@ -959,6 +956,39 @@ body {
 .stamp-reveal-cancel:active { background: rgba(255,0,0,0.2); border-color: rgba(255,100,100,0.4); color: #faa; }
 .stamp-reveal-tap {
   color: rgba(255,255,255,0.35); font-size: 0.75rem; font-weight: 500; margin-top: 12px;
+}
+
+/* ===== スタンプコレクション ===== */
+.stamp-collection {
+  background: linear-gradient(145deg, #F5EDDA, #EDE4D0, #F0E8D5);
+  border-radius: var(--radius); padding: 16px;
+  box-shadow: var(--shadow-md), inset 0 1px 0 rgba(255,255,255,0.5);
+  border: 1px solid #D8CDB8;
+  position: relative;
+}
+.stamp-collection::before {
+  content: ""; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  border-radius: var(--radius);
+  background: repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(139,115,85,0.03) 3px, rgba(139,115,85,0.03) 4px);
+  pointer-events: none;
+}
+.stamp-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px; position: relative; z-index: 1;
+}
+.stamp-grid-item {
+  aspect-ratio: 1; border-radius: 50%; cursor: pointer;
+  transition: transform 0.15s;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+}
+.stamp-grid-item:active { transform: scale(0.92); }
+.stamp-grid-item svg { width: 100%; height: 100%; display: block; }
+.stamp-grid-more {
+  aspect-ratio: 1; border-radius: 50%;
+  background: rgba(139,115,85,0.15); border: 2px dashed #C4B8A0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.85rem; font-weight: 800; color: #8B7355;
 }
 
 /* ===== スタンプストリーク ===== */
