@@ -291,7 +291,26 @@ const RARITY_STYLE = {
   legendary:{label:"LEGENDARY",bg:"#8B6914",border:"#D4A017",glow:"rgba(212,160,23,0.6)",star:"⭐⭐⭐"},
 };
 
+function getStampImageUrl(stationId) {
+  return `stamp_images/stamp_${stationId}.png`;
+}
+
+function hasRealStampImage(stationId) {
+  if (!window._stampImageCache) window._stampImageCache = {};
+  if (window._stampImageCache[stationId] !== undefined) return window._stampImageCache[stationId];
+  const img = new Image();
+  img.onload = () => { window._stampImageCache[stationId] = true; };
+  img.onerror = () => { window._stampImageCache[stationId] = false; };
+  img.src = getStampImageUrl(stationId);
+  return false;
+}
+
+function buildStampImage(station) {
+  return `<img src="${getStampImageUrl(station.id)}" alt="${station.name}" style="width:100%;height:100%;border-radius:50%;object-fit:cover;">`;
+}
+
 function buildStampSVG(station, stampData) {
+  if (hasRealStampImage(station.id)) return buildStampImage(station);
   const rarity = stampData ? stampData.rarity : "common";
   const rs = RARITY_STYLE[rarity];
   const mainSym = stampData ? stampData.main_symbol : "";

@@ -1,0 +1,39 @@
+name: Generate Stamp Images (DALL-E)
+
+on:
+  workflow_dispatch:
+    inputs:
+      batch_size:
+        description: '一度に生成する枚数（コスト: 1枚約$0.04）'
+        default: '50'
+      start_from:
+        description: '開始ID（0=最初から）'
+        default: '0'
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Generate stamp images
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          BATCH_SIZE: ${{ inputs.batch_size }}
+          START_FROM: ${{ inputs.start_from }}
+        run: node scripts/generate_images.mjs
+
+      - name: Commit generated images
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add stamp_images/ stamp_gen_progress.json
+          DONE=$(cat stamp_gen_progress.json | grep -c '"done"' || echo 0)
+          git commit -m "auto: スタンプ画像生成 (${DONE}/1231枚完了)" || echo "No changes"
+          git push
