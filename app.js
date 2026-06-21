@@ -306,7 +306,8 @@ function hasRealStampImage(stationId) {
 }
 
 function buildStampImage(station) {
-  return `<img src="${getStampImageUrl(station.id)}" alt="${station.name}" style="width:100%;height:100%;border-radius:50%;object-fit:cover;">`;
+  const fs = station.name.length > 6 ? 9 : station.name.length > 4 ? 11 : 13;
+  return `<div class="stamp-img-wrap"><img src="${getStampImageUrl(station.id)}" alt="${station.name}"><div class="stamp-img-name" style="font-size:${fs}px">${station.name}</div></div>`;
 }
 
 function buildStampSVG(station, stampData) {
@@ -467,7 +468,7 @@ function showStampReveal(station, isReview) {
   overlay.innerHTML =
     `<div class="stamp-reveal">` +
       `<div class="stamp-reveal-label" style="color:${rs.border}">${isReview?"":rs.star+" "}${isReview?"コレクション":"GET!"}${isReview?"":" "+rs.star}</div>` +
-      `<div class="stamp-reveal-svg" style="filter:drop-shadow(0 8px 30px ${rs.glow})">${buildStampSVG(station, sData)}</div>` +
+      `<div class="stamp-reveal-svg" style="filter:drop-shadow(0 8px 30px ${rs.glow})">${hasRealStampImage(station.id) ? `<img src="${getStampImageUrl(station.id)}" style="width:100%;height:100%;border-radius:50%;object-fit:cover;">` : buildStampSVG(station, sData)}</div>` +
       `<div class="stamp-reveal-name">${station.pref} ${station.name}</div>` +
       (sData && sData.art_theme ? `<div class="stamp-reveal-theme">${sData.art_theme}</div>` : "") +
       `<div class="stamp-reveal-rarity" style="background:${rs.bg}">${rs.label}</div>` +

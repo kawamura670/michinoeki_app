@@ -30,15 +30,15 @@ if (existsSync(PROGRESS_PATH)) {
 
 async function generateImage(stamp) {
   const prompt = [
-    'Circular stamp design for Japanese roadside station.',
-    'Style: hand-drawn watercolor illustration, warm nostalgic travel stamp.',
-    'Thin circular border.',
-    `Main: ${stamp.main_symbol}.`,
-    `Sub: ${stamp.secondary_symbol}.`,
-    `"${stamp.station_name}" in Japanese at bottom.`,
-    `${stamp.pref} region.`,
-    'Soft watercolor, muted natural tones, cream background outside circle.',
-    'Collectible travel stamp book quality. No extra text.',
+    'Circular watercolor landscape illustration inside a thin circular border.',
+    'NO TEXT, NO LETTERS, NO WORDS, NO CHARACTERS anywhere in the image.',
+    'Style: hand-drawn Japanese watercolor painting, warm nostalgic travel illustration.',
+    `Scene: ${stamp.main_symbol}. ${stamp.secondary_symbol}.`,
+    `Location feel: ${stamp.pref} region of Japan.`,
+    'Soft muted watercolors, natural earth tones, gentle light.',
+    'Cream/beige background outside the circle.',
+    'Beautiful collectible stamp quality, like a real Japanese travel stamp book.',
+    'Pure illustration only, absolutely no text or writing of any kind.',
   ].join(' ');
 
   const encoded = encodeURIComponent(prompt);
