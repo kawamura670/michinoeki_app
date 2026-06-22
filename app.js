@@ -296,7 +296,10 @@ function getStampImageUrl(stationId) {
 }
 
 function buildStampImage(station) {
-  return `<img src="${getStampImageUrl(station.id)}" alt="${station.name}" style="width:100%;height:100%;border-radius:50%;object-fit:cover;">`;
+  const name = station.name;
+  const pref = station.pref;
+  const fs = name.length <= 3 ? 28 : name.length <= 5 ? 22 : name.length <= 7 ? 17 : name.length <= 10 ? 13 : 11;
+  return `<div class="stamp-wrap"><img src="${getStampImageUrl(station.id)}" alt="${name}" class="stamp-img"><div class="stamp-overlay"><div class="stamp-overlay-name" style="font-size:${fs}px">${name}</div><div class="stamp-overlay-pref">${pref}</div></div></div>`;
 }
 
 function buildStampSVG(station, stampData) {
