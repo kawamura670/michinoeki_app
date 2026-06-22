@@ -24,60 +24,9 @@ if('serviceWorker' in navigator){
 </head>
 <body>
 
-<!-- ===== 流れる景色背景（富士山） ===== -->
+<!-- ===== 日本絶景スライドショー背景 ===== -->
 <div class="scenery-bg">
-  <svg class="fuji-svg" viewBox="0 0 800 600" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
-    <!-- 空のグラデーション -->
-    <defs>
-      <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stop-color="#87CEEB" stop-opacity="0.10"/>
-        <stop offset="60%" stop-color="#B0D4E8" stop-opacity="0.06"/>
-        <stop offset="100%" stop-color="#E8E4D8" stop-opacity="0.02"/>
-      </linearGradient>
-      <linearGradient id="fujiBody" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stop-color="#4A6FA5"/>
-        <stop offset="40%" stop-color="#5B7FAA"/>
-        <stop offset="100%" stop-color="#6A8EB5"/>
-      </linearGradient>
-      <linearGradient id="fujiSnow" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stop-color="#FFFFFF"/>
-        <stop offset="100%" stop-color="#E8EEF4"/>
-      </linearGradient>
-      <linearGradient id="hillFront" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stop-color="#5A8A5E"/>
-        <stop offset="100%" stop-color="#4A7A4E"/>
-      </linearGradient>
-      <linearGradient id="hillBack" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stop-color="#6B9A6F"/>
-        <stop offset="100%" stop-color="#5A8A5E"/>
-      </linearGradient>
-    </defs>
-    <!-- 空 -->
-    <rect width="800" height="600" fill="url(#skyGrad)"/>
-    <!-- 富士山本体 -->
-    <path d="M400 120 L250 480 Q320 460 400 470 Q480 460 550 480 Z" fill="url(#fujiBody)" opacity="0.12"/>
-    <!-- 富士山の左右の裾野 -->
-    <path d="M250 480 L140 540 Q200 510 250 480 Z" fill="url(#fujiBody)" opacity="0.08"/>
-    <path d="M550 480 L660 540 Q600 510 550 480 Z" fill="url(#fujiBody)" opacity="0.08"/>
-    <!-- 雪冠 -->
-    <path d="M400 120 L365 210 Q375 195 400 200 Q425 195 435 210 Z" fill="url(#fujiSnow)" opacity="0.18"/>
-    <!-- 雪の筋 -->
-    <path d="M380 200 L370 260 Q385 240 380 200 Z" fill="#fff" opacity="0.06"/>
-    <path d="M420 200 L430 260 Q415 240 420 200 Z" fill="#fff" opacity="0.06"/>
-    <!-- 手前の丘（奥） -->
-    <path d="M0 500 Q100 440 200 460 Q350 430 500 455 Q650 435 800 470 L800 600 L0 600 Z" fill="url(#hillBack)" opacity="0.07"/>
-    <!-- 手前の丘（前） -->
-    <path d="M0 540 Q150 490 300 510 Q450 490 600 515 Q700 500 800 520 L800 600 L0 600 Z" fill="url(#hillFront)" opacity="0.06"/>
-    <!-- 雲 -->
-    <g class="fuji-clouds">
-      <ellipse cx="180" cy="280" rx="60" ry="14" fill="#fff" opacity="0.12"/>
-      <ellipse cx="210" cy="278" rx="45" ry="12" fill="#fff" opacity="0.10"/>
-      <ellipse cx="580" cy="250" rx="70" ry="16" fill="#fff" opacity="0.10"/>
-      <ellipse cx="620" cy="248" rx="50" ry="13" fill="#fff" opacity="0.08"/>
-      <ellipse cx="120" cy="200" rx="40" ry="10" fill="#fff" opacity="0.08"/>
-      <ellipse cx="680" cy="320" rx="55" ry="12" fill="#fff" opacity="0.07"/>
-    </g>
-  </svg>
+  <div id="scenic-slideshow" class="scenic-slideshow"></div>
 </div>
 
 <!-- ===== ナビゲーションバー ===== -->

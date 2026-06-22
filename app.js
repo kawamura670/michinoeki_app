@@ -1182,7 +1182,49 @@ if("serviceWorker" in navigator){
 }
 
 // ===== 背景（富士山SVG — CSSアニメーション） =====
-// HTMLに埋め込んだSVGとCSSで描画。JS制御不要。
+// ===== 日本絶景100選 スライドショー背景 =====
+(function(){
+  const SCENIC_SPOTS = [
+    "https://images.unsplash.com/photo-1490806843957-31f4c9a91c65?w=800&q=60",
+    "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=800&q=60",
+    "https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=800&q=60",
+    "https://images.unsplash.com/photo-1524413840807-0c3cb6fa808d?w=800&q=60",
+    "https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=800&q=60",
+    "https://images.unsplash.com/photo-1478436127897-769e1b3f0f36?w=800&q=60",
+    "https://images.unsplash.com/photo-1504109586057-7a2ae83d1338?w=800&q=60",
+    "https://images.unsplash.com/photo-1480796927426-f609979314bd?w=800&q=60",
+    "https://images.unsplash.com/photo-1526481280693-3bfa7568e0f3?w=800&q=60",
+    "https://images.unsplash.com/photo-1503899036084-c55cdd92da26?w=800&q=60",
+    "https://images.unsplash.com/photo-1492571350019-22de08371fd3?w=800&q=60",
+    "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=800&q=60",
+    "https://images.unsplash.com/photo-1542051841857-5f90071e7989?w=800&q=60",
+    "https://images.unsplash.com/photo-1554797589-7241bb691973?w=800&q=60",
+    "https://images.unsplash.com/photo-1610375461246-83df859d849d?w=800&q=60",
+    "https://images.unsplash.com/photo-1578469645742-46cae010e5d6?w=800&q=60",
+    "https://images.unsplash.com/photo-1576675784201-0e142b423952?w=800&q=60",
+    "https://images.unsplash.com/photo-1579027989536-b7b1f875659b?w=800&q=60",
+    "https://images.unsplash.com/photo-1617369120004-4fc70312c5e6?w=800&q=60",
+    "https://images.unsplash.com/photo-1464817739973-0128fe77aed1?w=800&q=60",
+  ];
+  var el=document.getElementById("scenic-slideshow");
+  if(!el)return;
+  var slides=[], cur=0;
+  var shuffled=SCENIC_SPOTS.sort(function(){return Math.random()-0.5;});
+  for(var i=0;i<shuffled.length;i++){
+    var d=document.createElement("div");
+    d.className="scenic-slide";
+    d.style.backgroundImage="url("+shuffled[i]+")";
+    el.appendChild(d);
+    slides.push(d);
+  }
+  if(slides.length===0)return;
+  slides[0].classList.add("active");
+  setInterval(function(){
+    slides[cur].classList.remove("active");
+    cur=(cur+1)%slides.length;
+    slides[cur].classList.add("active");
+  },12000);
+})();
 
 // ===== 初期化 =====
 _prevCount=calcStats().visited;

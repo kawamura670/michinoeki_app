@@ -73,25 +73,28 @@ body {
   letter-spacing: 0.01em;
 }
 
-/* ===== 流れる景色背景（富士山） ===== */
+/* ===== 日本絶景スライドショー背景 ===== */
 .scenery-bg {
   position: fixed; top: 0; left: 0; right: 0; bottom: 0;
   z-index: -1; pointer-events: none;
   overflow: hidden;
   background: var(--bg);
 }
-.fuji-svg {
-  position: absolute; bottom: 0; left: 50%;
-  transform: translateX(-50%);
-  width: 140%; max-width: 900px; height: auto;
-  min-height: 60vh;
+.scenic-slideshow {
+  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
 }
-.fuji-clouds {
-  animation: cloudFloat 60s ease-in-out infinite alternate;
+.scenic-slide {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  background-size: cover; background-position: center;
+  opacity: 0;
+  transition: opacity 3s ease-in-out;
+  filter: saturate(0.6) brightness(1.1);
 }
-@keyframes cloudFloat {
-  0%   { transform: translateX(0); }
-  100% { transform: translateX(30px); }
+.scenic-slide.active {
+  opacity: 0.08;
+}
+@media (prefers-color-scheme: dark) {
+  .scenic-slide.active { opacity: 0.05; }
 }
 
 /* ===== ナビゲーションバー — iOS 18 グラスモーフィズム ===== */
