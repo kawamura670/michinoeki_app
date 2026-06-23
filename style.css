@@ -73,29 +73,6 @@ body {
   letter-spacing: 0.01em;
 }
 
-/* ===== 日本絶景スライドショー背景 ===== */
-.scenery-bg {
-  position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-  z-index: -1; pointer-events: none;
-  overflow: hidden;
-  background: var(--bg);
-}
-.scenic-slideshow {
-  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-}
-.scenic-slide {
-  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-  background-size: cover; background-position: center;
-  opacity: 0;
-  transition: opacity 3s ease-in-out;
-  filter: saturate(0.6) brightness(1.1);
-}
-.scenic-slide.active {
-  opacity: 0.08;
-}
-@media (prefers-color-scheme: dark) {
-  .scenic-slide.active { opacity: 0.05; }
-}
 
 /* ===== 旅年表タイムライン ===== */
 .timeline-list { padding: 8px 0; }
@@ -628,13 +605,6 @@ body {
   max-width: 220px;
 }
 
-/* ===== 紙吹雪 ===== */
-.confetti-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 200; overflow: hidden; }
-.confetti-piece { position: absolute; top: -12px; border-radius: 2px; opacity: 0.9; will-change: transform,opacity; }
-.confetti-piece:nth-child(odd) { animation: confettiFallA linear forwards; }
-.confetti-piece:nth-child(even) { animation: confettiFallB linear forwards; }
-@keyframes confettiFallA { 0%{opacity:1;transform:translateY(0) translateX(0) rotate(0deg)} 25%{transform:translateY(25vh) translateX(15px) rotate(180deg)} 50%{transform:translateY(50vh) translateX(-10px) rotate(360deg)} 100%{opacity:0;transform:translateY(105vh) translateX(8px) rotate(720deg)} }
-@keyframes confettiFallB { 0%{opacity:1;transform:translateY(0) translateX(0) rotate(0deg)} 30%{transform:translateY(30vh) translateX(-20px) rotate(200deg)} 60%{transform:translateY(60vh) translateX(12px) rotate(440deg)} 100%{opacity:0;transform:translateY(105vh) translateX(-5px) rotate(680deg)} }
 
 /* ===== 統計タブ — Nike Run Club風 ===== */
 .stats-container, .badges-container { padding: var(--content-padding); max-width: 600px; margin: 0 auto; }
