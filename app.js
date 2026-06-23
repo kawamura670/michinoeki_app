@@ -439,7 +439,7 @@ let currentFilter="all";
 
 function render(){
   const s=calcStats();
-  renderHero(s); renderLevelCard(s); renderPremiumNudge(s); renderStampCollection(s); renderStampStreak(s); renderHomeRecent(s); renderAlmostComplete(s);
+  renderWelcomeBar(s); renderDashSummary(s); renderNextQuest(s); renderPremiumNudge(s); renderHomeRecent(s); renderAchievedTitles(s); renderAlmostComplete(s);
   renderList(s); renderStampbook(s); renderMap(s); renderStats(s); renderStatsMapTeaser(s); renderBadges(s);
   renderAlmostMapHint();
   if(typeof updatePCSidebar==="function") updatePCSidebar();
@@ -503,103 +503,71 @@ document.querySelectorAll(".sb-chip").forEach(chip=>{
   });
 });
 
-function renderStampCollection(stats){
-  const el=document.getElementById("stamp-collection");
+// ===== ダッシュボード: ウェルカムバー =====
+function renderWelcomeBar(s){
+  const el=document.getElementById("welcome-bar");
   if(!el) return;
-  const visited=MICHINOEKI_DATA.filter(st=>{const i=getVisitInfo(st.id);return i&&i.visited;});
-  if(visited.length===0){ el.innerHTML='<div class="empty-state">スタンプを押すとここに並びます</div>'; return; }
-  const recent=visited.sort((a,b)=>{
-    const da=getVisitInfo(a.id),db=getVisitInfo(b.id);
-    return (db.date||"").localeCompare(da.date||"");
-  }).slice(0,20);
-  let html='<div class="stamp-grid">';
-  recent.forEach(st=>{
-    const sData=getStampData(st.id);
-    html+=`<div class="stamp-grid-item" data-id="${st.id}">${buildStampSVG(st,sData)}</div>`;
-  });
-  if(visited.length>20) html+=`<div class="stamp-grid-more">+${visited.length-20}</div>`;
-  html+='</div>';
-  el.innerHTML=html;
-  el.querySelectorAll(".stamp-grid-item").forEach(item=>{
-    item.addEventListener("click",()=>{
-      const st=MICHINOEKI_DATA.find(s=>s.id===parseInt(item.dataset.id));
-      if(st) showStampReveal(st,true);
-    });
-  });
-}
-
-function renderStampStreak(stats){
-  const el=document.getElementById("stamp-streak-section");
-  if(!el) return;
-
-  const dates=stats.recentVisits.map(v=>v.date).filter(Boolean);
-  const uniqueDates=[...new Set(dates)].sort().reverse();
-
-  let streak=0;
-  if(uniqueDates.length>0){
-    const today=new Date().toISOString().slice(0,10);
-    const yesterday=new Date(Date.now()-86400000).toISOString().slice(0,10);
-    if(uniqueDates[0]===today||uniqueDates[0]===yesterday){
-      streak=1;
-      for(let i=1;i<uniqueDates.length;i++){
-        const d1=new Date(uniqueDates[i-1]), d2=new Date(uniqueDates[i]);
-        if((d1-d2)/(86400000)<=1) streak++; else break;
-      }
-    }
-  }
-
-  const nextMilestone=MILESTONES.find(m=>m>stats.visited)||stats.total;
-  const remaining=nextMilestone-stats.visited;
-
-  let html="";
-
-  if(streak>0){
-    html+=`<div class="streak-card">`;
-    html+=`<div class="streak-flame">🔥</div>`;
-    html+=`<div class="streak-info">`;
-    html+=`<div class="streak-count">${streak}日連続スタンプ中！</div>`;
-    html+=`<div class="streak-msg">${streak>=7?"すごい！1週間連続！":streak>=3?"調子いいですね！":"この調子で続けよう！"}</div>`;
-    html+=`</div></div>`;
-  }
-
-  if(remaining<=10&&remaining>0){
-    html+=`<div class="milestone-nudge">`;
-    html+=`<span class="milestone-nudge-icon">🎯</span>`;
-    html+=`<span class="milestone-nudge-text">${nextMilestone}駅まで あと<strong>${remaining}スタンプ</strong></span>`;
-    html+=`</div>`;
-  }
-
-  el.innerHTML=html;
-}
-
-function renderHero(s){
-  const pct=s.total?Math.round((s.visited/s.total)*1000)/10:0;
-  document.getElementById("hero-pct").textContent=pct+"%";
-  const offset=RING_CIRCUMFERENCE*(1-pct/100);
-  document.getElementById("hero-ring-fill").style.strokeDashoffset=offset;
-
-  const elVisited=document.getElementById("hero-visited");
-  const elRemaining=document.getElementById("hero-remaining");
-  if(_prevCount!==s.visited) animateCountUp(elVisited,_prevCount,s.visited);
-  else elVisited.textContent=s.visited;
-  elRemaining.textContent=s.total-s.visited;
-  document.getElementById("hero-pref-complete").textContent=s.prefComplete;
-  _prevCount=s.visited;
-}
-
-function renderLevelCard(s){
   const lv=getLevel(s.visited);
   const next=LEVELS.find(l=>l.min>s.visited);
-  const el=document.getElementById("level-card");
-  let html=`<div class="level-current">${lv.emoji} ${lv.title}</div>`;
-  if(next){
-    const prog=Math.round(((s.visited-lv.min)/(next.min-lv.min))*100);
-    html+=`<div class="level-next">次のレベルまで あと${next.min-s.visited}駅</div>`;
-    html+=`<div class="level-bar"><div class="level-bar-fill" style="width:${prog}%"></div></div>`;
-  } else {
-    html+=`<div class="level-next">最高レベル到達！</div>`;
-  }
-  el.innerHTML=html;
+  let progPct=100;
+  if(next) progPct=Math.round(((s.visited-lv.min)/(next.min-lv.min))*100);
+  const nextText=next?`次のレベルまで あと${next.min-s.visited}駅`:"最高レベル到達！";
+  el.innerHTML=
+    `<div class="welcome-greeting">こんにちは、旅人</div>`+
+    `<div class="welcome-level">${lv.emoji} Lv.${LEVELS.indexOf(lv)+1} ${lv.title}</div>`+
+    `<div class="welcome-xp-wrap"><div class="welcome-xp-bar"><div class="welcome-xp-fill" style="width:${progPct}%"></div></div>`+
+    `<div class="welcome-xp-text">${nextText}</div></div>`;
+}
+
+// ===== ダッシュボード: 達成サマリー 2×2 =====
+function renderDashSummary(s){
+  const el=document.getElementById("dash-summary");
+  if(!el) return;
+  const pct=s.total?Math.round((s.visited/s.total)*1000)/10:0;
+  const lv=getLevel(s.visited);
+  el.innerHTML=
+    `<div class="dash-card"><div class="dash-card-num">${pct}%</div><div class="dash-card-label">全国制覇率</div></div>`+
+    `<div class="dash-card"><div class="dash-card-num">${s.visited}</div><div class="dash-card-label">訪問済み駅</div></div>`+
+    `<div class="dash-card"><div class="dash-card-num">${s.prefComplete}</div><div class="dash-card-label">制覇都道府県</div></div>`+
+    `<div class="dash-card"><div class="dash-card-num">${lv.emoji}</div><div class="dash-card-label">Lv.${LEVELS.indexOf(lv)+1} ${lv.title}</div></div>`;
+}
+
+// ===== ダッシュボード: 次のクエスト =====
+function renderNextQuest(s){
+  const el=document.getElementById("next-quest");
+  if(!el) return;
+  const nextBadge=BADGES.find(b=>{
+    if(b.type==="pref") return !b.check(s.visited,s.total,s.prefComplete);
+    if(b.type==="photo") return !b.check(s.visited,s.total,s.prefComplete,s.photoCount);
+    return !b.check(s.visited,s.total);
+  });
+  if(!nextBadge){ el.innerHTML=`<div class="quest-complete">🎊 全クエスト達成！おめでとうございます！</div>`; return; }
+  const target=nextBadge.max||s.total;
+  const current=nextBadge.type==="pref"?s.prefComplete:nextBadge.type==="photo"?s.photoCount:s.visited;
+  const progPct=target>0?Math.min(100,Math.round((current/target)*100)):0;
+  const remaining=Math.max(0,target-current);
+  el.innerHTML=
+    `<div class="quest-header">次のクエスト</div>`+
+    `<div class="quest-name">${nextBadge.emoji} ${nextBadge.title}</div>`+
+    `<div class="quest-desc">${nextBadge.desc}</div>`+
+    `<div class="quest-progress-wrap"><div class="quest-progress-bar"><div class="quest-progress-fill" style="width:${progPct}%"></div></div>`+
+    `<div class="quest-progress-text">${current} / ${target}（あと${remaining}）</div></div>`;
+}
+
+// ===== ダッシュボード: 達成済み称号 =====
+function renderAchievedTitles(s){
+  const el=document.getElementById("achieved-titles");
+  if(!el) return;
+  const achieved=BADGES.filter(b=>{
+    if(b.type==="pref") return b.check(s.visited,s.total,s.prefComplete);
+    if(b.type==="photo") return b.check(s.visited,s.total,s.prefComplete,s.photoCount);
+    return b.check(s.visited,s.total);
+  });
+  if(achieved.length===0){ el.innerHTML=""; return; }
+  el.innerHTML=`<div class="section-header">獲得した称号</div>`+
+    `<div class="titles-scroll">`+
+    achieved.map(b=>`<div class="title-badge">${b.emoji}<span>${b.title}</span></div>`).join("")+
+    `</div>`;
 }
 
 function renderHomeRecent(s){
@@ -608,7 +576,7 @@ function renderHomeRecent(s){
     el.innerHTML='<div class="empty-state">まだスタンプがありません。<br>一覧から最初のスタンプを押してみましょう！</div>';
     return;
   }
-  el.innerHTML=s.recentVisits.slice(0,5).map(v=>
+  el.innerHTML=s.recentVisits.slice(0,3).map(v=>
     `<div class="recent-chip">${PREF_EMOJI[v.pref]||"📍"} ${v.name} <span class="recent-chip-date">${v.date}</span></div>`
   ).join("");
 }

@@ -97,6 +97,52 @@ body {
   .scenic-slide.active { opacity: 0.05; }
 }
 
+/* ===== ダッシュボード: ウェルカムバー ===== */
+.welcome-bar {
+  background: linear-gradient(135deg, #0F3D28, #1A5C3A);
+  border-radius: 16px; padding: 16px 20px; color: #fff; margin-bottom: 16px;
+}
+.welcome-greeting { font-size: 14px; opacity: 0.8; }
+.welcome-level { font-size: 18px; font-weight: 700; margin: 4px 0 10px; }
+.welcome-xp-wrap { display: flex; align-items: center; gap: 10px; }
+.welcome-xp-bar { flex: 1; height: 6px; background: rgba(255,255,255,0.2); border-radius: 3px; overflow: hidden; }
+.welcome-xp-fill { height: 100%; background: #E8B84B; border-radius: 3px; }
+.welcome-xp-text { font-size: 11px; opacity: 0.7; white-space: nowrap; }
+
+/* ===== ダッシュボード: 達成サマリー 2×2 ===== */
+.dash-summary {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 16px;
+}
+.dash-card {
+  background: #fff; border-radius: 14px; padding: 16px 12px; text-align: center;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+.dash-card-num { font-size: 26px; font-weight: 700; color: #0F3D28; line-height: 1.2; }
+.dash-card-label { font-size: 12px; color: #666; margin-top: 4px; }
+
+/* ===== ダッシュボード: 次のクエスト ===== */
+.next-quest-card {
+  background: #fff; border-radius: 14px; padding: 16px; margin-bottom: 16px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06); border-left: 4px solid #E8B84B;
+}
+.quest-header { font-size: 11px; color: #999; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
+.quest-name { font-size: 18px; font-weight: 700; color: #1A1A1A; }
+.quest-desc { font-size: 13px; color: #666; margin: 4px 0 12px; }
+.quest-progress-wrap { }
+.quest-progress-bar { height: 8px; background: #F0F0EA; border-radius: 4px; overflow: hidden; }
+.quest-progress-fill { height: 100%; background: #E8B84B; border-radius: 4px; }
+.quest-progress-text { font-size: 12px; color: #999; margin-top: 6px; text-align: right; }
+.quest-complete { font-size: 16px; font-weight: 700; color: #0F3D28; text-align: center; padding: 12px; }
+
+/* ===== ダッシュボード: 達成済み称号 ===== */
+.achieved-titles-section { margin-bottom: 16px; }
+.titles-scroll { display: flex; gap: 8px; overflow-x: auto; padding: 4px 0; -webkit-overflow-scrolling: touch; }
+.titles-scroll::-webkit-scrollbar { display: none; }
+.title-badge {
+  flex-shrink: 0; display: flex; align-items: center; gap: 4px;
+  background: #F5F5F0; border-radius: 20px; padding: 6px 14px; font-size: 13px; color: #333; white-space: nowrap;
+}
+
 /* ===== 制覇証明書モーダル ===== */
 .cert-modal { max-width: 95vw; }
 .cert-modal h2 { text-align: center; }

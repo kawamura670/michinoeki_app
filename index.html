@@ -86,41 +86,24 @@ if('serviceWorker' in navigator){
     <!-- プレミアムバナー -->
     <div id="premium-status-banner"></div>
 
-    <!-- 達成率カード -->
-    <div class="hero-card">
-      <div class="hero-label">全国達成率</div>
-      <div class="hero-ring-wrap">
-        <svg class="hero-ring" viewBox="0 0 120 120">
-          <circle cx="60" cy="60" r="52" fill="none" stroke="#e8e8e8" stroke-width="10"/>
-          <circle id="hero-ring-fill" cx="60" cy="60" r="52" fill="none" stroke="#1B7A4E" stroke-width="10" stroke-linecap="round" stroke-dasharray="326.7" stroke-dashoffset="326.7" transform="rotate(-90 60 60)"/>
-        </svg>
-        <div class="hero-pct" id="hero-pct">0%</div>
-      </div>
-      <div class="hero-stats">
-        <div class="hero-stat"><span class="hero-stat-num" id="hero-visited">0</span><span class="hero-stat-label">スタンプ</span></div>
-        <div class="hero-stat-divider"></div>
-        <div class="hero-stat"><span class="hero-stat-num" id="hero-remaining">0</span><span class="hero-stat-label">残り</span></div>
-        <div class="hero-stat-divider"></div>
-        <div class="hero-stat"><span class="hero-stat-num" id="hero-pref-complete">0</span><span class="hero-stat-label">制覇県</span></div>
-      </div>
-    </div>
+    <!-- ウェルカムバー -->
+    <div id="welcome-bar" class="welcome-bar"></div>
 
-    <!-- レベル -->
-    <div id="level-card" class="level-card"></div>
+    <!-- 達成サマリー 2×2 -->
+    <div id="dash-summary" class="dash-summary"></div>
+
+    <!-- 次のクエスト -->
+    <div id="next-quest" class="next-quest-card"></div>
 
     <!-- プレミアム訴求（無料ユーザーのみ） -->
     <div id="home-premium-nudge"></div>
-
-    <!-- スタンプコレクション -->
-    <div class="section-header">スタンプ帳</div>
-    <div id="stamp-collection" class="stamp-collection"></div>
 
     <!-- 最新訪問 -->
     <div class="section-header">最近の訪問</div>
     <div id="home-recent" class="home-recent"></div>
 
-    <!-- スタンプ連続記録 -->
-    <div id="stamp-streak-section"></div>
+    <!-- 達成済み称号 -->
+    <div id="achieved-titles" class="achieved-titles-section"></div>
 
     <!-- もうすぐ制覇 -->
     <div id="almost-section"></div>
