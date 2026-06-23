@@ -454,6 +454,7 @@ function initCompletedPrefs(){ const s=calcStats(); Object.entries(s.prefStats).
 // ===== 描画 =====
 const openPrefs=new Set();
 let _prevCount=0;
+let _prevLevelIdx=-1;
 let currentFilter="all";
 
 function render(){
@@ -462,6 +463,27 @@ function render(){
   renderList(s); renderStampbook(s); renderMap(s); renderStats(s); renderStatsMapTeaser(s); renderBadges(s);
   renderAlmostMapHint();
   if(typeof updatePCSidebar==="function") updatePCSidebar();
+  checkLevelUp(s);
+}
+
+function checkLevelUp(s){
+  var lv=getLevel(s.visited);
+  var idx=LEVELS.indexOf(lv);
+  if(_prevLevelIdx>=0 && idx>_prevLevelIdx){
+    showLevelUpToast(idx+1,lv);
+  }
+  _prevLevelIdx=idx;
+}
+
+function showLevelUpToast(lvNum,lv){
+  var existing=document.querySelector(".levelup-toast");
+  if(existing) existing.remove();
+  var t=document.createElement("div");
+  t.className="levelup-toast";
+  t.textContent="🎉 レベルアップ！Lv."+lvNum+" "+lv.title;
+  document.body.appendChild(t);
+  requestAnimationFrame(function(){ t.classList.add("show"); });
+  setTimeout(function(){ t.classList.remove("show"); setTimeout(function(){ if(t.parentNode) t.remove(); },400); },3000);
 }
 
 let _sbFilter = "all";
@@ -1464,6 +1486,7 @@ function checkCertificateTriggers() {
 
 // ===== 初期化 =====
 _prevCount=calcStats().visited;
+_prevLevelIdx=LEVELS.indexOf(getLevel(_prevCount));
 initBadges();
 initCompletedPrefs();
 updatePremiumUI();
