@@ -68,6 +68,25 @@ const BADGES = [
   { id:"photo",  emoji:"📸", title:"カメラマン",       desc:"スタンプ写真を5枚記録",  check:(_,__,___,ph)=>ph>=5, max:5, type:"photo" }
 ];
 
+const QUESTS = [
+  { id:"q1",    name:"旅のはじまり",  desc:"初めての道の駅を訪問", reward:"旅ビギナー",     type:"visit", target:1 },
+  { id:"q10",   name:"10駅の旅人",   desc:"累計10駅を訪問",      reward:"スタンプ収集家",  type:"visit", target:10 },
+  { id:"q50",   name:"50駅の冒険者",  desc:"累計50駅を訪問",      reward:"道の駅ハンター",  type:"visit", target:50 },
+  { id:"q100",  name:"100駅の探検家", desc:"累計100駅を訪問",     reward:"百駅探検家",     type:"visit", target:100 },
+  { id:"q300",  name:"300駅の猛者",  desc:"累計300駅を訪問",     reward:"旅の猛者",       type:"visit", target:300 },
+  { id:"q500",  name:"500駅の伝説",  desc:"累計500駅を訪問",     reward:"ハーフ旅人",     type:"visit", target:500 },
+  { id:"qr_hokkaido",  name:"北海道王",   desc:"北海道の全駅を制覇",   reward:"北海道王",   type:"region", region:"北海道" },
+  { id:"qr_tohoku",    name:"東北王",     desc:"東北地方の全駅を制覇",  reward:"東北王",     type:"region", region:"東北" },
+  { id:"qr_kanto",     name:"関東王",     desc:"関東地方の全駅を制覇",  reward:"関東王",     type:"region", region:"関東" },
+  { id:"qr_chubu",     name:"中部王",     desc:"中部地方の全駅を制覇",  reward:"中部王",     type:"region", region:"中部" },
+  { id:"qr_kinki",     name:"近畿王",     desc:"近畿地方の全駅を制覇",  reward:"近畿王",     type:"region", region:"近畿" },
+  { id:"qr_chugoku",   name:"中国王",     desc:"中国地方の全駅を制覇",  reward:"中国王",     type:"region", region:"中国" },
+  { id:"qr_shikoku",   name:"四国王",     desc:"四国地方の全駅を制覇",  reward:"四国王",     type:"region", region:"四国" },
+  { id:"qr_kyushu",    name:"九州沖縄王",  desc:"九州沖縄の全駅を制覇",  reward:"九州沖縄王", type:"region", region:"九州沖縄" },
+  { id:"qall",  name:"全国制覇",     desc:"全1231駅を訪問",      reward:"レジェンド旅人",  type:"visit", target:1231 },
+  { id:"qpref", name:"全県制覇",     desc:"47都道府県で各1駅以上", reward:"全県踏破者",     type:"allpref", target:47 },
+];
+
 const PREF_SPECIALTIES = {
   "北海道":[{emoji:"🦀",name:"カニ"},{emoji:"🍦",name:"ソフトクリーム"},{emoji:"🐟",name:"鮭"},{emoji:"🧈",name:"バター"},{emoji:"🥔",name:"じゃがいも"},{emoji:"🌽",name:"とうもろこし"},{emoji:"🍈",name:"メロン"},{emoji:"🐑",name:"ジンギスカン"},{emoji:"🦑",name:"イカ"},{emoji:"🧀",name:"チーズ"}],
   "青森県":[{emoji:"🍎",name:"りんご"},{emoji:"🐟",name:"大間マグロ"},{emoji:"🧄",name:"にんにく"},{emoji:"🍶",name:"田酒"},{emoji:"🌸",name:"桜餅"}],
@@ -738,16 +757,50 @@ function renderStats(s){
   else { s.recentVisits.forEach(v=>{ const it=document.createElement("div"); it.className="recent-item"; it.innerHTML=`<div class="recent-icon">${PREF_EMOJI[v.pref]||"📍"}</div><div class="recent-info"><div class="recent-name">${v.name}</div><div class="recent-detail">${v.pref}</div></div><div class="recent-date">${v.date}</div>`; rv.appendChild(it); }); }
 }
 
+function getQuestStatus(q, s) {
+  if (q.type === "visit") {
+    return { cur: s.visited, max: q.target, done: s.visited >= q.target };
+  } else if (q.type === "region") {
+    var prefs = REGIONS[q.region] || [];
+    var rTotal = 0, rVisited = 0;
+    prefs.forEach(function(p) { var ps = s.prefStats[p]; if (ps) { rTotal += ps.total; rVisited += ps.visited; } });
+    return { cur: rVisited, max: rTotal, done: rTotal > 0 && rVisited >= rTotal };
+  } else if (q.type === "allpref") {
+    var prefsWith1 = 0;
+    Object.values(s.prefStats).forEach(function(p) { if (p.visited > 0) prefsWith1++; });
+    return { cur: prefsWith1, max: q.target, done: prefsWith1 >= q.target };
+  }
+  return { cur: 0, max: 1, done: false };
+}
+
 function renderBadges(s){
-  const c=document.getElementById("badge-list"); c.innerHTML="";
-  BADGES.forEach(b=>{
-    let cur,max;
-    if(b.type==="pref"){cur=s.prefComplete;max=b.max;} else if(b.type==="photo"){cur=s.photoCount;max=b.max;} else{cur=s.visited;max=b.max||s.total;}
-    const earned=b.check(s.visited,s.total,s.prefComplete,s.photoCount);
-    const prog=Math.min(cur/max,1);
-    const card=document.createElement("div"); card.className="badge-card "+(earned?"earned":"locked");
-    card.innerHTML=`<div class="badge-emoji">${earned?b.emoji:"🔒"}</div><div class="badge-title">${b.title}</div><div class="badge-desc">${b.desc}</div><div class="badge-progress"><div class="badge-progress-fill" style="width:${prog*100}%"></div></div><div class="badge-progress-text">${Math.min(cur,max)} / ${max}</div>`;
+  var c = document.getElementById("badge-list"); if (!c) return;
+  c.innerHTML = "";
+  QUESTS.forEach(function(q) {
+    var st = getQuestStatus(q, s);
+    var prog = st.max > 0 ? Math.min(st.cur / st.max, 1) : 0;
+    var statusClass = st.done ? "quest-done" : (st.cur > 0 ? "quest-active" : "quest-locked");
+    var icon = st.done ? "✅" : (st.cur > 0 ? "🔥" : "🔒");
+    var card = document.createElement("div");
+    card.className = "badge-card " + statusClass;
+    var certBtn = "";
+    if (st.done && typeof showCertificate === "function") {
+      var certTitle = q.type === "region" ? q.region + " 制覇" : q.name + " 達成";
+      certBtn = '<button class="cert-trigger-btn" data-cert-title="' + certTitle + '" data-cert-sub="' + q.reward + '" data-cert-count="' + st.cur + '">📜 証明書</button>';
+    }
+    card.innerHTML = '<div class="badge-emoji">' + icon + '</div>' +
+      '<div class="badge-title">' + q.name + '</div>' +
+      '<div class="badge-desc">' + q.desc + '</div>' +
+      '<div class="quest-reward">' + (st.done ? '🏅 ' + q.reward : q.reward) + '</div>' +
+      '<div class="badge-progress"><div class="badge-progress-fill" style="width:' + (prog * 100) + '%"></div></div>' +
+      '<div class="badge-progress-text">' + Math.min(st.cur, st.max) + ' / ' + st.max + '</div>' +
+      certBtn;
     c.appendChild(card);
+  });
+  c.querySelectorAll(".cert-trigger-btn").forEach(function(btn) {
+    btn.addEventListener("click", function() {
+      showCertificate(btn.dataset.certTitle, btn.dataset.certSub, parseInt(btn.dataset.certCount));
+    });
   });
 }
 

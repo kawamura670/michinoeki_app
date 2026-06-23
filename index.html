@@ -55,7 +55,7 @@ if('serviceWorker' in navigator){
     </button>
     <button class="pc-nav-item" data-tab="stats">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
-      <span>統計</span>
+      <span>旅年表</span>
     </button>
     <button class="pc-nav-item" data-tab="badges">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
@@ -202,23 +202,21 @@ if('serviceWorker' in navigator){
   </div>
 </div>
 
-<!-- ===== 統計タブ ===== -->
+<!-- ===== 年表タブ ===== -->
 <div id="tab-stats" class="tab-content">
   <div class="stats-container">
-    <div class="section-header">地方別の進捗</div>
-    <div id="region-stats" class="region-stats"></div>
-    <!-- プレミアム訴求（無料ユーザーのみ） -->
+    <div class="section-header">旅年表</div>
+    <div id="timeline-list" class="timeline-list"></div>
+    <div id="region-stats" class="region-stats" hidden></div>
     <div id="stats-premium-nudge"></div>
-
-    <div class="section-header" style="margin-top:28px">最近の訪問</div>
-    <div id="recent-visits" class="recent-visits"></div>
+    <div id="recent-visits" class="recent-visits" hidden></div>
   </div>
 </div>
 
-<!-- ===== 実績タブ ===== -->
+<!-- ===== クエストタブ ===== -->
 <div id="tab-badges" class="tab-content">
   <div class="badges-container">
-    <div class="section-header">実績バッジ</div>
+    <div class="section-header">クエスト</div>
     <div id="badge-list" class="badge-list"></div>
   </div>
 </div>
@@ -243,7 +241,7 @@ if('serviceWorker' in navigator){
   </button>
   <button class="btab" data-tab="stats">
     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
-    <span>統計</span>
+    <span>年表</span>
   </button>
   <button class="btab" data-tab="badges">
     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
