@@ -1167,8 +1167,8 @@ voiceMicBtn.addEventListener("click",()=>{if(isListening){recognition.stop();isL
 document.getElementById("voice-close").addEventListener("click",()=>{if(recognition)recognition.stop();isListening=false;voiceModal.hidden=true;});
 
 // ===== シェア =====
-document.getElementById("share-btn").addEventListener("click",()=>{const s=calcStats(),pct=s.total?Math.round((s.visited/s.total)*10)/10:0,lv=getLevel(s.visited);document.getElementById("share-card").innerHTML=`<h3>${lv.emoji} ${lv.title}</h3><div class="share-number">${s.visited} / ${s.total}</div><div class="share-detail">訪問達成率 ${pct}% ｜ ${s.prefComplete}県制覇</div><div class="share-app">道の駅スタンプ帳</div>`;document.getElementById("share-modal").hidden=false;});
-document.getElementById("share-copy").addEventListener("click",()=>{const s=calcStats(),pct=s.total?Math.round((s.visited/s.total)*10)/10:0,lv=getLevel(s.visited);navigator.clipboard.writeText(`${lv.emoji} ${lv.title}\n🚗 道の駅スタンプ帳\n${s.visited}/${s.total}駅（${pct}%）\n${s.prefComplete}県制覇！\n#道の駅 #道の駅スタンプ帳 #道の駅巡り`).then(()=>alert("コピーしました！SNSに貼り付けてシェア！")).catch(()=>alert("コピーに失敗しました"));});
+document.getElementById("share-btn").addEventListener("click",()=>{const s=calcStats(),pct=s.total?Math.round((s.visited/s.total)*10)/10:0,lv=getLevel(s.visited);document.getElementById("share-card").innerHTML=`<h3>${lv.emoji} ${lv.title}</h3><div class="share-number">${s.visited} / ${s.total}</div><div class="share-detail">訪問達成率 ${pct}% ｜ ${s.prefComplete}県制覇</div><div class="share-app">タビクエ</div>`;document.getElementById("share-modal").hidden=false;});
+document.getElementById("share-copy").addEventListener("click",()=>{const s=calcStats(),pct=s.total?Math.round((s.visited/s.total)*10)/10:0,lv=getLevel(s.visited);navigator.clipboard.writeText(`${lv.emoji} ${lv.title}\n🚗 タビクエ\n${s.visited}/${s.total}駅（${pct}%）\n${s.prefComplete}県制覇！\n#タビクエ #道の駅 #道の駅巡り`).then(()=>alert("コピーしました！SNSに貼り付けてシェア！")).catch(()=>alert("コピーに失敗しました"));});
 document.getElementById("share-close").addEventListener("click",()=>{document.getElementById("share-modal").hidden=true;});
 
 // ===== マップポップアップ =====

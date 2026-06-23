@@ -1,7 +1,7 @@
 {
-  "name": "道の駅スタンプ帳",
-  "short_name": "道の駅帳",
-  "description": "全国1,200駅の道の駅を記録・管理するスタンプ帳アプリ",
+  "name": "タビクエ",
+  "short_name": "タビクエ",
+  "description": "旅をゲーム化する全国制覇ライフログ。道の駅を巡り、クエストをクリアし、思い出と達成感を積み上げよう。",
   "start_url": ".",
   "scope": ".",
   "display": "standalone",
