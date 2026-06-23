@@ -683,7 +683,7 @@ function renderList(s){
         if(ns.prefStats[st.pref].visited>=ns.prefStats[st.pref].total&&!_completedPrefs.has(st.pref)){
           _completedPrefs.add(st.pref); triggerConfetti(35);
         }
-        setTimeout(()=>{ render(); checkNewBadges(); showPremiumToast(st.name,st.pref); },600);
+        setTimeout(()=>{ render(); checkNewBadges(); checkCertificateTriggers(); showPremiumToast(st.name,st.pref); },600);
       });
 
       const infoDiv=document.createElement("div"); infoDiv.className="station-info";
@@ -1165,7 +1165,7 @@ document.getElementById("stamp-cancel").addEventListener("click",()=>{stampModal
 function resetStampModal(){stampPhotoData=null;stampSelectedId=null;stampPhotoInput.value="";stampPreview.hidden=true;stampSearch.value="";stampResults.innerHTML="";stampSelected.textContent="";stampConfirm.disabled=true;}
 stampPhotoInput.addEventListener("change",e=>{const f=e.target.files[0];if(!f)return;const img=new Image(),r=new FileReader();r.onload=ev=>{img.onload=()=>{const mx=400,sc=Math.min(1,mx/img.width),cv=document.createElement("canvas");cv.width=img.width*sc;cv.height=img.height*sc;cv.getContext("2d").drawImage(img,0,0,cv.width,cv.height);stampPhotoData=cv.toDataURL("image/jpeg",0.7);stampPreview.src=stampPhotoData;stampPreview.hidden=false;};img.src=ev.target.result;};r.readAsDataURL(f);});
 stampSearch.addEventListener("input",()=>{const t=stampSearch.value.trim();stampResults.innerHTML="";if(!t)return;MICHINOEKI_DATA.filter(s=>`${s.name} ${s.pref} ${s.location}`.includes(t)).slice(0,20).forEach(s=>{const d=document.createElement("div");d.textContent=`${PREF_EMOJI[s.pref]||""} ${s.pref} - ${s.name}（${s.location}）`;d.addEventListener("click",()=>{stampSelectedId=s.id;stampSelected.textContent=`選択中: ${s.pref} ${s.name}`;stampResults.innerHTML="";stampSearch.value=`${s.pref} ${s.name}`;stampConfirm.disabled=false;});stampResults.appendChild(d);});});
-stampConfirm.addEventListener("click",()=>{if(stampSelectedId===null)return;const st=MICHINOEKI_DATA.find(s=>s.id===stampSelectedId);setVisited(stampSelectedId,true,stampPhotoData);stampModal.hidden=true;render();checkNewBadges();if(st)showPremiumToast(st.name,st.pref);});
+stampConfirm.addEventListener("click",()=>{if(stampSelectedId===null)return;const st=MICHINOEKI_DATA.find(s=>s.id===stampSelectedId);setVisited(stampSelectedId,true,stampPhotoData);stampModal.hidden=true;render();checkNewBadges();checkCertificateTriggers();if(st)showPremiumToast(st.name,st.pref);});
 
 // ===== バックアップ =====
 document.getElementById("export-btn").addEventListener("click",()=>{const d={manual:loadManual(),dismissed:loadDismissed(),settings:loadSettings(),exportedAt:new Date().toISOString()};const b=new Blob([JSON.stringify(d)],{type:"application/json"});const u=URL.createObjectURL(b);const a=document.createElement("a");a.href=u;a.download=`michinoeki_backup_${new Date().toISOString().slice(0,10)}.json`;a.click();URL.revokeObjectURL(u);});
@@ -1180,7 +1180,7 @@ function initSR(){const S=window.SpeechRecognition||window.webkitSpeechRecogniti
 function norm(s){return s.replace(/[\s　]+/g,"").replace(/[ぁ-ん]/g,c=>String.fromCharCode(c.charCodeAt(0)+0x60)).toLowerCase();}
 function score(a,b){const x=norm(a),y=norm(b);if(x===y)return 100;if(y.includes(x)||x.includes(y))return 80;const sh=x.length<y.length?x:y,lo=x.length<y.length?y:x;let m=0,p=0;for(const c of sh){const i=lo.indexOf(c,p);if(i!==-1){m++;p=i+1;}}return Math.round((m/lo.length)*70);}
 function findM(t){if(!t.trim())return[];return MICHINOEKI_DATA.map(s=>({station:s,score:Math.max(score(t,s.name),score(t,s.pref+s.name))})).sort((a,b)=>b.score-a.score).filter(r=>r.score>=30).slice(0,8);}
-function showM(ms){voiceMatches.innerHTML="";ms.forEach(m=>{const i=getVisitInfo(m.station.id),d=!!(i&&i.visited),it=document.createElement("div");it.className="voice-match-item"+(d?" checked":"");it.innerHTML=`<span class="voice-match-name">${m.station.name}</span><span class="voice-match-pref">${m.station.pref}</span><span class="voice-match-score">${d?"✅ 済":"タップでチェック"}</span>`;if(!d){it.addEventListener("click",()=>{setVisited(m.station.id,true);it.classList.add("checked");it.querySelector(".voice-match-score").textContent="✅ 済";voiceDoneMsg.textContent=`✅ ${m.station.pref} ${m.station.name} をチェック！`;voiceDoneMsg.hidden=false;setTimeout(()=>voiceDoneMsg.hidden=true,3000);render();checkNewBadges();showPremiumToast(m.station.name,m.station.pref);});}voiceMatches.appendChild(it);});}
+function showM(ms){voiceMatches.innerHTML="";ms.forEach(m=>{const i=getVisitInfo(m.station.id),d=!!(i&&i.visited),it=document.createElement("div");it.className="voice-match-item"+(d?" checked":"");it.innerHTML=`<span class="voice-match-name">${m.station.name}</span><span class="voice-match-pref">${m.station.pref}</span><span class="voice-match-score">${d?"✅ 済":"タップでチェック"}</span>`;if(!d){it.addEventListener("click",()=>{setVisited(m.station.id,true);it.classList.add("checked");it.querySelector(".voice-match-score").textContent="✅ 済";voiceDoneMsg.textContent=`✅ ${m.station.pref} ${m.station.name} をチェック！`;voiceDoneMsg.hidden=false;setTimeout(()=>voiceDoneMsg.hidden=true,3000);render();checkNewBadges();checkCertificateTriggers();showPremiumToast(m.station.name,m.station.pref);});}voiceMatches.appendChild(it);});}
 function startL(){if(!recognition){recognition=initSR();if(!recognition){voiceStatus.textContent="音声認識に対応していません（Chrome推奨）";return;}}recognition.onresult=e=>{let im="",fi="";for(let i=e.resultIndex;i<e.results.length;i++){const t=e.results[i][0].transcript;if(e.results[i].isFinal)fi+=t;else im+=t;}const d=fi||im;voiceRecognized.textContent=`「${d}」`;showM(findM(d));};recognition.onend=()=>{isListening=false;voiceMicBtn.textContent="🎤 聴き取り開始";voiceMicBtn.classList.remove("recording");voiceStatus.textContent="もう一度マイクボタンを押してください";voiceStatus.classList.remove("listening");};recognition.onerror=e=>{isListening=false;voiceMicBtn.textContent="🎤 聴き取り開始";voiceMicBtn.classList.remove("recording");voiceStatus.classList.remove("listening");voiceStatus.textContent=e.error==="not-allowed"?"マイクが許可されていません":e.error==="no-speech"?"音声が検出されませんでした":"エラーが発生しました";};recognition.start();isListening=true;voiceMicBtn.textContent="⏹ 聴き取り中...";voiceMicBtn.classList.add("recording");voiceStatus.textContent="🔴 聴いています...道の駅名を読み上げてください";voiceStatus.classList.add("listening");voiceDoneMsg.hidden=true;}
 document.getElementById("voice-btn").addEventListener("click",()=>{voiceRecognized.textContent="";voiceMatches.innerHTML="";voiceDoneMsg.hidden=true;voiceStatus.textContent="マイクボタンを押してください";voiceStatus.classList.remove("listening");voiceMicBtn.textContent="🎤 聴き取り開始";voiceMicBtn.classList.remove("recording");voiceModal.hidden=false;});
 voiceMicBtn.addEventListener("click",()=>{if(isListening){recognition.stop();isListening=false;}else startL();});
@@ -1245,6 +1245,155 @@ if("serviceWorker" in navigator){
     slides[cur].classList.add("active");
   },12000);
 })();
+
+// ===== 制覇証明書 =====
+const CERT_MILESTONES = [10,50,100,300,500,1000,1231];
+
+function generateCertificate(title, subtitle, count, dateStr) {
+  var cv = document.getElementById("cert-canvas");
+  if (!cv) return null;
+  var ctx = cv.getContext("2d");
+  var w = cv.width, h = cv.height;
+
+  // Background
+  ctx.fillStyle = "#0F3D28";
+  ctx.fillRect(0, 0, w, h);
+
+  // Gold double border
+  ctx.strokeStyle = "#E8B84B";
+  ctx.lineWidth = 4;
+  ctx.strokeRect(16, 16, w - 32, h - 32);
+  ctx.lineWidth = 1.5;
+  ctx.strokeRect(26, 26, w - 52, h - 52);
+
+  // Corner ornaments
+  var cs = 18;
+  [[36, 36], [w - 36, 36], [36, h - 36], [w - 36, h - 36]].forEach(function(p) {
+    ctx.beginPath();
+    ctx.arc(p[0], p[1], cs / 2, 0, Math.PI * 2);
+    ctx.strokeStyle = "#E8B84B";
+    ctx.lineWidth = 1.5;
+    ctx.stroke();
+  });
+
+  // "制覇証明書" header
+  ctx.fillStyle = "#E8B84B";
+  ctx.font = "bold 22px 'Noto Sans JP','Yu Gothic',sans-serif";
+  ctx.textAlign = "center";
+  ctx.fillText("制 覇 証 明 書", w / 2, 80);
+
+  // Decorative line under header
+  ctx.beginPath();
+  ctx.moveTo(w / 2 - 100, 92);
+  ctx.lineTo(w / 2 + 100, 92);
+  ctx.strokeStyle = "#E8B84B";
+  ctx.lineWidth = 1;
+  ctx.stroke();
+
+  // Main title
+  ctx.fillStyle = "#FFFFFF";
+  var fs = title.length <= 8 ? 52 : title.length <= 12 ? 42 : 34;
+  ctx.font = "bold " + fs + "px 'Noto Sans JP','Yu Mincho','Yu Gothic',serif";
+  ctx.fillText(title, w / 2, h / 2 - 10);
+
+  // Subtitle line
+  ctx.fillStyle = "#E8B84B";
+  ctx.font = "400 18px 'Noto Sans JP','Yu Gothic',sans-serif";
+  ctx.fillText(subtitle, w / 2, h / 2 + 30);
+
+  // Stats line
+  var lv = getLevel(calcStats().visited);
+  ctx.fillStyle = "rgba(255,255,255,0.7)";
+  ctx.font = "400 15px 'Noto Sans JP','Yu Gothic',sans-serif";
+  ctx.fillText("達成日: " + dateStr + " ｜ 訪問: " + count + "駅 ｜ " + lv.emoji + " " + lv.title, w / 2, h / 2 + 65);
+
+  // Logo bottom-right
+  ctx.fillStyle = "rgba(232,184,75,0.6)";
+  ctx.font = "bold 14px 'Noto Sans JP','Yu Gothic',sans-serif";
+  ctx.textAlign = "right";
+  ctx.fillText("タビクエ", w - 40, h - 40);
+
+  ctx.textAlign = "left";
+  return cv.toDataURL("image/png");
+}
+
+function showCertificate(title, subtitle, count) {
+  var dateStr = new Date().toLocaleDateString("ja-JP");
+  var dataUrl = generateCertificate(title, subtitle, count, dateStr);
+  if (!dataUrl) return;
+  document.getElementById("cert-modal").hidden = false;
+}
+
+document.getElementById("cert-close").addEventListener("click", function() {
+  document.getElementById("cert-modal").hidden = true;
+});
+
+document.getElementById("cert-share").addEventListener("click", function() {
+  var cv = document.getElementById("cert-canvas");
+  cv.toBlob(function(blob) {
+    if (navigator.share && navigator.canShare) {
+      var file = new File([blob], "tabique_certificate.png", { type: "image/png" });
+      var shareData = { files: [file], title: "タビクエ 制覇証明書", text: "#タビクエ #道の駅 #全国制覇" };
+      if (navigator.canShare(shareData)) {
+        navigator.share(shareData).catch(function() {});
+        return;
+      }
+    }
+    var a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = "tabique_certificate.png";
+    a.click();
+    URL.revokeObjectURL(a.href);
+  }, "image/png");
+});
+
+function checkCertificateTriggers() {
+  var s = calcStats();
+  var earned = JSON.parse(localStorage.getItem("tabique_certs") || "[]");
+  var newCerts = [];
+
+  // Milestone certificates
+  CERT_MILESTONES.forEach(function(m) {
+    var key = "milestone_" + m;
+    if (s.visited >= m && earned.indexOf(key) === -1) {
+      var title = m === 1231 ? "全国制覇" : "全国" + m + "駅 達成";
+      var sub = m === 1231 ? "全1231駅すべての道の駅を制覇！" : "道の駅" + m + "駅の訪問を達成しました";
+      newCerts.push({ key: key, title: title, sub: sub, count: s.visited });
+    }
+  });
+
+  // Prefecture certificates
+  Object.entries(s.prefStats).forEach(function(entry) {
+    var pref = entry[0], d = entry[1];
+    var key = "pref_" + pref;
+    if (d.visited >= d.total && d.total > 0 && earned.indexOf(key) === -1) {
+      newCerts.push({ key: key, title: pref + " 制覇", sub: pref + "の全" + d.total + "駅を訪問達成！", count: d.visited });
+    }
+  });
+
+  // Region certificates
+  Object.entries(REGIONS).forEach(function(entry) {
+    var region = entry[0], prefs = entry[1];
+    var key = "region_" + region;
+    if (earned.indexOf(key) !== -1) return;
+    var allDone = prefs.every(function(p) {
+      var pd = s.prefStats[p];
+      return pd && pd.visited >= pd.total && pd.total > 0;
+    });
+    if (allDone) {
+      var totalStations = 0;
+      prefs.forEach(function(p) { totalStations += s.prefStats[p].total; });
+      newCerts.push({ key: key, title: region + " 制覇", sub: region + "地方の全" + totalStations + "駅を制覇！", count: totalStations });
+    }
+  });
+
+  if (newCerts.length > 0) {
+    var c = newCerts[0];
+    earned.push(c.key);
+    localStorage.setItem("tabique_certs", JSON.stringify(earned));
+    setTimeout(function() { showCertificate(c.title, c.sub, c.count); }, 1200);
+  }
+}
 
 // ===== 初期化 =====
 _prevCount=calcStats().visited;

@@ -97,6 +97,16 @@ body {
   .scenic-slide.active { opacity: 0.05; }
 }
 
+/* ===== 制覇証明書モーダル ===== */
+.cert-modal { max-width: 95vw; }
+.cert-modal h2 { text-align: center; }
+#cert-canvas { width: 100%; height: auto; border-radius: 8px; display: block; margin: 12px auto; }
+.cert-trigger-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: #E8B84B; color: #1A1A1A; border: none; border-radius: 8px;
+  padding: 8px 16px; font-size: 14px; font-weight: 700; cursor: pointer; margin-top: 8px;
+}
+
 /* ===== スタンプ駅名オーバーレイ ===== */
 .stamp-wrap {
   position: relative; width: 100%; height: 100%; border-radius: 50%; overflow: hidden;
