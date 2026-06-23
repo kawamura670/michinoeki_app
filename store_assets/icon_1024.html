@@ -1,0 +1,19 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Icon 1024</title><style>body{margin:0;background:#222;display:flex;justify-content:center;align-items:center;height:100vh}</style></head><body>
+<canvas id="c" width="1024" height="1024"></canvas>
+<script>
+const c=document.getElementById('c'),ctx=c.getContext('2d');
+// rounded rect clip
+function roundRect(x,y,w,h,r){ctx.beginPath();ctx.moveTo(x+r,y);ctx.lineTo(x+w-r,y);ctx.quadraticCurveTo(x+w,y,x+w,y+r);ctx.lineTo(x+w,y+h-r);ctx.quadraticCurveTo(x+w,y+h,x+w-r,y+h);ctx.lineTo(x+r,y+h);ctx.quadraticCurveTo(x,y+h,x,y+h-r);ctx.lineTo(x,y+r);ctx.quadraticCurveTo(x,y,x+r,y);ctx.closePath();}
+// bg
+roundRect(0,0,1024,1024,180);ctx.clip();
+ctx.fillStyle='#0F3D28';ctx.fillRect(0,0,1024,1024);
+// hexagon
+function hexPath(cx,cy,r){ctx.beginPath();for(let i=0;i<6;i++){const a=Math.PI/3*i-Math.PI/6;ctx.lineTo(cx+r*Math.cos(a),cy+r*Math.sin(a));}ctx.closePath();}
+ctx.save();ctx.shadowColor='rgba(0,0,0,0.3)';ctx.shadowBlur=20;ctx.shadowOffsetY=10;
+hexPath(512,500,310);ctx.fillStyle='#E8B84B';ctx.fill();ctx.restore();
+// pin
+const px=512,py=460;
+ctx.beginPath();ctx.arc(px,py,60,0,Math.PI*2);ctx.fillStyle='#fff';ctx.fill();
+ctx.beginPath();ctx.arc(px,py,24,0,Math.PI*2);ctx.fillStyle='#0F3D28';ctx.fill();
+ctx.beginPath();ctx.moveTo(px-30,py+50);ctx.lineTo(px,py+110);ctx.lineTo(px+30,py+50);ctx.fillStyle='#fff';ctx.fill();
+</script></body></html>

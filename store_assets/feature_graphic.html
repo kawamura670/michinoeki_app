@@ -1,0 +1,31 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Feature Graphic</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Inter:wght@700&display=swap" rel="stylesheet">
+<style>*{margin:0;box-sizing:border-box}body{width:1024px;height:500px;overflow:hidden}
+.wrap{width:1024px;height:500px;background:linear-gradient(135deg,#0F3D28,#1A5C3A);display:flex;align-items:center;padding:0 80px;position:relative}
+.left{flex:1}
+.title{font-family:'Noto Sans JP',sans-serif;font-size:72px;font-weight:700;color:#fff}
+.catch{font-family:'Noto Sans JP',sans-serif;font-size:32px;color:#E8B84B;margin-top:12px}
+.bottom{position:absolute;bottom:24px;left:80px;font-family:'Noto Sans JP',sans-serif;font-size:20px;color:rgba(255,255,255,0.5)}
+.right{width:280px;display:flex;align-items:center;justify-content:center}
+.right canvas{display:block}
+</style></head><body>
+<div class="wrap">
+  <div class="left">
+    <div class="title">タビクエ</div>
+    <div class="catch">旅を、ゲームにしよう。</div>
+  </div>
+  <div class="right"><canvas id="hex" width="220" height="220"></canvas></div>
+  <div class="bottom">全国1231駅 旅の記録と制覇</div>
+</div>
+<script>
+const c=document.getElementById('hex'),ctx=c.getContext('2d');
+function hexPath(cx,cy,r){ctx.beginPath();for(let i=0;i<6;i++){const a=Math.PI/3*i-Math.PI/6;ctx.lineTo(cx+r*Math.cos(a),cy+r*Math.sin(a));}ctx.closePath();}
+ctx.shadowColor='rgba(0,0,0,0.3)';ctx.shadowBlur=16;ctx.shadowOffsetY=6;
+hexPath(110,108,90);ctx.fillStyle='#E8B84B';ctx.fill();
+ctx.shadowColor='transparent';
+const px=110,py=96;
+ctx.beginPath();ctx.arc(px,py,20,0,Math.PI*2);ctx.fillStyle='#fff';ctx.fill();
+ctx.beginPath();ctx.arc(px,py,8,0,Math.PI*2);ctx.fillStyle='#0F3D28';ctx.fill();
+ctx.beginPath();ctx.moveTo(px-10,py+17);ctx.lineTo(px,py+36);ctx.lineTo(px+10,py+17);ctx.fillStyle='#fff';ctx.fill();
+</script>
+</body></html>
