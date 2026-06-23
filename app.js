@@ -741,20 +741,66 @@ function renderList(s){
   });
 }
 
-function renderStats(s){
-  const re=document.getElementById("region-stats"); re.innerHTML="";
-  Object.entries(REGIONS).forEach(([rn,prefs])=>{
-    let rt=0,rv=0; prefs.forEach(p=>{if(s.prefStats[p]){rt+=s.prefStats[p].total;rv+=s.prefStats[p].visited;}});
-    const pct=rt?Math.round((rv/rt)*100):0;
-    const r=document.createElement("div"); r.className="region-row";
-    const rk=REGION_COLORS[rn]?.key; if(rk) r.setAttribute("data-region",rk);
-    r.innerHTML=`<div class="region-name">${rn}</div><div class="region-bar-wrap"><div class="region-bar-fill" style="width:${pct}%"></div></div><div class="region-pct">${pct}%</div><div class="region-count">${rv}/${rt}</div>`;
-    re.appendChild(r);
-  });
+function renderStats(s){ renderTimeline(s); }
 
-  const rv=document.getElementById("recent-visits"); rv.innerHTML="";
-  if(s.recentVisits.length===0){ rv.innerHTML='<div class="no-data">まだ訪問記録がありません。最初の道の駅をチェックしてみましょう！</div>'; }
-  else { s.recentVisits.forEach(v=>{ const it=document.createElement("div"); it.className="recent-item"; it.innerHTML=`<div class="recent-icon">${PREF_EMOJI[v.pref]||"📍"}</div><div class="recent-info"><div class="recent-name">${v.name}</div><div class="recent-detail">${v.pref}</div></div><div class="recent-date">${v.date}</div>`; rv.appendChild(it); }); }
+function renderTimeline(s){
+  var el=document.getElementById("timeline-list");
+  if(!el) return;
+  var manual=loadManual();
+  var entries=[];
+  MICHINOEKI_DATA.forEach(function(st){
+    var info=manual[st.id];
+    if(!info || !info.visited) return;
+    entries.push({id:st.id,name:st.name,pref:st.pref,date:info.date||"",photo:info.photo||null,memo:info.memo||""});
+  });
+  entries.sort(function(a,b){ return (b.date||"").localeCompare(a.date||""); });
+  if(entries.length===0){
+    el.innerHTML='<div class="no-data">まだ訪問記録がありません。最初の道の駅をチェックしてみましょう！</div>';
+    return;
+  }
+  var prefCounts={},visitCount=0,milestones=[];
+  var sorted=entries.slice().sort(function(a,b){return (a.date||"").localeCompare(b.date||"");});
+  sorted.forEach(function(e){
+    visitCount++;
+    if(!prefCounts[e.pref])prefCounts[e.pref]=0;
+    prefCounts[e.pref]++;
+    var prefTotal=MICHINOEKI_DATA.filter(function(st){return st.pref===e.pref;}).length;
+    if(prefCounts[e.pref]===prefTotal) milestones.push({date:e.date,text:e.pref+" 制覇達成！"});
+    [10,50,100,300,500,1000,1231].forEach(function(n){
+      if(visitCount===n) milestones.push({date:e.date,text:n+"駅 達成！"});
+    });
+  });
+  var msMap={};
+  milestones.forEach(function(m){if(!msMap[m.date])msMap[m.date]=[];msMap[m.date].push(m);});
+  var html="",lastMonth="";
+  entries.forEach(function(e){
+    var month=e.date?e.date.substring(0,7):"不明";
+    if(month!==lastMonth){
+      var label=e.date?(e.date.substring(0,4)+"年"+parseInt(e.date.substring(5,7))+"月"):"日付不明";
+      html+='<div class="tl-month">'+label+'</div>';
+      lastMonth=month;
+    }
+    if(msMap[e.date]){
+      msMap[e.date].forEach(function(m){html+='<div class="tl-milestone">🏆 '+e.date+" "+m.text+'</div>';});
+      delete msMap[e.date];
+    }
+    var photoHtml=e.photo?'<img class="tl-photo" src="'+e.photo+'" alt="">':'';
+    var memoHtml=e.memo?'<div class="tl-memo">'+e.memo.substring(0,50)+(e.memo.length>50?"…":"")+'</div>':"";
+    html+='<div class="tl-entry" data-id="'+e.id+'">'+
+      '<div class="tl-dot"></div>'+
+      '<div class="tl-content">'+
+        '<div class="tl-header"><span class="tl-name">'+(PREF_EMOJI[e.pref]||"📍")+" "+e.name+'</span><span class="tl-date">'+(e.date||"")+'</span></div>'+
+        '<div class="tl-pref">'+e.pref+'</div>'+
+        photoHtml+memoHtml+
+      '</div></div>';
+  });
+  el.innerHTML=html;
+  el.querySelectorAll(".tl-entry").forEach(function(item){
+    item.addEventListener("click",function(){
+      var st=MICHINOEKI_DATA.find(function(ss){return ss.id===parseInt(item.dataset.id);});
+      if(st)showStampReveal(st,true);
+    });
+  });
 }
 
 function getQuestStatus(q, s) {

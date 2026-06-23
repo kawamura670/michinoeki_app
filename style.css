@@ -97,6 +97,21 @@ body {
   .scenic-slide.active { opacity: 0.05; }
 }
 
+/* ===== 旅年表タイムライン ===== */
+.timeline-list { padding: 8px 0; }
+.tl-month { font-size: 14px; font-weight: 700; color: #0F3D28; padding: 16px 16px 6px; border-bottom: 1px solid #eee; }
+.tl-milestone { background: linear-gradient(90deg, #FFF8E8, #FFF); padding: 10px 16px; font-size: 14px; font-weight: 700; color: #B8860B; border-left: 3px solid #E8B84B; margin: 6px 16px; border-radius: 4px; }
+.tl-entry { display: flex; gap: 12px; padding: 12px 16px; border-bottom: 1px solid #f0f0f0; cursor: pointer; }
+.tl-entry:active { background: #f5f5f0; }
+.tl-dot { width: 10px; height: 10px; border-radius: 50%; background: #0F3D28; margin-top: 6px; flex-shrink: 0; }
+.tl-content { flex: 1; min-width: 0; }
+.tl-header { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+.tl-name { font-size: 14px; font-weight: 600; color: #1A1A1A; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.tl-date { font-size: 11px; color: #999; white-space: nowrap; flex-shrink: 0; }
+.tl-pref { font-size: 12px; color: #666; margin-top: 2px; }
+.tl-photo { width: 60px; height: 60px; object-fit: cover; border-radius: 6px; margin-top: 6px; }
+.tl-memo { font-size: 12px; color: #888; margin-top: 4px; line-height: 1.4; }
+
 /* ===== ダッシュボード: ウェルカムバー ===== */
 .welcome-bar {
   background: linear-gradient(135deg, #0F3D28, #1A5C3A);
@@ -695,6 +710,13 @@ body {
 .badge-progress { margin-top: 10px; height: 5px; background: var(--bg); border-radius: 2.5px; overflow: hidden; }
 .badge-progress-fill { height: 100%; background: linear-gradient(90deg,#C8942A,#E8B840); border-radius: 2.5px; transition: width 0.8s cubic-bezier(0.4,0,0.2,1); }
 .badge-progress-text { font-size: 0.68rem; color: var(--text-light); margin-top: 5px; }
+.quest-reward { font-size: 0.72rem; color: #E8B84B; margin-top: 4px; font-weight: 600; }
+.badge-card.quest-done { opacity: 1; background: linear-gradient(135deg, #FFFBEA, #FFF3CC); border: 1.5px solid #E8B84B; }
+.badge-card.quest-done .badge-progress-fill { background: linear-gradient(90deg, #E8B84B, #F0D060); }
+.badge-card.quest-active { opacity: 1; border: 1.5px solid #4CAF50; }
+.badge-card.quest-active .badge-progress-fill { background: linear-gradient(90deg, #4CAF50, #66BB6A); }
+.badge-card.quest-locked { opacity: 0.45; filter: grayscale(0.6); border: 1.5px solid #CCCCCC; }
+.badge-card .cert-trigger-btn { margin-top: 8px; padding: 4px 10px; font-size: 0.7rem; background: #0F3D28; color: #E8B84B; border: none; border-radius: 12px; cursor: pointer; }
 
 /* ===== バッジ獲得ポップアップ ===== */
 .badge-popup-overlay {
