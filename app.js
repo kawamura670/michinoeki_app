@@ -442,6 +442,7 @@ function render(){
   renderHero(s); renderLevelCard(s); renderPremiumNudge(s); renderStampCollection(s); renderStampStreak(s); renderHomeRecent(s); renderAlmostComplete(s);
   renderList(s); renderStampbook(s); renderMap(s); renderStats(s); renderStatsMapTeaser(s); renderBadges(s);
   renderAlmostMapHint();
+  if(typeof updatePCSidebar==="function") updatePCSidebar();
 }
 
 let _sbFilter = "all";
@@ -980,10 +981,7 @@ function showPremiumCelebration(){
   const close=()=>{
     overlay.classList.remove("show");
     setTimeout(()=>{ if(overlay.parentNode) overlay.remove(); },400);
-    document.querySelectorAll(".btab").forEach(x=>x.classList.remove("active"));
-    document.querySelectorAll(".tab-content").forEach(x=>x.classList.remove("active"));
-    document.querySelector('.btab[data-tab="map"]').classList.add("active");
-    document.getElementById("tab-map").classList.add("active");
+    switchTab("map");
   };
   overlay.querySelector(".premium-celebrate-btn").addEventListener("click",close);
   overlay.addEventListener("click",e=>{ if(e.target===overlay) close(); });
@@ -993,13 +991,35 @@ document.getElementById("paywall-skip").addEventListener("click",()=>{
 });
 
 // ===== タブ =====
+function switchTab(tabName) {
+  document.querySelectorAll(".btab").forEach(x=>x.classList.remove("active"));
+  document.querySelectorAll(".pc-nav-item").forEach(x=>x.classList.remove("active"));
+  document.querySelectorAll(".tab-content").forEach(x=>x.classList.remove("active"));
+  var btab = document.querySelector('.btab[data-tab="'+tabName+'"]');
+  var pcNav = document.querySelector('.pc-nav-item[data-tab="'+tabName+'"]');
+  if(btab) btab.classList.add("active");
+  if(pcNav) pcNav.classList.add("active");
+  var tabEl = document.getElementById("tab-"+tabName);
+  if(tabEl) tabEl.classList.add("active");
+}
 document.querySelectorAll(".btab").forEach(t=>{
-  t.addEventListener("click",()=>{
-    document.querySelectorAll(".btab").forEach(x=>x.classList.remove("active"));
-    document.querySelectorAll(".tab-content").forEach(x=>x.classList.remove("active"));
-    t.classList.add("active"); document.getElementById("tab-"+t.dataset.tab).classList.add("active");
-  });
+  t.addEventListener("click",()=>{ switchTab(t.dataset.tab); });
 });
+document.querySelectorAll(".pc-nav-item").forEach(t=>{
+  t.addEventListener("click",()=>{ switchTab(t.dataset.tab); });
+});
+
+// ===== PC サイドバー フッター更新 =====
+function updatePCSidebar() {
+  var levelEl = document.getElementById("pc-sidebar-level");
+  var progEl = document.getElementById("pc-sidebar-progress");
+  if(!levelEl || !progEl) return;
+  var s = calcStats();
+  var lv = getLevel(s.visited);
+  var pct = s.total ? Math.round(s.visited/s.total*100) : 0;
+  levelEl.textContent = lv.emoji + " " + lv.title;
+  progEl.textContent = s.visited + "/" + s.total + "駅 (" + pct + "%) " + s.prefComplete + "県制覇";
+}
 
 // ===== 駅詳細 =====
 let _detailStationId=null;

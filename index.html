@@ -29,6 +29,48 @@ if('serviceWorker' in navigator){
   <div id="scenic-slideshow" class="scenic-slideshow"></div>
 </div>
 
+<!-- ===== PC用サイドバー（1024px以上で表示） ===== -->
+<aside class="pc-sidebar" id="pc-sidebar">
+  <div class="pc-sidebar-brand">
+    <div class="pc-sidebar-logo">🗾</div>
+    <div class="pc-sidebar-appname">タビクエ</div>
+    <div class="pc-sidebar-sub">Road Quest Japan</div>
+  </div>
+  <nav class="pc-sidebar-nav">
+    <button class="pc-nav-item active" data-tab="home">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+      <span>ホーム</span>
+    </button>
+    <button class="pc-nav-item" data-tab="stamps">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12l2 2 4-4"/></svg>
+      <span>スタンプ帳</span>
+    </button>
+    <button class="pc-nav-item" data-tab="map">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 6v16l7-4 8 4 7-4V2l-7 4-8-4-7 4z"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
+      <span>マップ</span>
+    </button>
+    <button class="pc-nav-item" data-tab="list">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+      <span>一覧</span>
+    </button>
+    <button class="pc-nav-item" data-tab="stats">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+      <span>統計</span>
+    </button>
+    <button class="pc-nav-item" data-tab="badges">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+      <span>実績</span>
+    </button>
+  </nav>
+  <div class="pc-sidebar-footer">
+    <div class="pc-sidebar-level" id="pc-sidebar-level"></div>
+    <div class="pc-sidebar-progress" id="pc-sidebar-progress"></div>
+  </div>
+</aside>
+
+<!-- ===== メインコンテンツラッパー ===== -->
+<div class="main-content-wrap">
+
 <!-- ===== ナビゲーションバー ===== -->
 <nav class="nav-bar">
   <span class="nav-title">タビクエ<span id="nav-premium-badge" class="nav-premium-badge" hidden>👑 マスター</span></span>
@@ -318,6 +360,8 @@ if('serviceWorker' in navigator){
 <!-- ===== バッジポップアップ ===== -->
 
 <!-- ===== 紙吹雪コンテナ ===== -->
+
+</div><!-- /.main-content-wrap -->
 
 <script src="data.js"></script>
 <script src="progress.js"></script>

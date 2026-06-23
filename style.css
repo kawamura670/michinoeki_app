@@ -1540,6 +1540,10 @@ body {
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
 }
 
+/* ===== PC サイドバー（デフォルト非表示） ===== */
+.pc-sidebar { display: none; }
+.main-content-wrap { width: 100%; }
+
 /* ===== レスポンシブ ===== */
 @media (min-width: 600px) {
   .modal {
@@ -1548,4 +1552,99 @@ body {
   }
   .modal-overlay { align-items: center; }
   @keyframes modalIn { from{opacity:0;transform:translateY(20px) scale(0.95)} to{opacity:1;transform:translateY(0) scale(1)} }
+}
+
+/* ===== タブレット（768px〜1023px） ===== */
+@media (min-width: 768px) {
+  .hero-stats { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; }
+  .home-container { max-width: 720px; margin: 0 auto; }
+  .list-container { max-width: 720px; margin: 0 auto; }
+  .stats-container { max-width: 720px; margin: 0 auto; }
+  .badges-container { max-width: 720px; margin: 0 auto; }
+  .stampbook { max-width: 720px; margin: 0 auto; }
+  #pref-list .pref-section-list { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .stampbook-grid { grid-template-columns: repeat(4, 1fr); }
+  .map-svg-container { min-height: 70vh; }
+  .home-actions { display: flex; gap: 12px; }
+  .home-actions .action-btn { flex: 1; }
+  .home-actions.sub-actions { justify-content: center; }
+  .region-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .home-recent { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+}
+
+/* ===== PC（1024px以上） ===== */
+@media (min-width: 1024px) {
+  /* サイドバー表示 */
+  .pc-sidebar {
+    display: flex; flex-direction: column;
+    position: fixed; top: 0; left: 0; bottom: 0;
+    width: 240px; z-index: 60;
+    background: #0F3D28;
+    color: #fff;
+    padding: 24px 0;
+    overflow-y: auto;
+  }
+  .pc-sidebar-brand {
+    text-align: center; padding: 8px 16px 24px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    margin-bottom: 8px;
+  }
+  .pc-sidebar-logo { font-size: 2rem; margin-bottom: 4px; }
+  .pc-sidebar-appname { font-size: 1.2rem; font-weight: 800; }
+  .pc-sidebar-sub { font-size: 0.65rem; opacity: 0.5; margin-top: 2px; }
+  .pc-sidebar-nav {
+    flex: 1; display: flex; flex-direction: column;
+    padding: 8px 12px; gap: 2px;
+  }
+  .pc-nav-item {
+    display: flex; align-items: center; gap: 12px;
+    padding: 12px 16px; border: none; border-radius: 10px;
+    background: none; color: rgba(255,255,255,0.65);
+    font-size: 0.88rem; font-weight: 500; cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+    text-align: left;
+  }
+  .pc-nav-item:hover { background: rgba(255,255,255,0.08); color: #fff; }
+  .pc-nav-item.active {
+    background: rgba(255,255,255,0.12); color: #fff; font-weight: 700;
+  }
+  .pc-nav-item svg { stroke: currentColor; flex-shrink: 0; }
+  .pc-sidebar-footer {
+    padding: 16px 20px; border-top: 1px solid rgba(255,255,255,0.1);
+    margin-top: auto;
+  }
+  .pc-sidebar-level { font-size: 0.78rem; font-weight: 700; color: #E8B84B; }
+  .pc-sidebar-progress { font-size: 0.7rem; color: rgba(255,255,255,0.5); margin-top: 4px; }
+
+  /* メインコンテンツをサイドバー分ずらす */
+  .main-content-wrap { margin-left: 240px; }
+
+  /* モバイルナビを非表示 */
+  .nav-bar { left: 240px; }
+  .bottom-tab-bar { display: none; }
+
+  /* タブコンテンツの下部パディング不要 */
+  .tab-content { padding-bottom: 0; }
+  .home-container, .list-container, .stats-container, .badges-container, .stampbook {
+    max-width: 960px; margin: 0 auto;
+  }
+
+  /* ホーム：2×2グリッド */
+  .hero-stats { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; }
+  .home-recent { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .home-actions { display: flex; gap: 12px; }
+  .home-actions .action-btn { flex: 1; }
+  .region-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+  /* 一覧：3カラム */
+  #pref-list .pref-section-list { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+
+  /* スタンプ帳：5カラム */
+  .stampbook-grid { grid-template-columns: repeat(5, 1fr); }
+
+  /* マップ：85vh */
+  .map-svg-container { min-height: 85vh; }
+
+  /* プレミアムトーストをサイドバー考慮 */
+  .premium-toast { left: calc(240px + (100% - 240px) / 2); }
 }
