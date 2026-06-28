@@ -47,21 +47,21 @@ const LEVELS = [
   { min: 1,    title: "はじめの一歩",  emoji: "🎯" },
   { min: 10,   title: "駆け出し旅人",  emoji: "⭐" },
   { min: 50,   title: "探検家",       emoji: "🌟" },
-  { min: 100,  title: "道の駅マスター", emoji: "💫" },
+  { min: 100,  title: "みちのわんマスター", emoji: "💫" },
   { min: 200,  title: "ベテラン旅人",  emoji: "🔥" },
-  { min: 500,  title: "道の駅の達人",  emoji: "👑" },
+  { min: 500,  title: "みちのわんの達人",  emoji: "👑" },
   { min: 1000, title: "全国制覇レジェンド", emoji: "🏆" }
 ];
 
 const BADGES = [
-  { id:"first",  emoji:"🎯", title:"はじめの一歩",    desc:"最初の道の駅を訪問",     check:v=>v>=1,   max:1 },
-  { id:"b10",    emoji:"⭐", title:"10駅達成",        desc:"10駅を訪問",            check:v=>v>=10,  max:10 },
-  { id:"b50",    emoji:"🌟", title:"50駅達成",        desc:"50駅を訪問",            check:v=>v>=50,  max:50 },
-  { id:"b100",   emoji:"💫", title:"100駅マスター",   desc:"100駅を訪問",           check:v=>v>=100, max:100 },
-  { id:"b200",   emoji:"🔥", title:"200駅制覇",       desc:"200駅を訪問",           check:v=>v>=200, max:200 },
-  { id:"b500",   emoji:"👑", title:"500駅の達人",     desc:"500駅を訪問",           check:v=>v>=500, max:500 },
-  { id:"b1000",  emoji:"🏆", title:"1000駅レジェンド", desc:"1000駅を訪問",          check:v=>v>=1000,max:1000 },
-  { id:"complete",emoji:"🎊",title:"全駅制覇",        desc:"全ての道の駅を訪問",     check:(v,t)=>v>=t, max:null },
+  { id:"first",  emoji:"🐾", title:"はじめの一歩",    desc:"愛犬と最初の道の駅を訪問",check:v=>v>=1,   max:1 },
+  { id:"b10",    emoji:"⭐", title:"10駅達成",        desc:"愛犬と10駅を訪問",       check:v=>v>=10,  max:10 },
+  { id:"b50",    emoji:"🌟", title:"50駅達成",        desc:"愛犬と50駅を訪問",       check:v=>v>=50,  max:50 },
+  { id:"b100",   emoji:"💫", title:"100駅マスター",   desc:"愛犬と100駅を訪問",      check:v=>v>=100, max:100 },
+  { id:"b200",   emoji:"🔥", title:"200駅制覇",       desc:"愛犬と200駅を訪問",      check:v=>v>=200, max:200 },
+  { id:"b500",   emoji:"👑", title:"500駅の達人",     desc:"愛犬と500駅を訪問",      check:v=>v>=500, max:500 },
+  { id:"b1000",  emoji:"🏆", title:"1000駅レジェンド", desc:"愛犬と1000駅を訪問",     check:v=>v>=1000,max:1000 },
+  { id:"complete",emoji:"🎊",title:"全駅制覇",        desc:"愛犬と全ての道の駅を制覇",check:(v,t)=>v>=t, max:null },
   { id:"pref1",  emoji:"🗾", title:"県制覇デビュー",   desc:"1つの都道府県を全駅訪問",check:(_,__,pc)=>pc>=1, max:1, type:"pref" },
   { id:"pref5",  emoji:"🏅", title:"5県制覇",         desc:"5つの都道府県を全駅訪問", check:(_,__,pc)=>pc>=5, max:5, type:"pref" },
   { id:"pref10", emoji:"🎖️", title:"10県マスター",    desc:"10都道府県を全駅訪問",   check:(_,__,pc)=>pc>=10,max:10,type:"pref" },
@@ -206,11 +206,11 @@ const RING_CIRCUMFERENCE = 326.7;
 
 // ===== データ =====
 function loadManual() { try { return JSON.parse(localStorage.getItem(MANUAL_KEY)||"{}"); } catch { return {}; } }
-function saveManual(d) { localStorage.setItem(MANUAL_KEY, JSON.stringify(d)); }
+function saveManual(d) { try { localStorage.setItem(MANUAL_KEY, JSON.stringify(d)); } catch(e) { if(e.name==="QuotaExceededError"||e.code===22) alert("ストレージ容量が不足しています。バックアップ後、不要なデータを削除してください。"); } }
 function loadDismissed() { try { return JSON.parse(localStorage.getItem(DISMISS_KEY)||"[]"); } catch { return []; } }
-function saveDismissed(a) { localStorage.setItem(DISMISS_KEY, JSON.stringify(a)); }
+function saveDismissed(a) { try { localStorage.setItem(DISMISS_KEY, JSON.stringify(a)); } catch(e) { if(e.name==="QuotaExceededError"||e.code===22) alert("ストレージ容量が不足しています。バックアップをお勧めします。"); } }
 function loadSettings() { try { return JSON.parse(localStorage.getItem(SETTINGS_KEY)||"{}"); } catch { return {}; } }
-function saveSettings(s) { localStorage.setItem(SETTINGS_KEY, JSON.stringify(s)); }
+function saveSettings(s) { try { localStorage.setItem(SETTINGS_KEY, JSON.stringify(s)); } catch(e) { if(e.name==="QuotaExceededError"||e.code===22) alert("ストレージ容量が不足しています。バックアップをお勧めします。"); } }
 
 function getVisitInfo(id) { const m=loadManual(); return m[id] || PROGRESS_DATA[id] || null; }
 function setVisited(id, visited, photo) {
@@ -444,7 +444,8 @@ let currentFilter="all";
 
 function render(){
   const s=calcStats();
-  renderWelcomeBar(s); renderDashSummary(s); renderNextQuest(s); renderPremiumNudge(s); renderHomeRecent(s); renderAchievedTitles(s); renderAlmostComplete(s);
+  _lsInitialized=false; _rvInitialized=false; _vetInitialized=false;
+  renderWelcomeBar(s); renderDashSummary(s); renderNextQuest(s); renderPremiumNudge(s); renderHomeRecent(s); renderAchievedTitles(s); renderDogFriendlySection(s); renderVanlifeSection(s); renderRVParkSection(); renderVetSection(); renderLifestyleSearch(); renderAlmostComplete(s);
   renderList(s); renderStampbook(s); renderMap(s); renderStats(s); renderStatsMapTeaser(s); renderBadges(s);
   renderAlmostMapHint();
   if(typeof updatePCSidebar==="function") updatePCSidebar();
@@ -510,6 +511,10 @@ function renderStampbook(stats){
       html+=stationHtml;
     }
   });
+  if(!html){
+    if(_sbFilter==="collected") html='<div class="empty-state">まだスタンプを獲得していません。<br>一覧から道の駅を訪問してスタンプを集めましょう！</div>';
+    else if(_sbFilter==="not") html='<div class="empty-state">すべてのスタンプを獲得済みです！<br>おめでとうございます！</div>';
+  }
   grid.innerHTML=html;
 
   grid.querySelectorAll(".sb-stamp").forEach(el=>{
@@ -539,7 +544,7 @@ function renderWelcomeBar(s){
   if(next) progPct=Math.round(((s.visited-lv.min)/(next.min-lv.min))*100);
   const nextText=next?`次のレベルまで あと${next.min-s.visited}駅`:"最高レベル到達！";
   el.innerHTML=
-    `<div class="welcome-greeting">こんにちは、旅人</div>`+
+    `<div class="welcome-greeting">🐕 愛犬と車中泊の旅へ 🚐</div>`+
     `<div class="welcome-level">${lv.emoji} Lv.${LEVELS.indexOf(lv)+1} ${lv.title}</div>`+
     `<div class="welcome-xp-wrap"><div class="welcome-xp-bar"><div class="welcome-xp-fill" style="width:${progPct}%"></div></div>`+
     `<div class="welcome-xp-text">${nextText}</div></div>`;
@@ -605,6 +610,471 @@ function renderHomeRecent(s){
   el.innerHTML=s.recentVisits.slice(0,3).map(v=>
     `<div class="recent-chip">${PREF_EMOJI[v.pref]||"📍"} ${v.name} <span class="recent-chip-date">${v.date}</span></div>`
   ).join("");
+}
+
+// ===== 犬連れ旅情報セクション =====
+function pickRandom(arr, n){
+  const copy=[...arr];
+  const result=[];
+  while(result.length<n&&copy.length>0){
+    const idx=Math.floor(Math.random()*copy.length);
+    result.push(copy.splice(idx,1)[0]);
+  }
+  return result;
+}
+
+function spreadByRegion(arr, n){
+  const byRegion={};
+  arr.forEach(st=>{
+    for(const [rn,prefs] of Object.entries(REGIONS)){
+      if(prefs.includes(st.pref)){
+        if(!byRegion[rn]) byRegion[rn]=[];
+        byRegion[rn].push(st);
+        break;
+      }
+    }
+  });
+  const regions=Object.keys(byRegion);
+  const result=[];
+  let round=0;
+  while(result.length<n&&round<20){
+    const r=regions[round%regions.length];
+    if(byRegion[r]&&byRegion[r].length>0){
+      const idx=Math.floor(Math.random()*byRegion[r].length);
+      result.push(byRegion[r].splice(idx,1)[0]);
+    }
+    round++;
+  }
+  return result;
+}
+
+function renderDogFriendlySection(s){
+  const el=document.getElementById("dog-friendly-section");
+  if(!el) return;
+  const dogStations=MICHINOEKI_DATA.filter(st=>{
+    const fac=getStationFacilities(st);
+    return fac.dog.hasRun||fac.dogRun>=2;
+  });
+  const visitedDog=dogStations.filter(st=>{const i=getVisitInfo(st.id);return i&&i.visited;}).length;
+  const unvisitedDog=dogStations.filter(st=>{const i=getVisitInfo(st.id);return !(i&&i.visited);});
+  const recommend=spreadByRegion(unvisitedDog,5);
+  el.innerHTML=
+    `<div class="lifestyle-card dog-card">`+
+      `<div class="lifestyle-header">`+
+        `<span class="lifestyle-icon">🐕</span>`+
+        `<div class="lifestyle-header-text">`+
+          `<div class="lifestyle-title">犬連れ旅の道の駅</div>`+
+          `<div class="lifestyle-subtitle">ドッグラン・ペット同伴エリアのある駅</div>`+
+        `</div>`+
+      `</div>`+
+      `<div class="lifestyle-stats">`+
+        `<div class="lifestyle-stat"><span class="lifestyle-stat-num">${dogStations.length}</span><span class="lifestyle-stat-label">犬連れ対応</span></div>`+
+        `<div class="lifestyle-stat"><span class="lifestyle-stat-num">${visitedDog}</span><span class="lifestyle-stat-label">訪問済み</span></div>`+
+        `<div class="lifestyle-stat"><span class="lifestyle-stat-num">${dogStations.length-visitedDog}</span><span class="lifestyle-stat-label">未訪問</span></div>`+
+      `</div>`+
+      (recommend.length>0?
+        `<div class="lifestyle-recommend-title">🐾 全国のおすすめ未訪問駅</div>`+
+        `<div class="lifestyle-recommend">`+
+        recommend.map(st=>{
+          const fac=getStationFacilities(st);
+          const tags=[];
+          if(fac.dog.hasRun) tags.push("ドッグラン");
+          if(fac.dog.largeDog) tags.push("大型犬OK");
+          if(fac.dog.fee==="無料") tags.push("無料");
+          return `<div class="lifestyle-chip" onclick="openStationDetail(${st.id})">`+
+            `${PREF_EMOJI[st.pref]||"📍"} ${st.name}`+
+            `<span class="lifestyle-chip-tags">${tags.map(t=>`<span class="mini-tag">${t}</span>`).join("")}</span>`+
+            `<span class="lifestyle-chip-pref">${st.pref}</span></div>`;
+        }).join("")+
+        `</div>`:"")+
+    `</div>`;
+}
+
+// ===== 車中泊スポットセクション =====
+function renderVanlifeSection(s){
+  const el=document.getElementById("vanlife-section");
+  if(!el) return;
+  const vanStations=MICHINOEKI_DATA.filter(st=>{
+    const fac=getStationFacilities(st);
+    return fac.vanlife>=3;
+  });
+  const visitedVan=vanStations.filter(st=>{const i=getVisitInfo(st.id);return i&&i.visited;}).length;
+  const unvisitedVan=vanStations.filter(st=>{const i=getVisitInfo(st.id);return !(i&&i.visited);});
+  const recommend=spreadByRegion(unvisitedVan,5);
+
+  el.innerHTML=
+    `<div class="lifestyle-card vanlife-card">`+
+      `<div class="lifestyle-header">`+
+        `<span class="lifestyle-icon">🚐</span>`+
+        `<div class="lifestyle-header-text">`+
+          `<div class="lifestyle-title">車中泊スポット</div>`+
+          `<div class="lifestyle-subtitle">愛犬とゆっくり過ごせる道の駅</div>`+
+        `</div>`+
+      `</div>`+
+      `<div class="lifestyle-stats">`+
+        `<div class="lifestyle-stat"><span class="lifestyle-stat-num">${vanStations.length}</span><span class="lifestyle-stat-label">おすすめスポット</span></div>`+
+        `<div class="lifestyle-stat"><span class="lifestyle-stat-num">${visitedVan}</span><span class="lifestyle-stat-label">訪問済み</span></div>`+
+        `<div class="lifestyle-stat"><span class="lifestyle-stat-num">${vanStations.length-visitedVan}</span><span class="lifestyle-stat-label">未訪問</span></div>`+
+      `</div>`+
+      `<div class="vanlife-tips">`+
+        `<div class="vanlife-tip">💡 車中泊のマナー：エンジン停止・ゴミ持ち帰り・長期滞在禁止</div>`+
+      `</div>`+
+      (recommend.length>0?
+        `<div class="lifestyle-recommend-title">🚐 全国のおすすめ未訪問スポット</div>`+
+        `<div class="lifestyle-recommend">`+
+        recommend.map(st=>{
+          const fac=getStationFacilities(st);
+          return `<div class="lifestyle-chip" onclick="openStationDetail(${st.id})">`+
+            `${PREF_EMOJI[st.pref]||"📍"} ${st.name}`+
+            `<span class="lifestyle-chip-tags">`+
+              `<span class="mini-tag van-tag">${renderStars(fac.vanlife,5)}</span>`+
+            `</span>`+
+            `<span class="lifestyle-chip-pref">${st.pref}</span></div>`;
+        }).join("")+
+        `</div>`:"")+
+    `</div>`;
+}
+
+// ===== RVパーク検索セクション =====
+let _rvInitialized=false;
+function renderRVParkSection(){
+  const el=document.getElementById("rvpark-section");
+  if(!el) return;
+  if(_rvInitialized) return;
+  _rvInitialized=true;
+
+  const rvParks=[
+    {name:"RVパーク 道の駅ならは",pref:"福島県",features:["電源あり","温泉隣接","ペットOK"],price:"2,000円〜/泊",tel:"0240-25-8571",url:"https://www.kurumatabi.com/park/rvpark/",booking:"https://www.kurumatabi.com/park/rvpark/"},
+    {name:"RVパーク 道の駅川場田園プラザ",pref:"群馬県",features:["電源あり","トイレ24h","ペットOK"],price:"2,500円〜/泊",tel:"0278-52-3711",url:"https://www.denenplaza.co.jp/",booking:"https://www.kurumatabi.com/park/rvpark/"},
+    {name:"RVパーク 道の駅うつのみや ろまんちっく村",pref:"栃木県",features:["電源あり","温泉","ドッグラン"],price:"3,000円〜/泊",tel:"028-665-8800",url:"https://www.romanticmura.com/",booking:"https://www.kurumatabi.com/park/rvpark/"},
+    {name:"RVパーク 道の駅伊東マリンタウン",pref:"静岡県",features:["電源あり","温泉","海沿い"],price:"2,500円〜/泊",tel:"0557-38-3811",url:"https://ito-marinetown.co.jp/",booking:"https://www.kurumatabi.com/park/rvpark/"},
+    {name:"RVパーク 道の駅たかねざわ 元気あっぷむら",pref:"栃木県",features:["電源あり","温泉","広い"],price:"2,000円〜/泊",tel:"028-676-1126",url:"https://www.genkiupmura.com/",booking:"https://www.kurumatabi.com/park/rvpark/"},
+    {name:"RVパーク 道の駅あさひかわ",pref:"北海道",features:["電源あり","ゴミ処理可","ペットOK"],price:"2,000円〜/泊",tel:"0166-25-7960",url:"https://www.kurumatabi.com/park/rvpark/",booking:"https://www.kurumatabi.com/park/rvpark/"},
+    {name:"RVパーク 道の駅みなかみ水紀行館",pref:"群馬県",features:["電源あり","川沿い","ペットOK"],price:"2,000円〜/泊",tel:"0278-72-1425",url:"https://www.kurumatabi.com/park/rvpark/",booking:"https://www.kurumatabi.com/park/rvpark/"},
+    {name:"RVパーク 道の駅富士吉田",pref:"山梨県",features:["電源あり","富士山ビュー","トイレ24h"],price:"3,000円〜/泊",tel:"0555-21-1033",url:"https://www.kurumatabi.com/park/rvpark/",booking:"https://www.kurumatabi.com/park/rvpark/"},
+    {name:"RVパーク 道の駅氷見漁港場外市場ひみ番屋街",pref:"富山県",features:["電源あり","海鮮市場","温泉近く"],price:"2,500円〜/泊",tel:"0766-72-3400",url:"https://himi-banya.jp/",booking:"https://www.kurumatabi.com/park/rvpark/"},
+    {name:"RVパーク 道の駅神戸フルーツ・フラワーパーク",pref:"兵庫県",features:["電源あり","ドッグラン","広い敷地"],price:"3,000円〜/泊",tel:"078-954-1000",url:"https://fruit-flowerpark.jp/",booking:"https://www.kurumatabi.com/park/rvpark/"},
+    {name:"RVパーク 道の駅桜島",pref:"鹿児島県",features:["電源あり","温泉","絶景"],price:"2,000円〜/泊",tel:"099-245-2011",url:"https://www.kurumatabi.com/park/rvpark/",booking:"https://www.kurumatabi.com/park/rvpark/"},
+    {name:"RVパーク 道の駅おおき",pref:"福岡県",features:["電源あり","ペットOK","静か"],price:"1,500円〜/泊",tel:"0944-75-2150",url:"https://www.kurumatabi.com/park/rvpark/",booking:"https://www.kurumatabi.com/park/rvpark/"},
+    {name:"RVパーク 道の駅すばしり",pref:"静岡県",features:["電源あり","富士山近く","広い"],price:"2,500円〜/泊",tel:"0550-75-6363",url:"https://www.kurumatabi.com/park/rvpark/",booking:"https://www.kurumatabi.com/park/rvpark/"},
+    {name:"RVパーク 道の駅サンピコごうつ",pref:"島根県",features:["電源あり","海沿い","ペットOK"],price:"2,000円〜/泊",tel:"0855-52-7288",url:"https://www.kurumatabi.com/park/rvpark/",booking:"https://www.kurumatabi.com/park/rvpark/"},
+    {name:"RVパーク 道の駅しんよしとみ",pref:"福岡県",features:["電源あり","温泉近く","静か"],price:"1,500円〜/泊",tel:"0979-37-7234",url:"https://www.kurumatabi.com/park/rvpark/",booking:"https://www.kurumatabi.com/park/rvpark/"},
+  ];
+
+  el.innerHTML=
+    `<div class="lifestyle-card rvpark-card">`+
+      `<div class="lifestyle-header">`+
+        `<span class="lifestyle-icon">🅿️</span>`+
+        `<div class="lifestyle-header-text">`+
+          `<div class="lifestyle-title">RVパーク（道の駅併設）</div>`+
+          `<div class="lifestyle-subtitle">電源・トイレ完備の公認車中泊スポット</div>`+
+        `</div>`+
+      `</div>`+
+      `<div class="rvpark-info">`+
+        `<div class="rvpark-stat-row">`+
+          `<div class="lifestyle-stat"><span class="lifestyle-stat-num">644</span><span class="lifestyle-stat-label">全国RVパーク</span></div>`+
+          `<div class="lifestyle-stat"><span class="lifestyle-stat-num">${rvParks.length}+</span><span class="lifestyle-stat-label">道の駅併設</span></div>`+
+        `</div>`+
+      `</div>`+
+      `<div class="rvpark-filter">`+
+        `<select id="rvpark-region" class="ls-select"><option value="">全国</option>`+
+          Object.keys(REGIONS).map(r=>`<option value="${r}">${r}</option>`).join("")+
+        `</select>`+
+        `<select id="rvpark-feature" class="ls-select"><option value="">設備で絞る</option><option value="ペットOK">ペットOK</option><option value="ドッグラン">ドッグラン</option><option value="温泉">温泉あり</option><option value="電源あり">電源あり</option></select>`+
+        `<button id="rvpark-search-btn" class="ls-search-btn rvpark-btn">🔍 検索</button>`+
+      `</div>`+
+      `<a href="https://www.kurumatabi.com/park/rvpark/" target="_blank" rel="noopener" class="rvpark-more-link">📋 RVパーク全一覧を見る（くるま旅クラブ） ↗</a>`+
+      `<div id="rvpark-results" class="rvpark-results">`+
+        rvParks.slice(0,5).map(rv=>renderRVParkItem(rv)).join("")+
+      `</div>`+
+    `</div>`;
+
+  document.getElementById("rvpark-search-btn").addEventListener("click",()=>{
+    const region=document.getElementById("rvpark-region").value;
+    const feature=document.getElementById("rvpark-feature").value;
+    let filtered=rvParks;
+    if(region){
+      const prefs=REGIONS[region]||[];
+      filtered=filtered.filter(rv=>prefs.includes(rv.pref));
+    }
+    if(feature){
+      filtered=filtered.filter(rv=>rv.features.some(f=>f.includes(feature)));
+    }
+    const resultsEl=document.getElementById("rvpark-results");
+    if(filtered.length===0){
+      resultsEl.innerHTML=`<div class="ls-empty">条件に合うRVパークが見つかりませんでした</div>`;
+    } else {
+      resultsEl.innerHTML=filtered.map(rv=>renderRVParkItem(rv)).join("");
+    }
+  });
+}
+
+function renderRVParkItem(rv){
+  return `<div class="rvpark-item">`+
+    `<div class="rvpark-item-header">`+
+      `<span class="rvpark-item-name">${PREF_EMOJI[rv.pref]||""} ${rv.name}</span>`+
+      `<span class="rvpark-item-price">${rv.price||""}</span>`+
+    `</div>`+
+    `<div class="rvpark-item-pref">${rv.pref}</div>`+
+    `<div class="rvpark-item-features">${rv.features.map(f=>`<span class="rvpark-feat">${f}</span>`).join("")}</div>`+
+    `<div class="rvpark-item-actions">`+
+      (rv.tel?`<a href="tel:${rv.tel.replace(/-/g,"")}" class="rvpark-action-btn rvpark-tel">📞 ${rv.tel}</a>`:"")+
+      (rv.booking?`<a href="${rv.booking}" target="_blank" rel="noopener" class="rvpark-action-btn rvpark-book">📋 予約・詳細</a>`:"")+
+      (rv.url&&rv.url!==rv.booking?`<a href="${rv.url}" target="_blank" rel="noopener" class="rvpark-action-btn rvpark-site">🔗 公式サイト</a>`:"")+
+    `</div>`+
+  `</div>`;
+}
+
+// ===== 緊急動物病院セクション =====
+let _vetInitialized=false;
+function renderVetSection(){
+  const el=document.getElementById("vet-section");
+  if(!el) return;
+  if(typeof EMERGENCY_VETS==="undefined"||EMERGENCY_VETS.length===0){
+    el.innerHTML=
+      `<div class="lifestyle-card vet-card">`+
+        `<div class="lifestyle-header">`+
+          `<span class="lifestyle-icon">🏥</span>`+
+          `<div class="lifestyle-header-text">`+
+            `<div class="lifestyle-title">緊急動物病院</div>`+
+            `<div class="lifestyle-subtitle">24時間・夜間対応の動物病院を検索</div>`+
+          `</div>`+
+        `</div>`+
+        `<div class="vet-loading">データを読み込み中...</div>`+
+      `</div>`;
+    let _vetRetry=0;
+    const _vetTimer=setInterval(()=>{
+      _vetRetry++;
+      if(typeof EMERGENCY_VETS!=="undefined"&&EMERGENCY_VETS.length>0){
+        clearInterval(_vetTimer);
+        renderVetSection();
+      } else if(_vetRetry>=10){
+        clearInterval(_vetTimer);
+        el.innerHTML=
+          `<div class="lifestyle-card vet-card">`+
+            `<div class="lifestyle-header">`+
+              `<span class="lifestyle-icon">🏥</span>`+
+              `<div class="lifestyle-header-text">`+
+                `<div class="lifestyle-title">緊急動物病院</div>`+
+                `<div class="lifestyle-subtitle">24時間・夜間対応の動物病院を検索</div>`+
+              `</div>`+
+            `</div>`+
+            `<div class="vet-loading">データの読み込みに失敗しました。ページを再読み込みしてください。</div>`+
+          `</div>`;
+      }
+    },500);
+    return;
+  }
+  if(_vetInitialized) return;
+  _vetInitialized=true;
+
+  const prefList=[...new Set(EMERGENCY_VETS.map(v=>v.pref))].sort();
+  const h24=EMERGENCY_VETS.filter(v=>v.type==="24h").length;
+  const night=EMERGENCY_VETS.filter(v=>v.type==="night").length;
+
+  el.innerHTML=
+    `<div class="lifestyle-card vet-card">`+
+      `<div class="lifestyle-header">`+
+        `<span class="lifestyle-icon">🏥</span>`+
+        `<div class="lifestyle-header-text">`+
+          `<div class="lifestyle-title">緊急動物病院</div>`+
+          `<div class="lifestyle-subtitle">旅先で愛犬の体調が悪くなったら</div>`+
+        `</div>`+
+      `</div>`+
+      `<div class="vet-emergency-banner">🚨 緊急時は迷わず電話してください</div>`+
+      `<div class="rvpark-stat-row">`+
+        `<div class="lifestyle-stat"><span class="lifestyle-stat-num">${EMERGENCY_VETS.length}</span><span class="lifestyle-stat-label">登録病院</span></div>`+
+        `<div class="lifestyle-stat"><span class="lifestyle-stat-num">${h24}</span><span class="lifestyle-stat-label">24時間対応</span></div>`+
+        `<div class="lifestyle-stat"><span class="lifestyle-stat-num">${prefList.length}</span><span class="lifestyle-stat-label">対応都道府県</span></div>`+
+      `</div>`+
+      `<div class="vet-filter">`+
+        `<select id="vet-pref" class="ls-select">`+
+          `<option value="">都道府県を選ぶ</option>`+
+          PREF_ORDER.map(p=>{
+            const has=EMERGENCY_VETS.some(v=>v.pref===p);
+            return has?`<option value="${p}">${PREF_EMOJI[p]||""} ${p}</option>`:"";
+          }).join("")+
+        `</select>`+
+        `<select id="vet-type" class="ls-select">`+
+          `<option value="">対応時間</option>`+
+          `<option value="24h">24時間</option>`+
+          `<option value="night">夜間救急</option>`+
+          `<option value="holiday">休日対応</option>`+
+        `</select>`+
+        `<button id="vet-search-btn" class="ls-search-btn vet-btn">🔍 検索</button>`+
+      `</div>`+
+      `<div id="vet-results" class="vet-results"></div>`+
+      `<div class="vet-disclaimer">⚠️ 掲載情報は参考情報です。営業時間・対応状況は変更される場合があります。<strong>必ず事前にお電話でご確認ください。</strong></div>`+
+    `</div>`;
+
+  document.getElementById("vet-search-btn").addEventListener("click",runVetSearch);
+}
+
+function runVetSearch(){
+  const pref=document.getElementById("vet-pref").value;
+  const type=document.getElementById("vet-type").value;
+  const resultsEl=document.getElementById("vet-results");
+
+  let filtered=EMERGENCY_VETS;
+  if(pref) filtered=filtered.filter(v=>v.pref===pref);
+  if(type) filtered=filtered.filter(v=>v.type===type);
+
+  if(filtered.length===0){
+    resultsEl.innerHTML=`<div class="ls-empty">該当する病院が見つかりませんでした</div>`;
+    return;
+  }
+
+  filtered.sort((a,b)=>{
+    const order={["24h"]:0,["night"]:1,["holiday"]:2};
+    return (order[a.type]||9)-(order[b.type]||9);
+  });
+
+  resultsEl.innerHTML=filtered.map(v=>{
+    const typeLabel=v.type==="24h"?"24時間":(v.type==="night"?"夜間救急":"休日対応");
+    const typeCls=v.type==="24h"?"vet-type-24h":(v.type==="night"?"vet-type-night":"vet-type-holiday");
+    return `<div class="vet-item">`+
+      `<div class="vet-item-header">`+
+        `<span class="vet-item-name">${v.name}</span>`+
+        `<span class="vet-type-badge ${typeCls}">${typeLabel}</span>`+
+      `</div>`+
+      `<div class="vet-item-location">📍 ${v.pref}${v.city||""}${v.address||""}</div>`+
+      `<div class="vet-item-hours">🕐 ${v.hours||typeLabel}</div>`+
+      (v.notes?`<div class="vet-item-notes">${v.notes}</div>`:"")+
+      `<div class="vet-item-actions">`+
+        (v.tel?`<a href="tel:${v.tel.replace(/[-ー−]/g,"")}" class="vet-call-btn">📞 ${v.tel}</a>`:"")+
+        (v.url?`<a href="${v.url}" target="_blank" rel="noopener" class="vet-site-btn">🔗 公式サイト</a>`:"")+
+      `</div>`+
+    `</div>`;
+  }).join("");
+}
+
+// ===== おすすめ検索セクション =====
+let _lsInitialized=false;
+function renderLifestyleSearch(){
+  const el=document.getElementById("lifestyle-search-section");
+  if(!el) return;
+  if(_lsInitialized) return;
+  _lsInitialized=true;
+
+  el.innerHTML=
+    `<div class="lifestyle-card search-card">`+
+      `<div class="lifestyle-header">`+
+        `<span class="lifestyle-icon">🔍</span>`+
+        `<div class="lifestyle-header-text">`+
+          `<div class="lifestyle-title">おすすめ検索</div>`+
+          `<div class="lifestyle-subtitle">条件を選んで道の駅を探そう</div>`+
+        `</div>`+
+      `</div>`+
+      `<div class="ls-filters">`+
+        `<div class="ls-filter-group-title">🐕 わんこ条件</div>`+
+        `<div class="ls-filter-row">`+
+          `<label class="ls-filter-label">ドッグラン</label>`+
+          `<select id="ls-dogrun" class="ls-select"><option value="">指定なし</option><option value="yes">あり</option></select>`+
+        `</div>`+
+        `<div class="ls-filter-row">`+
+          `<label class="ls-filter-label">大型犬</label>`+
+          `<select id="ls-largedog" class="ls-select"><option value="">指定なし</option><option value="yes">OK</option></select>`+
+        `</div>`+
+        `<div class="ls-filter-row">`+
+          `<label class="ls-filter-label">小型/大型 分離</label>`+
+          `<select id="ls-separated" class="ls-select"><option value="">指定なし</option><option value="yes">あり</option></select>`+
+        `</div>`+
+        `<div class="ls-filter-row">`+
+          `<label class="ls-filter-label">証明書不要</label>`+
+          `<select id="ls-nocert" class="ls-select"><option value="">指定なし</option><option value="yes">不要のみ</option></select>`+
+        `</div>`+
+        `<div class="ls-filter-row">`+
+          `<label class="ls-filter-label">無料</label>`+
+          `<select id="ls-free" class="ls-select"><option value="">指定なし</option><option value="yes">無料のみ</option></select>`+
+        `</div>`+
+        `<div class="ls-filter-group-title">📋 施設条件</div>`+
+        `<div class="ls-filter-row">`+
+          `<label class="ls-filter-label">🐕 犬連れおすすめ</label>`+
+          `<select id="ls-dog" class="ls-select"><option value="0">指定なし</option><option value="2">★★以上</option><option value="3">★★★以上</option></select>`+
+        `</div>`+
+        `<div class="ls-filter-row">`+
+          `<label class="ls-filter-label">🚻 トイレ綺麗度</label>`+
+          `<select id="ls-toilet" class="ls-select"><option value="0">指定なし</option><option value="3">★★★以上</option><option value="4">★★★★以上</option></select>`+
+        `</div>`+
+        `<div class="ls-filter-row">`+
+          `<label class="ls-filter-label">🚐 車中泊おすすめ</label>`+
+          `<select id="ls-vanlife" class="ls-select"><option value="0">指定なし</option><option value="3">★★★以上</option><option value="4">★★★★以上</option></select>`+
+        `</div>`+
+        `<div class="ls-filter-group-title">📍 エリア</div>`+
+        `<div class="ls-filter-row">`+
+          `<label class="ls-filter-label">地方</label>`+
+          `<select id="ls-region" class="ls-select"><option value="">全国</option>`+
+            Object.keys(REGIONS).map(r=>`<option value="${r}">${r}</option>`).join("")+
+          `</select>`+
+        `</div>`+
+        `<button id="ls-search-btn" class="ls-search-btn">🔍 検索する</button>`+
+      `</div>`+
+      `<div id="ls-results" class="ls-results"></div>`+
+    `</div>`;
+
+  document.getElementById("ls-search-btn").addEventListener("click",runLifestyleSearch);
+}
+
+function runLifestyleSearch(){
+  const wantRun=document.getElementById("ls-dogrun").value==="yes";
+  const wantLarge=document.getElementById("ls-largedog").value==="yes";
+  const wantSep=document.getElementById("ls-separated").value==="yes";
+  const wantNoCert=document.getElementById("ls-nocert").value==="yes";
+  const wantFree=document.getElementById("ls-free").value==="yes";
+  const dogMin=parseInt(document.getElementById("ls-dog").value)||0;
+  const toiletMin=parseInt(document.getElementById("ls-toilet").value)||0;
+  const vanlifeMin=parseInt(document.getElementById("ls-vanlife").value)||0;
+  const region=document.getElementById("ls-region").value;
+  const resultsEl=document.getElementById("ls-results");
+
+  let stations=MICHINOEKI_DATA;
+  if(region) stations=stations.filter(st=>REGIONS[region]&&REGIONS[region].includes(st.pref));
+
+  const matched=stations.map(st=>{
+    const fac=getStationFacilities(st);
+    if(wantRun&&!fac.dog.hasRun) return null;
+    if(wantLarge&&!fac.dog.largeDog) return null;
+    if(wantSep&&!fac.dog.separated) return null;
+    if(wantNoCert&&fac.dog.certificateRequired) return null;
+    if(wantFree&&fac.dog.fee!=="無料"&&fac.dog.fee!=="—") return null;
+    if(dogMin&&fac.dogRun<dogMin) return null;
+    if(toiletMin&&fac.toilet<toiletMin) return null;
+    if(vanlifeMin&&fac.vanlife<vanlifeMin) return null;
+    const info=getVisitInfo(st.id);
+    return {st,fac,visited:!!(info&&info.visited)};
+  }).filter(Boolean);
+
+  if(matched.length===0){
+    resultsEl.innerHTML=`<div class="ls-empty">条件に合う道の駅が見つかりませんでした</div>`;
+    return;
+  }
+
+  matched.sort((a,b)=>(b.fac.dogRun+b.fac.toilet+b.fac.vanlife)-(a.fac.dogRun+a.fac.toilet+a.fac.vanlife));
+
+  resultsEl.innerHTML=
+    `<div class="ls-count">${matched.length}件の道の駅が見つかりました</div>`+
+    matched.slice(0,20).map(m=>{
+      const tags=[];
+      if(m.fac.dog.hasRun) tags.push("🐕 ドッグラン");
+      if(m.fac.dog.largeDog) tags.push("🐕‍🦺 大型犬OK");
+      if(m.fac.dog.separated) tags.push("↔️ 分離あり");
+      if(!m.fac.dog.certificateRequired) tags.push("📄 証明書不要");
+      if(m.fac.dog.fee==="無料") tags.push("💰 無料");
+      return `<div class="ls-result-item" onclick="openStationDetail(${m.st.id})">`+
+        `<div class="ls-result-header">`+
+          `<span class="ls-result-name">${PREF_EMOJI[m.st.pref]||""} ${m.st.name}</span>`+
+          `<span class="ls-result-visit">${m.visited?"✅":"—"}</span>`+
+        `</div>`+
+        `<div class="ls-result-pref">${m.st.pref} ${m.st.location}</div>`+
+        (tags.length>0?`<div class="ls-result-tags">${tags.map(t=>`<span class="ls-tag">${t}</span>`).join("")}</div>`:"")+
+        `<div class="ls-result-ratings">`+
+          `<span class="ls-rating">🐕${renderStars(m.fac.dogRun,5)}</span>`+
+          `<span class="ls-rating">🚻${renderStars(m.fac.toilet,5)}</span>`+
+          `<span class="ls-rating">🚐${renderStars(m.fac.vanlife,5)}</span>`+
+        `</div>`+
+      `</div>`;
+    }).join("")+
+    (matched.length>20?`<div class="ls-more">他 ${matched.length-20}件</div>`:"");
 }
 
 function renderAlmostComplete(s){
@@ -758,7 +1228,7 @@ function renderTimeline(s){
   MICHINOEKI_DATA.forEach(function(st){
     var info=manual[st.id];
     if(!info || !info.visited) return;
-    entries.push({id:st.id,name:st.name,pref:st.pref,date:info.date||"",photo:info.photo||null,memo:info.memo||""});
+    entries.push({id:st.id,name:st.name,pref:st.pref,date:info.date||"",photo:info.photo||null,memo:info.note||""});
   });
   entries.sort(function(a,b){ return (b.date||"").localeCompare(a.date||""); });
   if(entries.length===0){
@@ -859,7 +1329,7 @@ function renderBadges(s){
 
 // ===== プレミアム =====
 function isPremium(){ return localStorage.getItem("michinoeki_premium")==="true"; }
-function setPremium(v){ localStorage.setItem("michinoeki_premium", v?"true":"false"); }
+function setPremium(v){ try { localStorage.setItem("michinoeki_premium", v?"true":"false"); } catch(e) {} }
 
 // --- ホーム画面訴求: ツァイガルニク効果 + 保有効果 ---
 function renderPremiumNudge(stats){
@@ -978,7 +1448,7 @@ function updatePremiumUI(){
         `<div class="premium-banner">` +
           `<div class="premium-banner-icon">👑</div>` +
           `<div class="premium-banner-text">` +
-            `<div class="premium-banner-title">道の駅マスター</div>` +
+            `<div class="premium-banner-title">みちのわんマスター</div>` +
             `<div class="premium-banner-sub">全機能が解放されています</div>` +
           `</div>` +
           `<div class="premium-banner-stats">` +
@@ -1011,7 +1481,7 @@ function handleStripeCheckout(){
   if(REVENUE_CONFIG.stripePaymentLink){
     window.location.href=REVENUE_CONFIG.stripePaymentLink;
   } else {
-    activatePremium();
+    alert("決済機能は現在準備中です。もうしばらくお待ちください。");
   }
 }
 
@@ -1038,13 +1508,10 @@ function showPremiumCelebration(){
   overlay.innerHTML=
     `<div class="premium-celebrate">` +
       `<div class="premium-celebrate-crown">👑</div>` +
-      `<div class="premium-celebrate-title">道の駅マスター<br>へようこそ！</div>` +
+      `<div class="premium-celebrate-title">みちのわんマスター<br>へようこそ！</div>` +
       `<div class="premium-celebrate-features">` +
         `<div class="premium-celebrate-feat"><span>🗾</span> 全国制覇マップが解放されました</div>` +
-        `<div class="premium-celebrate-feat"><span>🚫</span> 広告なしの快適体験</div>` +
         `<div class="premium-celebrate-feat"><span>📷</span> スタンプ写真が無制限に</div>` +
-        `<div class="premium-celebrate-feat"><span>📊</span> 詳細統計ダッシュボード</div>` +
-        `<div class="premium-celebrate-feat"><span>☁️</span> クラウド同期</div>` +
         `<div class="premium-celebrate-feat"><span>📝</span> 旅の日記 + 複数写真記録</div>` +
       `</div>` +
       `<button class="premium-celebrate-btn">マップを見に行く</button>` +
@@ -1101,55 +1568,201 @@ const detailModal=document.getElementById("station-detail-modal");
 const detailHeader=document.getElementById("station-detail-header");
 const detailBody=document.getElementById("station-detail-body");
 
+function getStationFacilities(st){
+  const cat=typeof STAMP_CATALOG!=="undefined"&&STAMP_CATALOG[st.id];
+  const name=st.name+st.location;
+  const hasDog=cat&&cat.dog_friendly_icon==="paw_large";
+  const hasDogMaybe=cat&&cat.dog_friendly_icon==="paw";
+  const hasOnsen=/温泉|湯|spa/i.test(name);
+  const hasPark=/公園|パーク|広場|緑|花|森|自然|高原/.test(name);
+  const hasRV=/RV|キャンプ|オート|車中泊/.test(name);
+  const hasQuiet=/里|高原|湖|峠|山|森|海|浜/.test(name);
+  const hasDogKW=/犬|ドッグ|ペット|わんこ/.test(name);
+
+  let dogRun=hasDog?3:hasDogMaybe?2:hasDogKW?2:1;
+  let toilet=hasPark||hasOnsen?4:hasDog?3:2+((st.id%3===0)?1:0);
+  if(toilet>5)toilet=5;
+  let vanlife=hasRV?5:hasQuiet&&hasPark?4:hasQuiet?3:hasPark?3:2;
+
+  const dog={
+    hasRun: hasDog||hasDogKW||(hasPark&&hasDogMaybe),
+    runType: hasDog?"専用ドッグラン":(hasDogKW?"ペットエリア":(hasDogMaybe&&hasPark?"広場利用可":"なし/不明")),
+    largeDog: hasDog||hasPark,
+    separated: hasDog,
+    size: hasDog?"広い":(hasPark?"普通":"狭い/不明"),
+    certificate: hasDog?"狂犬病・混合ワクチン証明書":(hasDogMaybe?"狂犬病証明書推奨":"不要/不明"),
+    certificateRequired: hasDog,
+    fee: hasDog?(st.id%5===0?"有料（300〜500円程度）":"無料"):"—",
+    leash: !hasDog,
+    water: hasDog||hasDogMaybe||hasOnsen,
+    shade: hasPark||hasQuiet,
+    petFriendlyShop: hasOnsen||(st.id%4===0),
+    notes: hasDog?"ドッグラン併設の道の駅":(hasDogMaybe?"ペット同伴散歩可能エリアあり":(hasPark?"敷地が広くお散歩しやすい":"リード着用でペット同伴可")),
+    source: "estimated"
+  };
+
+  if(typeof DOGRUN_REAL!=="undefined"){
+    const real=DOGRUN_REAL.find(r=>r.name===st.name&&r.pref===st.pref);
+    if(real){
+      dog.hasRun=real.hasRun; dog.runType=real.runType; dog.largeDog=real.largeDog;
+      dog.separated=real.separated; dog.size=real.size; dog.certificate=real.certificate;
+      dog.certificateRequired=real.certificateRequired; dog.fee=real.fee;
+      dog.leash=!real.leashFree; dog.water=real.water; dog.shade=real.shade;
+      if(real.notes) dog.notes=real.notes;
+      dog.source="real";
+      dogRun=real.hasRun?4:2;
+    }
+  }
+
+  const userContrib=loadUserContrib(st.id);
+  if(userContrib){
+    Object.assign(dog,userContrib);
+    dog.source="user";
+    if(userContrib.dogRun) dogRun=userContrib.dogRun;
+    if(userContrib.toilet) toilet=userContrib.toilet;
+    if(userContrib.vanlife) vanlife=userContrib.vanlife;
+  }
+
+  return {dogRun,toilet:Math.min(toilet,5),vanlife:Math.min(vanlife,5),dog};
+}
+
+const USER_CONTRIB_KEY="michinoeki_user_contrib";
+function loadUserContrib(stationId){
+  try{ const d=JSON.parse(localStorage.getItem(USER_CONTRIB_KEY)||"{}"); return d[stationId]||null; }catch{ return null; }
+}
+function saveUserContrib(stationId, data){
+  try{ const d=JSON.parse(localStorage.getItem(USER_CONTRIB_KEY)||"{}"); d[stationId]=data; localStorage.setItem(USER_CONTRIB_KEY,JSON.stringify(d)); }catch{}
+}
+
+function renderStars(n,max){
+  let h="";
+  for(let i=1;i<=max;i++) h+=i<=n?`<span class="star filled">★</span>`:`<span class="star empty">☆</span>`;
+  return h;
+}
+
 function openStationDetail(stationId){
   const st=MICHINOEKI_DATA.find(s=>s.id===stationId);
   if(!st) return;
   const info=getVisitInfo(stationId);
-  if(!info||!info.visited) return;
+  const visited=info&&info.visited;
   _detailStationId=stationId;
 
   const emoji=PREF_EMOJI[st.pref]||"📍";
+  const visitBadge=visited?`<span class="sd-visit-badge visited">✅ 訪問済み</span>`:`<span class="sd-visit-badge unvisited">未訪問</span>`;
   detailHeader.innerHTML=
     `<div class="sd-emoji">${emoji}</div>`+
     `<div class="sd-info">`+
       `<div class="sd-name">${st.name}</div>`+
       `<div class="sd-meta">${st.pref} ${st.location}</div>`+
     `</div>`+
-    `<div class="sd-date">📅 ${info.date||"—"}</div>`;
+    `<div class="sd-date">${visited?"📅 "+(info.date||"—"):visitBadge}</div>`;
 
-  const photos=info.photos||[];
-  const allPhotos=info.photo?[info.photo,...photos]:[...photos];
-  const premium=isPremium();
-  const maxFree=1;
+  const fac=getStationFacilities(st);
 
-  let html=`<div class="sd-section">`;
-  html+=`<div class="sd-section-title">📷 写真</div>`;
-  html+=`<div class="sd-photos" id="sd-photos">`;
-  allPhotos.forEach((p,i)=>{
-    html+=`<img class="sd-photo-thumb" src="${p}" data-idx="${i}" alt="写真${i+1}">`;
-  });
-  if(premium || allPhotos.length < maxFree){
-    html+=`<label class="sd-photo-add" id="sd-photo-add-btn"><span>+</span><span class="sd-photo-add-label">追加</span><input type="file" accept="image/*" capture="environment" id="sd-photo-input" hidden></label>`;
-  } else {
-    html+=`<div class="sd-photo-add locked" id="sd-photo-add-locked"><span>👑</span><span class="sd-photo-add-label">PRO</span></div>`;
-  }
-  html+=`</div></div>`;
+  let html="";
 
-  html+=buildAffiliateSection(st);
-
-  html+=`<div class="sd-section">`;
-  html+=`<div class="sd-section-title">📝 旅の日記</div>`;
-  if(premium){
-    html+=`<textarea class="sd-diary" id="sd-diary" placeholder="この道の駅の思い出を書いてみましょう…">${info.note||""}</textarea>`;
-  } else {
-    html+=`<div class="sd-diary-lock" id="sd-diary-lock">`;
-    html+=`<div class="sd-diary-lock-icon">📝</div>`;
-    html+=`<div class="sd-diary-lock-text">`;
-    html+=`<div class="sd-diary-lock-title">旅の日記を記録</div>`;
-    html+=`<div class="sd-diary-lock-sub">プレミアムで解放 →</div>`;
-    html+=`</div></div>`;
-  }
+  const d=fac.dog;
+  html+=`<div class="sd-section sd-facility-section">`;
+  html+=`<div class="sd-section-title">🐕 わんこ情報</div>`;
+  html+=`<div class="sd-dog-grid">`;
+  html+=`<div class="sd-dog-row"><span class="sd-dog-icon">${d.hasRun?"✅":"❌"}</span><span class="sd-dog-key">ドッグラン</span><span class="sd-dog-val">${d.runType}</span></div>`;
+  html+=`<div class="sd-dog-row"><span class="sd-dog-icon">${d.largeDog?"✅":"⚠️"}</span><span class="sd-dog-key">大型犬</span><span class="sd-dog-val">${d.largeDog?"OK":"要確認"}</span></div>`;
+  html+=`<div class="sd-dog-row"><span class="sd-dog-icon">${d.separated?"✅":"—"}</span><span class="sd-dog-key">小型/大型 分離</span><span class="sd-dog-val">${d.separated?"分離あり":"分離なし/不明"}</span></div>`;
+  html+=`<div class="sd-dog-row"><span class="sd-dog-icon">📐</span><span class="sd-dog-key">広さ</span><span class="sd-dog-val">${d.size}</span></div>`;
+  html+=`<div class="sd-dog-row"><span class="sd-dog-icon">📄</span><span class="sd-dog-key">証明書</span><span class="sd-dog-val">${d.certificate}</span></div>`;
+  html+=`<div class="sd-dog-row"><span class="sd-dog-icon">💰</span><span class="sd-dog-key">料金</span><span class="sd-dog-val">${d.fee}</span></div>`;
+  html+=`<div class="sd-dog-row"><span class="sd-dog-icon">${d.leash?"🔗":"🐕‍🦺"}</span><span class="sd-dog-key">リード</span><span class="sd-dog-val">${d.leash?"リード必須":"ドッグラン内は自由"}</span></div>`;
+  html+=`<div class="sd-dog-row"><span class="sd-dog-icon">${d.water?"💧":"—"}</span><span class="sd-dog-key">水飲み場</span><span class="sd-dog-val">${d.water?"あり":"不明"}</span></div>`;
+  html+=`<div class="sd-dog-row"><span class="sd-dog-icon">${d.shade?"🌳":"—"}</span><span class="sd-dog-key">日陰・屋根</span><span class="sd-dog-val">${d.shade?"あり":"不明"}</span></div>`;
+  html+=`<div class="sd-dog-row"><span class="sd-dog-icon">${d.petFriendlyShop?"🛒":"—"}</span><span class="sd-dog-key">ペット同伴ショップ</span><span class="sd-dog-val">${d.petFriendlyShop?"一部店舗OK":"不可/不明"}</span></div>`;
   html+=`</div>`;
+  if(d.notes) html+=`<div class="sd-dog-notes">📝 ${d.notes}</div>`;
+  const isReal=d.source==="real";
+  if(!isReal){
+    html+=`<div class="sd-estimated-banner">⚠️ この情報はAI推定です。実際と異なる場合があります</div>`;
+  } else {
+    html+=`<div class="sd-verified-banner">✅ 実地調査に基づく情報です</div>`;
+  }
+  html+=`<button class="sd-contribute-btn" id="sd-contribute-btn">📝 この駅の情報を投稿する</button>`;
+  html+=`</div>`;
+
+  html+=`<div class="sd-section sd-facility-section">`;
+  html+=`<div class="sd-section-title">📋 施設評価</div>`;
+  html+=`<div class="sd-facility-grid">`;
+  html+=`<div class="sd-facility-item"><div class="sd-facility-label">🐕 犬連れおすすめ度</div><div class="sd-facility-stars">${renderStars(fac.dogRun,5)}</div></div>`;
+  html+=`<div class="sd-facility-item"><div class="sd-facility-label">🚻 トイレ綺麗度</div><div class="sd-facility-stars">${renderStars(fac.toilet,5)}</div></div>`;
+  html+=`<div class="sd-facility-item"><div class="sd-facility-label">🚐 車中泊おすすめ度</div><div class="sd-facility-stars">${renderStars(fac.vanlife,5)}</div></div>`;
+  html+=`</div>`;
+  html+=`</div>`;
+
+  if(typeof EMERGENCY_VETS!=="undefined"&&EMERGENCY_VETS.length>0){
+    const nearVets=EMERGENCY_VETS.filter(v=>v.pref===st.pref);
+    if(nearVets.length>0){
+      html+=`<div class="sd-section sd-vet-section">`;
+      html+=`<div class="sd-section-title">🏥 ${st.pref}の緊急動物病院</div>`;
+      nearVets.forEach(v=>{
+        const typeLabel=v.type==="24h"?"24時間":(v.type==="night"?"夜間救急":"休日対応");
+        const typeCls=v.type==="24h"?"vet-type-24h":(v.type==="night"?"vet-type-night":"vet-type-holiday");
+        html+=`<div class="sd-vet-item">`;
+        html+=`<div class="sd-vet-header"><span class="sd-vet-name">${v.name}</span><span class="vet-type-badge ${typeCls}">${typeLabel}</span></div>`;
+        if(v.city) html+=`<div class="sd-vet-addr">📍 ${v.pref}${v.city}${v.address||""}</div>`;
+        html+=`<div class="sd-vet-hours">🕐 ${v.hours||typeLabel}</div>`;
+        if(v.notes) html+=`<div class="sd-vet-notes">${v.notes}</div>`;
+        html+=`<div class="sd-vet-actions">`;
+        if(v.tel) html+=`<a href="tel:${v.tel.replace(/[-ー−]/g,"")}" class="vet-call-btn">📞 ${v.tel}</a>`;
+        if(v.url) html+=`<a href="${v.url}" target="_blank" rel="noopener" class="vet-site-btn">🔗 詳細</a>`;
+        html+=`</div></div>`;
+      });
+      html+=`</div>`;
+    }
+  }
+
+  if(st.url){
+    html+=`<div class="sd-section">`;
+    html+=`<div class="sd-section-title">🔗 公式サイト</div>`;
+    html+=`<a href="${st.url}" target="_blank" rel="noopener" class="sd-url-link">${st.url.replace(/^https?:\/\//,"").slice(0,40)}… <span class="sd-url-arrow">↗</span></a>`;
+    html+=`</div>`;
+  }
+
+  if(visited){
+    const photos=(info.photos||[]);
+    const allPhotos=info.photo?[info.photo,...photos]:[...photos];
+    const premium=isPremium();
+    const maxFree=1;
+
+    html+=`<div class="sd-section">`;
+    html+=`<div class="sd-section-title">📷 写真</div>`;
+    html+=`<div class="sd-photos" id="sd-photos">`;
+    allPhotos.forEach((p,i)=>{
+      html+=`<img class="sd-photo-thumb" src="${p}" data-idx="${i}" alt="写真${i+1}">`;
+    });
+    if(premium || allPhotos.length < maxFree){
+      html+=`<label class="sd-photo-add" id="sd-photo-add-btn"><span>+</span><span class="sd-photo-add-label">追加</span><input type="file" accept="image/*" capture="environment" id="sd-photo-input" hidden></label>`;
+    } else {
+      html+=`<div class="sd-photo-add locked" id="sd-photo-add-locked"><span>👑</span><span class="sd-photo-add-label">PRO</span></div>`;
+    }
+    html+=`</div></div>`;
+
+    html+=buildAffiliateSection(st);
+
+    html+=`<div class="sd-section">`;
+    html+=`<div class="sd-section-title">📝 旅の日記</div>`;
+    if(premium){
+      html+=`<textarea class="sd-diary" id="sd-diary" placeholder="この道の駅の思い出を書いてみましょう…">${info.note||""}</textarea>`;
+    } else {
+      html+=`<div class="sd-diary-lock" id="sd-diary-lock">`;
+      html+=`<div class="sd-diary-lock-icon">📝</div>`;
+      html+=`<div class="sd-diary-lock-text">`;
+      html+=`<div class="sd-diary-lock-title">旅の日記を記録</div>`;
+      html+=`<div class="sd-diary-lock-sub">プレミアムで解放 →</div>`;
+      html+=`</div></div>`;
+    }
+    html+=`</div>`;
+  } else {
+    html+=`<div class="sd-section sd-checkin-section">`;
+    html+=`<button class="sd-checkin-btn" id="sd-quick-checkin">📷 この駅をチェックインする</button>`;
+    html+=`</div>`;
+  }
 
   detailBody.innerHTML=html;
 
@@ -1179,8 +1792,79 @@ function openStationDetail(stationId){
   const diaryLock=document.getElementById("sd-diary-lock");
   if(diaryLock) diaryLock.addEventListener("click", showPaywall);
 
+  const quickCheckin=document.getElementById("sd-quick-checkin");
+  if(quickCheckin){
+    quickCheckin.addEventListener("click",()=>{
+      setVisited(stationId,true);
+      render(); checkNewBadges(); checkCertificateTriggers();
+      openStationDetail(stationId);
+    });
+  }
+
+  const contribBtn=document.getElementById("sd-contribute-btn");
+  if(contribBtn){
+    contribBtn.addEventListener("click",()=>{
+      openContribModal(stationId);
+    });
+  }
+
   detailModal.hidden=false;
 }
+
+function openContribModal(stationId){
+  const st=MICHINOEKI_DATA.find(s=>s.id===stationId);
+  if(!st) return;
+  document.getElementById("contrib-station-name").textContent=`${PREF_EMOJI[st.pref]||""} ${st.pref} — ${st.name}`;
+  const existing=loadUserContrib(stationId);
+  if(existing){
+    if(existing.runType) document.getElementById("contrib-dogrun").value=existing.runType;
+    if(existing.largeDog!==undefined) document.getElementById("contrib-largedog").value=String(existing.largeDog);
+    if(existing.separated!==undefined) document.getElementById("contrib-separated").value=String(existing.separated);
+    if(existing.size) document.getElementById("contrib-size").value=existing.size;
+    if(existing.certificate) document.getElementById("contrib-cert").value=existing.certificateRequired?"必要":"推奨";
+    if(existing.fee) document.getElementById("contrib-fee").value=existing.fee==="無料"?"無料":"有料";
+    if(existing.water!==undefined) document.getElementById("contrib-water").value=String(existing.water);
+    if(existing.toilet) document.getElementById("contrib-toilet").value=String(existing.toilet);
+    if(existing.vanlife) document.getElementById("contrib-vanlife").value=String(existing.vanlife);
+    if(existing.userComment) document.getElementById("contrib-comment").value=existing.userComment;
+  }
+  document.getElementById("contrib-modal").hidden=false;
+  document.getElementById("contrib-modal")._stationId=stationId;
+}
+
+document.getElementById("contrib-cancel").addEventListener("click",()=>{
+  document.getElementById("contrib-modal").hidden=true;
+});
+document.getElementById("contrib-submit").addEventListener("click",()=>{
+  const modal=document.getElementById("contrib-modal");
+  const sid=modal._stationId;
+  const data={};
+  const run=document.getElementById("contrib-dogrun").value;
+  if(run){ data.hasRun=run!=="なし"; data.runType=run; }
+  const large=document.getElementById("contrib-largedog").value;
+  if(large) data.largeDog=large==="true";
+  const sep=document.getElementById("contrib-separated").value;
+  if(sep) data.separated=sep==="true";
+  const size=document.getElementById("contrib-size").value;
+  if(size) data.size=size;
+  const cert=document.getElementById("contrib-cert").value;
+  if(cert){ data.certificateRequired=cert==="必要"; data.certificate=cert==="必要"?"狂犬病・混合ワクチン証明書":(cert==="推奨"?"狂犬病証明書推奨":"不要"); }
+  const fee=document.getElementById("contrib-fee").value;
+  if(fee) data.fee=fee;
+  const water=document.getElementById("contrib-water").value;
+  if(water) data.water=water==="true";
+  const toilet=parseInt(document.getElementById("contrib-toilet").value);
+  if(toilet) data.toilet=toilet;
+  const vanlife=parseInt(document.getElementById("contrib-vanlife").value);
+  if(vanlife) data.vanlife=vanlife;
+  const comment=document.getElementById("contrib-comment").value.trim();
+  if(comment) data.userComment=comment;
+  data.updatedAt=new Date().toISOString().slice(0,10);
+  saveUserContrib(sid, data);
+  modal.hidden=true;
+  openStationDetail(sid);
+  alert("情報を投稿しました！ありがとうございます 🐾");
+});
 
 function addPhotoToStation(stationId, dataUrl){
   const m=loadManual();
@@ -1221,7 +1905,11 @@ detailModal.addEventListener("click",e=>{
 });
 
 // ===== 検索・フィルター =====
-document.getElementById("search").addEventListener("input",render);
+let _searchTimer=null;
+document.getElementById("search").addEventListener("input",function(){
+  if(_searchTimer) clearTimeout(_searchTimer);
+  _searchTimer=setTimeout(function(){ renderList(calcStats()); },200);
+});
 document.querySelectorAll(".filter-chip").forEach(chip=>{
   chip.addEventListener("click",()=>{
     document.querySelectorAll(".filter-chip").forEach(c=>c.classList.remove("active"));
@@ -1245,7 +1933,7 @@ stampConfirm.addEventListener("click",()=>{if(stampSelectedId===null)return;cons
 document.getElementById("export-btn").addEventListener("click",()=>{const d={manual:loadManual(),dismissed:loadDismissed(),settings:loadSettings(),exportedAt:new Date().toISOString()};const b=new Blob([JSON.stringify(d)],{type:"application/json"});const u=URL.createObjectURL(b);const a=document.createElement("a");a.href=u;a.download=`michinoeki_backup_${new Date().toISOString().slice(0,10)}.json`;a.click();URL.revokeObjectURL(u);});
 const importFile=document.getElementById("import-file");
 document.getElementById("import-btn").addEventListener("click",()=>importFile.click());
-importFile.addEventListener("change",e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=ev=>{try{const d=JSON.parse(ev.target.result);if(d.manual)saveManual(d.manual);if(d.dismissed)saveDismissed(d.dismissed);if(d.settings)saveSettings(d.settings);render();alert("バックアップを読み込みました！");}catch{alert("読み込みに失敗しました。");}};r.readAsText(f);importFile.value="";});
+importFile.addEventListener("change",e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=ev=>{try{const d=JSON.parse(ev.target.result);if(!d||typeof d!=="object"){alert("無効なバックアップファイルです。");return;}if(d.manual&&typeof d.manual!=="object"){alert("バックアップデータの形式が不正です。");return;}if(d.manual)saveManual(d.manual);if(d.dismissed)saveDismissed(d.dismissed);if(d.settings)saveSettings(d.settings);render();alert("バックアップを読み込みました！");}catch{alert("読み込みに失敗しました。ファイルの形式を確認してください。");}};r.readAsText(f);importFile.value="";});
 
 // ===== 音声 =====
 const voiceModal=document.getElementById("voice-modal"),voiceStatus=document.getElementById("voice-status"),voiceRecognized=document.getElementById("voice-recognized"),voiceMatches=document.getElementById("voice-matches"),voiceDoneMsg=document.getElementById("voice-done-msg"),voiceMicBtn=document.getElementById("voice-mic");
@@ -1261,8 +1949,8 @@ voiceMicBtn.addEventListener("click",()=>{if(isListening){recognition.stop();isL
 document.getElementById("voice-close").addEventListener("click",()=>{if(recognition)recognition.stop();isListening=false;voiceModal.hidden=true;});
 
 // ===== シェア =====
-document.getElementById("share-btn").addEventListener("click",()=>{const s=calcStats(),pct=s.total?Math.round((s.visited/s.total)*10)/10:0,lv=getLevel(s.visited);document.getElementById("share-card").innerHTML=`<h3>${lv.emoji} ${lv.title}</h3><div class="share-number">${s.visited} / ${s.total}</div><div class="share-detail">訪問達成率 ${pct}% ｜ ${s.prefComplete}県制覇</div><div class="share-app">タビクエ</div>`;document.getElementById("share-modal").hidden=false;});
-document.getElementById("share-copy").addEventListener("click",()=>{const s=calcStats(),pct=s.total?Math.round((s.visited/s.total)*10)/10:0,lv=getLevel(s.visited);navigator.clipboard.writeText(`${lv.emoji} ${lv.title}\n🚗 タビクエ\n${s.visited}/${s.total}駅（${pct}%）\n${s.prefComplete}県制覇！\n#タビクエ #道の駅 #道の駅巡り`).then(()=>alert("コピーしました！SNSに貼り付けてシェア！")).catch(()=>alert("コピーに失敗しました"));});
+document.getElementById("share-btn").addEventListener("click",()=>{const s=calcStats(),pct=s.total?Math.round((s.visited/s.total)*10)/10:0,lv=getLevel(s.visited);document.getElementById("share-card").innerHTML=`<h3>${lv.emoji} ${lv.title}</h3><div class="share-number">${s.visited} / ${s.total}</div><div class="share-detail">訪問達成率 ${pct}% ｜ ${s.prefComplete}県制覇</div><div class="share-app">みちのわん</div>`;document.getElementById("share-modal").hidden=false;});
+document.getElementById("share-copy").addEventListener("click",()=>{const s=calcStats(),pct=s.total?Math.round((s.visited/s.total)*10)/10:0,lv=getLevel(s.visited);navigator.clipboard.writeText(`${lv.emoji} ${lv.title}\n🚗 みちのわん\n${s.visited}/${s.total}駅（${pct}%）\n${s.prefComplete}県制覇！\n#みちのわん #犬と車中泊 #道の駅巡り #愛犬旅`).then(()=>alert("コピーしました！SNSに貼り付けてシェア！")).catch(()=>alert("コピーに失敗しました"));});
 document.getElementById("share-close").addEventListener("click",()=>{document.getElementById("share-modal").hidden=true;});
 
 // ===== マップポップアップ =====
@@ -1270,10 +1958,7 @@ document.getElementById("map-popup-close").addEventListener("click",()=>{documen
 document.getElementById("map-popup").addEventListener("click",e=>{if(e.target.id==="map-popup")document.getElementById("map-popup").hidden=true;});
 
 // ===== PWA =====
-if("serviceWorker" in navigator){
-  navigator.serviceWorker.getRegistrations().then(function(regs){regs.forEach(function(r){r.unregister();});});
-  caches.keys().then(function(names){names.forEach(function(n){caches.delete(n);});});
-}
+// Service Workerの登録はindex.htmlのheadで実施済み
 
 
 // ===== 制覇証明書 =====
@@ -1341,7 +2026,7 @@ function generateCertificate(title, subtitle, count, dateStr) {
   ctx.fillStyle = "rgba(232,184,75,0.6)";
   ctx.font = "bold 14px 'Noto Sans JP','Yu Gothic',sans-serif";
   ctx.textAlign = "right";
-  ctx.fillText("タビクエ", w - 40, h - 40);
+  ctx.fillText("みちのわん", w - 40, h - 40);
 
   ctx.textAlign = "left";
   return cv.toDataURL("image/png");
@@ -1362,8 +2047,8 @@ document.getElementById("cert-share").addEventListener("click", function() {
   var cv = document.getElementById("cert-canvas");
   cv.toBlob(function(blob) {
     if (navigator.share && navigator.canShare) {
-      var file = new File([blob], "tabique_certificate.png", { type: "image/png" });
-      var shareData = { files: [file], title: "タビクエ 制覇証明書", text: "#タビクエ #道の駅 #全国制覇" };
+      var file = new File([blob], "michinowan_certificate.png", { type: "image/png" });
+      var shareData = { files: [file], title: "みちのわん 制覇証明書", text: "#みちのわん #犬と車中泊 #道の駅 #全国制覇" };
       if (navigator.canShare(shareData)) {
         navigator.share(shareData).catch(function() {});
         return;
@@ -1371,7 +2056,7 @@ document.getElementById("cert-share").addEventListener("click", function() {
     }
     var a = document.createElement("a");
     a.href = URL.createObjectURL(blob);
-    a.download = "tabique_certificate.png";
+    a.download = "michinowan_certificate.png";
     a.click();
     URL.revokeObjectURL(a.href);
   }, "image/png");
@@ -1420,7 +2105,7 @@ function checkCertificateTriggers() {
   if (newCerts.length > 0) {
     var c = newCerts[0];
     earned.push(c.key);
-    localStorage.setItem("tabique_certs", JSON.stringify(earned));
+    try { localStorage.setItem("tabique_certs", JSON.stringify(earned)); } catch(e) {}
     setTimeout(function() { showCertificate(c.title, c.sub, c.count); }, 1200);
   }
 }

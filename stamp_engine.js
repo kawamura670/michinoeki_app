@@ -302,8 +302,4 @@ return { generate };
 let STAMP_CATALOG = {};
 if (typeof MICHINOEKI_DATA !== "undefined") {
   STAMP_CATALOG = STAMP_ENGINE.generate(MICHINOEKI_DATA);
-  console.log("Stamp catalog generated:", Object.keys(STAMP_CATALOG).length, "stamps");
-  const stats = {common:0, rare:0, epic:0, legendary:0};
-  Object.values(STAMP_CATALOG).forEach(s => stats[s.rarity]++);
-  console.log("Rarity distribution:", stats);
 }

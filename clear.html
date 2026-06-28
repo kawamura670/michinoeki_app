@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head><meta charset="UTF-8"><title>キャッシュクリア</title></head>
+<body style="font-family:sans-serif;text-align:center;padding:60px 20px">
+<h2>キャッシュをクリアしています...</h2>
+<p id="status">処理中...</p>
+<script>
+(async function(){
+  const s = document.getElementById('status');
+  let done = 0;
+  if('serviceWorker' in navigator){
+    const regs = await navigator.serviceWorker.getRegistrations();
+    for(const r of regs){ await r.unregister(); done++; }
+  }
+  const keys = await caches.keys();
+  for(const k of keys){ await caches.delete(k); done++; }
+  s.innerHTML = done > 0
+    ? '✅ キャッシュクリア完了！（' + done + '件削除）<br><br><a href="index.html" style="font-size:1.3rem;font-weight:bold;color:#1B7A4E">▶ アプリを開く</a>'
+    : '✅ キャッシュはありませんでした<br><br><a href="index.html" style="font-size:1.3rem;font-weight:bold;color:#1B7A4E">▶ アプリを開く</a>';
+})();
+</script>
+</body>
+</html>

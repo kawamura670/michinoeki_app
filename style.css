@@ -1,5 +1,5 @@
 /*
- * タビクエ v7 — Premium Collection Design
+ * みちのわん v7 — Premium Collection Design
  * Design Language: Apple Fitness + Starbucks Rewards + Nike Run Club
  * Philosophy: 余白の美学、奥行きのある影、触感的フィードバック
  */
@@ -133,6 +133,280 @@ body {
 .title-badge {
   flex-shrink: 0; display: flex; align-items: center; gap: 4px;
   background: #F5F5F0; border-radius: 20px; padding: 6px 14px; font-size: 13px; color: #333; white-space: nowrap;
+}
+
+/* ===== 犬連れ旅・車中泊セクション ===== */
+.lifestyle-section { margin-bottom: 16px; }
+.lifestyle-card {
+  background: #fff; border-radius: 16px; padding: 20px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06); overflow: hidden;
+}
+.dog-card { border-left: 4px solid #E8945A; }
+.vanlife-card { border-left: 4px solid #4A8CB8; }
+.lifestyle-header { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+.lifestyle-icon { font-size: 32px; flex-shrink: 0; }
+.lifestyle-title { font-size: 16px; font-weight: 700; color: #1A1A1A; }
+.lifestyle-subtitle { font-size: 12px; color: #888; margin-top: 2px; }
+.lifestyle-stats {
+  display: flex; gap: 8px; margin-bottom: 14px;
+}
+.lifestyle-stat {
+  flex: 1; text-align: center; background: #F8F8F6; border-radius: 10px; padding: 10px 6px;
+}
+.lifestyle-stat-num { display: block; font-size: 22px; font-weight: 700; color: #0F3D28; }
+.lifestyle-stat-label { display: block; font-size: 11px; color: #888; margin-top: 2px; }
+.dog-card .lifestyle-stat-num { color: #C06830; }
+.vanlife-card .lifestyle-stat-num { color: #2A6B8A; }
+.lifestyle-recommend-title {
+  font-size: 13px; font-weight: 600; color: #555; margin-bottom: 8px;
+}
+.lifestyle-recommend { display: flex; flex-direction: column; gap: 6px; }
+.lifestyle-chip {
+  display: flex; align-items: center; gap: 6px;
+  background: #FAFAF8; border-radius: 10px; padding: 10px 14px;
+  font-size: 14px; font-weight: 500; color: #333; cursor: pointer;
+  transition: background 0.15s;
+}
+.lifestyle-chip:hover { background: #F0F0EA; }
+.lifestyle-chip:active { background: #E8E8E2; }
+.lifestyle-chip-pref { margin-left: auto; font-size: 11px; color: #999; }
+.vanlife-tips { margin-bottom: 12px; }
+.vanlife-tip {
+  font-size: 12px; color: #6B8A6B; background: #F0F7F0; border-radius: 8px;
+  padding: 8px 12px; line-height: 1.5;
+}
+.lifestyle-chip-tags { display: inline-flex; gap: 3px; margin-left: 6px; }
+.mini-tag {
+  font-size: 9px; background: #FFF3E0; color: #C06830; border-radius: 4px;
+  padding: 1px 5px; white-space: nowrap;
+}
+.van-tag { background: #E8F0FA; color: #2A6B8A; font-size: 11px; }
+
+/* ===== RVパーク ===== */
+.rvpark-card { border-left: 4px solid #2E7D32; }
+.rvpark-card .lifestyle-stat-num { color: #2E7D32; }
+.rvpark-stat-row { display: flex; gap: 8px; margin-bottom: 12px; }
+.rvpark-stat-row .lifestyle-stat { flex: 1; }
+.rvpark-info { margin-bottom: 8px; }
+.rvpark-filter { display: flex; gap: 6px; margin-bottom: 12px; flex-wrap: wrap; }
+.rvpark-filter .ls-select { flex: 1; min-width: 100px; }
+.rvpark-btn { flex-shrink: 0; padding: 8px 16px; background: #2E7D32; }
+.rvpark-btn:hover { background: #256829; }
+.rvpark-results { display: flex; flex-direction: column; gap: 6px; }
+.rvpark-item {
+  display: block; text-decoration: none; color: inherit;
+  background: #FAFAF8; border-radius: 10px; padding: 12px 14px;
+  transition: background 0.15s;
+}
+.rvpark-item:hover { background: #F0F0EA; }
+.rvpark-item-header { display: flex; justify-content: space-between; align-items: center; }
+.rvpark-item-name { font-size: 13px; font-weight: 600; color: #1A1A1A; }
+.rvpark-item-pref { font-size: 11px; color: #888; margin: 2px 0 4px; }
+.rvpark-item-features { display: flex; gap: 4px; flex-wrap: wrap; }
+.rvpark-feat {
+  font-size: 10px; background: #E8F5E9; color: #2E7D32; border-radius: 4px;
+  padding: 2px 6px; white-space: nowrap;
+}
+.rvpark-item-price {
+  font-size: 12px; font-weight: 700; color: #C06830; white-space: nowrap;
+}
+.rvpark-item-actions {
+  display: flex; gap: 6px; margin-top: 8px; flex-wrap: wrap;
+}
+.rvpark-action-btn {
+  display: inline-flex; align-items: center; gap: 3px;
+  font-size: 11px; text-decoration: none; border-radius: 6px;
+  padding: 5px 10px; white-space: nowrap; transition: background 0.15s;
+}
+.rvpark-tel { background: #E8F5E9; color: #2E7D32; }
+.rvpark-tel:hover { background: #C8E6C9; }
+.rvpark-book { background: #E3F2FD; color: #1565C0; }
+.rvpark-book:hover { background: #BBDEFB; }
+.rvpark-site { background: #F5F5F0; color: #666; }
+.rvpark-site:hover { background: #E8E8E2; }
+/* ===== 緊急動物病院 ===== */
+.vet-card { border-left: 4px solid #C62828; }
+.vet-card .lifestyle-stat-num { color: #C62828; }
+.vet-emergency-banner {
+  background: #FFEBEE; color: #C62828; font-size: 13px; font-weight: 700;
+  text-align: center; padding: 10px; border-radius: 8px; margin-bottom: 12px;
+}
+.vet-filter { display: flex; gap: 6px; margin-bottom: 12px; flex-wrap: wrap; }
+.vet-filter .ls-select { flex: 1; min-width: 100px; }
+.vet-btn { flex-shrink: 0; padding: 8px 16px; background: #C62828; }
+.vet-btn:hover { background: #B71C1C; }
+.vet-results { display: flex; flex-direction: column; gap: 8px; }
+.vet-item {
+  background: #FAFAF8; border-radius: 10px; padding: 14px;
+  border-left: 3px solid #EF9A9A;
+}
+.vet-item-header { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.vet-item-name { font-size: 14px; font-weight: 700; color: #1A1A1A; }
+.vet-type-badge {
+  font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 6px;
+  white-space: nowrap;
+}
+.vet-type-24h { background: #FFCDD2; color: #C62828; }
+.vet-type-night { background: #E8EAF6; color: #283593; }
+.vet-type-holiday { background: #FFF3E0; color: #E65100; }
+.vet-item-location { font-size: 12px; color: #888; margin: 2px 0; }
+.vet-item-hours { font-size: 12px; color: #555; margin-bottom: 4px; }
+.vet-item-notes { font-size: 11px; color: #888; margin-bottom: 6px; line-height: 1.4; }
+.vet-item-actions { display: flex; gap: 6px; flex-wrap: wrap; }
+.vet-call-btn {
+  display: inline-flex; align-items: center; gap: 3px;
+  font-size: 13px; font-weight: 700; text-decoration: none; border-radius: 8px;
+  padding: 8px 14px; background: #C62828; color: #fff;
+}
+.vet-call-btn:hover { background: #B71C1C; }
+.vet-site-btn {
+  display: inline-flex; align-items: center; gap: 3px;
+  font-size: 11px; text-decoration: none; border-radius: 6px;
+  padding: 6px 10px; background: #F5F5F0; color: #666;
+}
+.vet-site-btn:hover { background: #E8E8E2; }
+.vet-loading { font-size: 13px; color: #999; text-align: center; padding: 16px; }
+
+/* ===== 駅詳細内の緊急病院 ===== */
+.sd-vet-section { background: #FFF8F8; border-radius: 10px; padding: 14px; }
+.sd-vet-item {
+  padding: 10px 0; border-bottom: 1px solid #FFE0E0;
+}
+.sd-vet-item:last-child { border-bottom: none; }
+.sd-vet-header { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.sd-vet-name { font-size: 13px; font-weight: 700; color: #1A1A1A; }
+.sd-vet-addr { font-size: 11px; color: #666; margin: 3px 0; }
+.sd-vet-hours { font-size: 11px; color: #555; }
+.sd-vet-notes { font-size: 10px; color: #888; margin: 2px 0 4px; }
+.sd-vet-actions { display: flex; gap: 6px; margin-top: 6px; }
+
+.rvpark-more-link {
+  display: block; text-align: center; font-size: 13px; color: #2E7D32;
+  text-decoration: none; padding: 12px 0 4px; font-weight: 600;
+}
+.rvpark-more-link:hover { text-decoration: underline; }
+
+/* ===== 駅詳細: わんこ情報 ===== */
+.sd-dog-grid { display: flex; flex-direction: column; gap: 0; }
+.sd-dog-row {
+  display: flex; align-items: center; gap: 8px;
+  padding: 8px 0; border-bottom: 1px solid #F0F0EA;
+}
+.sd-dog-row:last-child { border-bottom: none; }
+.sd-dog-icon { font-size: 16px; width: 24px; text-align: center; flex-shrink: 0; }
+.sd-dog-key { font-size: 13px; font-weight: 600; color: #444; min-width: 110px; flex-shrink: 0; }
+.sd-dog-val { font-size: 13px; color: #666; margin-left: auto; text-align: right; }
+.sd-dog-notes {
+  margin-top: 10px; font-size: 12px; color: #7A6B50;
+  background: #FFF8EE; border-radius: 8px; padding: 8px 12px; line-height: 1.5;
+}
+
+/* ===== 推定/検証バナー ===== */
+.sd-estimated-banner {
+  margin-top: 10px; padding: 8px 12px; border-radius: 8px;
+  background: #FFF3E0; color: #E65100; font-size: 12px; font-weight: 600;
+  text-align: center;
+}
+.sd-verified-banner {
+  margin-top: 10px; padding: 8px 12px; border-radius: 8px;
+  background: #E8F5E9; color: #2E7D32; font-size: 12px; font-weight: 600;
+  text-align: center;
+}
+.sd-contribute-btn {
+  display: block; width: 100%; margin-top: 10px; padding: 12px;
+  background: #F5F0FA; color: #6B5090; border: 1px dashed #C0A8E0;
+  border-radius: 10px; font-size: 13px; font-weight: 600; cursor: pointer;
+  transition: background 0.15s;
+}
+.sd-contribute-btn:hover { background: #EDE5F5; }
+
+/* ===== 投稿モーダル ===== */
+.contrib-modal { max-width: 440px; }
+.contrib-station-name {
+  font-size: 15px; font-weight: 700; color: #1A1A1A;
+  margin-bottom: 14px; text-align: center;
+}
+.contrib-form { display: flex; flex-direction: column; gap: 8px; }
+.contrib-row {
+  display: flex; align-items: center; gap: 8px;
+}
+.contrib-row label { font-size: 13px; font-weight: 600; color: #444; min-width: 110px; flex-shrink: 0; }
+.contrib-row select, .contrib-row textarea {
+  flex: 1; padding: 8px 10px; border: 1px solid #DDD; border-radius: 8px;
+  font-size: 13px; background: #fff; color: #333;
+}
+.contrib-row.full { flex-direction: column; align-items: stretch; }
+.contrib-row.full label { min-width: auto; margin-bottom: 4px; }
+.contrib-row textarea { resize: vertical; font-family: inherit; }
+
+/* ===== 駅詳細: 施設評価 ===== */
+.sd-facility-section { background: #FAFAF8; border-radius: 10px; padding: 14px; }
+.sd-facility-grid { display: flex; flex-direction: column; gap: 10px; }
+.sd-facility-item {
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+}
+.sd-facility-label { font-size: 13px; font-weight: 600; color: #333; min-width: 130px; }
+.sd-facility-stars { font-size: 16px; letter-spacing: 1px; }
+.star.filled { color: #E8B84B; }
+.star.empty { color: #DDD; }
+.sd-facility-disclaimer { font-size: 10px; color: #BBB; margin-top: 8px; text-align: right; }
+.sd-url-link {
+  display: block; color: var(--sky); font-size: 13px; text-decoration: none;
+  padding: 10px 14px; background: #F0F6FB; border-radius: 8px;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.sd-url-link:hover { background: #E4EFF8; }
+.sd-url-arrow { font-size: 14px; }
+.sd-visit-badge { font-size: 11px; padding: 3px 8px; border-radius: 10px; white-space: nowrap; }
+.sd-visit-badge.visited { background: #E8F5EE; color: #1B7A4E; }
+.sd-visit-badge.unvisited { background: #F5F5F0; color: #999; }
+.sd-checkin-section { text-align: center; padding: 16px; }
+.sd-checkin-btn {
+  background: var(--primary); color: #fff; border: none; border-radius: 12px;
+  padding: 14px 24px; font-size: 15px; font-weight: 700; cursor: pointer;
+  width: 100%;
+}
+.sd-checkin-btn:hover { background: var(--primary-light); }
+
+/* ===== おすすめ検索 ===== */
+.search-card { border-left: 4px solid #8B6DB0; }
+.ls-filters { display: flex; flex-direction: column; gap: 10px; margin-bottom: 14px; }
+.ls-filter-row { display: flex; align-items: center; gap: 10px; }
+.ls-filter-label { font-size: 13px; font-weight: 600; color: #444; min-width: 120px; }
+.ls-select {
+  flex: 1; padding: 8px 10px; border: 1px solid #DDD; border-radius: 8px;
+  font-size: 13px; background: #fff; color: #333; appearance: auto;
+}
+.ls-search-btn {
+  background: #8B6DB0; color: #fff; border: none; border-radius: 12px;
+  padding: 12px; font-size: 14px; font-weight: 700; cursor: pointer;
+  margin-top: 4px;
+}
+.ls-search-btn:hover { background: #7A5CA0; }
+.ls-results { margin-top: 10px; }
+.ls-count { font-size: 12px; color: #888; margin-bottom: 8px; }
+.ls-empty { font-size: 13px; color: #999; text-align: center; padding: 16px; }
+.ls-result-item {
+  background: #FAFAF8; border-radius: 10px; padding: 12px 14px; margin-bottom: 8px;
+  cursor: pointer; transition: background 0.15s;
+}
+.ls-result-item:hover { background: #F0F0EA; }
+.ls-result-item:active { background: #E8E8E2; }
+.ls-result-header { display: flex; justify-content: space-between; align-items: center; }
+.ls-result-name { font-size: 14px; font-weight: 600; color: #1A1A1A; }
+.ls-result-visit { font-size: 13px; }
+.ls-result-pref { font-size: 11px; color: #888; margin: 2px 0 6px; }
+.ls-result-ratings { display: flex; gap: 12px; flex-wrap: wrap; }
+.ls-rating { font-size: 12px; white-space: nowrap; }
+.ls-more { font-size: 12px; color: #999; text-align: center; padding: 8px; }
+.ls-filter-group-title {
+  font-size: 12px; font-weight: 700; color: #8B6DB0; margin-top: 8px;
+  padding-bottom: 4px; border-bottom: 1px solid #F0ECF5;
+}
+.ls-result-tags { display: flex; flex-wrap: wrap; gap: 4px; margin: 4px 0; }
+.ls-tag {
+  font-size: 10px; background: #F5F0FA; color: #6B5090; border-radius: 6px;
+  padding: 2px 8px; white-space: nowrap;
 }
 
 /* ===== 制覇証明書モーダル ===== */
@@ -401,10 +675,11 @@ body {
   background: var(--bg);
 }
 .filter-chip {
-  padding: 7px 18px; border-radius: 22px;
+  padding: 10px 18px; border-radius: 22px;
   border: none; background: rgba(118,118,128,0.08);
   font-size: 0.82rem; font-weight: 600; color: var(--text-sub);
   cursor: pointer; transition: all 0.2s;
+  min-height: 44px; box-sizing: border-box;
 }
 .filter-chip.active {
   background: var(--primary); color: #fff;
@@ -1121,9 +1396,10 @@ body {
   position: relative; z-index: 1;
 }
 .sb-chip {
-  padding: 6px 14px; border-radius: 20px; border: 1.5px solid #C4B8A0;
+  padding: 10px 14px; border-radius: 20px; border: 1.5px solid #C4B8A0;
   background: rgba(255,255,255,0.5); color: #8B7355;
   font-size: 0.78rem; font-weight: 700; cursor: pointer;
+  min-height: 44px; box-sizing: border-box;
 }
 .sb-chip.active { background: #5A4020; color: #F5EDDA; border-color: #5A4020; }
 .stampbook-grid {
@@ -1706,3 +1982,91 @@ body {
   /* プレミアムトーストをサイドバー考慮 */
   .premium-toast { left: calc(240px + (100% - 240px) / 2); }
 }
+
+/* ===== 法的情報リンク ===== */
+.legal-links {
+  text-align: center;
+  padding: 20px 16px 32px;
+  font-size: 12px;
+  color: #999;
+}
+.legal-link-btn {
+  background: none;
+  border: none;
+  color: #999;
+  font-size: 12px;
+  cursor: pointer;
+  padding: 12px 8px;
+  min-height: 44px;
+  box-sizing: border-box;
+  text-decoration: underline;
+}
+.legal-link-btn:hover { color: #666; }
+.legal-sep { color: #ddd; margin: 0 4px; }
+
+/* ===== 法的情報モーダル ===== */
+.legal-modal {
+  max-width: 600px;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+.legal-content {
+  text-align: left;
+  font-size: 13px;
+  line-height: 1.7;
+  color: #444;
+  padding: 0 4px;
+}
+.legal-content h3 {
+  font-size: 14px;
+  color: #0F3D28;
+  margin: 16px 0 6px;
+}
+.legal-content ul {
+  padding-left: 20px;
+  margin: 8px 0;
+}
+.legal-content li { margin-bottom: 6px; }
+.legal-updated {
+  margin-top: 20px;
+  font-size: 11px;
+  color: #aaa;
+  text-align: right;
+}
+
+/* ===== 特商法テーブル ===== */
+.tokusho-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  margin: 12px 0;
+}
+.tokusho-table th,
+.tokusho-table td {
+  border: 1px solid #e0e0e0;
+  padding: 10px 12px;
+  text-align: left;
+  vertical-align: top;
+  line-height: 1.6;
+}
+.tokusho-table th {
+  background: #f5f5f0;
+  color: #0F3D28;
+  font-weight: 600;
+  white-space: nowrap;
+  width: 30%;
+}
+.tokusho-table td { color: #444; }
+
+/* ===== 緊急動物病院 免責表示 ===== */
+.vet-disclaimer {
+  font-size: 11px;
+  color: #888;
+  background: #FFF8E1;
+  border: 1px solid #FFE082;
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin-top: 12px;
+  line-height: 1.6;
+}
+.vet-disclaimer strong { color: #E65100; }

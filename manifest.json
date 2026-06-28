@@ -1,13 +1,17 @@
 {
-  "name": "タビクエ",
-  "short_name": "タビクエ",
-  "description": "旅をゲーム化する全国制覇ライフログ。道の駅を巡り、クエストをクリアし、思い出と達成感を積み上げよう。",
+  "name": "みちのわん — 愛犬と車中泊の道の駅旅日誌",
+  "short_name": "みちのわん",
+  "description": "愛犬と走る。泊まる。日本を巡る。全国1231駅の道の駅を犬と車中泊で制覇するライフログアプリ。",
+  "id": "/",
   "start_url": ".",
   "scope": ".",
   "display": "standalone",
   "background_color": "#FAFAF8",
   "theme_color": "#0F3D28",
   "orientation": "portrait",
+  "lang": "ja",
+  "dir": "ltr",
+  "categories": ["travel", "lifestyle"],
   "icons": [
     {
       "src": "icon-192.png",
@@ -20,6 +24,36 @@
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "store_assets/screenshot_01.png",
+      "sizes": "1080x1920",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "ホームダッシュボード — 訪問数・レベル・クエストを一覧"
+    },
+    {
+      "src": "store_assets/screenshot_02.png",
+      "sizes": "1080x1920",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "全国スタンプ帳 — 訪問した道の駅のオリジナルスタンプ"
+    },
+    {
+      "src": "store_assets/screenshot_03.png",
+      "sizes": "1080x1920",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "犬連れ旅情報 — ドッグラン・RVパーク・緊急動物病院"
+    },
+    {
+      "src": "store_assets/screenshot_04.png",
+      "sizes": "1080x1920",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "全国制覇マップ — 都道府県別の訪問状況を確認"
     }
   ]
 }

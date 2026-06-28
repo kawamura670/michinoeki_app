@@ -12,7 +12,23 @@ desktop.ini
 
 # Node.js
 node_modules/
+node_portable/
+package-lock.json
+
+# 開発ツール
+scripts/
+stamp_tmp/
+stamp_images/
+url_fix_log.json
+station_urls.txt
+stations_*.txt
+store_assets/*.html
+store_assets/generate_images.js
 
 # Environment
 .env
 .env.local
+.env.production
+*.pem
+*.key
+credentials.json

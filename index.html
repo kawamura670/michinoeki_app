@@ -6,30 +6,45 @@
 <meta name="theme-color" content="#0F3D28">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta name="description" content="旅をゲーム化する全国制覇ライフログ。道の駅を巡り、クエストをクリアし、思い出と達成感を積み上げよう。">
-<title>タビクエ</title>
+<meta name="apple-mobile-web-app-title" content="みちのわん">
+<meta name="description" content="愛犬と走る。泊まる。日本を巡る。全国1231駅の道の駅を犬と車中泊で制覇するライフログアプリ「みちのわん」">
+<title>みちのわん — 愛犬と車中泊の道の駅旅日誌</title>
+
+<!-- OGP / SNSシェア用メタタグ -->
+<meta property="og:title" content="みちのわん — 愛犬と車中泊の道の駅旅日誌">
+<meta property="og:description" content="愛犬と走る。泊まる。日本を巡る。全国1231駅の道の駅を犬と車中泊で制覇するライフログアプリ">
+<meta property="og:image" content="https://kawamura670.github.io/michinowan/icon-512.png">
+<meta property="og:url" content="https://kawamura670.github.io/michinowan/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://kawamura670.github.io/michinowan/icon-512.png">
+
+<!-- セキュリティヘッダー（GitHub Pages用meta代替） -->
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; connect-src 'self' https://buy.stripe.com; font-src 'self'; frame-ancestors 'none';">
+
 <link rel="manifest" href="manifest.json">
 <script>
 if('serviceWorker' in navigator){
-  navigator.serviceWorker.getRegistrations().then(function(regs){
-    regs.forEach(function(r){r.unregister();});
-  });
-  caches.keys().then(function(names){
-    names.forEach(function(n){caches.delete(n);});
+  window.addEventListener('load', function(){
+    navigator.serviceWorker.register('sw.js');
   });
 }
 </script>
+<link rel="icon" href="icon.ico" type="image/x-icon">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="icon-512.png">
 <link rel="apple-touch-icon" sizes="192x192" href="icon-192.png">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=25">
 </head>
 <body>
 
 <!-- ===== PC用サイドバー（1024px以上で表示） ===== -->
 <aside class="pc-sidebar" id="pc-sidebar">
   <div class="pc-sidebar-brand">
-    <div class="pc-sidebar-logo">🗾</div>
-    <div class="pc-sidebar-appname">タビクエ</div>
-    <div class="pc-sidebar-sub">Road Quest Japan</div>
+    <div class="pc-sidebar-logo">🐾</div>
+    <div class="pc-sidebar-appname">みちのわん</div>
+    <div class="pc-sidebar-sub">愛犬と車中泊の道の駅旅</div>
   </div>
   <nav class="pc-sidebar-nav">
     <button class="pc-nav-item active" data-tab="home">
@@ -68,7 +83,7 @@ if('serviceWorker' in navigator){
 
 <!-- ===== ナビゲーションバー ===== -->
 <nav class="nav-bar">
-  <span class="nav-title">タビクエ<span id="nav-premium-badge" class="nav-premium-badge" hidden>👑 マスター</span></span>
+  <span class="nav-title">🐾 みちのわん<span id="nav-premium-badge" class="nav-premium-badge" hidden>👑 マスター</span></span>
   <button id="share-btn" class="nav-icon" title="シェア">
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
   </button>
@@ -100,6 +115,21 @@ if('serviceWorker' in navigator){
     <!-- 達成済み称号 -->
     <div id="achieved-titles" class="achieved-titles-section"></div>
 
+    <!-- 🐕 犬連れ旅情報 -->
+    <div id="dog-friendly-section" class="lifestyle-section"></div>
+
+    <!-- 🚐 車中泊スポット -->
+    <div id="vanlife-section" class="lifestyle-section"></div>
+
+    <!-- 🅿️ RVパーク検索 -->
+    <div id="rvpark-section" class="lifestyle-section"></div>
+
+    <!-- 🏥 緊急動物病院 -->
+    <div id="vet-section" class="lifestyle-section"></div>
+
+    <!-- 🔍 おすすめ検索 -->
+    <div id="lifestyle-search-section" class="lifestyle-section"></div>
+
     <!-- もうすぐ制覇 -->
     <div id="almost-section"></div>
 
@@ -114,6 +144,25 @@ if('serviceWorker' in navigator){
       <button id="import-btn" class="text-btn">📂 読み込み</button>
       <input type="file" id="import-file" accept="application/json" hidden>
     </div>
+
+    <!-- 法的情報リンク -->
+    <div class="legal-links">
+      <button class="legal-link-btn" onclick="showLegal('legal-privacy')">プライバシーポリシー</button>
+      <span class="legal-sep">|</span>
+      <button class="legal-link-btn" onclick="showLegal('legal-terms')">利用規約</button>
+      <span class="legal-sep">|</span>
+      <button class="legal-link-btn" onclick="showLegal('legal-tokusho')">特定商取引法</button>
+      <span class="legal-sep">|</span>
+      <button class="legal-link-btn" onclick="showLegal('legal-about')">アプリについて</button>
+    </div>
+    <script>
+    function showLegal(id){
+      document.getElementById('legal-modal').hidden=false;
+      ['legal-privacy','legal-terms','legal-tokusho','legal-about'].forEach(function(s){
+        document.getElementById(s).hidden=(s!==id);
+      });
+    }
+    </script>
   </div>
 </div>
 
@@ -249,15 +298,12 @@ if('serviceWorker' in navigator){
   <div class="paywall">
     <div class="paywall-hero">
       <span class="paywall-crown">👑</span>
-      <div class="paywall-title">道の駅マスター</div>
-      <div class="paywall-sub">もっと便利に、もっと楽しく</div>
+      <div class="paywall-title">みちのわんマスター</div>
+      <div class="paywall-sub">愛犬との旅を、もっと便利に</div>
     </div>
     <div class="paywall-features">
       <div class="paywall-feature"><div class="paywall-feature-icon">🗾</div><div class="paywall-feature-text">全国制覇マップ</div></div>
-      <div class="paywall-feature"><div class="paywall-feature-icon">🚫</div><div class="paywall-feature-text">広告なしの快適体験</div></div>
       <div class="paywall-feature"><div class="paywall-feature-icon">📷</div><div class="paywall-feature-text">スタンプ写真 無制限</div></div>
-      <div class="paywall-feature"><div class="paywall-feature-icon">📊</div><div class="paywall-feature-text">詳細統計ダッシュボード</div></div>
-      <div class="paywall-feature"><div class="paywall-feature-icon">☁️</div><div class="paywall-feature-text">クラウド同期（端末間）</div></div>
       <div class="paywall-feature"><div class="paywall-feature-icon">📝</div><div class="paywall-feature-text">旅の日記 + 複数写真記録</div></div>
     </div>
     <div class="paywall-pricing">
@@ -267,7 +313,7 @@ if('serviceWorker' in navigator){
         <div class="price-discount">一度の購入でずっと使える</div>
       </div>
     </div>
-    <button id="paywall-cta" class="paywall-cta">¥980 で道の駅マスターになる</button>
+    <button id="paywall-cta" class="paywall-cta">¥980 でみちのわんマスターになる</button>
     <div class="paywall-guarantee">🔒 安心の決済 ｜ 買い切りで追加料金なし</div>
     <button id="paywall-skip" class="paywall-skip">あとで</button>
   </div>
@@ -281,6 +327,60 @@ if('serviceWorker' in navigator){
     <div class="modal-actions">
       <button id="station-detail-close" class="modal-cancel">閉じる</button>
       <button id="station-detail-save" class="modal-confirm">保存</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 施設情報投稿モーダル ===== -->
+<div id="contrib-modal" class="modal-overlay" hidden>
+  <div class="modal contrib-modal">
+    <h2>📝 施設情報を投稿</h2>
+    <div id="contrib-station-name" class="contrib-station-name"></div>
+    <div class="contrib-form">
+      <div class="contrib-row">
+        <label>🐕 ドッグラン</label>
+        <select id="contrib-dogrun"><option value="">不明</option><option value="専用ドッグラン">専用ドッグラン</option><option value="ペットエリア">ペットエリア</option><option value="広場利用可">広場利用可</option><option value="なし">なし</option></select>
+      </div>
+      <div class="contrib-row">
+        <label>🐕‍🦺 大型犬</label>
+        <select id="contrib-largedog"><option value="">不明</option><option value="true">OK</option><option value="false">NG</option></select>
+      </div>
+      <div class="contrib-row">
+        <label>↔️ 小型/大型 分離</label>
+        <select id="contrib-separated"><option value="">不明</option><option value="true">あり</option><option value="false">なし</option></select>
+      </div>
+      <div class="contrib-row">
+        <label>📐 広さ</label>
+        <select id="contrib-size"><option value="">不明</option><option value="広い">広い</option><option value="普通">普通</option><option value="狭い">狭い</option></select>
+      </div>
+      <div class="contrib-row">
+        <label>📄 証明書</label>
+        <select id="contrib-cert"><option value="">不明</option><option value="必要">必要</option><option value="推奨">推奨</option><option value="不要">不要</option></select>
+      </div>
+      <div class="contrib-row">
+        <label>💰 料金</label>
+        <select id="contrib-fee"><option value="">不明</option><option value="無料">無料</option><option value="有料">有料</option></select>
+      </div>
+      <div class="contrib-row">
+        <label>💧 水飲み場</label>
+        <select id="contrib-water"><option value="">不明</option><option value="true">あり</option><option value="false">なし</option></select>
+      </div>
+      <div class="contrib-row">
+        <label>🚻 トイレ綺麗度</label>
+        <select id="contrib-toilet"><option value="0">不明</option><option value="1">★</option><option value="2">★★</option><option value="3">★★★</option><option value="4">★★★★</option><option value="5">★★★★★</option></select>
+      </div>
+      <div class="contrib-row">
+        <label>🚐 車中泊おすすめ</label>
+        <select id="contrib-vanlife"><option value="0">不明</option><option value="1">★</option><option value="2">★★</option><option value="3">★★★</option><option value="4">★★★★</option><option value="5">★★★★★</option></select>
+      </div>
+      <div class="contrib-row full">
+        <label>📝 コメント</label>
+        <textarea id="contrib-comment" placeholder="実際に訪問した感想やアドバイスを書いてください" rows="3"></textarea>
+      </div>
+    </div>
+    <div class="modal-actions">
+      <button id="contrib-cancel" class="modal-cancel">キャンセル</button>
+      <button id="contrib-submit" class="modal-confirm">投稿する</button>
     </div>
   </div>
 </div>
@@ -321,6 +421,118 @@ if('serviceWorker' in navigator){
   </div>
 </div>
 
+<!-- ===== 法的情報モーダル ===== -->
+<div id="legal-modal" class="modal-overlay" hidden>
+  <div class="modal legal-modal">
+    <div id="legal-privacy">
+      <h2>プライバシーポリシー</h2>
+      <div class="legal-content">
+        <p><strong>みちのわん</strong>（以下「本アプリ」）は、ユーザーのプライバシーを尊重し、個人情報の保護に努めます。</p>
+        <h3>1. 収集する情報</h3>
+        <p>本アプリは以下の情報をデバイス内（localStorage）にのみ保存します。外部サーバーへの送信は一切行いません。</p>
+        <ul>
+          <li>道の駅の訪問記録（日時・メモ）</li>
+          <li>スタンプ獲得状況</li>
+          <li>愛犬の名前（任意入力の場合）</li>
+          <li>アプリの設定情報</li>
+        </ul>
+        <h3>2. 位置情報</h3>
+        <p>本アプリは位置情報の取得を行いません。すべての訪問記録はユーザーの手動操作により登録されます。</p>
+        <h3>3. 第三者提供</h3>
+        <p>本アプリが保存した情報を第三者に提供・共有することはありません。</p>
+        <h3>4. Cookie・トラッキング</h3>
+        <p>本アプリはCookie、広告トラッカー、アクセス解析ツール（Google Analytics等）を一切使用しません。</p>
+        <h3>5. 外部サービスとの連携</h3>
+        <p>本アプリは現在、外部サービスとのデータ送受信を行いません。将来的に有料機能において決済サービス（Stripe）を利用する場合、カード情報はStripeが直接管理し、本アプリおよび開発者がカード情報を保持することはありません。</p>
+        <h3>6. データの保存場所</h3>
+        <p>すべてのデータはお使いのデバイスのブラウザ内（localStorage）に保存されます。データはデバイス外に送信されず、開発者がアクセスすることはできません。</p>
+        <h3>7. データの削除</h3>
+        <p>ブラウザの設定からサイトデータ（localStorage）を削除することで、本アプリに保存されたすべてのデータを完全に消去できます。また、アプリ内のバックアップ機能でデータを書き出すことも可能です。</p>
+        <h3>8. 子どものプライバシー</h3>
+        <p>本アプリは13歳未満の子どもを対象としたサービスではありません。13歳未満の方からの情報を意図的に収集することはありません。</p>
+        <h3>9. ポリシーの変更</h3>
+        <p>本ポリシーの内容は、法令の変更やサービスの改善に伴い、予告なく変更される場合があります。変更後のポリシーは本ページに掲載した時点で効力を生じます。</p>
+        <h3>10. 運営者情報</h3>
+        <p>運営者: 川村 悦祥（個人事業）</p>
+        <h3>11. お問い合わせ</h3>
+        <p>プライバシーに関するお問い合わせ: <a href="mailto:ana06155@icloud.com">ana06155@icloud.com</a></p>
+        <p class="legal-updated">最終更新: 2026年6月24日</p>
+      </div>
+    </div>
+    <div id="legal-terms" hidden>
+      <h2>利用規約</h2>
+      <div class="legal-content">
+        <h3>第1条（適用）</h3>
+        <p>本規約は、本アプリの利用に関する条件を定めるものです。ユーザーは本アプリを利用することにより、本規約に同意したものとみなします。</p>
+        <h3>第2条（サービス内容）</h3>
+        <p>本アプリは、全国の道の駅の訪問記録・スタンプ収集を支援するライフログアプリです。無料機能のほか、有料の「みちのわんマスター」（買い切り980円）により追加機能をご利用いただけます。</p>
+        <h3>第3条（免責事項）</h3>
+        <ul>
+          <li>本アプリに掲載される道の駅情報、ドッグラン情報、RVパーク情報は参考情報であり、正確性・最新性を保証するものではありません。お出かけ前に必ず公式情報をご確認ください。</li>
+          <li>本アプリに掲載される緊急動物病院情報は参考情報です。<strong>営業時間・対応可否は変更される場合があります。必ず事前にお電話でご確認ください。</strong>本アプリの情報に基づく行動により生じた損害について、開発者は一切の責任を負いません。</li>
+          <li>本アプリのデータはデバイスのブラウザ内（localStorage）に保存されます。ブラウザのデータ削除、端末の初期化等によるデータの消失について、開発者は責任を負いません。重要なデータは定期的にバックアップ機能をご利用ください。</li>
+          <li>通信環境やデバイスの状態により、アプリの一部機能が正常に動作しない場合があります。</li>
+        </ul>
+        <h3>第4条（知的財産権）</h3>
+        <p>本アプリに掲載されるスタンプ画像、デザイン、アイコン等の著作権は開発者に帰属します。ユーザーは個人の利用目的に限りスタンプ画像をSNS等で共有できますが、スタンプ画像の改変、商用利用、無断転載・再配布を禁止します。</p>
+        <h3>第5条（禁止事項）</h3>
+        <ul>
+          <li>本アプリの逆コンパイル、リバースエンジニアリング等の行為</li>
+          <li>本アプリのコンテンツの無断複製・再配布・商用利用</li>
+          <li>不正な手段によるプレミアム機能の利用</li>
+          <li>その他、法令に違反する行為または開発者が不適切と判断する行為</li>
+        </ul>
+        <h3>第6条（サービスの変更・終了）</h3>
+        <p>開発者は、事前の通知なくサービス内容の変更、または提供の停止・終了を行うことがあります。</p>
+        <h3>第7条（規約の変更）</h3>
+        <p>本規約は予告なく変更される場合があります。変更後の規約は本アプリに掲載した時点で効力を生じます。</p>
+        <p class="legal-updated">最終更新: 2026年6月24日</p>
+      </div>
+    </div>
+    <div id="legal-tokusho" hidden>
+      <h2>特定商取引法に基づく表記</h2>
+      <div class="legal-content">
+        <table class="tokusho-table">
+          <tr><th>販売業者</th><td>川村 悦祥（個人事業）</td></tr>
+          <tr><th>運営責任者</th><td>川村 悦祥</td></tr>
+          <tr><th>所在地</th><td>請求があった場合に遅滞なく開示いたします。<br>お問い合わせ先メールアドレスまでご連絡ください。</td></tr>
+          <tr><th>電話番号</th><td>請求があった場合に遅滞なく開示いたします。<br>お問い合わせ先メールアドレスまでご連絡ください。</td></tr>
+          <tr><th>メールアドレス</th><td>ana06155@icloud.com</td></tr>
+          <tr><th>販売価格</th><td>みちのわんマスター: 980円（税込・買い切り）<br>※ 現在は無料版を提供中。有料機能は準備中です。</td></tr>
+          <tr><th>販売価格以外の必要料金</th><td>インターネット接続に必要な通信料はお客様のご負担となります。</td></tr>
+          <tr><th>支払方法</th><td>クレジットカード決済（Stripe経由）</td></tr>
+          <tr><th>支払時期</th><td>購入時に一括でお支払いいただきます。</td></tr>
+          <tr><th>サービス提供時期</th><td>決済完了後、即時にご利用いただけます。</td></tr>
+          <tr><th>返品・キャンセル</th><td>デジタルコンテンツの性質上、購入後の返品・返金はお受けしておりません。ただし、サービスの提供に重大な不具合があった場合は個別に対応いたします。</td></tr>
+          <tr><th>動作環境</th><td>PWA対応ブラウザ（Chrome, Safari, Edge, Firefox の最新版を推奨）</td></tr>
+        </table>
+        <p class="legal-updated">最終更新: 2026年6月24日</p>
+      </div>
+    </div>
+    <div id="legal-about" hidden>
+      <h2>アプリについて</h2>
+      <div class="legal-content">
+        <p><strong>みちのわん — 愛犬と車中泊の道の駅旅日誌</strong></p>
+        <p>全国1,231駅の道の駅を愛犬と車中泊で制覇するライフログアプリ</p>
+        <h3>データ出典</h3>
+        <ul>
+          <li>道の駅データ: 国土交通省「道の駅一覧」に基づき作成</li>
+          <li>ドッグラン併設情報: 各道の駅の公式情報に基づき作成（33駅）</li>
+          <li>緊急動物病院情報: 各動物病院の公式サイトに基づき作成（42件）</li>
+        </ul>
+        <h3>ご注意</h3>
+        <p>掲載情報は定期的に更新していますが、最新の情報と異なる場合があります。特に緊急動物病院の営業時間・対応状況は必ず事前にお電話で確認してください。</p>
+        <h3>開発・運営</h3>
+        <p>お問い合わせ: ana06155@icloud.com</p>
+        <p class="legal-updated">バージョン 1.0 / 最終更新: 2026年6月24日</p>
+      </div>
+    </div>
+    <div class="modal-actions">
+      <button id="legal-close" class="modal-cancel" onclick="document.getElementById('legal-modal').hidden=true;">閉じる</button>
+    </div>
+  </div>
+</div>
+
 <!-- ===== シェアモーダル ===== -->
 <div id="share-modal" class="modal-overlay" hidden>
   <div class="modal">
@@ -355,6 +567,8 @@ if('serviceWorker' in navigator){
 <script src="progress.js"></script>
 <script src="stamp_engine.js"></script>
 <script src="map.js"></script>
-<script src="app.js?v=13"></script>
+<script src="dogrun_stations.js"></script>
+<script src="emergency_vets.js"></script>
+<script src="app.js?v=26"></script>
 </body>
 </html>

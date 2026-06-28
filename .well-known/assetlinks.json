@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.michinowan.app",
+      "sha256_cert_fingerprints": [
+        "__TODO__: PWABuilder or Bubblewrapで生成後、署名キーのSHA256フィンガープリントをここに貼る"
+      ]
+    }
+  }
+]
